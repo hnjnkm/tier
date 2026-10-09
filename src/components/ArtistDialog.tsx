@@ -62,19 +62,19 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
       <button className="icon-button dialog-close" onClick={onClose} aria-label="닫기"><X size={21} /></button>
       <div className="dialog-artist">
         <Avatar artist={artist} portrait={portrait} className="dialog-avatar" />
-        <div><span className="eyebrow">ARTIST COLLECTION</span><h2 id="artist-dialog-title">{artist.name}</h2><p>{artist.englishName} <span>·</span> {artist.kind === 'solo' ? '솔로' : '그룹'} <span>·</span> {GENDER_LABELS[artist.gender]}</p>
+        <div><span className="eyebrow">THE ARTIST / PERSONAL EDIT</span><h2 id="artist-dialog-title">{artist.name}</h2><p>{artist.englishName} <span>·</span> {artist.kind === 'solo' ? '솔로' : '그룹'} <span>·</span> {GENDER_LABELS[artist.gender]}</p>
           {portrait && <a className="portrait-source" href={portrait.pageUrl} target="_blank" rel="noreferrer">사진 출처 · {portrait.provider === 'bugs' ? '벅스' : 'Wikimedia'} <ExternalLink size={11} /></a>}
         </div>
       </div>
       <div className="dialog-tier"><span>나의 티어</span><div className="tier-picker">{TIERS.map(item => <button key={item} className={`tier-pick tier-${item} ${tier === item ? 'selected' : ''}`} aria-label={`${artist.name} ${item} 티어로 이동`} aria-pressed={tier === item} onClick={() => onMove(item)}>{item}</button>)}<button className={`pool-pick ${!tier ? 'selected' : ''}`} aria-pressed={!tier} onClick={() => onMove('pool')}>보관함</button></div></div>
       <section className="equipped-section" aria-label="선택한 대표곡">
-        <div className="section-label"><h3><Music2 size={17} /> 나만의 대표곡</h3><span><strong>{favorites.length}</strong> / 3</span></div>
-        <p className="section-description">이 가수를 떠올리면 생각나는 곡, 세 개만 골라볼까요?</p>
+        <div className="section-label"><h3>나만의 대표곡</h3><span><strong>{favorites.length}</strong> / 3</span></div>
+        <p className="section-description">이 목소리를 기억하는 당신만의 세 곡.</p>
         <div className="song-slots">{Array.from({ length: 3 }, (_, index) => {
           const song = favorites[index];
           return <div className={`song-slot ${song ? 'filled' : ''}`} key={index}>
             <span className="slot-number">0{index + 1}</span>
-            {song ? <><div className="slot-art">{song.artwork ? <img src={imageUrl(song.artwork)} alt="" /> : <Disc3 size={27} />}</div><strong title={song.title}>{song.title}</strong><span className="slot-album" title={song.album}>{song.album || song.artistName}</span><button className="remove-song" onClick={() => onToggle(song)} aria-label={`${song.title} 대표곡에서 제거`}><X size={13} /></button></> : <><div className="empty-slot-icon"><Plus size={22} /></div><span>좋아하는 곡을 장착하세요</span></>}
+            {song ? <><div className="slot-art">{song.artwork ? <img src={imageUrl(song.artwork)} alt="" /> : <Disc3 size={27} />}</div><strong title={song.title}>{song.title}</strong><span className="slot-album" title={song.album}>{song.album || song.artistName}</span><button className="remove-song" onClick={() => onToggle(song)} aria-label={`${song.title} 대표곡에서 제거`}><X size={13} /></button></> : <><div className="empty-slot-icon"><Plus size={22} /></div><span>곡을 선택하세요</span></>}
           </div>;
         })}</div>
       </section>
@@ -89,7 +89,7 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
               <div className="result-art">{song.artwork ? <img src={imageUrl(song.artwork)} loading="lazy" alt="" /> : <Disc3 size={22} />}</div>
               <div className="song-info"><strong title={song.title}>{song.title}</strong><span title={song.album}>{song.artistName} · {song.album}{song.year ? ` · ${song.year}` : ''}</span></div>
               {song.previewUrl && <button className="icon-button preview-button" onClick={() => play(song)} aria-label={`${song.title} ${playing === song.id ? '미리듣기 중지' : '미리듣기'}`}>{playing === song.id ? <Pause size={15} /> : <Play size={15} />}</button>}
-              <button className={`equip-button ${selected ? 'selected' : ''}`} aria-label={`${song.title} ${selected ? '선택 해제' : '대표곡으로 선택'}`} aria-pressed={selected} onClick={() => selectSong(song)}>{selected ? <Check size={17} /> : <Plus size={17} />}<span>{selected ? '선택됨' : '장착'}</span></button>
+              <button className={`equip-button ${selected ? 'selected' : ''}`} aria-label={`${song.title} ${selected ? '선택 해제' : '대표곡으로 선택'}`} aria-pressed={selected} onClick={() => selectSong(song)}>{selected ? <Check size={17} /> : <Plus size={17} />}<span>{selected ? '선택됨' : '선택'}</span></button>
             </div>;
           })}
         </div>

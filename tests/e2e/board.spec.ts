@@ -36,6 +36,7 @@ test('three song slots, tier changes and browser reload preserve choices', async
   await page.getByRole('button', { name: '좋은 날 대표곡으로 선택', exact: true }).click();
   await page.getByRole('button', { name: '선택 완료' }).click();
   await expect(page.getByTestId('tier-S').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+  await expect(page.getByTestId('tier-S').locator('[data-artist-id="kr-iu"] .artist-main')).toBeFocused();
   await page.reload();
   await expect(page.getByTestId('tier-S').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
@@ -110,7 +111,7 @@ test('board export contains placements and import restores a validated file', as
 
 test('mobile layout stays within the viewport and modal tier selection works', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await expect(page.getByRole('heading', { name: '좋아하는 가수, 나만의 티어로.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Sound, in your order.' })).toBeVisible();
   const width = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
   expect(width.scroll).toBeLessThanOrEqual(width.client);
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
@@ -153,4 +154,19 @@ test('touchscreen long-press moves a thumbnail into a tier', async ({ browser })
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   await expect(page.getByTestId('tier-F').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
   await context.close();
+});
+
+
+test('archive navigation closes on Escape and links to the artist collection', async ({ page }) => {
+  await page.getByRole('button', { name: '메뉴 열기' }).click();
+  await expect(page.getByRole('dialog', { name: 'INDEX' })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog', { name: 'INDEX' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: '메뉴 열기' })).toBeFocused();
+  await page.getByRole('button', { name: '메뉴 열기' }).click();
+  await page.getByRole('navigation', { name: '전체 메뉴' }).getByRole('link', { name: /아티스트 아카이브/ }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page).toHaveURL(/#artist-archive$/);
+  await page.getByLabel('가수 이름 검색').fill('아이유');
+  await expect(page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' })).toBeVisible();
 });
