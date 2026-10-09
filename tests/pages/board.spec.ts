@@ -42,6 +42,7 @@ test('Pages subpath loads assets and direct providers, then persists three songs
   await page.getByRole('button', { name: '선택 완료' }).click();
   await page.reload();
   await expect(page.getByTestId('tier-S').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+  await expect(page.getByTestId('favorites-briefing').locator('.favorite-songs > span')).toHaveText(titles.slice(0, 3));
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
   await expect(page.getByLabel('선택한 대표곡').locator('.song-slot.filled')).toHaveCount(3);
   expect(localApiRequests).toEqual([]);

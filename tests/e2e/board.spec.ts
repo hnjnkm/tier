@@ -60,6 +60,9 @@ test('artist thumbnails retain their size when moved into a tier on desktop and 
     const after = await page.getByTestId('tier-S').locator('[data-artist-id="kr-sgwannabe"] .avatar').boundingBox();
     expect(after!.width).toBe(before!.width);
     expect(after!.height).toBe(before!.height);
+    const summary = await page.getByTestId('favorites-briefing').locator('.avatar').boundingBox();
+    expect(summary!.width).toBe(before!.width);
+    expect(summary!.height).toBe(before!.height);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     await page.getByRole('button', { name: 'SG워너비 곡 선택 및 티어 변경' }).click();
     await page.getByRole('button', { name: '보관함', exact: true }).click();
@@ -157,6 +160,69 @@ test('mouse dragging moves between tiers and into an occupied row, then back to 
   await dragArtist(page, 'kr-iu', 'pool');
   await expect(page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
   await expect(page.locator('.tier-board [data-artist-id="kr-iu"]')).toHaveCount(0);
+});
+
+test('dropping outside the board returns an artist to the pool and preserves favorite songs', async ({ page }) => {
+  await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
+  await page.getByRole('button', { name: '아이유 S 티어로 이동' }).click();
+  await page.getByRole('button', { name: '밤편지 대표곡으로 선택', exact: true }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await expect(page.getByTestId('favorites-briefing')).toContainText('밤편지');
+  const card = page.getByTestId('tier-S').locator('.artist-main');
+  await card.evaluate(node => node.scrollIntoView({ block: 'center' }));
+  const start = await card.boundingBox();
+  await page.mouse.move(start!.x + 25, start!.y + 25);
+  await page.mouse.down();
+  await page.mouse.move(start!.x + 25, start!.y + 12, { steps: 4 });
+  const outside = page.locator('.board-footnote');
+  await outside.evaluate(node => node.scrollIntoView({ block: 'center' }));
+  const end = await outside.boundingBox();
+  await page.mouse.move(end!.x + 30, end!.y + end!.height / 2, { steps: 12 });
+  await page.mouse.up();
+  await expect(page.locator('.tier-board [data-artist-id="kr-iu"]')).toHaveCount(0);
+  await expect(page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+  await expect(page.getByTestId('favorites-briefing')).toHaveCount(0);
+  await page.reload();
+  await expect(page.locator('.tier-board [data-artist-id="kr-iu"]')).toHaveCount(0);
+  await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
+  await expect(page.getByRole('button', { name: '밤편지 대표곡에서 제거' })).toBeVisible();
+});
+
+test('S-tier briefing follows favorites and placements, stays independent of filters and survives reload', async ({ page }) => {
+  const briefing = page.getByTestId('favorites-briefing');
+  await expect(briefing).toHaveCount(0);
+  await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
+  await page.getByRole('button', { name: '아이유 S 티어로 이동' }).click();
+  for (const title of ['Love wins all', '밤편지', '팔레트']) await page.getByRole('button', { name: `${title} 대표곡으로 선택`, exact: true }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await expect(briefing.locator('.favorite-songs > span')).toHaveText(['Love wins all', '밤편지', '팔레트']);
+  await page.getByRole('button', { name: '방탄소년단 곡 선택 및 티어 변경' }).click();
+  await page.getByRole('button', { name: '방탄소년단 S 티어로 이동' }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await expect(briefing.locator('.favorite-entry')).toHaveCount(2);
+  await expect(briefing.getByRole('button', { name: '방탄소년단 S티어 대표곡 편집' })).toContainText('곡 선택');
+  await page.getByRole('button', { name: 'DAY6 곡 선택 및 티어 변경' }).click();
+  await page.getByRole('button', { name: 'DAY6 A 티어로 이동' }).click();
+  await page.getByRole('button', { name: '좋은 날 대표곡으로 선택', exact: true }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await expect(briefing).not.toContainText('DAY6');
+  await expect(briefing).not.toContainText('좋은 날');
+  await page.getByLabel('음악 장르 필터').selectOption('hiphop');
+  await page.getByLabel('가수 이름 검색').fill('비와이');
+  await expect(briefing.locator('.favorite-entry')).toHaveCount(2);
+  await page.reload();
+  await expect(briefing.locator('.favorites-heading')).toContainText('2명 · 3곡');
+  await briefing.getByRole('button', { name: '아이유 S티어 대표곡 편집' }).click();
+  await page.getByRole('button', { name: '밤편지 대표곡에서 제거' }).click();
+  await expect(briefing.locator('.favorite-songs > span')).toHaveText(['Love wins all', '팔레트']);
+  await page.getByRole('button', { name: '아이유 A 티어로 이동' }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await expect(briefing.locator('.favorite-entry')).toHaveCount(1);
+  await expect(briefing).not.toContainText('팔레트');
+  await briefing.getByRole('button', { name: '방탄소년단 S티어 대표곡 편집' }).click();
+  await page.getByRole('button', { name: '보관함', exact: true }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await expect(briefing).toHaveCount(0);
 });
 
 test('song searches and error retries expose useful results, and dialog supports Escape', async ({ page }) => {
@@ -274,5 +340,16 @@ test('touchscreen long-press moves a thumbnail into a tier', async ({ browser })
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   await expect(page.getByTestId('tier-A').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
   await expect(page.getByTestId('tier-F').locator('[data-artist-id="kr-iu"]')).toHaveCount(0);
+  await page.getByTestId('tier-A').locator('.artist-main').evaluate(node => node.scrollIntoView({ block: 'center' }));
+  const inA = await page.getByTestId('tier-A').locator('.artist-main').boundingBox();
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: inA!.x + 25, y: inA!.y + 25 }] });
+  await page.waitForTimeout(280);
+  await page.locator('.board-footnote').evaluate(node => node.scrollIntoView({ block: 'center' }));
+  const outside = await page.locator('.board-footnote').boundingBox();
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: outside!.x + 30, y: outside!.y + outside!.height / 2 }] });
+  await page.waitForTimeout(100);
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await expect(page.getByTestId('tier-A').locator('[data-artist-id="kr-iu"]')).toHaveCount(0);
+  await expect(page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
   await context.close();
 });

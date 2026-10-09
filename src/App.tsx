@@ -9,6 +9,7 @@ import { GENRE_LABELS, TIERS, type Genre, type Artist, type Board, type Gender, 
 import { Avatar } from './components/Avatar';
 import { ArtistCard } from './components/ArtistCard';
 import { ArtistDialog } from './components/ArtistDialog';
+import { FavoritesBriefing } from './components/FavoritesBriefing';
 import { boardCollisionDetection } from './drag';
 
 const PAGE_SIZE = 50;
@@ -129,11 +130,12 @@ export default function App() {
 
   function finishDrag(event: DragEndEvent) {
     setActiveId(null);
-    if (!event.over || event.active.id === event.over.id) return;
+    if (event.active.id === event.over?.id) return;
     const artist = artistMap.get(String(event.active.id));
     if (!artist) return;
-    const overId = String(event.over.id);
+    const overId = event.over ? String(event.over.id) : null;
     setBoard(current => {
+      if (!overId) return findTier(current, artist.id) ? moveArtist(current, artist.id, 'pool') : current;
       const base = addCustom(current, artist);
       const source = findTier(base, artist.id);
       const target = overId.startsWith('tier:') ? overId.slice(5) as Tier : overId === 'pool' ? 'pool' : findTier(base, overId) ?? 'pool';
@@ -180,11 +182,12 @@ export default function App() {
       <div className="header-right"><span className={`save-status ${saveError ? 'save-failed' : ''}`}><span className="status-dot" />{saveError ? '저장 파일로 보관해 주세요' : '자동 저장'}</span><details className="download-menu" ref={downloadMenu}><summary className="secondary-button">내 티어 저장 <ArrowDownToLine size={15} /></summary><div className="download-options"><button onClick={exportBoard}><ArrowDownToLine size={16} /> 저장 파일 내보내기</button><button onClick={() => importInput.current?.click()}><ArrowUpFromLine size={16} /> 저장 파일 불러오기</button></div></details><input ref={importInput} type="file" accept="application/json,.json" hidden onChange={event => importBoard(event.target.files?.[0])} /></div>
     </div></header>
     <main className="page-shell">
+      <FavoritesBriefing artists={board.tiers.S.map(id => artistMap.get(id)).filter((artist): artist is Artist => !!artist)} favorites={board.favorites} portraits={portraits} onOpen={openArtist} />
       <DndContext sensors={sensors} collisionDetection={boardCollisionDetection} onDragStart={event => setActiveId(String(event.active.id))} onDragEnd={finishDrag} onDragCancel={() => setActiveId(null)} accessibility={{ announcements: { onDragStart: ({ active }) => `${artistMap.get(String(active.id))?.name ?? '가수'} 이동을 시작합니다.`, onDragOver: ({ over }) => over ? `${String(over.id).startsWith('tier:') ? `${String(over.id).slice(5)} 티어` : '가수 위치'} 위입니다.` : '이동 중입니다.', onDragEnd: () => '가수 배치를 완료했습니다.', onDragCancel: () => '이동을 취소했습니다.' }, screenReaderInstructions: { draggable: '스페이스 키로 가수를 집어 들고 방향키로 이동하세요. 다시 스페이스 키로 배치하거나 Escape 키로 취소할 수 있습니다. 가수 버튼에서 Enter 키를 누르면 티어 선택 창이 열립니다.' } }}>
         <section id="my-tier" className="board-section" aria-labelledby="board-title">
           <div className="board-heading"><div className="board-heading-title">{editingTitle ? <input className="title-input" aria-label="티어 보드 이름" autoFocus maxLength={80} value={draftTitle} onChange={event => setDraftTitle(event.target.value)} onBlur={finishTitle} onKeyDown={event => { if (event.key === 'Enter') event.currentTarget.blur(); if (event.key === 'Escape') { setDraftTitle(board.title); setEditingTitle(false); } }} /> : <h1 id="board-title">{board.title}</h1>}<button className="icon-button edit-title" onClick={() => { setDraftTitle(board.title); setEditingTitle(true); }} aria-label="보드 이름 바꾸기"><Pencil size={14} /></button></div><div className="board-tools">{(assignedIds.length > 0 || favoriteCount > 0) && <span className="board-count">{assignedIds.length}명 <span>·</span> {favoriteCount}곡</span>}<button className="text-button reset-button" onClick={resetBoard} disabled={!assignedIds.length && !favoriteCount && !board.customArtists.length}><RotateCcw size={14} /> 초기화</button></div></div>
           <div className="tier-board">{TIERS.map(tier => <TierRow key={tier} tier={tier} count={board.tiers[tier].length}><SortableContext id={`tier:${tier}`} items={board.tiers[tier]} strategy={rectSortingStrategy}>{board.tiers[tier].map(id => artistMap.get(id)).filter((artist): artist is Artist => !!artist).map(artist => renderCard(artist, true))}</SortableContext></TierRow>)}</div>
-          <p className="board-footnote">드래그하여 배치 · 사진을 눌러 티어와 곡 선택</p>
+          <p className="board-footnote">드래그하여 배치 · 표 밖에 놓으면 목록으로 · 사진을 눌러 곡 선택</p>
         </section>
         <Pool>
           <div className="pool-heading"><h2 id="pool-title">아티스트</h2></div>
