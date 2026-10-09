@@ -75,6 +75,9 @@ button, a { touch-action: manipulation; }
 .favorites-heading h2 { display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 450; letter-spacing: -.3px; }
 .favorites-heading h2 > span { font-family: var(--serif); font-size: 28px; line-height: 1; }
 .favorites-heading > span { font-size: 10px; color: var(--muted); white-space: nowrap; }
+.favorites-empty-state { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 28px; }
+.favorites-empty-state p { font-size: 12px; line-height: 1.6; color: var(--muted); }
+.favorite-picking { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; font-size: 12px; line-height: 1.6; }
 .favorites-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px 28px; max-height: 228px; overflow-y: auto; padding: 5px; margin: -5px; }
 .favorite-entry { display: flex; align-items: flex-start; gap: 12px; width: 100%; min-width: 0; text-align: left; }
 .favorites-briefing .briefing-avatar { width: var(--artist-size); height: var(--artist-size); flex-shrink: 0; gap: 7px; }
@@ -198,7 +201,6 @@ button, a { touch-action: manipulation; }
 .section-label h3 { font-size: 15px; font-weight: 500; letter-spacing: -.3px; }
 .section-label > span { font-family: var(--sans); font-size: 11px; color: #777; }
 .section-label > span > strong { color: #222; font-weight: 400; }
-.section-description { font-size: 10px; line-height: 1.7; color: #737373; margin-top: 10px; }
 .song-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 19px; }
 .song-slot { min-height: 150px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; border: 1px solid #dedede; background: #f3f3f1; padding: 24px 8px 12px; }
 .slot-number { position: absolute; top: 10px; left: 10px; font-family: var(--sans); color: #888; font-size: 9px; }

@@ -1,4 +1,4 @@
-import { createMediaService, DataError } from './media';
+import { createMediaService, DataError, parseSongIds } from './media';
 import type { Portrait } from './types';
 
 export function createBrowserApi(fetcher: typeof fetch = fetch, portraits?: Record<string, Portrait>) {
@@ -32,8 +32,9 @@ export function createBrowserApi(fetcher: typeof fetch = fetch, portraits?: Reco
     if (songs) {
       const query = (url.searchParams.get('q') || '').trim();
       if (query.length > 100) throw new DataError('검색어는 100자 이하로 입력해 주세요.', 'INVALID_REQUEST', 400);
-      return { songs: await media.getSongs(decodeURIComponent(songs[1]), query), source: 'itunes' };
+      return { songs: await media.getSongs(decodeURIComponent(songs[1]), query), source: 'apple-music-kr' };
     }
+    if (url.pathname === '/api/songs/localize') return { songs: await media.localizeSongs(parseSongIds(url.searchParams.get('ids'))), source: 'apple-music-kr' };
     throw new DataError('요청한 경로를 찾지 못했어요.', 'NOT_FOUND', 404);
   };
 }

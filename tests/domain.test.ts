@@ -1,10 +1,23 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { CATALOG, LEGACY_ARTISTS } from '../src/data/artists';
-import { allArtists, createBoard, findTier, matchesArtist, matchesFilters, moveArtist, normalize, parseBoard, toggleSong } from '../src/domain';
+import { allArtists, createBoard, findTier, localizeFavorites, matchesArtist, matchesFilters, moveArtist, normalize, parseBoard, toggleSong } from '../src/domain';
 import type { Song } from '../src/types';
 
 const song = (id: number): Song => ({ id: `itunes:${id}`, title: `Song ${id}`, artistId: 409076846, artistName: 'IU', album: 'Palette' });
+
+test('saved song localization updates metadata without changing tiers, choices, order or previews', () => {
+  const original = { ...moveArtist(createBoard(), 'kr-iu', 'S'), favorites: { 'kr-iu': [{ ...song(2), previewUrl: 'https://audio-ssl.itunes.apple.com/preview.m4a' }, song(1)], 'kr-bts': [song(3)] } };
+  const updated = localizeFavorites(original, [{ ...song(1), title: '팔레트', artistName: '아이유', album: '팔레트', locale: 'ko-KR' }, { ...song(2), title: '밤편지', artistName: '아이유', locale: 'ko-KR' }, { ...song(3), artistId: 7, locale: 'ko-KR' }]);
+  assert.equal(updated.tiers, original.tiers); assert.equal(updated.title, original.title);
+  assert.deepEqual(updated.favorites['kr-iu'].map(song => song.id), ['itunes:2', 'itunes:1']);
+  assert.deepEqual(updated.favorites['kr-iu'].map(song => song.title), ['밤편지', '팔레트']);
+  assert.equal(updated.favorites['kr-iu'][0].previewUrl, original.favorites['kr-iu'][0].previewUrl);
+  assert.equal(updated.favorites['kr-bts'][0], original.favorites['kr-bts'][0]);
+  assert.equal(localizeFavorites(updated, updated.favorites['kr-iu']), updated);
+  assert.deepEqual(parseBoard(JSON.parse(JSON.stringify(updated))), updated);
+  assert.deepEqual(original.favorites['kr-iu'].map(song => song.title), ['Song 2', 'Song 1']);
+});
 
 test('moving between tiers or back to the pool preserves exactly one placement', () => {
   let board = moveArtist(createBoard(), 'kr-iu', 'S');

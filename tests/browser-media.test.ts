@@ -25,3 +25,20 @@ test('static provider errors preserve useful messages without exposing transport
   const failed = createBrowserApi(async () => { throw new Error('transport details'); }, {});
   await assert.rejects(failed('/api/portraits?ids=kr-iu'), /외부 음악 데이터를 연결하지 못했어요/);
 });
+
+test('Pages localizes saved tracks directly with the Korean provider and validates track IDs', async () => {
+  let requests = 0;
+  const api = createBrowserApi(async input => {
+    requests++;
+    const url = new URL(String(input));
+    assert.equal(url.hostname, 'itunes.apple.com'); assert.equal(url.pathname, '/lookup');
+    assert.equal(url.searchParams.get('country'), 'KR'); assert.equal(url.searchParams.get('lang'), 'ko_kr');
+    assert.equal(url.searchParams.get('id'), '1773218828');
+    return Response.json({ results: [{ wrapperType: 'track', kind: 'song', trackId: 1773218828, artistId: 572430917, trackName: '내게 사랑이 뭐냐고 물어본다면', artistName: '로이킴', collectionName: '내게 사랑이 뭐냐고 물어본다면 - Single' }] });
+  });
+  const result = await api('/api/songs/localize?ids=1773218828');
+  assert.equal(result.songs?.[0].title, '내게 사랑이 뭐냐고 물어본다면');
+  assert.equal(result.songs?.[0].artistName, '로이킴'); assert.equal(result.songs?.[0].locale, 'ko-KR');
+  for (const ids of ['', '0', '-1', 'name', '1,2,', '9007199254740992', Array(101).fill('1').join(',')]) await assert.rejects(api(`/api/songs/localize?ids=${ids}`), { status: 400 });
+  assert.equal(requests, 1);
+});

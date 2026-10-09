@@ -2,6 +2,7 @@ import { test, expect, type Page } from '@playwright/test';
 
 const artistId = 409076846;
 const titles = ['Love wins all', 'Through the Night', 'Palette', 'Good Day'];
+const koreanTitles = ['Love wins all', '밤편지', '팔레트', '좋은 날'];
 
 async function providers(page: Page) {
   await page.route('https://en.wikipedia.org/w/api.php?**', route => {
@@ -17,8 +18,60 @@ async function providers(page: Page) {
       : [...titles.map((title, index) => ({ wrapperType: 'track', kind: 'song', trackId: index + 1, trackName: title, artistName: 'IU', artistId })).filter(track => url.searchParams.get('term') !== '밤편지' || track.trackName === 'Through the Night'), { wrapperType: 'track', kind: 'song', trackId: 999, trackName: 'Unrelated', artistName: 'Other', artistId: 1 }];
     return route.fulfill({ headers: { 'access-control-allow-origin': '*' }, json: { results } });
   });
+  await page.route('https://itunes.apple.com/lookup?**', route => {
+    const url = new URL(route.request().url());
+    expect(url.searchParams.get('country')).toBe('KR'); expect(url.searchParams.get('lang')).toBe('ko_kr');
+    const ids = url.searchParams.get('id')!.split(',').map(Number);
+    const results = koreanTitles.map((trackName, index) => ({ wrapperType: 'track', kind: 'song', trackId: index + 1, trackName, artistName: '아이유', artistId, collectionName: '아이유 컬렉션' })).filter(track => ids.includes(track.trackId));
+    return route.fulfill({ headers: { 'access-control-allow-origin': '*' }, json: { results } });
+  });
   await page.route('https://musicbrainz.org/ws/2/artist/**', route => route.fulfill({ headers: { 'access-control-allow-origin': '*' }, json: { artists: [{ id: '12345678-1234-1234-1234-123456789abc', name: '새가수', type: 'Person', gender: 'female', country: 'KR' }] } }));
 }
+
+test('existing English Roy Kim selections migrate to official Korean titles without losing choices', async ({ page }) => {
+  await providers(page);
+  const royArtistId = 572430917;
+  const tracks = [
+    [1570375886, 'Only Then', '그때 헤어지면 돼'],
+    [1773218828, 'If You Ask Me What Love Is', '내게 사랑이 뭐냐고 물어본다면'],
+    [639483987, 'Bom Bom Bom', '봄봄봄'],
+    [1848023874, 'No Words Can Say', '달리 표현할 수 없어요'],
+  ] as const;
+  const selected = [tracks[1], tracks[3]];
+  await page.addInitScript(({ selected, royArtistId }) => {
+    if (localStorage.getItem('my-tier.board.v1')) return;
+    localStorage.setItem('my-tier.board.v1', JSON.stringify({ version: 1, title: '나의 아티스트 티어', customArtists: [], tiers: { S: ['kr-roy-kim'], A: [], B: [], C: [], D: [], E: [], F: [] }, favorites: { 'kr-roy-kim': selected.map(([id, title]) => ({ id: `itunes:${id}`, title, artistId: royArtistId, artistName: 'Roy Kim', album: `${title} - Single` })) } }));
+  }, { selected, royArtistId });
+  await page.route('https://itunes.apple.com/search?**', route => {
+    const url = new URL(route.request().url());
+    const results = url.searchParams.get('entity') === 'musicArtist'
+      ? [{ wrapperType: 'artist', artistType: 'Artist', artistName: 'Roy Kim', artistId: royArtistId, primaryGenreName: 'K-Pop' }]
+      : tracks.map(([trackId, trackName]) => ({ wrapperType: 'track', kind: 'song', trackId, trackName, artistId: royArtistId, artistName: 'Roy Kim', collectionName: `${trackName} - Single` }));
+    return route.fulfill({ headers: { 'access-control-allow-origin': '*' }, json: { results } });
+  });
+  await page.route('https://itunes.apple.com/lookup?**', route => {
+    const url = new URL(route.request().url());
+    expect(url.searchParams.get('country')).toBe('KR');
+    const ids = url.searchParams.get('id')!.split(',').map(Number);
+    const results = tracks.filter(([id]) => ids.includes(id)).map(([trackId, , trackName]) => ({ wrapperType: 'track', kind: 'song', trackId, trackName, artistId: royArtistId, artistName: '로이킴', collectionName: `${trackName} - Single` }));
+    return route.fulfill({ headers: { 'access-control-allow-origin': '*' }, json: { results } });
+  });
+  await page.goto('./');
+  await expect(page.getByTestId('favorites-briefing').locator('.favorite-songs > span')).toHaveText(selected.map(track => track[2]));
+  await page.getByRole('button', { name: '로이킴 S티어 대표곡 편집' }).click();
+  await expect(page.getByText('Apple Music · 한국')).toBeVisible();
+  await expect(page.getByRole('dialog')).not.toContainText('Roy Kim');
+  for (const [, , title] of selected) await expect(page.getByRole('button', { name: `${title} 선택 해제`, exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('button', { name: '그때 헤어지면 돼 대표곡으로 선택', exact: true })).toBeVisible();
+  const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('my-tier.board.v1')!).favorites['kr-roy-kim']);
+  expect(stored.map((song: { id: string }) => song.id)).toEqual(selected.map(track => `itunes:${track[0]}`));
+  await page.getByRole('button', { name: '달리 표현할 수 없어요 선택 해제', exact: true }).click();
+  await expect(page.getByLabel('선택한 대표곡').locator('.song-slot.filled')).toHaveCount(1);
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await page.reload();
+  await expect(page.getByTestId('favorites-briefing').locator('.favorite-songs > span')).toHaveText(['내게 사랑이 뭐냐고 물어본다면']);
+  await expect(page.getByTestId('tier-S').locator('[data-artist-id="kr-roy-kim"]')).toHaveCount(1);
+});
 
 test('Pages subpath loads assets and direct providers, then persists three songs and tiers', async ({ page }) => {
   await providers(page);
@@ -33,16 +86,16 @@ test('Pages subpath loads assets and direct providers, then persists three songs
   await expect(page.getByRole('link', { name: '사진 출처 · 벅스' })).toHaveAttribute('href', /^https:\/\/music\.bugs\.co\.kr\/artist\/\d+$/);
   await expect(page.getByRole('button', { name: 'Unrelated 대표곡으로 선택', exact: true })).toHaveCount(0);
   await page.getByLabel('곡 제목 검색').fill('밤편지');
-  await expect(page.getByRole('button', { name: 'Through the Night 대표곡으로 선택', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '밤편지 대표곡으로 선택', exact: true })).toBeVisible();
   await page.getByLabel('곡 제목 검색').fill('');
-  for (const title of titles.slice(0, 3)) await page.getByRole('button', { name: `${title} 대표곡으로 선택`, exact: true }).click();
-  await page.getByRole('button', { name: 'Good Day 대표곡으로 선택', exact: true }).click();
+  for (const title of koreanTitles.slice(0, 3)) await page.getByRole('button', { name: `${title} 대표곡으로 선택`, exact: true }).click();
+  await page.getByRole('button', { name: '좋은 날 대표곡으로 선택', exact: true }).click();
   await expect(page.locator('.dialog-notice')).toContainText('최대 3개');
   await page.getByRole('button', { name: '아이유 S 티어로 이동' }).click();
   await page.getByRole('button', { name: '선택 완료' }).click();
   await page.reload();
   await expect(page.getByTestId('tier-S').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
-  await expect(page.getByTestId('favorites-briefing').locator('.favorite-songs > span')).toHaveText(titles.slice(0, 3));
+  await expect(page.getByTestId('favorites-briefing').locator('.favorite-songs > span')).toHaveText(koreanTitles.slice(0, 3));
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
   await expect(page.getByLabel('선택한 대표곡').locator('.song-slot.filled')).toHaveCount(3);
   expect(localApiRequests).toEqual([]);

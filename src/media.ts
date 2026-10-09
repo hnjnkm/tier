@@ -8,6 +8,14 @@ export class DataError extends Error {
 }
 export type JsonFetcher = (url: URL) => Promise<any>;
 
+export function parseSongIds(value: unknown): number[] {
+  const values = typeof value === 'string' ? value.split(',') : [];
+  if (!values.length || values.length > 100 || values.some(id => !/^[1-9]\d*$/.test(id) || !Number.isSafeInteger(Number(id)))) {
+    throw new DataError('곡 요청이 올바르지 않아요.', 'INVALID_REQUEST', 400);
+  }
+  return [...new Set(values.map(Number))];
+}
+
 const apiUrl = (base: string, params: Record<string, string | number>) => {
   const url = new URL(base);
   for (const [key, value] of Object.entries(params)) url.searchParams.set(key, String(value));
@@ -49,7 +57,7 @@ export function artistFromMusicBrainz(item: any): Artist | null {
 export function songsFromITunes(results: any[], artistId: number): Song[] {
   const songs = new Map<string, Song>();
   for (const item of results) {
-    if (item.wrapperType !== 'track' || item.kind !== 'song' || item.artistId !== artistId || !Number.isSafeInteger(item.trackId) || !item.trackName || !item.artistName) continue;
+    if (item.wrapperType !== 'track' || item.kind !== 'song' || item.artistId !== artistId || !Number.isSafeInteger(item.trackId) || item.trackId <= 0 || !item.trackName || !item.artistName) continue;
     const song: Song = {
       id: `itunes:${item.trackId}`, title: item.trackName, artistId, artistName: item.artistName,
       album: item.collectionName ?? '', artwork: secure(item.artworkUrl100)?.replace(/100x100bb/, '300x300bb'),
@@ -201,10 +209,29 @@ export function createMediaService(request: JsonFetcher, presetPortraits: Record
     return Object.fromEntries(ids.flatMap(id => cache.get(`portrait:${id}`)?.value ? [[id, cache.get(`portrait:${id}`)!.value]] : []));
   }
 
+  async function localizeSongs(ids: number[]): Promise<Song[]> {
+    const requested = [...new Set(ids)].filter(id => Number.isSafeInteger(id) && id > 0);
+    const localized = new Map<string, Song>();
+    for (let offset = 0; offset < requested.length; offset += 100) {
+      const batch = requested.slice(offset, offset + 100).sort((a, b) => a - b);
+      const songs = await cached(`songs-kr:${batch.join(',')}`, async () => {
+        const data = await request(apiUrl('https://itunes.apple.com/lookup', { id: batch.join(','), country: 'KR', lang: 'ko_kr', limit: 200 }));
+        const allowed = new Set(batch);
+        return (data.results ?? []).flatMap((item: any) => {
+          if (!allowed.has(item.trackId) || !Number.isSafeInteger(item.artistId) || item.artistId <= 0) return [];
+          return songsFromITunes([item], item.artistId).map(song => ({ ...song, locale: 'ko-KR' as const }));
+        });
+      });
+      for (const song of songs) localized.set(song.id, song);
+    }
+    return requested.flatMap(id => localized.get(`itunes:${id}`) ? [localized.get(`itunes:${id}`)!] : []);
+  }
+
   async function getSongs(id: string, query = ''): Promise<Song[]> {
     const artist = await resolveArtist(id);
     const itunesId: number = artist.itunesId ?? await cached(`itunes-id:${id}`, async () => {
-      // iTunes music sales are unavailable in KR; the US catalog carries Korean releases.
+      // Search cannot list Korean-store songs. Discover stable IDs, then look them
+      // up in KR to obtain official regional titles, artist names and albums.
       const data = await request(apiUrl('https://itunes.apple.com/search', { term: artist.englishName, country: 'US', entity: 'musicArtist', limit: 50 }));
       try { return chooseITunesArtist(artist, data.results ?? []); }
       catch (error) {
@@ -216,17 +243,20 @@ export function createMediaService(request: JsonFetcher, presetPortraits: Record
     return cached(`songs:${id}:${normalize(query)}`, async () => {
       if (!query) {
         const data = await request(apiUrl('https://itunes.apple.com/search', { term: artist.englishName, entity: 'song', country: 'US', limit: 200 }));
-        return songsFromITunes(data.results ?? [], itunesId);
+        const candidates = songsFromITunes(data.results ?? [], itunesId);
+        return (await localizeSongs(candidates.map(song => Number(song.id.slice(7))))).filter(song => song.artistId === itunesId).map(song => ({ ...song, artistName: artist.name }));
       }
       const base = await getSongs(id);
       const local = base.filter(song => normalize(song.title).includes(normalize(query)));
-      // Provider search understands Korean aliases (e.g. 밤편지 → Through the Night).
-      // Filtering its response again by literal title would discard those valid matches.
+      // Search also understands original titles and aliases; keep the match after
+      // replacing its metadata with the Korean storefront's official spelling.
       const data = await request(apiUrl('https://itunes.apple.com/search', { term: query, attribute: 'songTerm', entity: 'song', country: 'US', limit: 200 }));
-      return [...new Map([...local, ...songsFromITunes(data.results ?? [], itunesId)].map(song => [song.id, song])).values()];
+      const candidates = songsFromITunes(data.results ?? [], itunesId);
+      const localized = (await localizeSongs(candidates.map(song => Number(song.id.slice(7))))).filter(song => song.artistId === itunesId).map(song => ({ ...song, artistName: artist.name }));
+      return [...new Map([...local, ...localized].map(song => [song.id, song])).values()];
     });
   }
 
-  return { searchArtists, getPortraits, getSongs };
+  return { searchArtists, getPortraits, getSongs, localizeSongs };
 }
 export type MediaService = ReturnType<typeof createMediaService>;

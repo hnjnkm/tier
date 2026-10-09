@@ -62,7 +62,7 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
       <button className="icon-button dialog-close" onClick={onClose} aria-label="닫기"><X size={21} /></button>
       <div className="dialog-artist">
         <Avatar artist={artist} portrait={portrait} className="dialog-avatar" />
-        <div><h2 id="artist-dialog-title">{artist.name}</h2><p>{artist.englishName} <span>·</span> {artist.kind === 'solo' ? '솔로' : '그룹'} <span>·</span> {GENDER_LABELS[artist.gender]}</p>
+        <div><h2 id="artist-dialog-title">{artist.name}</h2><p>{artist.kind === 'solo' ? '솔로' : '그룹'} <span>·</span> {GENDER_LABELS[artist.gender]}</p>
           {portrait && <a className="portrait-source" href={portrait.pageUrl} target="_blank" rel="noreferrer">사진 출처 · {portrait.provider === 'bugs' ? '벅스' : 'Wikimedia'} <ExternalLink size={11} /></a>}
         </div>
       </div>
@@ -78,8 +78,7 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
         })}</div>
       </section>
       <section className="song-search-section">
-        <div className="section-label"><h3>곡 검색</h3><span className="provider-label">iTunes 음악 검색</span></div>
-        <p className="section-description">제공처에 따라 영문 제목이 표시될 수 있습니다.</p>
+        <div className="section-label"><h3>곡 검색</h3><span className="provider-label">Apple Music · 한국</span></div>
         <label className="search-field song-search"><Search size={18} /><input aria-label="곡 제목 검색" value={query} onChange={event => setQuery(event.target.value)} placeholder="곡 제목으로 검색" maxLength={100} />{query && <button onClick={() => setQuery('')} aria-label="곡 검색어 지우기"><X size={15} /></button>}</label>
         <div className="song-results" aria-live="polite" aria-busy={loading}>
           {loading ? <div className="result-message"><LoaderCircle className="spin" size={25} /><p>이 가수의 곡을 찾고 있어요</p></div> : error ? <div className="result-message"><Disc3 size={30} /><p>{error}</p><button className="text-button" onClick={() => setRetry(value => value + 1)}>다시 시도</button></div> : !songs.length ? <div className="result-message"><Search size={28} /><p>{query ? '이 가수의 곡 중 검색 결과가 없어요.' : '등록된 음원을 찾지 못했어요.'}</p><span>다른 제목으로 검색해 보세요.</span></div> : songs.map(song => {

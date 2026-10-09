@@ -38,6 +38,7 @@ export interface Song {
   previewUrl?: string;
   url?: string;
   year?: string;
+  locale?: 'ko-KR';
 }
 export interface Board {
   version: 1;

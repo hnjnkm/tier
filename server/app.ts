@@ -1,6 +1,6 @@
 import express from 'express';
 import { CATALOG } from '../src/data/artists';
-import { DataError, createMediaService, type MediaService } from './media';
+import { DataError, createMediaService, parseSongIds, type MediaService } from './media';
 import { getAsset } from './assets';
 
 export function createApp(media: MediaService = createMediaService()) {
@@ -32,8 +32,12 @@ export function createApp(media: MediaService = createMediaService()) {
     try {
       const query = typeof req.query.q === 'string' ? req.query.q.trim() : '';
       if (query.length > 100) return res.status(400).json({ error: '검색어는 100자 이하로 입력해 주세요.' });
-      res.json({ songs: await media.getSongs(req.params.id, query), source: 'itunes' });
+      res.json({ songs: await media.getSongs(req.params.id, query), source: 'apple-music-kr' });
     } catch (error) { next(error); }
+  });
+  app.get('/api/songs/localize', async (req, res, next) => {
+    try { res.json({ songs: await media.localizeSongs(parseSongIds(req.query.ids)), source: 'apple-music-kr' }); }
+    catch (error) { next(error); }
   });
   app.use('/api', (_req, res) => res.status(404).json({ error: '요청한 경로를 찾지 못했어요.' }));
   app.use((error: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {

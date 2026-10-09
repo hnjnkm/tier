@@ -1,10 +1,11 @@
 import { test, expect, type Page } from '@playwright/test';
 
-const songs = ['Love wins all', '밤편지', '팔레트', '좋은 날'].map((title, index) => ({ id: `itunes:${index + 1}`, title, artistName: 'IU', artistId: 409076846, album: 'IU Collection', year: '2024' }));
+const songs = ['Love wins all', '밤편지', '팔레트', '좋은 날'].map((title, index) => ({ id: `itunes:${index + 1}`, title, artistName: '아이유', artistId: 409076846, album: '아이유 컬렉션', year: '2024', locale: 'ko-KR' }));
 
 async function fixtureApi(page: Page) {
   await page.route('**/api/portraits?**', route => route.fulfill({ json: { portraits: {}, source: 'wikipedia' } }));
   await page.route('**/api/artists/search?**', route => route.fulfill({ json: { artists: [], source: 'musicbrainz' } }));
+  await page.route('**/api/songs/localize?**', route => route.fulfill({ json: { songs: [], source: 'apple-music-kr' } }));
   await page.route('**/api/artists/*/songs?**', route => {
     const query = new URL(route.request().url()).searchParams.get('q') || '';
     return route.fulfill({ json: { songs: songs.filter(song => song.title.includes(query)), source: 'itunes' } });
@@ -181,7 +182,7 @@ test('dropping outside the board returns an artist to the pool and preserves fav
   await page.mouse.up();
   await expect(page.locator('.tier-board [data-artist-id="kr-iu"]')).toHaveCount(0);
   await expect(page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
-  await expect(page.getByTestId('favorites-briefing')).toHaveCount(0);
+  await expect(page.getByTestId('favorites-briefing')).toContainText('S티어에 최애 아티스트를 추가해 주세요.');
   await page.reload();
   await expect(page.locator('.tier-board [data-artist-id="kr-iu"]')).toHaveCount(0);
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
@@ -190,7 +191,7 @@ test('dropping outside the board returns an artist to the pool and preserves fav
 
 test('S-tier briefing follows favorites and placements, stays independent of filters and survives reload', async ({ page }) => {
   const briefing = page.getByTestId('favorites-briefing');
-  await expect(briefing).toHaveCount(0);
+  await expect(briefing).toContainText('S티어에 최애 아티스트를 추가해 주세요.');
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
   await page.getByRole('button', { name: '아이유 S 티어로 이동' }).click();
   for (const title of ['Love wins all', '밤편지', '팔레트']) await page.getByRole('button', { name: `${title} 대표곡으로 선택`, exact: true }).click();
@@ -222,7 +223,35 @@ test('S-tier briefing follows favorites and placements, stays independent of fil
   await briefing.getByRole('button', { name: '방탄소년단 S티어 대표곡 편집' }).click();
   await page.getByRole('button', { name: '보관함', exact: true }).click();
   await page.getByRole('button', { name: '선택 완료' }).click();
-  await expect(briefing).toHaveCount(0);
+  await expect(briefing).toContainText('S티어에 최애 아티스트를 추가해 주세요.');
+});
+
+test('empty favorites invite adding an artist directly to S and support cancelling the picker', async ({ page }) => {
+  const briefing = page.getByTestId('favorites-briefing');
+  await expect(briefing.locator('.favorite-entry')).toHaveCount(0);
+  await page.getByLabel('음악 장르 필터').selectOption('hiphop');
+  await page.getByRole('button', { name: '아티스트 추가', exact: true }).click();
+  await expect(page.getByLabel('가수 이름 검색')).toBeFocused();
+  await expect(page.getByLabel('음악 장르 필터')).toHaveValue('all');
+  await expect(page.getByText('최애로 추가할 아티스트를 선택해 주세요.')).toBeVisible();
+  await page.getByRole('button', { name: '취소', exact: true }).click();
+  await page.getByLabel('가수 이름 검색').fill('로이킴');
+  await page.getByRole('button', { name: '로이킴 곡 선택 및 티어 변경' }).click();
+  await expect(page.getByRole('button', { name: '로이킴 S 티어로 이동' })).toHaveAttribute('aria-pressed', 'false');
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await briefing.getByRole('button', { name: '아티스트 추가', exact: true }).click();
+  await page.getByLabel('가수 이름 검색').fill('아이유');
+  await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
+  await expect(page.getByRole('button', { name: '아이유 S 티어로 이동' })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: '밤편지 대표곡으로 선택', exact: true }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await expect(briefing).toContainText('아이유'); await expect(briefing).toContainText('밤편지');
+  await expect(briefing.getByRole('button', { name: '아티스트 추가', exact: true })).toHaveCount(0);
+  await expect(page.getByTestId('tier-S').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+  for (const width of [390, 320]) {
+    await page.setViewportSize({ width, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+  }
 });
 
 test('song searches and error retries expose useful results, and dialog supports Escape', async ({ page }) => {
@@ -323,31 +352,42 @@ test('touchscreen long-press moves a thumbnail into a tier', async ({ browser })
   const start = await card.boundingBox();
   const cdp = await context.newCDPSession(page);
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: start!.x + 25, y: start!.y + 25 }] });
-  await page.waitForTimeout(280);
+  await expect(page.locator('.overlay-card')).toBeVisible();
   await page.getByTestId('tier-F').scrollIntoViewIfNeeded();
   const target = await page.getByTestId('tier-F').boundingBox();
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: target!.x + 110, y: target!.y + 40 }] });
-  await page.waitForTimeout(100);
+  await expect(page.getByTestId('tier-F')).toHaveClass(/drop-active/);
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   await expect(page.getByTestId('tier-F').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+  // Both rows fit on screen. Set the viewport before touching so a synthetic
+  // mid-gesture page scroll cannot change Chromium's touch coordinates.
+  await page.getByTestId('tier-A').evaluate(node => node.closest('.board-section')!.scrollIntoView({ block: 'start' }));
   const placed = await page.getByTestId('tier-F').locator('.artist-main').boundingBox();
-  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: placed!.x + 25, y: placed!.y + 25 }] });
-  await page.waitForTimeout(280);
-  await page.getByTestId('tier-A').evaluate(node => node.scrollIntoView({ block: 'center' }));
   const nextTier = await page.getByTestId('tier-A').boundingBox();
-  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: nextTier!.x + 110, y: nextTier!.y + 40 }] });
-  await page.waitForTimeout(100);
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: placed!.x + 25, y: placed!.y + 25 }] });
+  await expect(page.locator('.overlay-card')).toBeVisible();
+  for (let step = 1; step <= 20; step++) {
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{
+      x: placed!.x + 25 + (nextTier!.x + 110 - placed!.x - 25) * step / 20,
+      y: placed!.y + 25 + (nextTier!.y + 40 - placed!.y - 25) * step / 20,
+    }] });
+  }
+  await expect(page.getByTestId('tier-A')).toHaveClass(/drop-active/);
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   await expect(page.getByTestId('tier-A').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
   await expect(page.getByTestId('tier-F').locator('[data-artist-id="kr-iu"]')).toHaveCount(0);
-  await page.getByTestId('tier-A').locator('.artist-main').evaluate(node => node.scrollIntoView({ block: 'center' }));
+  await page.getByTestId('tier-A').evaluate(node => node.closest('.board-section')!.scrollIntoView({ block: 'start' }));
   const inA = await page.getByTestId('tier-A').locator('.artist-main').boundingBox();
+  const outside = await page.locator('.board-heading').boundingBox();
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: inA!.x + 25, y: inA!.y + 25 }] });
-  await page.waitForTimeout(280);
-  await page.locator('.board-footnote').evaluate(node => node.scrollIntoView({ block: 'center' }));
-  const outside = await page.locator('.board-footnote').boundingBox();
-  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: outside!.x + 30, y: outside!.y + outside!.height / 2 }] });
-  await page.waitForTimeout(100);
+  await expect(page.locator('.overlay-card')).toBeVisible();
+  for (let step = 1; step <= 20; step++) {
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{
+      x: inA!.x + 25 + (outside!.x + 120 - inA!.x - 25) * step / 20,
+      y: inA!.y + 25 + (outside!.y + outside!.height / 2 - inA!.y - 25) * step / 20,
+    }] });
+  }
+  await expect(page.locator('.drop-active')).toHaveCount(0);
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   await expect(page.getByTestId('tier-A').locator('[data-artist-id="kr-iu"]')).toHaveCount(0);
   await expect(page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);

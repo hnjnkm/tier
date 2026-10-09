@@ -33,6 +33,27 @@ export function toggleSong(board: Board, artistId: string, song: Song): Board {
   return { ...board, favorites: { ...board.favorites, [artistId]: exists ? current.filter(item => item.id !== song.id) : [...current, song] } };
 }
 
+// Regional metadata changes must never change a saved song's identity or selection order.
+export function localizeFavorites(board: Board, songs: Song[]): Board {
+  const localized = new Map(songs.filter(song => song.locale === 'ko-KR').map(song => [song.id, song]));
+  const artistNames = new Map(allArtists(board).map(artist => [artist.id, artist.name]));
+  let changed = false;
+  const favorites = Object.fromEntries(Object.entries(board.favorites).map(([id, selected]) => [id, selected.map(song => {
+    const replacement = localized.get(song.id);
+    if (!replacement || replacement.artistId !== song.artistId) return song;
+    const updated = { ...song, ...replacement, artistName: artistNames.get(id) ?? replacement.artistName };
+    for (const field of ['artwork', 'previewUrl', 'url', 'year'] as const) {
+      const value = replacement[field] ?? song[field];
+      if (value === undefined) delete updated[field];
+      else updated[field] = value;
+    }
+    if (JSON.stringify(updated) === JSON.stringify(song)) return song;
+    changed = true;
+    return updated;
+  })]));
+  return changed ? { ...board, favorites } : board;
+}
+
 const object = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
 const text = (value: unknown, limit = 250): value is string => typeof value === 'string' && value.length > 0 && value.length <= limit;
 const safeUrl = (value: unknown) => value === undefined || (typeof value === 'string' && /^https:\/\//.test(value) && value.length <= 2000);
@@ -48,7 +69,8 @@ function validArtist(value: unknown): value is Artist {
 function validSong(value: unknown): value is Song {
   return object(value) && text(value.id, 100) && text(value.title) && text(value.artistName) && typeof value.album === 'string'
     && value.album.length <= 500 && Number.isSafeInteger(value.artistId) && Number(value.artistId) > 0
-    && safeUrl(value.artwork) && safeUrl(value.previewUrl) && safeUrl(value.url) && (value.year === undefined || /^\d{4}$/.test(String(value.year)));
+    && safeUrl(value.artwork) && safeUrl(value.previewUrl) && safeUrl(value.url) && (value.year === undefined || /^\d{4}$/.test(String(value.year)))
+    && (value.locale === undefined || value.locale === 'ko-KR');
 }
 
 // Imported/local data is untrusted; reject partial or malformed boards rather than silently losing songs.

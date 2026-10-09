@@ -3,7 +3,7 @@ import { DndContext, DragOverlay, KeyboardSensor, MouseSensor, TouchSensor, useD
 import { SortableContext, arrayMove, rectSortingStrategy, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import { ArrowDownToLine, ArrowUpFromLine, Check, ChevronDown, LoaderCircle, Music2, Pencil, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
 import { CATALOG, GENDER_LABELS } from './data/artists';
-import { allArtists, createBoard, findTier, matchesFilters, moveArtist, normalize, parseBoard, STORAGE_KEY, toggleSong } from './domain';
+import { allArtists, createBoard, findTier, localizeFavorites, matchesFilters, moveArtist, normalize, parseBoard, STORAGE_KEY, toggleSong } from './domain';
 import { getJson } from './api';
 import { GENRE_LABELS, TIERS, type Genre, type Artist, type Board, type Gender, type Portrait, type Song, type Tier } from './types';
 import { Avatar } from './components/Avatar';
@@ -56,6 +56,7 @@ export default function App() {
   const [portraitError, setPortraitError] = useState(false);
   const [portraitRetry, setPortraitRetry] = useState(0);
   const [selected, setSelected] = useState<Artist | null>(null);
+  const [addingFavorite, setAddingFavorite] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [notice, setNotice] = useState(initial.warning);
   const [saveError, setSaveError] = useState(false);
@@ -65,6 +66,8 @@ export default function App() {
   const artistOpener = useRef<HTMLElement | null>(null);
   const downloadMenu = useRef<HTMLDetailsElement>(null);
   const requestedPortraits = useRef(new Set<string>());
+  const requestedSongs = useRef(new Set<string>());
+  const artistSearch = useRef<HTMLInputElement>(null);
   const lastSaved = useRef(JSON.stringify(initial.board));
   const sensors = useSensors(useSensor(MouseSensor, { activationConstraint: { distance: 7 } }), useSensor(TouchSensor, { activationConstraint: { delay: 220, tolerance: 5 } }), useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }));
   const artists = useMemo(() => allArtists(board), [board]);
@@ -87,6 +90,21 @@ export default function App() {
 
   useEffect(() => { if (!notice) return; const timer = setTimeout(() => setNotice(''), 5000); return () => clearTimeout(timer); }, [notice]);
   useEffect(() => { setPageSize(PAGE_SIZE); }, [query, gender, kind, genre]);
+
+  useEffect(() => {
+    const songs = Object.values(board.favorites).flat().filter(song => song.locale !== 'ko-KR' && /^itunes:[1-9]\d*$/.test(song.id) && !requestedSongs.current.has(song.id));
+    const ids = [...new Set(songs.map(song => song.id.slice(7)))];
+    if (!ids.length) return;
+    songs.forEach(song => requestedSongs.current.add(song.id));
+    void (async () => {
+      for (let offset = 0; offset < ids.length; offset += 100) {
+        try {
+          const data = await getJson<{ songs: Song[] }>(`/api/songs/localize?ids=${ids.slice(offset, offset + 100).join(',')}`);
+          setBoard(current => localizeFavorites(current, data.songs));
+        } catch { /* Preserve saved selections if regional metadata is temporarily unavailable. */ }
+      }
+    })();
+  }, [board.favorites]);
 
   useEffect(() => {
     const clean = query.trim();
@@ -116,7 +134,13 @@ export default function App() {
 
   function openArtist(artist: Artist) {
     artistOpener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    setBoard(current => addCustom(current, artist)); setSelected(artist);
+    setBoard(current => addingFavorite ? moveArtist(addCustom(current, artist), artist.id, 'S') : addCustom(current, artist));
+    setAddingFavorite(false); setSelected(artist);
+  }
+  function addFavorite() {
+    setAddingFavorite(true); setQuery(''); setGender('all'); setGenre('all'); setKind('all');
+    document.getElementById('artist-archive')?.scrollIntoView({ block: 'start' });
+    artistSearch.current?.focus({ preventScroll: true });
   }
   function closeArtist() {
     const id = selected?.id;
@@ -133,6 +157,7 @@ export default function App() {
     if (event.active.id === event.over?.id) return;
     const artist = artistMap.get(String(event.active.id));
     if (!artist) return;
+    setAddingFavorite(false);
     const overId = event.over ? String(event.over.id) : null;
     setBoard(current => {
       if (!overId) return findTier(current, artist.id) ? moveArtist(current, artist.id, 'pool') : current;
@@ -159,14 +184,14 @@ export default function App() {
       const parsed = parseBoard(JSON.parse(await file.text()));
       if (!parsed) throw new Error('올바른 my tier. 저장 파일이 아니에요.');
       if ((assignedIds.length || favoriteCount) && !window.confirm('현재 보드를 저장 파일의 내용으로 바꿀까요?')) return;
-      setBoard(parsed); setDraftTitle(parsed.title); setSelected(null); setNotice('저장한 음악 취향을 불러왔어요.');
+      requestedSongs.current.clear(); setBoard(parsed); setDraftTitle(parsed.title); setSelected(null); setAddingFavorite(false); setNotice('저장한 음악 취향을 불러왔어요.');
     } catch (error) { setNotice(error instanceof Error ? error.message : '파일을 읽지 못했어요.'); }
     finally { if (importInput.current) importInput.current.value = ''; if (downloadMenu.current) downloadMenu.current.open = false; }
   }
 
   function resetBoard() {
     if (window.confirm('티어 배치와 대표곡을 모두 비울까요? 이 작업 전에 저장 파일로 보관할 수 있어요.')) {
-      setBoard(createBoard()); setDraftTitle('나의 아티스트 티어'); setNotice('보드를 비웠어요. 새로운 취향으로 채워보세요.');
+      requestedSongs.current.clear(); setBoard(createBoard()); setDraftTitle('나의 아티스트 티어'); setAddingFavorite(false); setNotice('보드를 비웠어요. 새로운 취향으로 채워보세요.');
     }
   }
 
@@ -182,7 +207,7 @@ export default function App() {
       <div className="header-right"><span className={`save-status ${saveError ? 'save-failed' : ''}`}><span className="status-dot" />{saveError ? '저장 파일로 보관해 주세요' : '자동 저장'}</span><details className="download-menu" ref={downloadMenu}><summary className="secondary-button">내 티어 저장 <ArrowDownToLine size={15} /></summary><div className="download-options"><button onClick={exportBoard}><ArrowDownToLine size={16} /> 저장 파일 내보내기</button><button onClick={() => importInput.current?.click()}><ArrowUpFromLine size={16} /> 저장 파일 불러오기</button></div></details><input ref={importInput} type="file" accept="application/json,.json" hidden onChange={event => importBoard(event.target.files?.[0])} /></div>
     </div></header>
     <main className="page-shell">
-      <FavoritesBriefing artists={board.tiers.S.map(id => artistMap.get(id)).filter((artist): artist is Artist => !!artist)} favorites={board.favorites} portraits={portraits} onOpen={openArtist} />
+      <FavoritesBriefing artists={board.tiers.S.map(id => artistMap.get(id)).filter((artist): artist is Artist => !!artist)} favorites={board.favorites} portraits={portraits} onOpen={openArtist} onAdd={addFavorite} />
       <DndContext sensors={sensors} collisionDetection={boardCollisionDetection} onDragStart={event => setActiveId(String(event.active.id))} onDragEnd={finishDrag} onDragCancel={() => setActiveId(null)} accessibility={{ announcements: { onDragStart: ({ active }) => `${artistMap.get(String(active.id))?.name ?? '가수'} 이동을 시작합니다.`, onDragOver: ({ over }) => over ? `${String(over.id).startsWith('tier:') ? `${String(over.id).slice(5)} 티어` : '가수 위치'} 위입니다.` : '이동 중입니다.', onDragEnd: () => '가수 배치를 완료했습니다.', onDragCancel: () => '이동을 취소했습니다.' }, screenReaderInstructions: { draggable: '스페이스 키로 가수를 집어 들고 방향키로 이동하세요. 다시 스페이스 키로 배치하거나 Escape 키로 취소할 수 있습니다. 가수 버튼에서 Enter 키를 누르면 티어 선택 창이 열립니다.' } }}>
         <section id="my-tier" className="board-section" aria-labelledby="board-title">
           <div className="board-heading"><div className="board-heading-title">{editingTitle ? <input className="title-input" aria-label="티어 보드 이름" autoFocus maxLength={80} value={draftTitle} onChange={event => setDraftTitle(event.target.value)} onBlur={finishTitle} onKeyDown={event => { if (event.key === 'Enter') event.currentTarget.blur(); if (event.key === 'Escape') { setDraftTitle(board.title); setEditingTitle(false); } }} /> : <h1 id="board-title">{board.title}</h1>}<button className="icon-button edit-title" onClick={() => { setDraftTitle(board.title); setEditingTitle(true); }} aria-label="보드 이름 바꾸기"><Pencil size={14} /></button></div><div className="board-tools">{(assignedIds.length > 0 || favoriteCount > 0) && <span className="board-count">{assignedIds.length}명 <span>·</span> {favoriteCount}곡</span>}<button className="text-button reset-button" onClick={resetBoard} disabled={!assignedIds.length && !favoriteCount && !board.customArtists.length}><RotateCcw size={14} /> 초기화</button></div></div>
@@ -191,7 +216,8 @@ export default function App() {
         </section>
         <Pool>
           <div className="pool-heading"><h2 id="pool-title">아티스트</h2></div>
-          <div className="pool-controls"><label className="search-field artist-search"><Search size={19} /><input aria-label="가수 이름 검색" value={query} onChange={event => setQuery(event.target.value)} placeholder="아티스트 이름 검색" maxLength={100} />{query ? <button aria-label="가수 검색어 지우기" onClick={() => setQuery('')}><X size={16} /></button> : null}</label><label className="kind-filter genre-filter"><Music2 size={15} /><select title="주요 활동 장르 기준 · 여러 장르에 포함될 수 있습니다" aria-label="음악 장르 필터" value={genre} onChange={event => setGenre(event.target.value as typeof genre)}><option value="all">전체 장르</option>{Object.entries(GENRE_LABELS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label><label className="kind-filter"><SlidersHorizontal size={15} /><select aria-label="솔로 및 그룹 필터" value={kind} onChange={event => setKind(event.target.value as typeof kind)}><option value="all">솔로 + 그룹</option><option value="solo">솔로만</option><option value="group">그룹만</option></select></label></div>
+          {addingFavorite && <div className="favorite-picking"><p role="status">최애로 추가할 아티스트를 선택해 주세요.</p><button className="text-button" onClick={() => setAddingFavorite(false)}>취소</button></div>}
+          <div className="pool-controls"><label className="search-field artist-search"><Search size={19} /><input ref={artistSearch} aria-label="가수 이름 검색" value={query} onChange={event => setQuery(event.target.value)} placeholder="아티스트 이름 검색" maxLength={100} />{query ? <button aria-label="가수 검색어 지우기" onClick={() => setQuery('')}><X size={16} /></button> : null}</label><label className="kind-filter genre-filter"><Music2 size={15} /><select title="주요 활동 장르 기준 · 여러 장르에 포함될 수 있습니다" aria-label="음악 장르 필터" value={genre} onChange={event => setGenre(event.target.value as typeof genre)}><option value="all">전체 장르</option>{Object.entries(GENRE_LABELS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label><label className="kind-filter"><SlidersHorizontal size={15} /><select aria-label="솔로 및 그룹 필터" value={kind} onChange={event => setKind(event.target.value as typeof kind)}><option value="all">솔로 + 그룹</option><option value="solo">솔로만</option><option value="group">그룹만</option></select></label></div>
           <div className="filter-bar"><div className="gender-filters" aria-label="성별 필터" title="그룹은 멤버 구성 기준">{(['all', 'male', 'female', 'mixed'] as const).map(value => <button key={value} aria-pressed={gender === value} onClick={() => setGender(value)} className={gender === value ? 'active' : ''}>{value === 'all' ? '전체' : GENDER_LABELS[value]}</button>)}</div><span className="filter-count">{filtered.length}명</span></div>
           <SortableContext id="pool" items={visible.map(artist => artist.id)} strategy={rectSortingStrategy}><div className="artist-grid">{visible.map(artist => renderCard(artist))}</div></SortableContext>
           {!filtered.length && <div className="empty-search"><Search size={30} /><h3>{searching ? '목록 밖의 가수도 찾고 있어요' : query || gender !== 'all' || kind !== 'all' || genre !== 'all' ? '조건에 맞는 가수가 없어요' : '모든 가수가 티어에 배치됐어요'}</h3><p>{query || gender !== 'all' || kind !== 'all' || genre !== 'all' ? '다른 이름으로 검색하거나 필터를 바꿔보세요.' : '가수를 보관함으로 다시 끌어 놓을 수도 있어요.'}</p>{(query || gender !== 'all' || kind !== 'all' || genre !== 'all') && <button className="text-button" onClick={() => { setQuery(''); setGender('all'); setKind('all'); setGenre('all'); }}>검색 및 필터 초기화</button>}</div>}
@@ -203,7 +229,7 @@ export default function App() {
         </Pool>
         <DragOverlay dropAnimation={null}>{activeArtist && <div className="artist-card compact overlay-card"><Avatar artist={activeArtist} portrait={portraits[activeArtist.id]} /><span className="artist-name">{activeArtist.name}</span></div>}</DragOverlay>
       </DndContext>
-      <footer className="site-footer">사진 · 벅스 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · iTunes</footer>
+      <footer className="site-footer">사진 · 벅스 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · Apple Music 한국</footer>
     </main>
     {selected && <ArtistDialog key={selected.id} artist={selected} portrait={portraits[selected.id]} tier={findTier(board, selected.id)} favorites={board.favorites[selected.id] ?? []} onMove={target => setBoard(current => moveArtist(current, selected.id, target))} onToggle={(song: Song) => setBoard(current => toggleSong(current, selected.id, song))} onClose={closeArtist} />}
     {notice && <div className="toast" role="status"><Check size={16} /><span>{notice}</span><button onClick={() => setNotice('')} aria-label="알림 닫기"><X size={14} /></button></div>}
