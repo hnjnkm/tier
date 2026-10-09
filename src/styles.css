@@ -149,7 +149,11 @@ button, a { touch-action: manipulation; }
 .gender-filters button:hover { color: #111; }
 .filter-count { color: #737373; font-size: 10px; }
 .gender-note { font-size: 9px; }
-.artist-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 22px; row-gap: 43px; }
+.artist-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); column-gap: 18px; row-gap: 24px; }
+.artist-grid .avatar { aspect-ratio: 1; gap: 7px; }
+.artist-grid .artist-name { margin-top: 8px; font-size: 12px; }
+.artist-grid .drag-handle { top: 4px; right: 4px; width: 22px; height: 22px; }
+.artist-grid .song-badge { top: 4px; left: 4px; min-height: 19px; padding: 0 5px; font-size: 8px; }
 .artist-card { position: relative; min-width: 0; touch-action: manipulation; }
 .artist-main { position: relative; display: flex; flex-direction: column; align-items: flex-start; width: 100%; text-align: left; }
 .avatar { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; background: #ededeb; color: #737373; position: relative; }
@@ -291,7 +295,7 @@ button, a { touch-action: manipulation; }
   .piece-3 .exhibition-photo { height: 230px; }
   .piece-4 { top: 524px; width: 125px; }
   .piece-4 .exhibition-photo { height: 145px; }
-  .artist-grid { column-gap: 30px; }
+  .artist-grid { column-gap: 20px; }
 }
 @media (max-width: 1100px) {
   .header-inner { padding: 0 30px; }
@@ -309,7 +313,7 @@ button, a { touch-action: manipulation; }
   .piece-4 .exhibition-photo { height: 120px; }
   .exhibition-note { top: 47px; font-size: 8px; }
   .exhibition-note > span:last-child { display: none; }
-  .artist-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .artist-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .pool-controls { grid-template-columns: minmax(0, 1fr) 175px 140px; gap: 20px; }
   .board-heading-title h2 { max-width: 420px; }
   .collection-tip { gap: 20px; }
@@ -385,7 +389,8 @@ button, a { touch-action: manipulation; }
   .gender-filters button { min-width: 42px; font-size: 10px; padding: 5px 10px; }
   .filter-count { font-size: 9px; max-width: 45%; text-align: right; line-height: 1.6; padding-top: 6px; }
   .gender-note { display: none; }
-  .artist-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 14px; row-gap: 32px; }
+  .artist-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 13px; row-gap: 20px; }
+  .artist-grid .artist-name { font-size: 11px; }
   .artist-name { font-size: 12px; margin-top: 10px; }
   .artist-sub { font-size: 8px; }
   .load-more { margin-top: 35px; padding: 20px 0; font-size: 11px; }
@@ -450,8 +455,9 @@ button, a { touch-action: manipulation; }
   .tier-empty svg { width: 12px; }
   .pool-heading h2 { font-size: 21px; }
   .catalog-tag { display: none; }
-  .artist-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 17px; row-gap: 31px; }
-  .artist-sub { font-size: 8px; }
+  .artist-grid { column-gap: 10px; row-gap: 19px; }
+  .artist-grid .artist-name { font-size: 10px; }
+  .artist-grid .artist-sub { font-size: 7px; }
   .gender-filters button { min-width: 39px; padding: 5px 9px; }
   .filter-count { font-size: 8px; }
   .footer-top { gap: 22px; }
