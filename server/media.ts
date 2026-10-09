@@ -1,5 +1,6 @@
 import { EnvHttpProxyAgent, fetch as proxyFetch } from 'undici';
 import { createMediaService as createSharedMediaService, DataError, type JsonFetcher } from '../src/media';
+import type { Portrait } from '../src/types';
 export { artistFromMusicBrainz, chooseITunesArtist, songsFromITunes, DataError } from '../src/media';
 export type { JsonFetcher, MediaService } from '../src/media';
 
@@ -20,6 +21,6 @@ export const fetchJson: JsonFetcher = async url => {
   }
 };
 
-export function createMediaService(request: JsonFetcher = fetchJson) {
-  return createSharedMediaService(request);
+export function createMediaService(request: JsonFetcher = fetchJson, portraits?: Record<string, Portrait>) {
+  return createSharedMediaService(request, portraits);
 }

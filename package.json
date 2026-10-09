@@ -10,7 +10,8 @@
     "start": "node --import tsx server/index.ts --production",
     "test": "node --import tsx --test tests/*.test.ts",
     "test:e2e": "playwright test",
-    "test:pages": "playwright test --config playwright.pages.config.ts"
+    "test:pages": "playwright test --config playwright.pages.config.ts",
+    "refresh:portraits": "node --import tsx scripts/refresh-portraits.ts"
   },
   "engines": {
     "node": ">=22.12"

@@ -1,4 +1,6 @@
 import type { Artist, Gender } from '../types';
+import { EXTRA_ARTISTS } from './extra-artists';
+import { BASE_GENRES, GENRE_OVERRIDES, GROUP_SEARCH_NAMES, MEMBER_GROUPS, VERIFIED_ITUNES_IDS } from './catalog-config';
 
 // Curated identities, not a popularity ranking. Portraits and songs come from the providers.
 // Group gender describes its member composition; unknown is never guessed for live results.
@@ -162,7 +164,35 @@ const entries: Entry[] = [
   ['yves', '이브', 'Yves', 'female', 'solo', 'Yves (singer)'],
 ];
 
-export const CATALOG: Artist[] = entries.map(([id, name, englishName, gender, kind, wikiTitle, aliases]) => ({
-  id: `kr-${id}`, name, englishName, aliases: aliases ? [aliases] : [], gender, kind, wikiTitle, source: 'catalog',
+const originals: Artist[] = entries.map(([id, name, englishName, gender, kind, wikiTitle, aliases]) => ({
+  id: `kr-${id}`, name, englishName, aliases: aliases ? [aliases] : [], gender, kind, wikiTitle,
+  genres: GENRE_OVERRIDES[name] ?? BASE_GENRES[id] ?? ['dance'], source: 'catalog',
 }));
+export const LEGACY_ARTISTS: Artist[] = originals.filter(artist => MEMBER_GROUPS[artist.id.slice(3)]).map(artist => ({ ...artist, legacy: true }));
+const seenNames = new Set<string>();
+const seenIds = new Set<string>();
+const normalizeName = (name: string) => name.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+const groupMembers = new Set(Object.values(GROUP_SEARCH_NAMES).flat().map(normalizeName));
+const originalIds = new Set(originals.map(artist => artist.id));
+const excludedSolos = new Set(['김성규', '달수빈', '송지은', '다나']);
+export const CATALOG: Artist[] = [...originals.filter(artist => !artist.legacy && !MEMBER_GROUPS[artist.id.slice(3)]), ...EXTRA_ARTISTS].filter(artist => {
+  if (seenNames.has(normalizeName(artist.name)) || seenIds.has(artist.id) || excludedSolos.has(artist.name)) return false;
+  seenNames.add(normalizeName(artist.name)); seenIds.add(artist.id); return true;
+}).map(artist => {
+  const namedGroupMembers = GROUP_SEARCH_NAMES[artist.id.slice(3)] ?? [];
+  const searchAliases = artist.kind === 'group' ? [...new Set([...namedGroupMembers, ...artist.aliases])] : ['김범수', '나얼', '박효신', '이수'].includes(artist.name) ? ['김나박이', '김나박'] : [];
+  const aliases = artist.kind === 'group' ? (originalIds.has(artist.id) ? artist.aliases.filter(alias => !groupMembers.has(normalizeName(alias))) : []) : artist.aliases;
+  return { ...artist, aliases, searchAliases, itunesId: VERIFIED_ITUNES_IDS[artist.id], genres: GENRE_OVERRIDES[artist.name] ?? artist.genres };
+}).sort((left, right) => {
+  const order = ['김범수', '나얼', '박효신', '이수'];
+  const priority = (artist: Artist) => { const index = order.indexOf(artist.name); return index === -1 ? 4 : index; };
+  return priority(left) - priority(right);
+});
+const providerAliases: Record<string, string[]> = {
+  '아이들': ['i-dle', '(여자)아이들'], '에스지워너비': ['SG워너비'], '신용재': ['신용재 (2F)', '신용재 (포맨)'],
+  '이수': ['이수 (엠씨더맥스)', 'Lee Soo'], '김예림': ['김예림 (투개월)'], '강균성': ['강균성 (노을)'],
+  '소금': ['소금 (sogumm)'], '허성현': ['허성현 (Huh)'], '하현우': ['하현우 (국카스텐)'],
+};
+for (const artist of CATALOG) artist.aliases.push(...(providerAliases[artist.name] ?? []));
+export const ALL_CATALOG_ARTISTS = [...CATALOG, ...LEGACY_ARTISTS];
 export const GENDER_LABELS: Record<Gender, string> = { male: '남자', female: '여자', mixed: '혼성', unknown: '정보 없음' };

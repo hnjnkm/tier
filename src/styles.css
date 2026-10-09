@@ -14,3 +14,8 @@
 .hero{overflow:clip}.tier-empty{color:#929b86}.board-footnote,.filter-count{color:#7f8a70}.artist-sub{color:#808976}.collection-tip strong{color:#637a4e}.collection-tip>div>span{color:#879477}.hero-copy>p{color:#717968}.section-description{color:#8b9979}
 .dialog-notice{font-size:11px;color:#bd7860;background:#fff2e9;border:1px solid #f3ddcb;border-radius:7px;padding:11px 13px;margin-top:12px;line-height:1.6}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.genre-filter{min-width:143px}.genre-help{margin:10px 0 0;font-size:9px;color:#8c977e;line-height:1.5}.genre-filter select{max-width:150px}.pool-controls{display:grid;grid-template-columns:minmax(0,1fr) auto auto}.genre-help+.filter-bar{margin-top:13px}
+@media(max-width:720px){.pool-controls{grid-template-columns:1fr 1fr;gap:8px}.artist-search{grid-column:1/-1}.genre-filter{min-width:0}.kind-filter select{width:100%;max-width:none}.genre-filter>svg{display:block}.genre-help{font-size:8px}.filter-count{max-width:45%}}
+
+.kind-filter select{min-width:0}

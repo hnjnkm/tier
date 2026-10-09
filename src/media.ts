@@ -1,6 +1,7 @@
-import { CATALOG } from './data/artists';
+import { ALL_CATALOG_ARTISTS, CATALOG } from './data/artists';
+import portraitCatalog from './data/portraits.json';
 import { normalize } from './domain';
-import type { Artist, Portrait, Song } from './types';
+import type { Artist, Genre, Portrait, Song } from './types';
 
 export class DataError extends Error {
   constructor(message: string, public code = 'PROVIDER_UNAVAILABLE', public status = 502) { super(message); }
@@ -31,9 +32,17 @@ export function artistFromMusicBrainz(item: any): Artist | null {
   const englishName = /[가-힣]/.test(item.name) ? aliases.find(alias => /[a-z]/i.test(alias) && !/[가-힣]/.test(alias)) || item.name : item.name;
   const person = item.type === 'Person';
   const gender = String(item.gender ?? '').toLowerCase();
+  const tags = [...(item.tags ?? []), ...(item.genres ?? [])].map((tag: any) => String(tag.name ?? '').toLowerCase());
+  const genreTags: [RegExp, Genre][] = [
+    [/ballad|발라드/, 'ballad'], [/hip.?hop|\brap\b|힙합/, 'hiphop'], [/rock|metal|록|락|메탈/, 'rock'],
+    [/r.?&.?b|rhythm and blues|soul|알앤비|소울/, 'rnb'], [/indie|인디/, 'indie'], [/k.?pop|dance|pop|댄스/, 'dance'],
+    [/trot|트로트/, 'trot'], [/folk|acoustic|포크|어쿠스틱/, 'folk'], [/jazz|재즈/, 'jazz'],
+    [/classical|crossover|클래식/, 'crossover'], [/gugak|korean traditional|국악/, 'gugak'],
+  ];
+  const genres = genreTags.filter(([pattern]) => tags.some(tag => pattern.test(tag))).map(([, genre]) => genre);
   return {
     id: `mb:${item.id}`, musicBrainzId: item.id, name: koreanName || item.name, englishName,
-    aliases, kind: person ? 'solo' : 'group',
+    aliases, genres, kind: person ? 'solo' : 'group',
     gender: person && gender === 'male' ? 'male' : person && gender === 'female' ? 'female' : 'unknown', source: 'musicbrainz',
   };
 }
@@ -54,7 +63,7 @@ export function songsFromITunes(results: any[], artistId: number): Song[] {
 
 export function chooseITunesArtist(artist: Artist, results: any[]): number {
   const names = new Set([artist.name, artist.englishName, ...artist.aliases].map(normalize));
-  const candidates = results.filter(item => item.wrapperType === 'artist' && item.artistType === 'Artist' && names.has(normalize(item.artistName ?? '')));
+  const candidates = results.filter(item => item.wrapperType === 'artist' && item.artistType === 'Artist' && Number.isSafeInteger(item.artistId) && item.artistId > 0 && names.has(normalize(item.artistName ?? '')));
   const ranked = candidates.map(item => ({ item, score: (/k-pop|korean|한국/i.test(item.primaryGenreName ?? '') ? 5 : 0) + (normalize(item.artistName) === normalize(artist.englishName) ? 2 : 0) })).sort((a, b) => b.score - a.score);
   if (!ranked.length) throw new DataError('이 가수의 음원을 찾지 못했어요. iTunes 카탈로그에 등록되지 않았을 수 있어요.', 'ARTIST_NOT_FOUND', 404);
   if (ranked.length > 1 && ranked[0].score === ranked[1].score && ranked[0].item.artistId !== ranked[1].item.artistId) {
@@ -63,10 +72,11 @@ export function chooseITunesArtist(artist: Artist, results: any[]): number {
   return ranked[0].item.artistId;
 }
 
-export function createMediaService(request: JsonFetcher) {
+export function createMediaService(request: JsonFetcher, presetPortraits: Record<string, Portrait> = portraitCatalog.portraits as Record<string, Portrait>) {
   const cache = new Map<string, { value: any; expires: number }>();
   const pending = new Map<string, Promise<any>>();
-  const artists = new Map(CATALOG.map(artist => [artist.id, artist]));
+  const artists = new Map(ALL_CATALOG_ARTISTS.map(artist => [artist.id, artist]));
+  const officialPortraits = presetPortraits;
   let musicBrainzQueue = Promise.resolve();
   let lastMusicBrainz = 0;
   let queuedRequests = 0;
@@ -116,13 +126,17 @@ export function createMediaService(request: JsonFetcher) {
       const escaped = query.replace(/[+\-!(){}\[\]^"~*?:\\/]/g, '\\$&');
       const expression = `country:KR AND (artist:"${escaped}" OR alias:"${escaped}"${/\s/.test(query) ? '' : ` OR artist:${escaped}* OR alias:${escaped}*`})`;
       const data = await musicBrainz(apiUrl('https://musicbrainz.org/ws/2/artist/', { query: expression, fmt: 'json', limit: 30 }));
-      const names = new Set(CATALOG.flatMap(artist => [artist.name, artist.englishName, ...artist.aliases].map(normalize)));
+      const names = new Set(ALL_CATALOG_ARTISTS.flatMap(artist => [artist.name, artist.englishName, ...artist.aliases, ...(artist.searchAliases ?? [])].map(normalize)));
       return (data.artists ?? []).map(artistFromMusicBrainz).filter((artist: Artist | null): artist is Artist => !!artist && ![artist.name, artist.englishName].some(name => names.has(normalize(name)))).map((artist: Artist) => { artists.set(artist.id, artist); return artist; });
     });
   }
 
   async function getPortraits(ids: string[]): Promise<Record<string, Portrait>> {
-    const known = ids.map(id => artists.get(id)).filter((artist): artist is Artist => !!artist?.wikiTitle);
+    for (const id of ids) {
+      const portrait = officialPortraits[id];
+      if (portrait) cache.set(`portrait:${id}`, { value: portrait, expires: Date.now() + 86400000 });
+    }
+    const known = ids.map(id => artists.get(id)).filter((artist): artist is Artist => !!artist?.wikiTitle && !officialPortraits[artist.id]);
     const missing = known.filter(artist => !cache.get(`portrait:${artist.id}`) || cache.get(`portrait:${artist.id}`)!.expires <= Date.now());
     if (missing.length) {
       const titles = missing.map(artist => artist.wikiTitle!).join('|');
@@ -190,10 +204,15 @@ export function createMediaService(request: JsonFetcher) {
 
   async function getSongs(id: string, query = ''): Promise<Song[]> {
     const artist = await resolveArtist(id);
-    const itunesId: number = await cached(`itunes-id:${id}`, async () => {
+    const itunesId: number = artist.itunesId ?? await cached(`itunes-id:${id}`, async () => {
       // iTunes music sales are unavailable in KR; the US catalog carries Korean releases.
       const data = await request(apiUrl('https://itunes.apple.com/search', { term: artist.englishName, country: 'US', entity: 'musicArtist', limit: 50 }));
-      return chooseITunesArtist(artist, data.results ?? []);
+      try { return chooseITunesArtist(artist, data.results ?? []); }
+      catch (error) {
+        if (!(error instanceof DataError) || error.code !== 'ARTIST_NOT_FOUND' || normalize(artist.name) === normalize(artist.englishName)) throw error;
+        const korean = await request(apiUrl('https://itunes.apple.com/search', { term: artist.name, country: 'US', entity: 'musicArtist', limit: 50 }));
+        return chooseITunesArtist(artist, korean.results ?? []);
+      }
     }, 86400000);
     return cached(`songs:${id}:${normalize(query)}`, async () => {
       if (!query) {

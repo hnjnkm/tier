@@ -10,7 +10,7 @@ test('static API enables MediaWiki CORS and never calls a local API server', asy
     assert.equal(url.protocol, 'https:');
     assert.equal(options?.credentials, 'omit');
     return Response.json({ query: { pages: { 1: { title: 'IU (singer)', thumbnail: { source: 'https://upload.wikimedia.org/iu.jpg' } } } } });
-  });
+  }, {});
   const result = await api('/api/portraits?ids=kr-iu');
   assert.ok(result.portraits?.['kr-iu']);
   assert.equal(urls[0].hostname, 'en.wikipedia.org');
@@ -20,8 +20,8 @@ test('static API enables MediaWiki CORS and never calls a local API server', asy
 });
 
 test('static provider errors preserve useful messages without exposing transport errors', async () => {
-  const limited = createBrowserApi(async () => new Response('', { status: 429 }));
+  const limited = createBrowserApi(async () => new Response('', { status: 429 }), {});
   await assert.rejects(limited('/api/portraits?ids=kr-iu'), { code: 'RATE_LIMITED', status: 429 });
-  const failed = createBrowserApi(async () => { throw new Error('transport details'); });
+  const failed = createBrowserApi(async () => { throw new Error('transport details'); }, {});
   await assert.rejects(failed('/api/portraits?ids=kr-iu'), /외부 음악 데이터를 연결하지 못했어요/);
 });

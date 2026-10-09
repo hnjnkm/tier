@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { CATALOG } from '../src/data/artists';
-import { createBoard, findTier, matchesArtist, moveArtist, parseBoard, toggleSong } from '../src/domain';
+import { CATALOG, LEGACY_ARTISTS } from '../src/data/artists';
+import { allArtists, createBoard, findTier, matchesArtist, matchesFilters, moveArtist, normalize, parseBoard, toggleSong } from '../src/domain';
 import type { Song } from '../src/types';
 
 const song = (id: number): Song => ({ id: `itunes:${id}`, title: `Song ${id}`, artistId: 409076846, artistName: 'IU', album: 'Palette' });
@@ -35,8 +35,8 @@ test('the fourth song cannot be equipped, removal frees a slot, and duplicates t
 });
 
 test('Korean, English and aliases all work with normalized search', () => {
-  assert.ok(matchesArtist(CATALOG.find(artist => artist.id === 'kr-gdragon')!, 'G dragon'));
-  assert.ok(matchesArtist(CATALOG.find(artist => artist.id === 'kr-rose')!, 'rose'));
+  assert.ok(matchesArtist(CATALOG.find(artist => artist.id === 'kr-bigbang')!, 'G dragon'));
+  assert.ok(matchesArtist(CATALOG.find(artist => artist.id === 'kr-blackpink')!, 'rose'));
   assert.ok(matchesArtist(CATALOG.find(artist => artist.id === 'kr-akmu')!, '악동뮤지션'));
   assert.ok(matchesArtist(CATALOG.find(artist => artist.id === 'kr-iu')!, '이지은'));
 });
@@ -54,8 +54,29 @@ test('persisted data round-trips and corrupt or duplicated board data is rejecte
 
 test('catalog identities are unique and gender filters include mixed groups explicitly', () => {
   assert.equal(new Set(CATALOG.map(artist => artist.id)).size, CATALOG.length);
-  assert.ok(CATALOG.length >= 140);
+  assert.ok(CATALOG.length >= 850);
+  assert.equal(new Set(CATALOG.map(artist => normalize(artist.name))).size, CATALOG.length);
   assert.equal(CATALOG.find(artist => artist.id === 'kr-akmu')?.gender, 'mixed');
   assert.equal(CATALOG.find(artist => artist.id === 'kr-blackpink')?.gender, 'female');
   assert.equal(CATALOG.find(artist => artist.id === 'kr-bts')?.gender, 'male');
+});
+
+test('discovery contains the four vocalists, bands and genres without splitting idol members', () => {
+  for (const name of ['김범수', '나얼', '박효신', '이수', '김연우', '임재범', '허각', '노브레인', '비와이', '나윤선']) assert.ok(CATALOG.some(artist => artist.name === name), name);
+  for (const id of ['kr-jung-kook', 'kr-jennie', 'kr-taeyeon', 'kr-nct127', 'kr-nctdream']) assert.ok(!CATALOG.some(artist => artist.id === id), id);
+  for (const artist of CATALOG) assert.ok(artist.genres?.length, artist.name);
+  const naul = CATALOG.find(artist => artist.id === 'kr-naul')!;
+  assert.ok(matchesFilters(naul, { query: '나얼', gender: 'male', kind: 'solo', genre: 'ballad' }));
+  assert.ok(matchesFilters(naul, { query: '', gender: 'all', kind: 'all', genre: 'rnb' }));
+  assert.ok(!matchesFilters(naul, { query: '', gender: 'all', kind: 'all', genre: 'hiphop' }));
+});
+
+test('existing boards retain selected idol soloists and their songs after discovery consolidates groups', () => {
+  const saved = { ...createBoard(), tiers: { ...createBoard().tiers, S: ['kr-jung-kook'], A: ['kr-rose'] }, favorites: { 'kr-jung-kook': [song(1)], 'kr-rose': [song(2)] } };
+  const restored = parseBoard(saved);
+  assert.deepEqual(restored, saved);
+  assert.equal(findTier(restored!, 'kr-jung-kook'), 'S');
+  assert.ok(allArtists(restored!).some(artist => artist.id === 'kr-jung-kook'));
+  assert.ok(!allArtists(createBoard()).some(artist => artist.id === 'kr-jung-kook'));
+  assert.ok(LEGACY_ARTISTS.some(artist => artist.id === 'kr-rose'));
 });

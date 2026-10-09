@@ -63,7 +63,7 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
       <div className="dialog-artist">
         <Avatar artist={artist} portrait={portrait} className="dialog-avatar" />
         <div><span className="eyebrow">ARTIST COLLECTION</span><h2 id="artist-dialog-title">{artist.name}</h2><p>{artist.englishName} <span>·</span> {artist.kind === 'solo' ? '솔로' : '그룹'} <span>·</span> {GENDER_LABELS[artist.gender]}</p>
-          {portrait && <a className="portrait-source" href={portrait.pageUrl} target="_blank" rel="noreferrer">사진 출처 · Wikimedia <ExternalLink size={11} /></a>}
+          {portrait && <a className="portrait-source" href={portrait.pageUrl} target="_blank" rel="noreferrer">사진 출처 · {portrait.provider === 'bugs' ? '벅스' : 'Wikimedia'} <ExternalLink size={11} /></a>}
         </div>
       </div>
       <div className="dialog-tier"><span>나의 티어</span><div className="tier-picker">{TIERS.map(item => <button key={item} className={`tier-pick tier-${item} ${tier === item ? 'selected' : ''}`} aria-label={`${artist.name} ${item} 티어로 이동`} aria-pressed={tier === item} onClick={() => onMove(item)}>{item}</button>)}<button className={`pool-pick ${!tier ? 'selected' : ''}`} aria-pressed={!tier} onClick={() => onMove('pool')}>보관함</button></div></div>

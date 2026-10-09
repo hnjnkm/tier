@@ -1,6 +1,7 @@
 import { createMediaService, DataError } from './media';
+import type { Portrait } from './types';
 
-export function createBrowserApi(fetcher: typeof fetch = fetch) {
+export function createBrowserApi(fetcher: typeof fetch = fetch, portraits?: Record<string, Portrait>) {
   const media = createMediaService(async original => {
     const url = new URL(original);
     // MediaWiki requires this parameter to enable anonymous cross-origin requests.
@@ -13,7 +14,7 @@ export function createBrowserApi(fetcher: typeof fetch = fetch) {
       if (error instanceof DataError) throw error;
       throw new DataError('외부 음악 데이터를 연결하지 못했어요. 잠시 후 다시 시도해 주세요.');
     }
-  });
+  }, portraits);
 
   return async (path: string) => {
     const url = new URL(path, 'https://my-tier.invalid');

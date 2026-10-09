@@ -56,7 +56,7 @@ test('Wikipedia redirects resolve to explicit artist page thumbnails', async () 
   const service = createMediaService(async url => {
     assert.equal(url.hostname, 'en.wikipedia.org');
     return { query: { redirects: [{ from: 'IU (singer)', to: 'IU' }], pages: { '1': { title: 'IU', fullurl: 'https://en.wikipedia.org/wiki/IU', thumbnail: { source: 'https://upload.wikimedia.org/example.jpg' } } } } };
-  });
+  }, {});
   const portraits = await service.getPortraits(['kr-iu']);
   assert.equal(portraits['kr-iu'].pageUrl, 'https://en.wikipedia.org/wiki/IU');
   assert.equal(portraits['kr-iu'].url, 'https://upload.wikimedia.org/example.jpg');
@@ -79,7 +79,7 @@ test('actual API routes return catalog and songs, validate inputs, and report pr
   const media = createMediaService(async url => {
     if (url.hostname === 'en.wikipedia.org') throw new DataError('사진 연결 실패');
     return { results: url.searchParams.get('entity') === 'musicArtist' ? [artist] : [track] };
-  });
+  }, {});
   const server = createApp(media).listen(0, '127.0.0.1');
   await new Promise<void>(resolve => server.once('listening', resolve));
   const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
