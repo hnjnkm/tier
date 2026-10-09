@@ -24,6 +24,8 @@ export interface Artist {
 }
 export interface Portrait {
   url: string;
+  localPath?: string;
+  crop?: { left: number; top: number; width: number; height: number };
   pageUrl: string;
   title: string;
   provider?: 'bugs' | 'wikimedia';
@@ -32,14 +34,29 @@ export interface Song {
   id: string;
   title: string;
   artistName: string;
-  artistId: number;
+  artistId: number | string;
   album: string;
   artwork?: string;
   previewUrl?: string;
   url?: string;
   year?: string;
   locale?: 'ko-KR';
+  albumId?: string;
+  trackNumber?: number;
+  releaseDate?: string;
+  releaseOrder?: number;
+  popularityRank?: number;
 }
+export interface SongCatalog {
+  source: 'youtube-music';
+  artistId: string;
+  channelId: string;
+  updatedAt: string;
+  complete: boolean;
+  songs: Song[];
+  albums?: MusicAlbum[];
+}
+export interface MusicAlbum { id: string; title: string; year?: string; artwork?: string; songIds: string[] }
 export interface Board {
   version: 1;
   title: string;

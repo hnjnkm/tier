@@ -1,7 +1,7 @@
 import { EnvHttpProxyAgent, fetch } from 'undici';
 import { DataError } from './media';
 
-const imageHosts = new Set(['image.bugsm.co.kr', 'upload.wikimedia.org', 'thumb.wikimedia.org', 'is1-ssl.mzstatic.com', 'is2-ssl.mzstatic.com', 'is3-ssl.mzstatic.com', 'is4-ssl.mzstatic.com', 'is5-ssl.mzstatic.com']);
+const imageHosts = new Set(['image.bugsm.co.kr', 'upload.wikimedia.org', 'thumb.wikimedia.org', 'is1-ssl.mzstatic.com', 'is2-ssl.mzstatic.com', 'is3-ssl.mzstatic.com', 'is4-ssl.mzstatic.com', 'is5-ssl.mzstatic.com', 'i.ytimg.com', 'lh3.googleusercontent.com', 'yt3.googleusercontent.com']);
 const audioHosts = new Set(['audio-ssl.itunes.apple.com']);
 const agent = new EnvHttpProxyAgent();
 interface Asset { bytes: Buffer; type: string }

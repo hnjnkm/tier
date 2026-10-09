@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { CATALOG } from '../src/data/artists';
-import { artistFromMusicBrainz, chooseITunesArtist, createMediaService, DataError, songsFromITunes } from '../server/media';
+import { artistFromMusicBrainz, chooseITunesArtist, createMediaService, DataError, songsFromITunes } from '../src/media';
 import { createApp } from '../server/app';
 import type { AddressInfo } from 'node:net';
 
@@ -118,7 +118,8 @@ test('actual API routes return catalog and songs, validate inputs, and report pr
   const media = createMediaService(async url => {
     if (url.hostname === 'en.wikipedia.org') throw new DataError('사진 연결 실패');
     return { results: url.pathname === '/lookup' ? [koreanTrack] : url.searchParams.get('entity') === 'musicArtist' ? [artist] : [track] };
-  }, {});
+  }, {}, async id => ({ source: 'youtube-music', artistId: id, channelId: `UC${'a'.repeat(22)}`, updatedAt: '2026-10-10T00:00:00Z', complete: true,
+    songs: [{ id: 'youtube:video000001', title: '팔레트', album: 'Palette', artistName: '아이유', artistId: `UC${'a'.repeat(22)}`, locale: 'ko-KR', url: 'https://music.youtube.com/watch?v=video000001' }] }));
   const server = createApp(media).listen(0, '127.0.0.1');
   await new Promise<void>(resolve => server.once('listening', resolve));
   const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
@@ -126,7 +127,7 @@ test('actual API routes return catalog and songs, validate inputs, and report pr
     const health = await fetch(`${base}/api/health`).then(response => response.json());
     assert.equal(health.status, 'ok'); assert.equal(health.catalogCount, CATALOG.length);
     const songs = await fetch(`${base}/api/artists/kr-iu/songs`).then(response => response.json());
-    assert.equal(songs.songs[0].title, '팔레트'); assert.equal(songs.source, 'apple-music-kr');
+    assert.equal(songs.songs[0].title, '팔레트'); assert.equal(songs.source, 'youtube-music');
     const localized = await fetch(`${base}/api/songs/localize?ids=120`).then(response => response.json());
     assert.equal(localized.songs[0].artistName, '아이유');
     for (const ids of ['', '-1', '0', 'abc', '9007199254740992', Array(101).fill('120').join(',')]) {

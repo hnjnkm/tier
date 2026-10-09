@@ -14,7 +14,11 @@ export function createBrowserApi(fetcher: typeof fetch = fetch, portraits?: Reco
       if (error instanceof DataError) throw error;
       throw new DataError('외부 음악 데이터를 연결하지 못했어요. 잠시 후 다시 시도해 주세요.');
     }
-  }, portraits);
+  }, portraits, async id => {
+    const response = await fetcher(`${import.meta.env?.BASE_URL ?? '/'}music/${encodeURIComponent(id)}.json`, { credentials: 'omit', cache: 'no-cache', signal: AbortSignal.timeout(20000) });
+    if (!response.ok) throw new DataError('이 아티스트의 YouTube Music 목록을 갱신 중이에요.', 'CATALOG_UNAVAILABLE', 503);
+    return response.json();
+  });
 
   return async (path: string) => {
     const url = new URL(path, 'https://my-tier.invalid');
@@ -32,7 +36,8 @@ export function createBrowserApi(fetcher: typeof fetch = fetch, portraits?: Reco
     if (songs) {
       const query = (url.searchParams.get('q') || '').trim();
       if (query.length > 100) throw new DataError('검색어는 100자 이하로 입력해 주세요.', 'INVALID_REQUEST', 400);
-      return { songs: await media.getSongs(decodeURIComponent(songs[1]), query), source: 'apple-music-kr' };
+      const catalog = await media.getSongCatalog(decodeURIComponent(songs[1]));
+      return { ...catalog, songs: query ? await media.getSongs(catalog.artistId, query) : catalog.songs };
     }
     if (url.pathname === '/api/songs/localize') return { songs: await media.localizeSongs(parseSongIds(url.searchParams.get('ids'))), source: 'apple-music-kr' };
     throw new DataError('요청한 경로를 찾지 못했어요.', 'NOT_FOUND', 404);

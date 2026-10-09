@@ -68,9 +68,12 @@ function validArtist(value: unknown): value is Artist {
 }
 function validSong(value: unknown): value is Song {
   return object(value) && text(value.id, 100) && text(value.title) && text(value.artistName) && typeof value.album === 'string'
-    && value.album.length <= 500 && Number.isSafeInteger(value.artistId) && Number(value.artistId) > 0
+    && value.album.length <= 500 && ((Number.isSafeInteger(value.artistId) && Number(value.artistId) > 0) || (typeof value.artistId === 'string' && /^UC[\w-]{22}$/.test(value.artistId)))
     && safeUrl(value.artwork) && safeUrl(value.previewUrl) && safeUrl(value.url) && (value.year === undefined || /^\d{4}$/.test(String(value.year)))
-    && (value.locale === undefined || value.locale === 'ko-KR');
+    && (value.locale === undefined || value.locale === 'ko-KR')
+    && (value.albumId === undefined || text(value.albumId, 100))
+    && ['trackNumber', 'releaseOrder', 'popularityRank'].every(key => value[key] === undefined || (Number.isSafeInteger(value[key]) && Number(value[key]) >= 0))
+    && (value.releaseDate === undefined || (typeof value.releaseDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value.releaseDate)));
 }
 
 // Imported/local data is untrusted; reject partial or malformed boards rather than silently losing songs.

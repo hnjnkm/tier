@@ -11,7 +11,9 @@
     "test": "node --import tsx --test tests/*.test.ts",
     "test:e2e": "playwright test",
     "test:pages": "playwright test --config playwright.pages.config.ts",
-    "refresh:portraits": "node --import tsx scripts/refresh-portraits.ts"
+    "refresh:portraits": "node --import tsx scripts/refresh-portraits.ts",
+    "cache:portraits": "node --import tsx scripts/cache-portraits.ts",
+    "check:media": "node --import tsx scripts/check-media.ts"
   },
   "engines": {
     "node": ">=22.12"
@@ -33,6 +35,7 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@vitejs/plugin-react": "5.0.4",
+    "sharp": "^0.35.5",
     "tsx": "4.20.6",
     "typescript": "5.9.3",
     "vite": "7.3.7"

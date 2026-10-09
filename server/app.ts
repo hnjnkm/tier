@@ -32,7 +32,8 @@ export function createApp(media: MediaService = createMediaService()) {
     try {
       const query = typeof req.query.q === 'string' ? req.query.q.trim() : '';
       if (query.length > 100) return res.status(400).json({ error: '검색어는 100자 이하로 입력해 주세요.' });
-      res.json({ songs: await media.getSongs(req.params.id, query), source: 'apple-music-kr' });
+      const catalog = await media.getSongCatalog(req.params.id);
+      res.json({ ...catalog, songs: query ? await media.getSongs(req.params.id, query) : catalog.songs });
     } catch (error) { next(error); }
   });
   app.get('/api/songs/localize', async (req, res, next) => {

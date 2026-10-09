@@ -1,6 +1,8 @@
 import { EnvHttpProxyAgent, fetch as proxyFetch } from 'undici';
-import { createMediaService as createSharedMediaService, DataError, type JsonFetcher } from '../src/media';
+import { createMediaService as createSharedMediaService, DataError, type JsonFetcher, type SongCatalogFetcher } from '../src/media';
 import type { Portrait } from '../src/types';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 export { artistFromMusicBrainz, chooseITunesArtist, songsFromITunes, parseSongIds, DataError } from '../src/media';
 export type { JsonFetcher, MediaService } from '../src/media';
 
@@ -21,6 +23,10 @@ export const fetchJson: JsonFetcher = async url => {
   }
 };
 
-export function createMediaService(request: JsonFetcher = fetchJson, portraits?: Record<string, Portrait>) {
-  return createSharedMediaService(request, portraits);
+export function createMediaService(request: JsonFetcher = fetchJson, portraits?: Record<string, Portrait>, loadCatalog?: SongCatalogFetcher) {
+  return createSharedMediaService(request, portraits, loadCatalog ?? (async id => {
+    if (!/^kr-[a-z0-9-]+$/.test(id)) throw new DataError('이 아티스트의 YouTube Music 목록을 준비 중이에요.', 'CATALOG_UNAVAILABLE', 503);
+    try { return JSON.parse(await readFile(resolve('public/music', `${id}.json`), 'utf8')); }
+    catch { throw new DataError('이 아티스트의 YouTube Music 목록을 갱신 중이에요.', 'CATALOG_UNAVAILABLE', 503); }
+  }));
 }

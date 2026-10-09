@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Check, Disc3, ExternalLink, LoaderCircle, Pause, Play, Plus, Search, X } from 'lucide-react';
 import { GENDER_LABELS } from '../data/artists';
 import { audioUrl, getJson, imageUrl } from '../api';
-import { TIERS, type Artist, type Portrait, type Song, type Tier } from '../types';
+import { TIERS, type Artist, type MusicAlbum, type Portrait, type Song, type Tier } from '../types';
+import { selectedSong, songAlbums, visibleSongs, type SongSort } from '../song-catalog';
 import { Avatar } from './Avatar';
 
 export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onToggle, onClose }: {
@@ -13,6 +14,11 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
   const dialog = useRef<HTMLDialogElement>(null);
   const [query, setQuery] = useState('');
   const [songs, setSongs] = useState<Song[]>([]);
+  const [albums, setAlbums] = useState<MusicAlbum[] | undefined>();
+  const [albumId, setAlbumId] = useState('');
+  const [sort, setSort] = useState<SongSort>('popular');
+  const [source, setSource] = useState('');
+  const [complete, setComplete] = useState(true);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [retry, setRetry] = useState(0);
@@ -28,16 +34,20 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true); setError('');
-    const timer = setTimeout(async () => {
+    void (async () => {
       try {
-        const data = await getJson<{ songs: Song[] }>(`/api/artists/${encodeURIComponent(artist.id)}/songs?q=${encodeURIComponent(query.trim())}`, controller.signal);
-        setSongs(data.songs);
+        const data = await getJson<{ songs: Song[]; albums?: MusicAlbum[]; source?: string; complete?: boolean }>(`/api/artists/${encodeURIComponent(artist.id)}/songs`, controller.signal);
+        setSongs(data.songs); setAlbums(data.albums); setSource(data.source ?? ''); setComplete(data.complete !== false);
       } catch (error) {
         if (!controller.signal.aborted) { setError(error instanceof Error ? error.message : '곡을 불러오지 못했어요.'); setSongs([]); }
       } finally { if (!controller.signal.aborted) setLoading(false); }
-    }, query ? 400 : 0);
-    return () => { clearTimeout(timer); controller.abort(); };
-  }, [artist.id, query, retry]);
+    })();
+    return () => { controller.abort(); };
+  }, [artist.id, retry]);
+
+  const albumOptions = useMemo(() => songAlbums(songs, albums), [songs, albums]);
+  const selectedAlbum = albumOptions.find(album => album.id === albumId);
+  const results = useMemo(() => visibleSongs(songs, query, sort, selectedAlbum), [songs, query, sort, selectedAlbum]);
 
   async function play(song: Song) {
     audio.current?.pause();
@@ -52,9 +62,10 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
   }
 
   function selectSong(song: Song) {
-    if (!favorites.some(item => item.id === song.id) && favorites.length >= 3) { setFeedback('대표곡은 최대 3개예요. 먼저 선택한 곡 하나를 빼 주세요.'); return; }
+    const existing = selectedSong(song, favorites);
+    if (!existing && favorites.length >= 3) { setFeedback('대표곡은 최대 3개예요. 먼저 선택한 곡 하나를 빼 주세요.'); return; }
     setFeedback('');
-    onToggle(song);
+    onToggle(existing ?? song);
   }
 
   return createPortal(<dialog className="artist-dialog" ref={dialog} onCancel={onClose} onClose={onClose} onClick={event => { if (event.target === dialog.current) { const rect = dialog.current.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) onClose(); } }} aria-labelledby="artist-dialog-title">
@@ -78,15 +89,24 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
         })}</div>
       </section>
       <section className="song-search-section">
-        <div className="section-label"><h3>곡 검색</h3><span className="provider-label">Apple Music · 한국</span></div>
+        <div className="section-label"><h3>곡 검색</h3><span className="provider-label">{source === 'youtube-music' ? 'YouTube Music · 한국' : source === 'apple-music-kr' ? 'Apple Music · 한국' : ''}</span></div>
         <label className="search-field song-search"><Search size={18} /><input aria-label="곡 제목 검색" value={query} onChange={event => setQuery(event.target.value)} placeholder="곡 제목으로 검색" maxLength={100} />{query && <button onClick={() => setQuery('')} aria-label="곡 검색어 지우기"><X size={15} /></button>}</label>
+        <div className="song-filters">
+          <select aria-label="곡 정렬" value={sort} onChange={event => setSort(event.target.value as SongSort)}><option value="popular">인기순</option><option value="latest">최신순</option><option value="album">앨범순</option></select>
+          <select aria-label="앨범 선택" value={albumId} onChange={event => setAlbumId(event.target.value)}><option value="">전체 앨범</option>{albumOptions.map(album => <option key={album.id} value={album.id}>{album.title}{album.year ? ` (${album.year})` : ''}</option>)}</select>
+          <span>{results.length}곡</span>
+        </div>
+        {sort === 'latest' && <p className="catalog-status">발매일이 없는 곡은 발매연도 기준</p>}
+        {sort === 'popular' && source === 'youtube-music' && <p className="catalog-status">YouTube Music 아티스트 곡 순서 기준</p>}
+        {!complete && <p className="catalog-status">일부 앨범을 갱신 중이에요.</p>}
         <div className="song-results" aria-live="polite" aria-busy={loading}>
-          {loading ? <div className="result-message"><LoaderCircle className="spin" size={25} /><p>이 가수의 곡을 찾고 있어요</p></div> : error ? <div className="result-message"><Disc3 size={30} /><p>{error}</p><button className="text-button" onClick={() => setRetry(value => value + 1)}>다시 시도</button></div> : !songs.length ? <div className="result-message"><Search size={28} /><p>{query ? '이 가수의 곡 중 검색 결과가 없어요.' : '등록된 음원을 찾지 못했어요.'}</p><span>다른 제목으로 검색해 보세요.</span></div> : songs.map(song => {
-            const selected = favorites.some(item => item.id === song.id);
+          {loading ? <div className="result-message"><LoaderCircle className="spin" size={25} /><p>이 가수의 곡을 찾고 있어요</p></div> : error ? <div className="result-message"><Disc3 size={30} /><p>{error}</p><button className="text-button" onClick={() => setRetry(value => value + 1)}>다시 시도</button></div> : !results.length ? <div className="result-message"><Search size={28} /><p>{query || albumId ? '선택한 조건에 맞는 곡이 없어요.' : '등록된 음원을 찾지 못했어요.'}</p>{(query || albumId) && <button className="text-button" onClick={() => { setQuery(''); setAlbumId(''); }}>전체 곡 보기</button>}</div> : results.map(song => {
+            const selected = !!selectedSong(song, favorites);
             return <div className={`song-result ${selected ? 'is-selected' : ''}`} key={song.id}>
               <div className="result-art">{song.artwork ? <img src={imageUrl(song.artwork)} loading="lazy" alt="" /> : <Disc3 size={22} />}</div>
               <div className="song-info"><strong title={song.title}>{song.title}</strong><span title={song.album}>{song.artistName} · {song.album}{song.year ? ` · ${song.year}` : ''}</span></div>
               {song.previewUrl && <button className="icon-button preview-button" onClick={() => play(song)} aria-label={`${song.title} ${playing === song.id ? '미리듣기 중지' : '미리듣기'}`}>{playing === song.id ? <Pause size={15} /> : <Play size={15} />}</button>}
+              {!song.previewUrl && song.url && <a className="icon-button preview-button" href={song.url} target="_blank" rel="noreferrer" aria-label={`${song.title} YouTube Music에서 듣기`}><Play size={15} /></a>}
               <button className={`equip-button ${selected ? 'selected' : ''}`} aria-label={`${song.title} ${selected ? '선택 해제' : '대표곡으로 선택'}`} aria-pressed={selected} onClick={() => selectSong(song)}>{selected ? <Check size={17} /> : <Plus size={17} />}<span>{selected ? '선택됨' : '선택'}</span></button>
             </div>;
           })}

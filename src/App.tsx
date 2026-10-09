@@ -6,6 +6,7 @@ import { CATALOG, GENDER_LABELS } from './data/artists';
 import { allArtists, createBoard, findTier, localizeFavorites, matchesFilters, moveArtist, normalize, parseBoard, STORAGE_KEY, toggleSong } from './domain';
 import { getJson } from './api';
 import { GENRE_LABELS, TIERS, type Genre, type Artist, type Board, type Gender, type Portrait, type Song, type Tier } from './types';
+import portraitCatalog from './data/portraits.json';
 import { Avatar } from './components/Avatar';
 import { ArtistCard } from './components/ArtistCard';
 import { ArtistDialog } from './components/ArtistDialog';
@@ -52,7 +53,7 @@ export default function App() {
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState('');
   const [searchRetry, setSearchRetry] = useState(0);
-  const [portraits, setPortraits] = useState<Record<string, Portrait>>({});
+  const [portraits, setPortraits] = useState<Record<string, Portrait>>(portraitCatalog.portraits as Record<string, Portrait>);
   const [portraitError, setPortraitError] = useState(false);
   const [portraitRetry, setPortraitRetry] = useState(0);
   const [selected, setSelected] = useState<Artist | null>(null);
@@ -123,7 +124,7 @@ export default function App() {
   }, [query, searchRetry]);
 
   useEffect(() => {
-    const missing = currentPortraitIds.split(',').filter(id => id && !requestedPortraits.current.has(id));
+    const missing = currentPortraitIds.split(',').filter(id => id && !portraits[id] && !requestedPortraits.current.has(id));
     if (!missing.length) return;
     missing.forEach(id => requestedPortraits.current.add(id));
     for (let offset = 0; offset < missing.length; offset += 40) {
@@ -229,7 +230,7 @@ export default function App() {
         </Pool>
         <DragOverlay dropAnimation={null}>{activeArtist && <div className="artist-card compact overlay-card"><Avatar artist={activeArtist} portrait={portraits[activeArtist.id]} /><span className="artist-name">{activeArtist.name}</span></div>}</DragOverlay>
       </DndContext>
-      <footer className="site-footer">사진 · 벅스 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · Apple Music 한국</footer>
+      <footer className="site-footer">사진 · 벅스 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · YouTube Music 한국</footer>
     </main>
     {selected && <ArtistDialog key={selected.id} artist={selected} portrait={portraits[selected.id]} tier={findTier(board, selected.id)} favorites={board.favorites[selected.id] ?? []} onMove={target => setBoard(current => moveArtist(current, selected.id, target))} onToggle={(song: Song) => setBoard(current => toggleSong(current, selected.id, song))} onClose={closeArtist} />}
     {notice && <div className="toast" role="status"><Check size={16} /><span>{notice}</span><button onClick={() => setNotice('')} aria-label="알림 닫기"><X size={14} /></button></div>}

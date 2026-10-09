@@ -1,5 +1,5 @@
-import { normalize } from '../src/domain';
 import type { Artist, Gender, Genre, Portrait } from '../src/types';
+import identities from '../src/data/identities.json';
 
 export interface BugsArtist {
   id: string; name: string; image: string; kind?: Artist['kind']; gender?: Gender; genres: Genre[];
@@ -33,20 +33,15 @@ export function parseBugsArtists(html: string): BugsArtist[] {
 
 // Public profile pages verified against the artists and their discographies.
 // Pins distinguish prominent artists from same-name records, including 김나박이.
-const pinned: Record<string, string> = { 'kr-kim-bumsoo': '6886', 'kr-naul': '3674', 'kr-park-hyoshin': '1876', 'kr-isu': '1501', 'kr-seventeen': '80232283', 'kr-mamamoo': '80177857', 'kr-dean': '80241323', 'kr-hynn': '20073083', 'kr-kim-kwangseok': '64', 'kr-paul-kim': '80178689', 'kr-cheeze': '80117564' };
+const pinned: Record<string, string> = Object.fromEntries(Object.entries(identities.artists).map(([id, identity]) => [id, identity.bugsId]));
+export const verifiedBugsId = (id: string) => pinned[id];
 
 export function chooseBugsPortrait(artist: Artist, candidates: BugsArtist[]): Portrait | null {
-  const names = new Set([artist.name, artist.englishName, ...artist.aliases].map(normalize));
-  const sameName = (candidate: BugsArtist) => {
-    if (names.has(normalize(candidate.name))) return true;
-    const parts = candidate.name.match(/^(.+?)\s*\((.+)\)$/);
-    return !!parts && names.has(normalize(parts[1])) && names.has(normalize(parts[2]));
-  };
-  const exact = candidates.filter(candidate => candidate.id === pinned[artist.id] || sameName(candidate));
-  const ranked = exact.filter(candidate => !candidate.gender || artist.gender === 'unknown' || candidate.gender === artist.gender)
-    .map(candidate => ({ candidate, score: candidate.id === pinned[artist.id] ? 100 : (candidate.kind === artist.kind ? 3 : 0) + (candidate.gender === artist.gender ? 3 : 0) + candidate.genres.filter(genre => artist.genres?.includes(genre)).length * 2 }))
-    .sort((left, right) => right.score - left.score);
-  if (!ranked.length || (ranked[1] && ranked[0].score === ranked[1].score && ranked[0].candidate.id !== ranked[1].candidate.id)) return null;
-  const candidate = ranked[0].candidate;
+  // A name, gender or genre score cannot establish a person's identity.
+  // Registry IDs are reviewed independently of the current search results.
+  if (!pinned[artist.id]) return null;
+  const candidate = candidates.find(candidate => candidate.id === pinned[artist.id]
+    && (!candidate.gender || artist.gender === 'unknown' || candidate.gender === artist.gender));
+  if (!candidate) return null;
   return { url: candidate.image.replace(/\/artist\/images\/\d+\//, '/artist/images/500/'), pageUrl: `https://music.bugs.co.kr/artist/${candidate.id}`, title: candidate.name, provider: 'bugs' };
 }

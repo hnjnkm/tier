@@ -3,7 +3,8 @@ import { resolve } from 'node:path';
 import { EnvHttpProxyAgent, fetch } from 'undici';
 import { ALL_CATALOG_ARTISTS } from '../src/data/artists';
 import type { Portrait } from '../src/types';
-import { chooseBugsPortrait, parseBugsArtists } from './bugs-portraits';
+import { verifiedBugsId } from './bugs-portraits';
+import { parseBugsProfile } from './bugs-catalog';
 
 const target = resolve('src/data/portraits.json');
 const namesTarget = resolve('src/data/provider-names.json');
@@ -39,11 +40,14 @@ async function worker() {
   while (next < artists.length) {
     const artist = artists[next++];
     try {
+      const id = verifiedBugsId(artist.id);
+      if (!id) { unmatched++; done++; continue; }
       await pace();
-      const url = new URL('https://music.bugs.co.kr/search/artist'); url.searchParams.set('q', artist.name);
+      const url = new URL(`https://music.bugs.co.kr/artist/${id}`);
       const response = await fetch(url, { dispatcher, signal: AbortSignal.timeout(15000), headers: { 'User-Agent': 'my-tier/0.1 (+https://github.com/hnjnkm/tier)' } });
       if (!response.ok) throw new Error(`Provider status ${response.status}`);
-      const portrait = chooseBugsPortrait(artist, parseBugsArtists(await response.text()));
+      const profile = parseBugsProfile(await response.text(), id);
+      const portrait: Portrait | null = profile.image ? { url: profile.image, pageUrl: url.href, title: profile.name, provider: 'bugs' } : null;
       if (portrait) {
         const image = await fetch(portrait.url, { method: 'HEAD', dispatcher, signal: AbortSignal.timeout(10000) });
         if (!image.ok || !image.headers.get('content-type')?.startsWith('image/')) throw new Error(`Image unavailable for ${artist.name}`);

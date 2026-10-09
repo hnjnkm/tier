@@ -1,12 +1,14 @@
 import { ALL_CATALOG_ARTISTS, CATALOG } from './data/artists';
 import portraitCatalog from './data/portraits.json';
 import { normalize } from './domain';
-import type { Artist, Genre, Portrait, Song } from './types';
+import type { Artist, Genre, Portrait, Song, SongCatalog } from './types';
+import { validateSongCatalog } from './song-catalog';
 
 export class DataError extends Error {
   constructor(message: string, public code = 'PROVIDER_UNAVAILABLE', public status = 502) { super(message); }
 }
 export type JsonFetcher = (url: URL) => Promise<any>;
+export type SongCatalogFetcher = (id: string) => Promise<unknown>;
 
 export function parseSongIds(value: unknown): number[] {
   const values = typeof value === 'string' ? value.split(',') : [];
@@ -79,7 +81,7 @@ export function chooseITunesArtist(artist: Artist, results: any[]): number {
   return ranked[0].item.artistId;
 }
 
-export function createMediaService(request: JsonFetcher, presetPortraits: Record<string, Portrait> = portraitCatalog.portraits as Record<string, Portrait>) {
+export function createMediaService(request: JsonFetcher, presetPortraits: Record<string, Portrait> = portraitCatalog.portraits as Record<string, Portrait>, loadCatalog?: SongCatalogFetcher) {
   const cache = new Map<string, { value: any; expires: number }>();
   const pending = new Map<string, Promise<any>>();
   const artists = new Map(ALL_CATALOG_ARTISTS.map(artist => [artist.id, artist]));
@@ -228,6 +230,10 @@ export function createMediaService(request: JsonFetcher, presetPortraits: Record
   }
 
   async function getSongs(id: string, query = ''): Promise<Song[]> {
+    if (loadCatalog) {
+      const catalog = await getSongCatalog(id);
+      return catalog.songs.filter(song => normalize(song.title).includes(normalize(query)));
+    }
     const artist = await resolveArtist(id);
     const itunesId: number = artist.itunesId ?? await cached(`itunes-id:${id}`, async () => {
       // Search cannot list Korean-store songs. Discover stable IDs, then look them
@@ -257,6 +263,18 @@ export function createMediaService(request: JsonFetcher, presetPortraits: Record
     });
   }
 
-  return { searchArtists, getPortraits, getSongs, localizeSongs };
+  async function getSongCatalog(id: string): Promise<SongCatalog> {
+    await resolveArtist(id);
+    if (!loadCatalog) throw new DataError('YouTube Music 목록을 준비 중이에요.', 'CATALOG_UNAVAILABLE', 503);
+    return cached(`youtube-catalog:${id}`, async () => {
+      try { return validateSongCatalog(await loadCatalog(id), id); }
+      catch (error) {
+        if (error instanceof DataError) throw error;
+        throw new DataError('이 아티스트의 YouTube Music 목록을 갱신 중이에요.', 'CATALOG_UNAVAILABLE', 503);
+      }
+    }, 300000);
+  }
+
+  return { searchArtists, getPortraits, getSongs, getSongCatalog, localizeSongs };
 }
 export type MediaService = ReturnType<typeof createMediaService>;

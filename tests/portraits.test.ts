@@ -28,3 +28,11 @@ test('preloaded official photos work offline without a Wikipedia lookup', async 
   const media = createMediaService(async () => { throw new Error('External request should not be needed'); }, { 'kr-kim-bumsoo': portrait });
   assert.deepEqual(await media.getPortraits(['kr-kim-bumsoo']), { 'kr-kim-bumsoo': portrait });
 });
+
+test('Gil and other name collisions stay pinned to their Korean profiles even when foreign candidates score higher', () => {
+  const gil = CATALOG.find(artist => artist.id === 'kr-gil')!;
+  const candidates = parseBugsArtists(row(3213, 'Gil(길)') + row(8008535, '길(Of Magic Mansion)'));
+  assert.equal(chooseBugsPortrait(gil, candidates)?.pageUrl, 'https://music.bugs.co.kr/artist/8008535');
+  assert.equal(chooseBugsPortrait(gil, parseBugsArtists(row(3213, 'Gil(길)'))), null);
+  assert.equal(gil.name, '길');
+});

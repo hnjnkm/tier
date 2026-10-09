@@ -6,7 +6,7 @@ async function fixtureApi(page: Page) {
   await page.route('**/api/portraits?**', route => route.fulfill({ json: { portraits: {}, source: 'wikipedia' } }));
   await page.route('**/api/artists/search?**', route => route.fulfill({ json: { artists: [], source: 'musicbrainz' } }));
   await page.route('**/api/songs/localize?**', route => route.fulfill({ json: { songs: [], source: 'apple-music-kr' } }));
-  await page.route('**/api/artists/*/songs?**', route => {
+  await page.route('**/api/artists/*/songs**', route => {
     const query = new URL(route.request().url()).searchParams.get('q') || '';
     return route.fulfill({ json: { songs: songs.filter(song => song.title.includes(query)), source: 'itunes' } });
   });
@@ -260,10 +260,10 @@ test('song searches and error retries expose useful results, and dialog supports
   await expect(page.locator('.song-result')).toHaveCount(1);
   await expect(page.getByRole('button', { name: '밤편지 대표곡으로 선택', exact: true })).toBeVisible();
   await page.getByLabel('곡 제목 검색').fill('없는노래');
-  await expect(page.getByText('이 가수의 곡 중 검색 결과가 없어요.')).toBeVisible();
+  await expect(page.getByText('선택한 조건에 맞는 곡이 없어요.')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toHaveCount(0);
-  await page.route('**/api/artists/kr-iu/songs?**', route => route.fulfill({ status: 502, json: { error: '연결 실패 테스트' } }));
+  await page.route('**/api/artists/kr-iu/songs**', route => route.fulfill({ status: 502, json: { error: '연결 실패 테스트' } }));
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
   await expect(page.getByText('연결 실패 테스트')).toBeVisible();
   await expect(page.getByRole('button', { name: '다시 시도', exact: true })).toBeVisible();
@@ -392,4 +392,36 @@ test('touchscreen long-press moves a thumbnail into a tier', async ({ browser })
   await expect(page.getByTestId('tier-A').locator('[data-artist-id="kr-iu"]')).toHaveCount(0);
   await expect(page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
   await context.close();
+});
+
+test('song catalog searches beyond 200 tracks, sorts, filters albums, and keeps selections through reload', async ({ page }) => {
+  const channel = `UC${'a'.repeat(22)}`;
+  const songs = Array.from({ length: 325 }, (_, index) => ({ id: `youtube:video${String(index).padStart(6, '0')}`, title: index === 324 ? '마지막 숨은 곡' : `수록곡 ${index}`,
+    artistName: '아이유', artistId: channel, album: index < 200 ? '첫 앨범' : '새 앨범', albumId: index < 200 ? 'old' : 'new', year: index < 200 ? '2017' : '2026', trackNumber: index + 1, popularityRank: 325 - index, locale: 'ko-KR', url: `https://music.youtube.com/watch?v=video${String(index).padStart(6, '0')}` }));
+  let requests = 0;
+  await page.route('**/api/artists/kr-iu/songs**', route => { requests++; return route.fulfill({ json: { songs, source: 'youtube-music', complete: true } }); });
+  await page.goto('/');
+  await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
+  await expect(page.getByText('YouTube Music · 한국')).toBeVisible();
+  const initialRequests = requests;
+  await expect(page.locator('.song-result').first()).toContainText('마지막 숨은 곡');
+  await page.getByLabel('곡 제목 검색').fill('숨은');
+  await expect(page.locator('.song-result')).toHaveCount(1);
+  await page.getByRole('button', { name: '마지막 숨은 곡 대표곡으로 선택', exact: true }).click();
+  await page.getByLabel('곡 제목 검색').fill('');
+  await page.getByLabel('곡 정렬').selectOption('latest');
+  await expect(page.locator('.song-result').first()).toContainText('2026');
+  await page.getByLabel('앨범 선택').selectOption('old');
+  await page.getByLabel('곡 정렬').selectOption('album');
+  await expect(page.locator('.song-result')).toHaveCount(200);
+  await expect(page.locator('.song-result').first()).toContainText('수록곡 0');
+  const height = await page.locator('.song-results').evaluate(element => element.getBoundingClientRect().height);
+  expect(height).toBeGreaterThan(400);
+  expect(requests).toBe(initialRequests);
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await page.reload();
+  await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
+  await expect(page.getByRole('button', { name: '마지막 숨은 곡 선택 해제', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: '마지막 숨은 곡 선택 해제', exact: true }).click();
+  await expect(page.getByLabel('선택한 대표곡').locator('.song-slot.filled')).toHaveCount(0);
 });

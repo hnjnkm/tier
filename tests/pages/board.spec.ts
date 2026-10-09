@@ -3,8 +3,11 @@ import { test, expect, type Page } from '@playwright/test';
 const artistId = 409076846;
 const titles = ['Love wins all', 'Through the Night', 'Palette', 'Good Day'];
 const koreanTitles = ['Love wins all', '밤편지', '팔레트', '좋은 날'];
+const channelId = `UC${'a'.repeat(22)}`;
 
 async function providers(page: Page) {
+  await page.route('**/music/kr-iu.json', route => route.fulfill({ json: { source: 'youtube-music', artistId: 'kr-iu', channelId, updatedAt: '2026-10-10T00:00:00Z', complete: true,
+    songs: koreanTitles.map((title, index) => ({ id: `youtube:video00000${index}`, title, artistName: '아이유', artistId: channelId, album: index < 2 ? '새 앨범' : 'Palette', albumId: index < 2 ? 'new-album' : 'old-album', trackNumber: index + 1, year: index < 2 ? '2026' : '2017', popularityRank: index, locale: 'ko-KR', url: `https://music.youtube.com/watch?v=video00000${index}` })) } }));
   await page.route('https://en.wikipedia.org/w/api.php?**', route => {
     expect(new URL(route.request().url()).searchParams.get('origin')).toBe('*');
     return route.fulfill({ headers: { 'access-control-allow-origin': '*' }, json: { query: { pages: { 1: { title: 'IU (singer)', fullurl: 'https://en.wikipedia.org/wiki/IU', thumbnail: { source: 'https://upload.wikimedia.org/iu.jpg' } } } } } });
@@ -38,6 +41,8 @@ test('existing English Roy Kim selections migrate to official Korean titles with
     [1848023874, 'No Words Can Say', '달리 표현할 수 없어요'],
   ] as const;
   const selected = [tracks[1], tracks[3]];
+  await page.route('**/music/kr-roy-kim.json', route => route.fulfill({ json: { source: 'youtube-music', artistId: 'kr-roy-kim', channelId, updatedAt: '2026-10-10T00:00:00Z', complete: true,
+    songs: tracks.map(([, , title], index) => ({ id: `youtube:roykim0000${index}`, title, artistName: '로이킴', artistId: channelId, album: title, locale: 'ko-KR', url: `https://music.youtube.com/watch?v=roykim0000${index}` })) } }));
   await page.addInitScript(({ selected, royArtistId }) => {
     if (localStorage.getItem('my-tier.board.v1')) return;
     localStorage.setItem('my-tier.board.v1', JSON.stringify({ version: 1, title: '나의 아티스트 티어', customArtists: [], tiers: { S: ['kr-roy-kim'], A: [], B: [], C: [], D: [], E: [], F: [] }, favorites: { 'kr-roy-kim': selected.map(([id, title]) => ({ id: `itunes:${id}`, title, artistId: royArtistId, artistName: 'Roy Kim', album: `${title} - Single` })) } }));
@@ -59,7 +64,7 @@ test('existing English Roy Kim selections migrate to official Korean titles with
   await page.goto('./');
   await expect(page.getByTestId('favorites-briefing').locator('.favorite-songs > span')).toHaveText(selected.map(track => track[2]));
   await page.getByRole('button', { name: '로이킴 S티어 대표곡 편집' }).click();
-  await expect(page.getByText('Apple Music · 한국')).toBeVisible();
+  await expect(page.getByText('YouTube Music · 한국')).toBeVisible();
   await expect(page.getByRole('dialog')).not.toContainText('Roy Kim');
   for (const [, , title] of selected) await expect(page.getByRole('button', { name: `${title} 선택 해제`, exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByRole('button', { name: '그때 헤어지면 돼 대표곡으로 선택', exact: true })).toBeVisible();
@@ -81,7 +86,7 @@ test('Pages subpath loads assets and direct providers, then persists three songs
   await expect(page.getByRole('link', { name: 'my tier. 홈' })).toHaveAttribute('href', '/tier/');
   expect(await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('16px "Pretendard Variable"') && document.fonts.check('16px "Instrument Serif"'); })).toBe(true);
   const photo = page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"] img');
-  await expect(photo).toHaveAttribute('src', /^https:\/\/image\.bugsm\.co\.kr\/artist\/images\/500\//);
+  await expect(photo).toHaveAttribute('src', /^\/tier\/portraits\/kr-iu\.[a-f0-9]+\.webp$/);
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
   await expect(page.getByRole('link', { name: '사진 출처 · 벅스' })).toHaveAttribute('href', /^https:\/\/music\.bugs\.co\.kr\/artist\/\d+$/);
   await expect(page.getByRole('button', { name: 'Unrelated 대표곡으로 선택', exact: true })).toHaveCount(0);
@@ -128,9 +133,9 @@ test('Pages searches additional artists and reports provider failures with retry
   await page.getByLabel('가수 이름 검색').fill('새가수');
   await expect(page.getByRole('button', { name: '새가수 곡 선택 및 티어 변경' })).toBeVisible();
   await page.getByLabel('가수 이름 검색').fill('아이유');
-  await page.route('https://itunes.apple.com/search?**', route => route.fulfill({ status: 429, headers: { 'access-control-allow-origin': '*' }, json: {} }));
+  await page.route('**/music/kr-iu.json', route => route.fulfill({ status: 503, json: {} }));
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
-  await expect(page.getByText('데이터 제공처에서 응답하지 않았어요. 잠시 후 다시 시도해 주세요.')).toBeVisible();
+  await expect(page.getByText('이 아티스트의 YouTube Music 목록을 갱신 중이에요.')).toBeVisible();
   await expect(page.getByRole('button', { name: '다시 시도', exact: true })).toBeVisible();
 });
 
