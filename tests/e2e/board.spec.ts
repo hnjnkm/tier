@@ -11,6 +11,20 @@ async function fixtureApi(page: Page) {
   });
 }
 
+async function dragArtist(page: Page, artistId: string, target: string) {
+  const card = page.locator(`[data-artist-id="${artistId}"] .artist-main`);
+  await card.scrollIntoViewIfNeeded();
+  const start = await card.boundingBox();
+  await page.mouse.move(start!.x + 25, start!.y + 25);
+  await page.mouse.down();
+  await page.mouse.move(start!.x + 25, start!.y + 12, { steps: 4 });
+  const destination = target === 'pool' ? page.locator('.artist-grid') : page.getByTestId(`tier-${target}`).locator('.tier-content');
+  await destination.evaluate(node => node.scrollIntoView({ block: 'center' }));
+  const end = await destination.boundingBox();
+  await page.mouse.move(end!.x + 25, end!.y + 27, { steps: 12 });
+  await page.mouse.up();
+}
+
 test.beforeEach(async ({ page }) => { await fixtureApi(page); await page.goto('/'); });
 
 test('artist expansion adds fifty cards and changing filters resets the visible collection', async ({ page }) => {
@@ -114,6 +128,37 @@ test('mouse dragging moves a thumbnail from the pool to a tier and back', async 
   await expect(page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
 });
 
+test('mouse dragging reaches every tier when S already contains an artist', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
+  await page.getByRole('button', { name: '아이유 S 티어로 이동' }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  const placements = [['A', 'kr-kim-bumsoo'], ['B', 'kr-naul'], ['C', 'kr-park-hyoshin'], ['D', 'kr-isu'], ['E', 'kr-bts'], ['F', 'kr-day6']];
+  for (const [tier, id] of placements) {
+    await dragArtist(page, id, tier);
+    await expect(page.getByTestId(`tier-${tier}`).locator(`[data-artist-id="${id}"]`)).toHaveCount(1);
+  }
+  await expect(page.getByTestId('tier-S').locator('[data-artist-id]')).toHaveCount(1);
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+});
+
+test('mouse dragging moves between tiers and into an occupied row, then back to the pool', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  for (const [name, tier] of [['아이유', 'S'], ['김범수', 'F']]) {
+    await page.getByRole('button', { name: `${name} 곡 선택 및 티어 변경` }).click();
+    await page.getByRole('button', { name: `${name} ${tier} 티어로 이동` }).click();
+    await page.getByRole('button', { name: '선택 완료' }).click();
+  }
+  for (const tier of ['A', 'B', 'C', 'D', 'E', 'F', 'S']) {
+    await dragArtist(page, 'kr-iu', tier);
+    await expect(page.getByTestId(`tier-${tier}`).locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+    await expect(page.locator('.tier-board [data-artist-id="kr-iu"]')).toHaveCount(1);
+  }
+  await dragArtist(page, 'kr-iu', 'pool');
+  await expect(page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+  await expect(page.locator('.tier-board [data-artist-id="kr-iu"]')).toHaveCount(0);
+});
+
 test('song searches and error retries expose useful results, and dialog supports Escape', async ({ page }) => {
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
   await page.getByLabel('곡 제목 검색').fill('밤편지');
@@ -174,6 +219,32 @@ test('artists in the same tier can be reordered by dragging', async ({ page }) =
   await page.mouse.move(to!.x + 27, to!.y + 27, { steps: 12 });
   await page.mouse.up();
   await expect.poll(() => page.getByTestId('tier-S').locator('[data-artist-id]').evaluateAll(cards => cards.map(card => card.getAttribute('data-artist-id')))).toEqual(['kr-bts', 'kr-day6', 'kr-iu']);
+  const first = await page.getByTestId('tier-S').locator('[data-artist-id="kr-bts"] .artist-main').boundingBox();
+  await page.mouse.move(first!.x + 25, first!.y + 27);
+  await page.mouse.down();
+  await page.mouse.move(first!.x + 35, first!.y + 27, { steps: 4 });
+  await page.mouse.up();
+  await expect.poll(() => page.getByTestId('tier-S').locator('[data-artist-id]').evaluateAll(cards => cards.map(card => card.getAttribute('data-artist-id')))).toEqual(['kr-bts', 'kr-day6', 'kr-iu']);
+});
+
+test('keyboard dragging can change tiers and Escape keeps the existing placement', async ({ page }) => {
+  await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
+  await page.getByRole('button', { name: '아이유 S 티어로 이동' }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await page.getByRole('button', { name: '아이유 끌어서 이동' }).focus();
+  await page.keyboard.press('Space');
+  await expect(page.locator('.overlay-card')).toBeVisible();
+  await page.keyboard.press('ArrowDown');
+  await expect(page.getByTestId('tier-A')).toHaveClass(/drop-active/);
+  await page.keyboard.press('Space');
+  await expect(page.getByTestId('tier-A').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+  await page.getByRole('button', { name: '아이유 끌어서 이동' }).focus();
+  await page.keyboard.press('Space');
+  await expect(page.locator('.overlay-card')).toBeVisible();
+  await page.keyboard.press('ArrowDown');
+  await expect(page.getByTestId('tier-B')).toHaveClass(/drop-active/);
+  await page.keyboard.press('Escape');
+  await expect(page.getByTestId('tier-A').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
 });
 
 test('touchscreen long-press moves a thumbnail into a tier', async ({ browser }) => {
@@ -193,5 +264,15 @@ test('touchscreen long-press moves a thumbnail into a tier', async ({ browser })
   await page.waitForTimeout(100);
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   await expect(page.getByTestId('tier-F').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+  const placed = await page.getByTestId('tier-F').locator('.artist-main').boundingBox();
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: placed!.x + 25, y: placed!.y + 25 }] });
+  await page.waitForTimeout(280);
+  await page.getByTestId('tier-A').evaluate(node => node.scrollIntoView({ block: 'center' }));
+  const nextTier = await page.getByTestId('tier-A').boundingBox();
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: nextTier!.x + 110, y: nextTier!.y + 40 }] });
+  await page.waitForTimeout(100);
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await expect(page.getByTestId('tier-A').locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+  await expect(page.getByTestId('tier-F').locator('[data-artist-id="kr-iu"]')).toHaveCount(0);
   await context.close();
 });
