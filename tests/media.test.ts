@@ -23,10 +23,10 @@ test('song results exclude other artists, albums, duplicate tracks and insecure 
   assert.equal(songs[1].previewUrl, undefined);
 });
 
-test('MusicBrainz aliases use the Korean name without inventing group gender', () => {
+test('MusicBrainz keeps the provider name and Korean aliases without inventing group gender', () => {
   const data = { id: '12345678-1234-1234-1234-123456789abc', name: 'Example', type: 'Group', country: 'KR', aliases: [{ name: '예시', locale: 'ko', primary: true }] };
   const result = artistFromMusicBrainz(data);
-  assert.equal(result?.name, '예시'); assert.equal(result?.gender, 'unknown');
+  assert.equal(result?.name, 'Example'); assert.deepEqual(result?.aliases, ['예시']); assert.equal(result?.gender, 'unknown');
   assert.equal(artistFromMusicBrainz({ ...data, type: 'Person', gender: 'Female' })?.gender, 'female');
   const korean = artistFromMusicBrainz({ ...data, name: '김필', type: 'Person', gender: 'male', aliases: [{ name: 'Kim Feel' }] });
   assert.equal(korean?.name, '김필'); assert.equal(korean?.englishName, 'Kim Feel'); assert.equal(korean?.gender, 'male');

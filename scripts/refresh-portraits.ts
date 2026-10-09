@@ -6,6 +6,7 @@ import type { Portrait } from '../src/types';
 import { chooseBugsPortrait, parseBugsArtists } from './bugs-portraits';
 
 const target = resolve('src/data/portraits.json');
+const namesTarget = resolve('src/data/provider-names.json');
 const saved = JSON.parse(await readFile(target, 'utf8')) as { portraits: Record<string, Portrait> };
 const portraits = { ...saved.portraits };
 const refreshAll = process.argv.includes('--all');
@@ -27,7 +28,12 @@ async function pace() {
 }
 function checkpoint() {
   const payload = JSON.stringify({ updatedAt: new Date().toISOString(), provider: 'Bugs public artist profiles', portraits }, null, 2) + '\n';
-  saveQueue = saveQueue.then(async () => { await writeFile(target + '.tmp', payload); await rename(target + '.tmp', target); });
+  const names = Object.fromEntries(Object.entries(portraits).filter(([, portrait]) => portrait.provider === 'bugs' && portrait.title).sort(([left], [right]) => left.localeCompare(right)).map(([id, portrait]) => [id, portrait.title]));
+  const namesPayload = JSON.stringify(names, null, 2) + '\n';
+  saveQueue = saveQueue.then(async () => {
+    await writeFile(target + '.tmp', payload); await rename(target + '.tmp', target);
+    await writeFile(namesTarget + '.tmp', namesPayload); await rename(namesTarget + '.tmp', namesTarget);
+  });
 }
 async function worker() {
   while (next < artists.length) {

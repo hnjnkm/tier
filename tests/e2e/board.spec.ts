@@ -13,16 +13,56 @@ async function fixtureApi(page: Page) {
 
 test.beforeEach(async ({ page }) => { await fixtureApi(page); await page.goto('/'); });
 
+test('artist expansion adds fifty cards and changing filters resets the visible collection', async ({ page }) => {
+  const cards = page.locator('.artist-grid [data-artist-id]');
+  await expect(cards).toHaveCount(50);
+  await page.getByRole('button', { name: /^더 보기/ }).click();
+  await expect(cards).toHaveCount(100);
+  await page.getByRole('button', { name: /^더 보기/ }).click();
+  await expect(cards).toHaveCount(150);
+  await page.getByRole('button', { name: '여자', exact: true }).click();
+  await expect(cards).toHaveCount(50);
+  await page.getByLabel('가수 이름 검색').fill('에스지워너비');
+  await expect(cards).toHaveCount(0);
+  await page.getByRole('button', { name: '전체', exact: true }).click();
+  await expect(cards).toHaveCount(1);
+  await expect(cards.locator('.artist-name')).toHaveText('SG워너비');
+  await page.getByLabel('가수 이름 검색').fill('SG WANNABE');
+  await expect(cards.locator('.artist-name')).toHaveText('SG워너비');
+  await page.getByLabel('가수 이름 검색').fill('');
+  await expect(cards).toHaveCount(50);
+});
+
+test('artist thumbnails retain their size when moved into a tier on desktop and mobile', async ({ page }) => {
+  await page.getByLabel('가수 이름 검색').fill('에스지워너비');
+  const avatar = page.locator('[data-artist-id="kr-sgwannabe"] .avatar');
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    const before = await avatar.boundingBox();
+    expect(before!.width).toBe(before!.height);
+    await page.getByRole('button', { name: 'SG워너비 곡 선택 및 티어 변경' }).click();
+    await page.getByRole('button', { name: 'SG워너비 S 티어로 이동' }).click();
+    await page.getByRole('button', { name: '선택 완료' }).click();
+    const after = await page.getByTestId('tier-S').locator('[data-artist-id="kr-sgwannabe"] .avatar').boundingBox();
+    expect(after!.width).toBe(before!.width);
+    expect(after!.height).toBe(before!.height);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+    await page.getByRole('button', { name: 'SG워너비 곡 선택 및 티어 변경' }).click();
+    await page.getByRole('button', { name: '보관함', exact: true }).click();
+    await page.getByRole('button', { name: '선택 완료' }).click();
+  }
+});
+
 test('artist search and gender/type filters work across the curated collection', async ({ page }) => {
   await page.getByRole('button', { name: '여자', exact: true }).click();
   await expect(page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' })).toBeVisible();
   await expect(page.getByRole('button', { name: '방탄소년단 곡 선택 및 티어 변경' })).toHaveCount(0);
   await page.getByLabel('가수 이름 검색').fill('악동뮤지션');
-  await expect(page.getByRole('button', { name: '악뮤 곡 선택 및 티어 변경' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'AKMU 곡 선택 및 티어 변경' })).toHaveCount(0);
   await page.getByRole('button', { name: '혼성', exact: true }).click();
-  await expect(page.getByRole('button', { name: '악뮤 곡 선택 및 티어 변경' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'AKMU 곡 선택 및 티어 변경' })).toBeVisible();
   await page.getByLabel('솔로 및 그룹 필터').selectOption('solo');
-  await expect(page.getByRole('button', { name: '악뮤 곡 선택 및 티어 변경' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'AKMU 곡 선택 및 티어 변경' })).toHaveCount(0);
 });
 
 test('three song slots, tier changes and browser reload preserve choices', async ({ page }) => {
@@ -121,7 +161,7 @@ test('mobile layout stays within the viewport and modal tier selection works', a
 });
 
 test('artists in the same tier can be reordered by dragging', async ({ page }) => {
-  for (const name of ['아이유', '방탄소년단', '데이식스']) {
+  for (const name of ['아이유', '방탄소년단', 'DAY6']) {
     await page.getByRole('button', { name: `${name} 곡 선택 및 티어 변경` }).click();
     await page.getByRole('button', { name: `${name} S 티어로 이동` }).click();
     await page.getByRole('button', { name: '선택 완료' }).click();

@@ -10,7 +10,7 @@ import { Avatar } from './components/Avatar';
 import { ArtistCard } from './components/ArtistCard';
 import { ArtistDialog } from './components/ArtistDialog';
 
-const PAGE_SIZE = 24;
+const PAGE_SIZE = 50;
 
 function loadBoard() {
   try {

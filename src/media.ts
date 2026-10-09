@@ -28,7 +28,6 @@ const wikimediaImage = (value: unknown): string | undefined => {
 export function artistFromMusicBrainz(item: any): Artist | null {
   if (!item || !uuid.test(item.id) || typeof item.name !== 'string' || !['Person', 'Group', 'Orchestra', 'Choir'].includes(item.type)) return null;
   const aliases: string[] = (item.aliases ?? []).filter((alias: any) => typeof alias.name === 'string').map((alias: any) => alias.name).slice(0, 30);
-  const koreanName = /[가-힣]/.test(item.name) ? item.name : (item.aliases ?? []).find((alias: any) => alias.locale === 'ko' && alias.primary)?.name ?? aliases.find(alias => /[가-힣]/.test(alias));
   const englishName = /[가-힣]/.test(item.name) ? aliases.find(alias => /[a-z]/i.test(alias) && !/[가-힣]/.test(alias)) || item.name : item.name;
   const person = item.type === 'Person';
   const gender = String(item.gender ?? '').toLowerCase();
@@ -41,7 +40,7 @@ export function artistFromMusicBrainz(item: any): Artist | null {
   ];
   const genres = genreTags.filter(([pattern]) => tags.some(tag => pattern.test(tag))).map(([, genre]) => genre);
   return {
-    id: `mb:${item.id}`, musicBrainzId: item.id, name: koreanName || item.name, englishName,
+    id: `mb:${item.id}`, musicBrainzId: item.id, name: item.name, englishName,
     aliases, genres, kind: person ? 'solo' : 'group',
     gender: person && gender === 'male' ? 'male' : person && gender === 'female' ? 'female' : 'unknown', source: 'musicbrainz',
   };

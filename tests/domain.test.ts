@@ -41,6 +41,28 @@ test('Korean, English and aliases all work with normalized search', () => {
   assert.ok(matchesArtist(CATALOG.find(artist => artist.id === 'kr-iu')!, '이지은'));
 });
 
+test('official stage names keep their spelling while Korean searches and saved placements still work', () => {
+  const cases = [
+    ['kr-sgwannabe', 'SG워너비', '에스지워너비'],
+    ['kr-blackpink', 'BLACKPINK', '블랙핑크'],
+    ['kr-day6', 'DAY6', '데이식스'],
+    ['kr-aespa', 'aespa', '에스파'],
+    ['kr-akmu', 'AKMU', '악동뮤지션'],
+    ['kr-ph1', 'pH-1', '피에이치원'],
+    ['kr-fx', 'f(x)', '에프엑스'],
+    ['kr-yb', 'YB', '윤도현밴드'],
+  ];
+  for (const [id, name, query] of cases) {
+    const artist = CATALOG.find(item => item.id === id)!;
+    assert.equal(artist.name, name);
+    assert.ok(matchesArtist(artist, query), query);
+  }
+  const saved = moveArtist(createBoard(), 'kr-sgwannabe', 'S');
+  const restored = parseBoard(JSON.parse(JSON.stringify(saved)))!;
+  assert.equal(findTier(restored, 'kr-sgwannabe'), 'S');
+  assert.equal(allArtists(restored).find(artist => artist.id === 'kr-sgwannabe')?.name, 'SG워너비');
+});
+
 test('persisted data round-trips and corrupt or duplicated board data is rejected', () => {
   let board = moveArtist(createBoard(), 'kr-iu', 'S');
   board = toggleSong(board, 'kr-iu', song(1));

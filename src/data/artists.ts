@@ -1,6 +1,7 @@
 import type { Artist, Gender } from '../types';
 import { EXTRA_ARTISTS } from './extra-artists';
 import { BASE_GENRES, GENRE_OVERRIDES, GROUP_SEARCH_NAMES, MEMBER_GROUPS, VERIFIED_ITUNES_IDS } from './catalog-config';
+import providerNames from './provider-names.json';
 
 // Curated identities, not a popularity ranking. Portraits and songs come from the providers.
 // Group gender describes its member composition; unknown is never guessed for live results.
@@ -195,4 +196,13 @@ const providerAliases: Record<string, string[]> = {
 };
 for (const artist of CATALOG) artist.aliases.push(...(providerAliases[artist.name] ?? []));
 export const ALL_CATALOG_ARTISTS = [...CATALOG, ...LEGACY_ARTISTS];
+// Verified Bugs profile names; keep translations as aliases, not display labels.
+for (const artist of ALL_CATALOG_ARTISTS) {
+  const title = (providerNames as Record<string, string>)[artist.id];
+  if (!title) continue;
+  // Preserve stage names such as f(x), removing only appended alternate names.
+  const name = normalizeName(title) === normalizeName(artist.englishName) ? title : title.replace(/\s*\([^()]*\)\s*$/u, '').trim();
+  artist.aliases = [...new Set([...artist.aliases, artist.name, title])].filter(alias => alias !== name);
+  artist.name = name;
+}
 export const GENDER_LABELS: Record<Gender, string> = { male: '남자', female: '여자', mixed: '혼성', unknown: '정보 없음' };
