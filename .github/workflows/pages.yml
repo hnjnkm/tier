@@ -41,3 +41,20 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify published site
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          curl --fail --silent --show-error --retry 10 --retry-delay 5 --retry-all-errors "$SITE_URL" --output "$RUNNER_TEMP/my-tier-site.html"
+          node --input-type=module <<'JS'
+          import { readFile } from 'node:fs/promises';
+          const html = await readFile(`${process.env.RUNNER_TEMP}/my-tier-site.html`, 'utf8');
+          if (!html.includes('<title>my tier.')) throw new Error('Published page is not the tier app');
+          const assets = [...html.matchAll(/(?:src|href)="([^"]+\/assets\/[^"]+)"/g)].map(match => match[1]);
+          if (!assets.length) throw new Error('Published page has no app assets');
+          for (const asset of assets) {
+            const response = await fetch(new URL(asset, process.env.SITE_URL), { signal: AbortSignal.timeout(15000) });
+            if (!response.ok) throw new Error(`Published asset failed: ${asset} (${response.status})`);
+          }
+          console.log(`Verified public app and ${assets.length} assets at ${process.env.SITE_URL}`);
+          JS
