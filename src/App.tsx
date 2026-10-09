@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { DndContext, DragOverlay, KeyboardSensor, MouseSensor, TouchSensor, closestCenter, useDroppable, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, arrayMove, rectSortingStrategy, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
-import { ArrowDownToLine, ArrowUpFromLine, ArrowUpRight, Check, ChevronDown, HelpCircle, LoaderCircle, Menu, Music2, Pencil, Plus, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowDownToLine, ArrowUpFromLine, Check, ChevronDown, LoaderCircle, Music2, Pencil, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
 import { CATALOG, GENDER_LABELS } from './data/artists';
 import { allArtists, createBoard, findTier, matchesFilters, moveArtist, normalize, parseBoard, STORAGE_KEY, toggleSong } from './domain';
 import { getJson } from './api';
@@ -9,10 +9,7 @@ import { GENRE_LABELS, TIERS, type Genre, type Artist, type Board, type Gender, 
 import { Avatar } from './components/Avatar';
 import { ArtistCard } from './components/ArtistCard';
 import { ArtistDialog } from './components/ArtistDialog';
-import { EditorialHero } from './components/EditorialHero';
-import { Navigation } from './components/Navigation';
 
-const TIER_DESCRIPTIONS: Record<Tier, string> = { S: '내 플레이리스트의 영원한 1순위', A: '믿고 듣는 아티스트', B: '취향에 잘 맞는 음악', C: '가끔 찾아 듣는 음악', D: '아직은 조금 낯선 음악', E: '내 취향과는 조금 다른 음악', F: '나와는 다른 음악 취향' };
 const PAGE_SIZE = 24;
 
 function loadBoard() {
@@ -27,8 +24,8 @@ function loadBoard() {
 function TierRow({ tier, children, count }: { tier: Tier; children: React.ReactNode; count: number }) {
   const { setNodeRef, isOver } = useDroppable({ id: `tier:${tier}` });
   return <div ref={setNodeRef} className={`tier-row ${isOver ? 'drop-active' : ''}`} data-testid={`tier-${tier}`} aria-label={`${tier} 티어`}>
-    <div className={`tier-label tier-${tier}`} title={TIER_DESCRIPTIONS[tier]}><strong>{tier}</strong><span>{count.toString().padStart(2, '0')}</span></div>
-    <div className="tier-content">{count ? children : <div className="tier-empty"><Plus size={15} /><span>{isOver ? '여기에 놓아주세요' : TIER_DESCRIPTIONS[tier]}</span></div>}</div>
+    <div className={`tier-label tier-${tier}`}><strong>{tier}</strong>{count > 0 && <span>{count}</span>}</div>
+    <div className="tier-content">{count ? children : <div className="tier-empty">{isOver && <span>여기에 놓기</span>}</div>}</div>
   </div>;
 }
 
@@ -61,10 +58,8 @@ export default function App() {
   const [notice, setNotice] = useState(initial.warning);
   const [saveError, setSaveError] = useState(false);
   const [editingTitle, setEditingTitle] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [draftTitle, setDraftTitle] = useState(board.title);
   const importInput = useRef<HTMLInputElement>(null);
-  const menuTrigger = useRef<HTMLButtonElement>(null);
   const artistOpener = useRef<HTMLElement | null>(null);
   const downloadMenu = useRef<HTMLDetailsElement>(null);
   const requestedPortraits = useRef(new Set<string>());
@@ -130,7 +125,6 @@ export default function App() {
       target?.focus({ preventScroll: true });
     });
   }
-  function closeMenu() { setMenuOpen(false); requestAnimationFrame(() => menuTrigger.current?.focus({ preventScroll: true })); }
 
   function finishDrag(event: DragEndEvent) {
     setActiveId(null);
@@ -180,36 +174,33 @@ export default function App() {
 
   return <>
     <header className="site-header"><div className="header-inner">
-      <div className="header-navigation"><button ref={menuTrigger} className="menu-trigger" onClick={() => setMenuOpen(true)} aria-label="메뉴 열기"><Menu size={18} /><span>INDEX</span></button><nav aria-label="빠른 이동"><a href="#my-tier">나의 티어</a><a href="#artist-archive">아티스트</a></nav></div>
-      <a className="brand" href={import.meta.env.BASE_URL} aria-label="my tier. 홈">MY TIER<span className="brand-period">.</span></a>
+      <nav className="header-navigation" aria-label="빠른 이동"><a href="#my-tier">티어</a><a href="#artist-archive">아티스트</a></nav>
+      <a className="brand" href={import.meta.env.BASE_URL} aria-label="my tier. 홈">my tier.</a>
       <div className="header-right"><span className={`save-status ${saveError ? 'save-failed' : ''}`}><span className="status-dot" />{saveError ? '저장 파일로 보관해 주세요' : '자동 저장'}</span><details className="download-menu" ref={downloadMenu}><summary className="secondary-button">내 티어 저장 <ArrowDownToLine size={15} /></summary><div className="download-options"><button onClick={exportBoard}><ArrowDownToLine size={16} /> 저장 파일 내보내기</button><button onClick={() => importInput.current?.click()}><ArrowUpFromLine size={16} /> 저장 파일 불러오기</button></div></details><input ref={importInput} type="file" accept="application/json,.json" hidden onChange={event => importBoard(event.target.files?.[0])} /></div>
     </div></header>
     <main className="page-shell">
-      <EditorialHero onOpen={openArtist} />
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragStart={event => setActiveId(String(event.active.id))} onDragEnd={finishDrag} onDragCancel={() => setActiveId(null)} accessibility={{ announcements: { onDragStart: ({ active }) => `${artistMap.get(String(active.id))?.name ?? '가수'} 이동을 시작합니다.`, onDragOver: ({ over }) => over ? `${String(over.id).startsWith('tier:') ? `${String(over.id).slice(5)} 티어` : '가수 위치'} 위입니다.` : '이동 중입니다.', onDragEnd: () => '가수 배치를 완료했습니다.', onDragCancel: () => '이동을 취소했습니다.' }, screenReaderInstructions: { draggable: '스페이스 키로 가수를 집어 들고 방향키로 이동하세요. 다시 스페이스 키로 배치하거나 Escape 키로 취소할 수 있습니다. 가수 버튼에서 Enter 키를 누르면 티어 선택 창이 열립니다.' } }}>
         <section id="my-tier" className="board-section" aria-labelledby="board-title">
-          <div className="section-register"><span>01 / THE PERSONAL TIER</span><span>ARRANGED BY YOU</span></div>
-          <div className="board-heading"><div className="board-heading-title">{editingTitle ? <input className="title-input" aria-label="티어 보드 이름" autoFocus maxLength={80} value={draftTitle} onChange={event => setDraftTitle(event.target.value)} onBlur={finishTitle} onKeyDown={event => { if (event.key === 'Enter') event.currentTarget.blur(); if (event.key === 'Escape') { setDraftTitle(board.title); setEditingTitle(false); } }} /> : <h2 id="board-title">{board.title}</h2>}<button className="icon-button edit-title" onClick={() => { setDraftTitle(board.title); setEditingTitle(true); }} aria-label="보드 이름 바꾸기"><Pencil size={14} /></button></div><div className="board-tools"><span className="board-count">{assignedIds.length}명의 가수 <span>·</span> {favoriteCount}개의 곡</span><button className="text-button reset-button" onClick={resetBoard} disabled={!assignedIds.length && !favoriteCount && !board.customArtists.length}><RotateCcw size={14} /> 초기화</button></div></div>
+          <div className="board-heading"><div className="board-heading-title">{editingTitle ? <input className="title-input" aria-label="티어 보드 이름" autoFocus maxLength={80} value={draftTitle} onChange={event => setDraftTitle(event.target.value)} onBlur={finishTitle} onKeyDown={event => { if (event.key === 'Enter') event.currentTarget.blur(); if (event.key === 'Escape') { setDraftTitle(board.title); setEditingTitle(false); } }} /> : <h1 id="board-title">{board.title}</h1>}<button className="icon-button edit-title" onClick={() => { setDraftTitle(board.title); setEditingTitle(true); }} aria-label="보드 이름 바꾸기"><Pencil size={14} /></button></div><div className="board-tools">{(assignedIds.length > 0 || favoriteCount > 0) && <span className="board-count">{assignedIds.length}명 <span>·</span> {favoriteCount}곡</span>}<button className="text-button reset-button" onClick={resetBoard} disabled={!assignedIds.length && !favoriteCount && !board.customArtists.length}><RotateCcw size={14} /> 초기화</button></div></div>
           <div className="tier-board">{TIERS.map(tier => <TierRow key={tier} tier={tier} count={board.tiers[tier].length}><SortableContext items={board.tiers[tier]} strategy={rectSortingStrategy}>{board.tiers[tier].map(id => artistMap.get(id)).filter((artist): artist is Artist => !!artist).map(artist => renderCard(artist, true))}</SortableContext></TierRow>)}</div>
-          <div className="board-footnote"><span><HelpCircle size={13} /> 가수를 끌어 놓거나, 사진을 눌러 티어를 선택하세요.</span><span><Music2 size={13} /> 가수당 대표곡 최대 3개</span></div>
+          <p className="board-footnote">드래그하여 배치 · 사진을 눌러 티어와 곡 선택</p>
         </section>
         <Pool>
-          <div className="pool-heading"><div><div className="pool-eyebrow">02 / THE ARTIST ARCHIVE</div><h2 id="pool-title">아티스트 아카이브 <span>({artists.length})</span></h2><p>당신의 취향에 남을 목소리를 찾아보세요.</p></div><span className="catalog-tag">KOREAN VOICES<br />SOLO &amp; GROUP</span></div>
-          <div className="pool-controls"><label className="search-field artist-search"><Search size={19} /><input aria-label="가수 이름 검색" value={query} onChange={event => setQuery(event.target.value)} placeholder="아티스트 이름 검색" maxLength={100} />{query ? <button aria-label="가수 검색어 지우기" onClick={() => setQuery('')}><X size={16} /></button> : <span className="search-hint">SEARCH</span>}</label><label className="kind-filter genre-filter"><Music2 size={15} /><select aria-label="음악 장르 필터" value={genre} onChange={event => setGenre(event.target.value as typeof genre)}><option value="all">전체 장르</option>{Object.entries(GENRE_LABELS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label><label className="kind-filter"><SlidersHorizontal size={15} /><select aria-label="솔로 및 그룹 필터" value={kind} onChange={event => setKind(event.target.value as typeof kind)}><option value="all">솔로 + 그룹</option><option value="solo">솔로만</option><option value="group">그룹만</option></select></label></div>
-          <p className="genre-help">가수의 주요 활동 장르 기준 · 여러 장르에 표시될 수 있어요</p><div className="filter-bar"><div className="gender-filters" aria-label="성별 필터">{(['all', 'male', 'female', 'mixed'] as const).map(value => <button key={value} aria-pressed={gender === value} onClick={() => setGender(value)} className={gender === value ? 'active' : ''}>{value === 'all' ? '전체' : GENDER_LABELS[value]}</button>)}</div><span className="filter-count">{query ? `'${query}' 검색 · ` : ''}{filtered.length}명의 가수{gender !== 'all' && <span className="gender-note"> · 그룹은 멤버 구성 기준</span>}</span></div>
+          <div className="pool-heading"><h2 id="pool-title">아티스트</h2></div>
+          <div className="pool-controls"><label className="search-field artist-search"><Search size={19} /><input aria-label="가수 이름 검색" value={query} onChange={event => setQuery(event.target.value)} placeholder="아티스트 이름 검색" maxLength={100} />{query ? <button aria-label="가수 검색어 지우기" onClick={() => setQuery('')}><X size={16} /></button> : null}</label><label className="kind-filter genre-filter"><Music2 size={15} /><select title="주요 활동 장르 기준 · 여러 장르에 포함될 수 있습니다" aria-label="음악 장르 필터" value={genre} onChange={event => setGenre(event.target.value as typeof genre)}><option value="all">전체 장르</option>{Object.entries(GENRE_LABELS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label><label className="kind-filter"><SlidersHorizontal size={15} /><select aria-label="솔로 및 그룹 필터" value={kind} onChange={event => setKind(event.target.value as typeof kind)}><option value="all">솔로 + 그룹</option><option value="solo">솔로만</option><option value="group">그룹만</option></select></label></div>
+          <div className="filter-bar"><div className="gender-filters" aria-label="성별 필터" title="그룹은 멤버 구성 기준">{(['all', 'male', 'female', 'mixed'] as const).map(value => <button key={value} aria-pressed={gender === value} onClick={() => setGender(value)} className={gender === value ? 'active' : ''}>{value === 'all' ? '전체' : GENDER_LABELS[value]}</button>)}</div><span className="filter-count">{filtered.length}명</span></div>
           <SortableContext items={visible.map(artist => artist.id)} strategy={rectSortingStrategy}><div className="artist-grid">{visible.map(artist => renderCard(artist))}</div></SortableContext>
           {!filtered.length && <div className="empty-search"><Search size={30} /><h3>{searching ? '목록 밖의 가수도 찾고 있어요' : query || gender !== 'all' || kind !== 'all' || genre !== 'all' ? '조건에 맞는 가수가 없어요' : '모든 가수가 티어에 배치됐어요'}</h3><p>{query || gender !== 'all' || kind !== 'all' || genre !== 'all' ? '다른 이름으로 검색하거나 필터를 바꿔보세요.' : '가수를 보관함으로 다시 끌어 놓을 수도 있어요.'}</p>{(query || gender !== 'all' || kind !== 'all' || genre !== 'all') && <button className="text-button" onClick={() => { setQuery(''); setGender('all'); setKind('all'); setGenre('all'); }}>검색 및 필터 초기화</button>}</div>}
-          {filtered.length > pageSize && <button className="load-more" onClick={() => setPageSize(size => size + PAGE_SIZE)}>가수 더 보기 <span>{Math.min(pageSize, filtered.length)} / {filtered.length}</span><ChevronDown size={16} /></button>}
+          {filtered.length > pageSize && <button className="load-more" onClick={() => setPageSize(size => size + PAGE_SIZE)}>더 보기 <span>{Math.min(pageSize, filtered.length)} / {filtered.length}</span><ChevronDown size={16} /></button>}
           {searching && <div className="remote-status"><LoaderCircle className="spin" size={14} /> 기본 목록 밖의 국내 가수를 검색하고 있어요.</div>}
           {searchError && <div className="remote-status remote-error"><span>추가 가수 검색을 연결하지 못했어요. 기본 목록은 계속 사용할 수 있어요.</span><button className="text-button" onClick={() => setSearchRetry(value => value + 1)}>다시 시도</button></div>}
           {portraitError && <div className="photo-status"><span>일부 가수 사진을 불러오지 못했어요.</span><button onClick={retryPortraits}>사진 다시 불러오기</button></div>}
-          <div className="collection-tip"><span>YOUR PERSONAL EDIT.</span><p>사진을 눌러 티어를 정하고, 좋아하는 세 곡을 남기세요.</p><a href="#my-tier">티어로 돌아가기 <ArrowUpRight size={14} /></a></div>
+
         </Pool>
         <DragOverlay dropAnimation={null}>{activeArtist && <div className="artist-card compact overlay-card"><Avatar artist={activeArtist} portrait={portraits[activeArtist.id]} /><span className="artist-name">{activeArtist.name}</span></div>}</DragOverlay>
       </DndContext>
-      <footer className="site-footer"><div className="footer-top"><span className="footer-brand">MY TIER.</span><p>A PERSONAL SOUND ARCHIVE.<br />당신의 취향에 순서를.</p><a href="https://github.com/hnjnkm/tier" target="_blank" rel="noreferrer">GITHUB <ArrowUpRight size={13} /></a></div><div className="footer-bottom"><span>VOL. 02 / © 2026 MY TIER</span><span>사진 · 벅스 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · iTunes</span><a href="#intro-title">BACK TO TOP ↑</a></div></footer>
+      <footer className="site-footer">사진 · 벅스 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · iTunes</footer>
     </main>
-    {menuOpen && <Navigation count={artists.length} onExport={exportBoard} onClose={closeMenu} />}
     {selected && <ArtistDialog key={selected.id} artist={selected} portrait={portraits[selected.id]} tier={findTier(board, selected.id)} favorites={board.favorites[selected.id] ?? []} onMove={target => setBoard(current => moveArtist(current, selected.id, target))} onToggle={(song: Song) => setBoard(current => toggleSong(current, selected.id, song))} onClose={closeArtist} />}
     {notice && <div className="toast" role="status"><Check size={16} /><span>{notice}</span><button onClick={() => setNotice('')} aria-label="알림 닫기"><X size={14} /></button></div>}
   </>;

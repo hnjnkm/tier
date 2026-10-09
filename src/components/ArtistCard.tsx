@@ -11,8 +11,7 @@ export function ArtistCard({ artist, portrait, songCount, onOpen, compact = fals
   return <div ref={setNodeRef} className={`artist-card ${compact ? 'compact' : ''} ${isDragging ? 'dragging' : ''} ${overlay ? 'overlay-card' : ''}`} style={{ transform: CSS.Transform.toString(transform), transition }} data-artist-id={artist.id}>
     <button className="artist-main" onMouseDown={event => listeners?.onMouseDown?.(event)} onTouchStart={event => listeners?.onTouchStart?.(event)} onClick={() => onOpen(artist)} aria-label={`${artist.name} 곡 선택 및 티어 변경`}>
       <Avatar artist={artist} portrait={portrait} />
-      <span className="artist-name">{artist.name}</span>
-      {!compact && <span className="artist-sub">{artist.englishName}</span>}
+      <span className="artist-name" title={artist.name}>{artist.name}</span>
       {songCount > 0 && <span className="song-badge" aria-label={`대표곡 ${songCount}개`}><Music2 size={10} />{songCount}</span>}
     </button>
     {!overlay && <button ref={setActivatorNodeRef} className="drag-handle" {...attributes} {...listeners} aria-label={`${artist.name} 끌어서 이동`} title="끌어서 배치 · 키보드로는 스페이스 후 방향키"><GripVertical size={15} /></button>}

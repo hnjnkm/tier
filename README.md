@@ -2,7 +2,7 @@
 
 국내 가수를 S~F 티어에 배치하고, 가수마다 내가 좋아하는 곡을 최대 3개 고르는 웹앱입니다.
 
-현재 화면은 **V.02 — Personal Sound Archive**입니다. 흑백 사진과 넓은 여백의 오프닝, 그룹 사진을 온전히 보여주는 아티스트 아카이브, 단색 티어표와 양쪽 메뉴·곡 선택 패널로 구성합니다. 키보드로도 메뉴와 곡 선택 패널을 열고 닫을 수 있으며 닫으면 처음 선택한 버튼으로 포커스가 돌아갑니다. 동작 감소 설정을 지원하며 기존 브라우저 저장 데이터와 JSON 저장 파일 형식은 그대로 사용합니다.
+현재 화면은 티어표와 아티스트 검색부터 시작합니다. 작은 정사각 썸네일, 장르·성별·솔로/그룹 필터, 가수별 대표곡 3개 선택과 저장을 제공합니다. 장식용 상단 전시와 중복 문구를 제거했으며, 산세리프는 Pretendard, 세리프 로고와 티어 글자는 Instrument Serif를 사용합니다. 글꼴은 앱에서 직접 제공합니다. 키보드, 동작 감소 설정과 기존 브라우저 저장 데이터·JSON 파일을 지원합니다.
 
 이전 안정 버전은 [v1.0-collection](https://github.com/hnjnkm/tier/tree/v1.0-collection) 태그와 `archive/v1-collection` 브랜치에 보관합니다. 디자인을 바꾸기 전의 931개 가수·그룹 목록, 공식 사진, 장르 필터가 포함되어 있습니다.
 
@@ -97,7 +97,7 @@ audio-ssl.itunes.apple.com
 cdn.jsdelivr.net
 ```
 
-`cdn.jsdelivr.net`은 Pretendard 글꼴을 처음 준비할 때 사용하며, 포함된 글꼴 파일은 앱에서 직접 제공합니다. 폰트의 SIL Open Font License는 `public/fonts/OFL.txt`에 있습니다. 서버는 기존 `HTTPS_PROXY`와 CA 인증서를 사용하며 TLS 검증을 유지합니다.
+`cdn.jsdelivr.net`은 Pretendard 글꼴을 처음 준비할 때 사용하며, 포함된 글꼴 파일은 앱에서 직접 제공합니다. Pretendard와 Instrument Serif의 SIL Open Font License는 `public/fonts/OFL.txt`와 `public/fonts/InstrumentSerif-OFL.txt`에 있습니다. Instrument Serif 원본은 Google Fonts의 공식 `ofl/instrumentserif` 디렉터리에서 가져왔습니다. 서버는 기존 `HTTPS_PROXY`와 CA 인증서를 사용하며 TLS 검증을 유지합니다.
 
 ## 검증
 
