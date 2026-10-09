@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-pages/
+.cache/
+test-results/
+playwright-report/
+*.log
+.env
+.env.local
+.runtime/
+release/
