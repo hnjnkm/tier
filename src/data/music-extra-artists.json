@@ -1,0 +1,156 @@
+[
+  {
+    "id": "kr-nctu",
+    "name": "NCT U",
+    "englishName": "NCT U",
+    "aliases": [],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "identity": {
+      "bugsId": "80259109",
+      "name": "NCT U",
+      "referenceSongs": [
+        {
+          "title": "Baggy Jeans",
+          "album": "Golden Age - The 4th Album"
+        },
+        {
+          "title": "BOSS",
+          "album": "NCT 2018 EMPATHY"
+        },
+        {
+          "title": "Make A Wish (Birthday Song)",
+          "album": "NCT RESONANCE Pt. 1 - The 2nd Album"
+        },
+        {
+          "title": "90's Love",
+          "album": "NCT RESONANCE Pt. 2 - The 2nd Album"
+        },
+        {
+          "title": "일곱 번째 감각 (The 7th Sense) (Sung by 태용, 마크, 재현, 도영, 텐)",
+          "album": "일곱 번째 감각 (The 7th Sense)"
+        }
+      ],
+      "groups": [
+        "80259110",
+        "80259112",
+        "80259113",
+        "80259115",
+        "80263957",
+        "80263958",
+        "80266730",
+        "80266732",
+        "80266734",
+        "80266736",
+        "80266737",
+        "80270880",
+        "80303686",
+        "80303687",
+        "80325640",
+        "80325641",
+        "80325642",
+        "8007602"
+      ]
+    }
+  },
+  {
+    "id": "kr-wayv",
+    "name": "WayV",
+    "englishName": "WayV",
+    "aliases": [
+      "威神V",
+      "웨이션브이"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "identity": {
+      "bugsId": "80325652",
+      "name": "WayV",
+      "referenceSongs": [
+        {
+          "title": "Vision Wings (English Ver.)",
+          "album": "Vision Wings - The 8th Mini Album"
+        },
+        {
+          "title": "月之迷 (Nectar)",
+          "album": "NCT RESONANCE Pt. 1 - The 2nd Album"
+        },
+        {
+          "title": "BIG BANDS (Korean Ver.)",
+          "album": "BIG BANDS - The 7th Mini Album"
+        },
+        {
+          "title": "Give Me That (Korean Ver.)",
+          "album": "Give Me That - The 5th Mini Album"
+        },
+        {
+          "title": "FREQUENCY (Korean Ver.)",
+          "album": "FREQUENCY - The 6th Mini Album"
+        }
+      ],
+      "groups": [
+        "80259112",
+        "80303687",
+        "80325640",
+        "80325641",
+        "80325642",
+        "8007602"
+      ]
+    }
+  },
+  {
+    "id": "kr-nctwish",
+    "name": "NCT WISH",
+    "englishName": "NCT WISH",
+    "aliases": [],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "identity": {
+      "bugsId": "80386621",
+      "name": "NCT WISH",
+      "referenceSongs": [
+        {
+          "title": "Ode to Love",
+          "album": "Ode to Love - The 1st Album"
+        },
+        {
+          "title": "Surf",
+          "album": "COLOR - The 3rd Mini Album"
+        },
+        {
+          "title": "Sticky",
+          "album": "Ode to Love - The 1st Album"
+        },
+        {
+          "title": "Steady",
+          "album": "Steady - The 1st Mini Album"
+        },
+        {
+          "title": "Cheat Code",
+          "album": "COLOR - The 3rd Mini Album"
+        }
+      ],
+      "groups": [
+        "80386615",
+        "80386616",
+        "80386617",
+        "80386618",
+        "80386619",
+        "80386620",
+        "8007602"
+      ]
+    }
+  }
+]

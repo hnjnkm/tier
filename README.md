@@ -70,11 +70,13 @@ npm start
 
 ## 데이터 출처와 제한
 
-- 기본 가수 목록의 성별·그룹 구성·주요 장르는 `src/data/artists.ts`, `extra-artists.ts`, `catalog-config.ts`에서 관리합니다. 확인된 가수 이름은 `provider-names.json`에 저장된 벅스 공식 표기로 표시하며, 기존 한글 표기도 검색 별칭으로 유지합니다. 추가 검색은 MusicBrainz의 원래 표기를 유지합니다. 인기도 순위나 국내 가수 전체 목록은 아닙니다.
+- 기본 가수 목록의 성별·그룹 구성·주요 장르는 `src/data/artists.ts`, `extra-artists.ts`, `catalog-config.ts`에서 관리합니다. 확인된 가수 이름은 `provider-names.json`에 저장된 국내 음원 사이트 공식 표기로 표시하며, 기존 한글 표기도 검색 별칭으로 유지합니다. 추가 검색은 MusicBrainz의 원래 표기를 유지합니다. 인기도 순위나 국내 가수 전체 목록은 아닙니다.
 - 아티스트 목록은 처음 50개를 표시하고 더 보기를 누를 때마다 50개씩 확장됩니다. 목록과 티어표의 썸네일은 PC에서 52px, 모바일에서 50px 정사각형으로 동일합니다.
-- 사진: 검증한 벅스 아티스트 고유 ID와 명시한 Wikipedia 문서를 사용합니다. 이름·성별·장르 점수로 외부 검색 결과를 자동 연결하지 않습니다. 특히 길은 해외 Gil(3213)이 아닌 8008535로 고정합니다. 사진을 실제로 다운로드·디코딩하고 256×256 정사각형 WebP로 크롭하여 `public/portraits`에 저장합니다. 얼굴 사진 대신 앨범 표지나 로고를 사용하지 않습니다. `src/data/portraits.json`에는 원본 주소·출처 링크와 배포 파일 경로를 보존합니다. `npm run refresh:portraits`와 `npm run cache:portraits`로 확인한 프로필의 사진을 갱신합니다. 새 프로필 ID는 별도 검증 후 `src/data/identities.json`에 등록해야 합니다. 가수 상세 창의 출처 링크에서 원본 문서와 사진 라이선스를 확인할 수 있습니다.
+- 사진: 검증한 벅스·멜론 아티스트 고유 ID와 명시한 Wikipedia 문서를 사용합니다. 이름·성별·장르 점수로 외부 검색 결과를 자동 연결하지 않습니다. 특히 길은 해외 Gil(3213)이 아닌 8008535로 고정합니다. 사진을 실제로 다운로드·디코딩하고 256×256 정사각형 WebP로 크롭하여 `public/portraits`에 저장합니다. 얼굴 사진 대신 앨범 표지나 로고를 사용하지 않습니다. `src/data/portraits.json`에는 원본 주소·출처 링크와 배포 파일 경로를 보존합니다. `npm run refresh:portraits`와 `npm run cache:portraits`로 확인한 프로필의 사진을 갱신합니다. 새 프로필 ID는 별도 검증 후 `src/data/identities.json`에 등록해야 합니다. 가수 상세 창의 출처 링크에서 원본 문서와 사진 라이선스를 확인할 수 있습니다.
 - 추가 가수: MusicBrainz의 `country:KR` 검색. 별칭을 함께 검색합니다. 그룹 성별은 기본 목록에서 멤버 구성 기준이며, 외부 데이터에 없는 성별은 추측하지 않고 `정보 없음`으로 표시합니다. 해외 활동·국적 가수 등은 이 검색 조건에서 빠질 수 있습니다.
-- 곡: YouTube Music 한국 지역·한국어 메타데이터를 사용합니다. `scripts/refresh-music.py`는 계정 없이 공개 메타데이터를 읽는 ytmusicapi를 사용합니다. 이 라이브러리는 공식 YouTube API가 아니므로 제공처가 형식을 변경하면 갱신 로직을 수정해야 합니다. 이름 검색 결과를 바로 선택하지 않고 기존 검증 음반의 곡 제목 2개 이상과 맞는 고유 채널을 찾은 뒤 ID를 저장합니다. 전곡 플레이리스트와 앨범·싱글의 연속 페이지를 끝까지 읽어 `public/music/<artist-id>.json`으로 배포하며, 브라우저는 같은 사이트의 파일을 읽어 CORS에 의존하지 않습니다. 이전의 200곡 검색 제한은 적용하지 않습니다. 참여곡·OST도 채널 크레딧이 일치하면 포함합니다. 원래 영문인 곡명은 그대로 표시합니다.
+- 곡: YouTube Music 한국 지역·한국어 메타데이터를 사용합니다. `scripts/refresh-music.py`는 계정 없이 공개 메타데이터를 읽는 ytmusicapi를 사용합니다. 이 라이브러리는 공식 YouTube API가 아니므로 제공처가 형식을 변경하면 갱신 로직을 수정해야 합니다. 이름 검색 결과를 바로 선택하지 않고 기존 검증 음반의 곡 제목 2개 이상과 맞는 고유 채널을 찾은 뒤 ID를 저장합니다. 음원이 1개인 가수는 곡과 앨범 제목이 모두 일치하는 고유 채널만 연결합니다. 전곡 플레이리스트와 앨범·싱글의 연속 페이지를 끝까지 읽어 `public/music/<artist-id>.json`으로 배포하며, 브라우저는 같은 사이트의 파일을 읽어 CORS에 의존하지 않습니다. 이전의 200곡 검색 제한은 적용하지 않습니다. 참여곡·OST도 채널 크레딧이 일치하면 포함합니다. 원래 영문인 곡명은 그대로 표시합니다.
+- 국내 보완 목록: YouTube Music에 등록되지 않았거나 검증 음반과 일치하는 인물을 확정하지 못한 가수는 `scripts/refresh-supplements.ts`로 검증된 벅스 아티스트 ID의 전곡 페이지와 앨범 수록곡을 읽습니다. 한국 음원 분류 또는 한국 국적·등록 이름·기존 검증 음반과의 일치를 확인하며, 임의의 검색 결과로 ID를 대체하지 않습니다. 해당 화면에는 실제 출처인 “벅스 · 한국”과 보완 이유를 표시합니다. `music-supplements.json`에 확인된 ID가 있는 목록만 사용할 수 있습니다. 벅스 페이지에 접근할 수 없는 경우에는 별도로 검증한 `melon-artists.json`의 멜론 고유 ID와 `scripts/refresh-melon.ts`를 사용합니다. 멜론은 전체 곡을 발매순 연속 페이지로 수집한 후, 별도의 인기곡 순위를 연결합니다. 인기곡 페이지가 전체 곡보다 작더라도 전체 수집을 중단하지 않습니다. 해당 화면에는 “멜론 · 한국”을 표시합니다. 정상 YouTube Music 목록은 보완 목록으로 덮어쓰지 않으며, 이후 YouTube Music에서 인물이 확인되면 우선 제공처로 전환합니다.
+- 그룹 음반: 검색 목록에서 하나로 표시하는 NCT에는 검증된 NCT U·127·DREAM·WayV·WISH의 음반을 함께 연결합니다. 유닛을 검색해도 부모 그룹에서 곡을 선택할 수 있으며, 원래 수록곡의 가수 크레딧은 유지합니다. 같은 음원의 중복 ID를 제거하고 공유 앨범의 수록곡은 합칩니다. 합친 목록의 인기순은 유닛별 제공처 순위를 번갈아 표시하는 방식으로 화면에 명시합니다.
 - 곡 정렬: 인기순은 YouTube Music 아티스트 곡 목록의 순서입니다. 최신순은 발매일·발매연도를 우선하며, 날짜를 제공하지 않는 곡은 연도 기준이라고 표시합니다. 앨범순은 한국어 앨범명·트랙 번호 기준입니다. 앨범 필터에는 수록곡 전체가 포함됩니다. 제목 검색·정렬·앨범 선택은 전체 목록 안에서 즉시 적용되며 검색할 때마다 제공처에 다시 요청하지 않습니다. 새 음원은 자동 갱신 워크플로에서 수집합니다. 갱신에 실패하면 이전 정상 목록을 보존합니다.
 - 기존 대표곡: 저장된 iTunes 곡 ID와 선택 순서는 유지합니다. 한국 지역 조회로 영문 표기를 보정하고, 제목과 앨범이 일치하는 YouTube Music 곡은 같은 선택으로 표시하여 해제할 수 있습니다. 정확히 일치하지 않는 이전 선택을 임의의 다른 곡으로 바꾸거나 삭제하지 않습니다. YouTube Music의 음원 권리·지역·카탈로그 등록 범위 밖의 곡까지 존재한다고 보장하지 않습니다.
 - 공급자 응답은 서버 실행 시 서버에, Pages 실행 시 열린 페이지의 메모리에 캐시합니다. MusicBrainz 요청은 각각 초당 1회 이하로 제한합니다. 서버 실행은 앨범 이미지·기존 미리듣기에 정해진 제공처만 허용하는 중계를 사용하고, Pages는 HTTPS 제공처 주소를 직접 사용합니다. 기본 아티스트 사진은 로컬 배포 파일을 사용합니다. 인증 정보는 필요하지 않습니다.
@@ -85,6 +87,8 @@ npm start
 itunes.apple.com
 music.bugs.co.kr
 image.bugsm.co.kr
+www.melon.com
+cdnimg.melon.co.kr
 en.wikipedia.org
 ko.wikipedia.org
 www.wikidata.org
@@ -92,6 +96,7 @@ upload.wikimedia.org
 thumb.wikimedia.org
 musicbrainz.org
 music.youtube.com
+youtubei.googleapis.com
 www.youtube.com
 i.ytimg.com
 yt3.googleusercontent.com
@@ -109,7 +114,7 @@ cdn.jsdelivr.net
 
 ## YouTube Music 목록 갱신
 
-초기 목록은 실제 YouTube Music 접속 후 생성해야 합니다. UI 테스트의 예시 곡 데이터를 배포 목록으로 사용하지 않습니다.
+목록은 Google의 공식 `youtubei.googleapis.com` 서버에서 한국어·한국 지역의 YouTube Music 메타데이터를 가져와 생성합니다. 웹페이지를 가져오거나 로그인 쿠키를 요구하지 않습니다. UI 테스트의 예시 곡 데이터를 배포 목록으로 사용하지 않습니다.
 
 ```sh
 python3 -m venv /tmp/tier-music-venv
@@ -121,7 +126,7 @@ npm run check:media
 
 특정 가수만 확인하려면 `--ids kr-gil,kr-iu,kr-roy-kim`을 추가합니다. 채널을 자동 검증할 음반 정보가 부족한 가수는 공식 채널을 확인한 후 `src/data/youtube-channels.json`에 등록합니다. 연결 오류를 동명이인 데이터로 대체하지 않습니다. 자동 갱신은 `.github/workflows/refresh-music.yml`에서 가장 오래 갱신되지 않은 가수를 100명씩 처리하며, 갱신 시각은 파일 수정 시간이 아닌 저장된 메타데이터를 사용합니다.
 
-`npm run check:media`는 기본 목록 전체의 실제 이미지 디코딩·정사각형 규격과 YouTube Music 곡·채널 ID·앨범 연결을 검사합니다. 누락된 데이터가 있으면 배포 준비 실패로 종료하고 `/tmp/tier-media-readiness.json`에 대상 목록을 저장합니다.
+`npm run check:media`는 기본 목록 전체의 실제 이미지 디코딩·정사각형 규격과 곡·아티스트 ID·앨범 연결을 검사합니다. YouTube Music과 국내 보완 목록의 개수도 따로 보고합니다. 누락된 데이터가 있으면 배포 준비 실패로 종료하고 `/tmp/tier-media-readiness.json`에 대상 목록을 저장합니다.
 
 ## 검증
 

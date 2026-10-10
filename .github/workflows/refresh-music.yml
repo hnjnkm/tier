@@ -51,6 +51,12 @@ jobs:
         env:
           REFRESH_LIMIT: ${{ inputs.limit || '100' }}
         run: python scripts/refresh-music.py --artists /tmp/tier-music-artists.json --limit "$REFRESH_LIMIT"
+      - name: Refresh verified domestic supplements
+        run: node --import tsx scripts/refresh-supplements.ts --refresh --stale-only
+      - name: Refresh reviewed Melon supplements
+        run: node --import tsx scripts/refresh-melon.ts --refresh --stale-only
+      - name: Combine group unit catalogs
+        run: node --import tsx scripts/merge-group-catalogs.ts
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -61,7 +67,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/music src/data/youtube-channels.json src/data/music-refresh-status.json
+          git add public/music src/data/youtube-channels.json src/data/music-refresh-status.json src/data/music-supplements.json
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh verified YouTube Music artist catalogs'
             git pull --rebase origin main

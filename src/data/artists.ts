@@ -176,6 +176,11 @@ const normalizeName = (name: string) => name.normalize('NFKD').replace(/[\u0300-
 const groupMembers = new Set(Object.values(GROUP_SEARCH_NAMES).flat().map(normalizeName));
 const originalIds = new Set(originals.map(artist => artist.id));
 const excludedSolos = new Set(['김성규', '달수빈', '송지은', '다나']);
+const verifiedGenders: Record<string, Gender> = {
+  'kr-ohsiyoung': 'female', 'kr-schizo': 'mixed', 'kr-iloylo': 'mixed',
+  'kr-monni': 'mixed', 'kr-jungwonyoungband': 'mixed', 'kr-hpresso': 'male',
+  'kr-woosoonsil': 'female', 'kr-songmindo': 'female',
+};
 export const CATALOG: Artist[] = [...originals.filter(artist => !artist.legacy && !MEMBER_GROUPS[artist.id.slice(3)]), ...EXTRA_ARTISTS].filter(artist => {
   if (seenNames.has(normalizeName(artist.name)) || seenIds.has(artist.id) || excludedSolos.has(artist.name)) return false;
   seenNames.add(normalizeName(artist.name)); seenIds.add(artist.id); return true;
@@ -183,19 +188,22 @@ export const CATALOG: Artist[] = [...originals.filter(artist => !artist.legacy &
   const namedGroupMembers = GROUP_SEARCH_NAMES[artist.id.slice(3)] ?? [];
   const searchAliases = artist.kind === 'group' ? [...new Set([...namedGroupMembers, ...artist.aliases])] : ['김범수', '나얼', '박효신', '이수'].includes(artist.name) ? ['김나박이', '김나박'] : [];
   const aliases = artist.kind === 'group' ? (originalIds.has(artist.id) ? artist.aliases.filter(alias => !groupMembers.has(normalizeName(alias))) : []) : artist.aliases;
-  return { ...artist, aliases, searchAliases, itunesId: VERIFIED_ITUNES_IDS[artist.id], genres: GENRE_OVERRIDES[artist.name] ?? artist.genres };
+  return { ...artist, gender: verifiedGenders[artist.id] ?? artist.gender, aliases, searchAliases, itunesId: VERIFIED_ITUNES_IDS[artist.id], genres: GENRE_OVERRIDES[artist.name] ?? artist.genres };
 }).sort((left, right) => {
   const order = ['김범수', '나얼', '박효신', '이수'];
   const priority = (artist: Artist) => { const index = order.indexOf(artist.name); return index === -1 ? 4 : index; };
   return priority(left) - priority(right);
 });
 const providerAliases: Record<string, string[]> = {
+  'N.EX.T': ['넥스트'], 'god': ['지오디', '지오디 (god)'],
+  'FTISLAND': ['FT아일랜드', '에프티 아일랜드'],
   '아이들': ['i-dle', '(여자)아이들'], '에스지워너비': ['SG워너비'], '신용재': ['신용재 (2F)', '신용재 (포맨)'],
   '이수': ['이수 (엠씨더맥스)', 'Lee Soo'], '김예림': ['김예림 (투개월)'], '강균성': ['강균성 (노을)'],
   '소금': ['소금 (sogumm)'], '허성현': ['허성현 (Huh)'], '하현우': ['하현우 (국카스텐)'],
 };
-for (const artist of CATALOG) artist.aliases.push(...(providerAliases[artist.name] ?? []));
 export const ALL_CATALOG_ARTISTS = [...CATALOG, ...LEGACY_ARTISTS];
+for (const artist of ALL_CATALOG_ARTISTS) artist.aliases.push(...(providerAliases[artist.name] ?? []));
+ALL_CATALOG_ARTISTS.find(artist => artist.id === 'kr-huh-yunjin')?.aliases.push('허윤진 of LE SSERAFIM');
 // Verified Bugs profile names; keep translations as aliases, not display labels.
 for (const artist of ALL_CATALOG_ARTISTS) {
   const title = (providerNames as Record<string, string>)[artist.id];

@@ -18,7 +18,8 @@ async function worker() {
     try {
       if (portrait.localPath) {
         const existing = await readFile(`public/${portrait.localPath}`).catch(() => null);
-        if (existing && (await sharp(existing).metadata()).width === 256) { done++; continue; }
+        const info = existing ? await sharp(existing).metadata() : undefined;
+        if (info?.width === 256 && info.height === 256) { done++; continue; }
       }
       let lastError: Error | undefined;
       for (let attempt = 0; attempt < 3; attempt++) {

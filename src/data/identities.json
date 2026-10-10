@@ -1526,9 +1526,30 @@
       ]
     },
     "kr-younha": {
-      "bugsId": "20158077",
+      "bugsId": "80010025",
       "name": "윤하",
-      "referenceSongs": [],
+      "referenceSongs": [
+        {
+          "title": "사건의 지평선",
+          "album": "YOUNHA 6th Album Repackage 'END THEORY : Final Edition'"
+        },
+        {
+          "title": "기다리다",
+          "album": "Audition (Time2Rock)"
+        },
+        {
+          "title": "오르트구름",
+          "album": "YOUNHA 6th Album 'END THEORY'"
+        },
+        {
+          "title": "계절범죄",
+          "album": "윤하 리메이크 앨범 '써브캐릭터 원'"
+        },
+        {
+          "title": "비가 내리는 날에는",
+          "album": "STABLE MINDSET"
+        }
+      ],
       "groups": []
     },
     "kr-sistar": {
@@ -1982,10 +2003,33 @@
       ]
     },
     "kr-sam-kim": {
-      "bugsId": "13081534",
-      "name": "Sam Kim",
-      "referenceSongs": [],
-      "groups": []
+      "bugsId": "80182769",
+      "name": "샘킴 (SAM KIM)",
+      "referenceSongs": [
+        {
+          "title": "Who Are You",
+          "album": "도깨비 (tvN 금토드라마) OST - Part.6"
+        },
+        {
+          "title": "Think About' Chu (Prod. By 박근태)",
+          "album": "Boys and Girls Music Vol.1"
+        },
+        {
+          "title": "Make Up (Feat. Crush)",
+          "album": "Sun And Moon"
+        },
+        {
+          "title": "여름비",
+          "album": "그 해 우리는 OST Part.8"
+        },
+        {
+          "title": "향기",
+          "album": "검색어를 입력하세요 WWW OST Part 4"
+        }
+      ],
+      "groups": [
+        "80264543"
+      ]
     },
     "kr-nell": {
       "bugsId": "7536",
@@ -3902,31 +3946,34 @@
       "groups": []
     },
     "kr-leejung": {
-      "bugsId": "80013407",
+      "bugsId": "48584",
       "name": "이정",
       "referenceSongs": [
         {
-          "title": "이정",
-          "album": "Fresh Revolution"
+          "title": "기다릴게",
+          "album": "공주의 남자 (KBS 2TV 수목드라마) Part.3"
         },
         {
-          "title": "이정",
-          "album": "Fresh Revolution"
+          "title": "내가 그댈",
+          "album": "SBS 심폐소생송 Special Album Part.1"
         },
         {
-          "title": "이정",
-          "album": "Fresh Revolution"
+          "title": "나를 슬프게 하는 사람들 (노래왕 퉁키)",
+          "album": "복면가왕 16회"
         },
         {
-          "title": "이정",
-          "album": "Fresh Revolution"
+          "title": "순정 (이정 ver.)",
+          "album": "명가수의 순정"
         },
         {
-          "title": "이정",
-          "album": "Fresh Revolution"
+          "title": "눈물로 (Bonus Track)",
+          "album": "Forth Force - 그대만 보여"
         }
       ],
-      "groups": []
+      "groups": [
+        "80179194",
+        "11196"
+      ]
     },
     "kr-kimjanghoon": {
       "bugsId": "6234",
@@ -4753,31 +4800,35 @@
       ]
     },
     "kr-kimminseok": {
-      "bugsId": "80015823",
+      "bugsId": "80223134",
       "name": "김민석",
       "referenceSongs": [
         {
-          "title": "거리에서",
-          "album": "거리에서/ 아무런 말하지 말아요"
+          "title": "사랑의 언어 (Love Language)",
+          "album": "이 사랑 통역 되나요? (Soundtrack from the Netflix Series)"
         },
         {
-          "title": "추억속에 지워진 너",
-          "album": "거리에서/ 아무런 말하지 말아요"
+          "title": "취중고백",
+          "album": "취중고백"
         },
         {
-          "title": "너에게 하고 싶은 이야기",
-          "album": "거리에서/ 아무런 말하지 말아요"
+          "title": "내가 있을게",
+          "album": "모두가 자신의 무가치함과 싸우고 있다 OST Part.1"
         },
         {
-          "title": "잠에서 깨어난 인형처럼",
-          "album": "거리에서/ 아무런 말하지 말아요"
+          "title": "너에게",
+          "album": "연애플레이리스트3 (웹드라마) OST - part.2"
         },
         {
-          "title": "혼자임을 느낄때",
-          "album": "거리에서/ 아무런 말하지 말아요"
+          "title": "예뻤어 (여름날 우리 X 김민석 (멜로망스))",
+          "album": "예뻤어 (여름날 우리 X 김민석 (멜로망스))"
         }
       ],
-      "groups": []
+      "groups": [
+        "80109671",
+        "20173237",
+        "80223033"
+      ]
     },
     "kr-yoongun": {
       "bugsId": "80000051",
@@ -5012,42 +5063,50 @@
       ]
     },
     "kr-koyujin": {
-      "bugsId": "20182281",
+      "bugsId": "8008597",
       "name": "고유진",
       "referenceSongs": [
         {
-          "title": "ATTENTION A VOS PIEDS",
-          "album": "엔드 앤드"
+          "title": "걸음이 느린 아이",
+          "album": "신생아(新生我)"
         },
         {
-          "title": "RAIN",
-          "album": "엔드 앤드"
+          "title": "Endless",
+          "album": "Endless"
         },
         {
-          "title": "QUESTION",
-          "album": "엔드 앤드"
+          "title": "단 한사람",
+          "album": "소문난 칠공주 (KBS 주말연속극) OST"
         },
         {
-          "title": "CHEZ DANI",
-          "album": "엔드 앤드"
-        },
-        {
-          "title": "END AND",
-          "album": "엔드 앤드"
+          "title": "너 하나만",
+          "album": "Equi-Vocal"
         }
       ],
-      "groups": []
+      "groups": [
+        "519"
+      ]
     },
     "kr-jeonwoosung": {
-      "bugsId": "20130282",
+      "bugsId": "42428",
       "name": "전우성",
       "referenceSongs": [
         {
-          "title": "새벽 (Feat. 문현수)",
-          "album": "Let's"
+          "title": "축가",
+          "album": "2018戀歌(연가), 6월의 고백 '축가'"
+        },
+        {
+          "title": "사랑 (천하무적 방패연)",
+          "album": "복면가왕 40회"
+        },
+        {
+          "title": "못해 (천하무적 방패연)",
+          "album": "복면가왕 40회"
         }
       ],
-      "groups": []
+      "groups": [
+        "37709"
+      ]
     },
     "kr-leejungbong": {
       "bugsId": "329",
@@ -5618,6 +5677,30 @@
         {
           "title": "영화 속에 나오는 주인공처럼",
           "album": "동백꽃 필 무렵 (KBS2 수목드라마) OST - Part.6"
+        },
+        {
+          "title": "헤어지는 중",
+          "album": "헤어지는 중"
+        },
+        {
+          "title": "Done For Me",
+          "album": "호텔 델루나 OST Part.12"
+        },
+        {
+          "title": "이 밤의 끝",
+          "album": "Dream of You"
+        },
+        {
+          "title": "가끔 이러다",
+          "album": "가끔 이러다"
+        },
+        {
+          "title": "오늘밤도",
+          "album": "오늘밤도"
+        },
+        {
+          "title": "Say Yes (Feat. 문별 of 마마무)",
+          "album": "안부"
         }
       ],
       "groups": [
@@ -5788,16 +5871,28 @@
       "groups": []
     },
     "kr-pagekoreanvocalist": {
-      "bugsId": "20227708",
+      "bugsId": "3560",
       "name": "페이지",
       "referenceSongs": [
         {
-          "title": "열린 결말",
-          "album": "열린 결말"
+          "title": "이별이 오지 못하게",
+          "album": "Unforgettable (Special Album)"
         },
         {
-          "title": "열린 결말(Inst.)",
-          "album": "열린 결말(Inst.)"
+          "title": "난 늘 혼자였죠",
+          "album": "Quella Ragazza E Un Sogno"
+        },
+        {
+          "title": "단심가(丹心歌)",
+          "album": "조선 여형사 다모(茶母) (MBC 기획특집 미니시리즈)"
+        },
+        {
+          "title": "벙어리 바이올린",
+          "album": "Unforgettable (Special Album)"
+        },
+        {
+          "title": "마지막 너를 보내며 (Woman)",
+          "album": "페이지 1집 - 마지막 너를 보내며"
         }
       ],
       "groups": []
@@ -5879,6 +5974,34 @@
         {
           "title": "괜찮지 않아 난 조금도",
           "album": "괜찮지 않아 난 조금도"
+        },
+        {
+          "title": "내 사랑 너야",
+          "album": "내 사랑 너야"
+        },
+        {
+          "title": "널 만나 모든게 달라졌어",
+          "album": "널 만나 모든게 달라졌어"
+        },
+        {
+          "title": "문득 생각나는 너",
+          "album": "문득 생각나는 너"
+        },
+        {
+          "title": "미안해 미안해",
+          "album": "미안해 미안해"
+        },
+        {
+          "title": "사랑은 향기로워요",
+          "album": "나만의 당신 (SBS 아침드라마) OST - Part.1"
+        },
+        {
+          "title": "차라리 그대없다면",
+          "album": "차라리 그대없다면"
+        },
+        {
+          "title": "사랑한다는 그 한마디",
+          "album": "사랑한다는 그 한마디"
         }
       ],
       "groups": []
@@ -5980,19 +6103,33 @@
       ]
     },
     "kr-lydiakoreansinger": {
-      "bugsId": "20202900",
+      "bugsId": "80064268",
       "name": "리디아",
       "referenceSongs": [
         {
-          "title": "DREAM AGAIN",
-          "album": "DREAM AGAIN"
+          "title": "수많은 사람중에 우리가 만나게 됐죠",
+          "album": "수많은 사람중에 우리가 만나게 됐죠"
         },
         {
-          "title": "DREAM AGAIN (Inst.)",
-          "album": "DREAM AGAIN"
+          "title": "아프고 아팠는데",
+          "album": "나만의 당신 (SBS 아침드라마) OST - Part.4"
+        },
+        {
+          "title": "조금만 사랑할걸",
+          "album": "조금만 사랑할걸"
+        },
+        {
+          "title": "여자의 청혼 (SBS 골드미스가간다 삽입곡)",
+          "album": "여자의 청혼"
+        },
+        {
+          "title": "사랑했다 사랑했던",
+          "album": "사악한 공작 영애의 우울 OST Part.7"
         }
       ],
-      "groups": []
+      "groups": [
+        "20158150"
+      ]
     },
     "kr-kwonjinwon": {
       "bugsId": "3930",
@@ -6119,6 +6256,42 @@
         {
           "title": "어제까지 (feat. 길구봉구)",
           "album": "이별병"
+        },
+        {
+          "title": "틈",
+          "album": "왕가네 식구들 (KBS2 주말드라마) OST"
+        },
+        {
+          "title": "마취",
+          "album": "왕가네 식구들 (KBS2 주말드라마) OST - Part.3"
+        },
+        {
+          "title": "나쁜 놈",
+          "album": "나쁜 놈"
+        },
+        {
+          "title": "라라라",
+          "album": "The First Experience"
+        },
+        {
+          "title": "이별병",
+          "album": "이별병 Part.2"
+        },
+        {
+          "title": "겨울이 오면 (feat. 성태 Of 포스트맨)",
+          "album": "Cry Music Play"
+        },
+        {
+          "title": "내 하루는 왜 자꾸 너만 찾아",
+          "album": "내 하루는 왜 자꾸 너만 찾아"
+        },
+        {
+          "title": "Missing You",
+          "album": "The First Experience"
+        },
+        {
+          "title": "가질 수 없는 너",
+          "album": "여자의 비밀 (KBS2 일일드라마) OST - Part.8"
         }
       ],
       "groups": []
@@ -6887,6 +7060,42 @@
         {
           "title": "한강 gang megamix (Feat. 장석훈, CHANGMO, Coogie, SUPERBEE, Beenzino, ZENE THE ZILLA)",
           "album": "한강 gang megamix"
+        },
+        {
+          "title": "Prime Time Remix (With ODEE, CHANGMO, Hash Swan & Dok2)",
+          "album": "Q Day Remixes"
+        },
+        {
+          "title": "Rockin' With The Best",
+          "album": "Rockin' With The Best"
+        },
+        {
+          "title": "귀감 (Feat. ZENE THE ZILLA)",
+          "album": "glow forever"
+        },
+        {
+          "title": "한강 gang (Feat. Byung Un & CHANGMO)",
+          "album": "glow forever"
+        },
+        {
+          "title": "공중도덕 part 2 (Air DoTheQ part 2)",
+          "album": "쇼미더머니 5 - Episode 5"
+        },
+        {
+          "title": "2 Chainz & Rollies (feat. Dok2)",
+          "album": "AMBITIQN"
+        },
+        {
+          "title": "Prime Time",
+          "album": "Millionaire Poetry"
+        },
+        {
+          "title": "Still Got Luv (Feat. 김효은)",
+          "album": "Millionaire Poetry"
+        },
+        {
+          "title": "진흙 속에서 피는 꽃 (feat. MC Meta‚ Kebee)",
+          "album": "The Real Me [Remaster]"
         }
       ],
       "groups": [
@@ -6906,6 +7115,46 @@
         {
           "title": "Good Times (feat. Babylon)",
           "album": "Cheers"
+        },
+        {
+          "title": "이 밤이 지나고 나면 (feat. 211)",
+          "album": "RH- 12th '이 밤이 지나고 나면'"
+        },
+        {
+          "title": "한라산 (Hi-Lite Sign) (Prod. by Yosi)",
+          "album": "Dingo X Hi-Lite Records"
+        },
+        {
+          "title": "그늘 (Shelter) (Feat. ZENE THE ZILLA, Sway D, SUPERBEE)",
+          "album": "Summer Grooves"
+        },
+        {
+          "title": "드디어 만났다 (feat. Junggigo)",
+          "album": "Lonely Hearts"
+        },
+        {
+          "title": "가뭄 (feat. Beenzino)",
+          "album": "Daily Routine"
+        },
+        {
+          "title": "Fancy (feat. DEAN & Sway D)",
+          "album": "Fancy (feat. DEAN & Sway D)"
+        },
+        {
+          "title": "Forrest Gump (feat. Mayson The Soul)",
+          "album": "Cheers"
+        },
+        {
+          "title": "Would You Be My (feat. Beenzino)",
+          "album": "Fever For Calmness"
+        },
+        {
+          "title": "+82 (Prod. 다이나믹 듀오, THAMA)",
+          "album": "쇼미더머니 10 Final"
+        },
+        {
+          "title": "Rapflicks",
+          "album": "Rapflicks"
         }
       ],
       "groups": [
@@ -7106,6 +7355,34 @@
         {
           "title": "Balance (Prod. By CODE KUNST)",
           "album": "Balance"
+        },
+        {
+          "title": "잠수이별 (Prod. 코드 쿤스트)",
+          "album": "잠수이별"
+        },
+        {
+          "title": "진자 (ZINZA) (Feat. YDG, 수란)",
+          "album": "쇼미더머니 6 - Episode 4"
+        },
+        {
+          "title": "싸가지 (Feat. 비비 (BIBI))",
+          "album": "mp3"
+        },
+        {
+          "title": "향수 (Prod. by WOOGIE)",
+          "album": "슬기로운 감빵생활 (tvN 수목드라마) OST - Part.6"
+        },
+        {
+          "title": "울타리",
+          "album": "af"
+        },
+        {
+          "title": "SS (Feat. 사이먼 도미닉 & 후디) (Prod. By KHYO)",
+          "album": "SS"
+        },
+        {
+          "title": "과거에게 (loop)",
+          "album": "불안"
         }
       ],
       "groups": []
@@ -8084,6 +8361,22 @@
         {
           "title": "Sink or Swim feat. 김하온 (HAON)",
           "album": "Maze Runner"
+        },
+        {
+          "title": "Stole (Prod. by 성국)",
+          "album": "Stole"
+        },
+        {
+          "title": "Go (Prod. 기리보이)",
+          "album": "쇼미더머니 11 Final"
+        },
+        {
+          "title": "Jealous (Feat. Tommy Strate)",
+          "album": "Jealous"
+        },
+        {
+          "title": "Victory",
+          "album": "Bad Neighbors"
         }
       ],
       "groups": [
@@ -8097,6 +8390,22 @@
         {
           "title": "No Emotion",
           "album": "The Top Notes"
+        },
+        {
+          "title": "포화",
+          "album": "랩:퍼블릭 Episode.2"
+        },
+        {
+          "title": "거울",
+          "album": "Fragrance"
+        },
+        {
+          "title": "Bad Thing",
+          "album": "Bad Thing"
+        },
+        {
+          "title": "Stormy (Feat. 우원재)",
+          "album": "sideshow"
         }
       ],
       "groups": [
@@ -8145,10 +8454,29 @@
       ]
     },
     "kr-takeone": {
-      "bugsId": "80323162",
-      "name": "TakeOne",
-      "referenceSongs": [],
-      "groups": []
+      "bugsId": "80124924",
+      "name": "테이크원",
+      "referenceSongs": [
+        {
+          "title": "암전",
+          "album": "녹색이념"
+        },
+        {
+          "title": "이제는 떳떳하다 (feat. GRAY, Crucial Star, Black Gosi, MC Meta, Lolly)",
+          "album": "이제는 떳떳하다"
+        },
+        {
+          "title": "입장",
+          "album": "녹색이념"
+        },
+        {
+          "title": "종착역",
+          "album": "상업예술"
+        }
+      ],
+      "groups": [
+        "80329611"
+      ]
     },
     "kr-uneducatedkid": {
       "bugsId": "20046704",
@@ -10083,7 +10411,28 @@
     "kr-jooyoung": {
       "bugsId": "80088226",
       "name": "주영",
-      "referenceSongs": [],
+      "referenceSongs": [
+        {
+          "title": "처음 (feat. Sole)",
+          "album": "Fountain"
+        },
+        {
+          "title": "그대와 같아",
+          "album": "그대와 같아 (Same As You)"
+        },
+        {
+          "title": "PRADA (Feat. pH-1)",
+          "album": "PRADA"
+        },
+        {
+          "title": "네게 난",
+          "album": "From me To you"
+        },
+        {
+          "title": "All Of You",
+          "album": "From me To you"
+        }
+      ],
       "groups": [
         "80411988"
       ]
@@ -10274,10 +10623,29 @@
       "groups": []
     },
     "kr-minseo": {
-      "bugsId": "20174790",
+      "bugsId": "20001178",
       "name": "민서",
-      "referenceSongs": [],
-      "groups": []
+      "referenceSongs": [
+        {
+          "title": "2cm (Feat. 폴킴)",
+          "album": "The Diary of Youth"
+        },
+        {
+          "title": "ZERO",
+          "album": "ZERO"
+        },
+        {
+          "title": "멋진 꿈",
+          "album": "The Diary of Youth"
+        },
+        {
+          "title": "이상한 애 (하트시그널 삽입곡)",
+          "album": "LISTEN 022 이상한 애"
+        }
+      ],
+      "groups": [
+        "80404199"
+      ]
     },
     "kr-saay": {
       "bugsId": "20041751",
@@ -11163,10 +11531,36 @@
       ]
     },
     "kr-monni": {
-      "bugsId": "8059114",
+      "bugsId": "80013938",
       "name": "몽니",
-      "referenceSongs": [],
-      "groups": []
+      "referenceSongs": [
+        {
+          "title": "소년이 어른이 되어",
+          "album": "소년이 어른이 되어"
+        },
+        {
+          "title": "그대와 함께",
+          "album": "This Moment"
+        },
+        {
+          "title": "나를 떠나가던",
+          "album": "This Moment"
+        },
+        {
+          "title": "망설이지 마요",
+          "album": "단 한번의 여행 [Special Edition]"
+        },
+        {
+          "title": "소나기",
+          "album": "첫째 날, 빛 (One Day, Light)"
+        }
+      ],
+      "groups": [
+        "80013941",
+        "80013942",
+        "80013943",
+        "80096744"
+      ]
     },
     "kr-nobrain": {
       "bugsId": "4419",
@@ -12806,6 +13200,22 @@
         {
           "title": "설명하려 하지 않겠어",
           "album": "사랑이 되어가길"
+        },
+        {
+          "title": "내게 사랑을 말하지 말았어야 해요",
+          "album": "사랑이 되어가길"
+        },
+        {
+          "title": "falling in love",
+          "album": "누군가를 향한 마음"
+        },
+        {
+          "title": "힘든 하루 (feat. 지혜)",
+          "album": "누군가를 향한 마음"
+        },
+        {
+          "title": "Fake Plastic Trees (베로나 브라 광장 버스킹 Ver.)",
+          "album": "JTBC 비긴어게인3 Episode 11"
         }
       ],
       "groups": [
@@ -17737,11 +18147,29 @@
       "groups": []
     },
     "kr-sontaejin": {
-      "bugsId": "20017001",
+      "bugsId": "31978",
       "name": "손태진",
-      "referenceSongs": [],
+      "referenceSongs": [
+        {
+          "title": "참 좋은 사람",
+          "album": "제 1대 불타는 트롯맨 우승자 특전곡"
+        },
+        {
+          "title": "타인",
+          "album": "불타는 트롯맨 디너쇼 미션 PART 2"
+        },
+        {
+          "title": "당신의 카톡사진",
+          "album": "당신의 카톡사진"
+        },
+        {
+          "title": "행복을 주는 사람",
+          "album": "행복을 주는 사람"
+        }
+      ],
       "groups": [
-        "80056205"
+        "20035472",
+        "13079838"
       ]
     },
     "kr-parkseojin": {
@@ -18462,10 +18890,33 @@
       ]
     },
     "kr-yangjiwontrotsinger": {
-      "bugsId": "20035654",
+      "bugsId": "80016131",
       "name": "양지원",
-      "referenceSongs": [],
-      "groups": []
+      "referenceSongs": [
+        {
+          "title": "미스 고",
+          "album": "내일은 미스터트롯 예선곡 베스트"
+        },
+        {
+          "title": "미움인지 그리움인지",
+          "album": "내일은 미스터트롯 데스매치 PART2"
+        },
+        {
+          "title": "고향집(HOMETOWN)",
+          "album": "THE TIME MACHINE"
+        },
+        {
+          "title": "아야야 (A-Ya-Ya)",
+          "album": "아야야 (A-Ya-Ya)"
+        },
+        {
+          "title": "풀리네 (On a roll)",
+          "album": "풀리네 : On a roll"
+        }
+      ],
+      "groups": [
+        "20187671"
+      ]
     },
     "kr-hwangminwoo": {
       "bugsId": "80149279",
@@ -18697,7 +19148,8 @@
           "album": "최희준 독집(崔喜準 獨集)"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "1201"
     },
     "kr-kimsangbae": {
       "bugsId": "4814",
@@ -18992,7 +19444,8 @@
           "album": "내일은 미스트롯2 레전드 미션 베스트 준결승1"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "2911714"
     },
     "kr-jeonyujin": {
       "bugsId": "20103937",
@@ -19279,7 +19732,8 @@
           "album": "미스트롯3 인생곡 미션 결승전 BEST"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "927605"
     },
     "kr-jungseojoo": {
       "bugsId": "80374954",
@@ -19352,7 +19806,8 @@
           "album": "최숙자 골든"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "8663"
     },
     "kr-hachunhwa": {
       "bugsId": "4965",
@@ -19618,7 +20073,8 @@
           "album": "내 마지막 사랑"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "4861"
     },
     "kr-cheuni": {
       "bugsId": "18505",
@@ -19645,7 +20101,8 @@
           "album": "정재은 - 항구"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "15873"
     },
     "kr-pattikim": {
       "bugsId": "5925",
@@ -19755,7 +20212,8 @@
           "album": "<트롯신이 떴다2-라스트찬스> Final Stage"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "481440"
     },
     "kr-kimhyeyeon": {
       "bugsId": "4236",
@@ -19838,7 +20296,8 @@
           "album": "추억의 인기가요 (2)"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "5002"
     },
     "kr-jangsaik": {
       "bugsId": "9515",
@@ -20084,31 +20543,60 @@
       "groups": []
     },
     "kr-kimjonghwan": {
-      "bugsId": "20040045",
+      "bugsId": "",
       "name": "김종환",
       "referenceSongs": [
         {
-          "title": "꽃다지2",
-          "album": "새 길을 간다 - 김종환 1집"
+          "title": "존재의 이유",
+          "album": "김종환 히트곡 낭송집"
         },
         {
-          "title": "새 길을 간다",
-          "album": "새 길을 간다 - 김종환 1집"
+          "title": "사랑을 위하여",
+          "album": "김종환 히트곡 낭송집"
         },
         {
-          "title": "세월",
-          "album": "새 길을 간다 - 김종환 1집"
+          "title": "백년의 약속",
+          "album": "김종환 히트곡 낭송집"
         },
         {
-          "title": "꽃님에게",
-          "album": "새 길을 간다 - 김종환 1집"
+          "title": "사랑하는 이에게",
+          "album": "김종환 히트곡 낭송집"
         },
         {
-          "title": "소풍날",
-          "album": "새 길을 간다 - 김종환 1집"
+          "title": "공존의 의미",
+          "album": "김종환 히트곡 낭송집"
+        },
+        {
+          "title": "바램",
+          "album": "김종환 히트곡 낭송집"
+        },
+        {
+          "title": "여백",
+          "album": "김종환 히트곡 낭송집"
+        },
+        {
+          "title": "삶의 블루스",
+          "album": "김종환 히트곡 낭송집"
+        },
+        {
+          "title": "염색",
+          "album": "김종환 히트곡 낭송집"
+        },
+        {
+          "title": "대천 바닷가",
+          "album": "김종환 히트곡 낭송집"
+        },
+        {
+          "title": "공존의 의미",
+          "album": "김종환 작품집 [공존의 의미]"
+        },
+        {
+          "title": "여백",
+          "album": "김종환 작품집 [여백]"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "1107"
     },
     "kr-yoojaeha": {
       "bugsId": "3487",
@@ -20250,19 +20738,60 @@
       ]
     },
     "kr-jungwonyoung": {
-      "bugsId": "20236575",
+      "bugsId": "",
       "name": "정원영",
       "referenceSongs": [
         {
-          "title": "Get All Right",
-          "album": "시간의 그림자"
+          "title": "SHE",
+          "album": "소풍"
         },
         {
-          "title": "시간의 그림자",
-          "album": "시간의 그림자"
+          "title": "먼북소리",
+          "album": "소풍"
+        },
+        {
+          "title": "LOST",
+          "album": "소풍"
+        },
+        {
+          "title": "순대국",
+          "album": "소풍"
+        },
+        {
+          "title": "Lullaby",
+          "album": "소풍"
+        },
+        {
+          "title": "HE",
+          "album": "소풍"
+        },
+        {
+          "title": "HANDS",
+          "album": "소풍"
+        },
+        {
+          "title": "Invisible",
+          "album": "소풍"
+        },
+        {
+          "title": "사랑노래 (Thanks10)",
+          "album": "소풍"
+        },
+        {
+          "title": "소풍",
+          "album": "소풍"
+        },
+        {
+          "title": "먼북소리",
+          "album": "먼북소리"
+        },
+        {
+          "title": "소풍",
+          "album": "먼북소리"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "2956"
     },
     "kr-choibaekho": {
       "bugsId": "4961",
@@ -20358,7 +20887,8 @@
           "album": "정태춘/박은옥 4집"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "4012"
     },
     "kr-yangheeeun": {
       "bugsId": "4885",
@@ -20520,7 +21050,8 @@
           "album": "여정"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "218417"
     },
     "kr-parkkangsoo": {
       "bugsId": "11573",
@@ -20601,7 +21132,8 @@
           "album": "Twin Folio"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "101515"
     },
     "kr-duldaseot": {
       "bugsId": "47310",
@@ -20628,7 +21160,8 @@
           "album": "둘 다섯 전집"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "101803"
     },
     "kr-onions": {
       "bugsId": "47312",
@@ -20655,7 +21188,8 @@
           "album": "편지 / 작은새"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "100747"
     },
     "kr-aprilandmay": {
       "bugsId": "29169",
@@ -20869,7 +21403,8 @@
         "80125015",
         "80125016",
         "80125017"
-      ]
+      ],
+      "melonId": "280666"
     },
     "kr-woongsan": {
       "bugsId": "2918",
@@ -21300,7 +21835,8 @@
         "80108889",
         "80210245",
         "80210647"
-      ]
+      ],
+      "melonId": "2298584"
     },
     "kr-chudahye": {
       "bugsId": "80310909",
@@ -21330,7 +21866,8 @@
       "groups": [
         "20042135",
         "20108505"
-      ]
+      ],
+      "melonId": "2861401"
     },
     "kr-sunhaeim": {
       "bugsId": "80199609",
@@ -21357,7 +21894,8 @@
           "album": "코이노니아 (평화와 화해를 위하여)"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "783041"
     },
     "kr-kimnani": {
       "bugsId": "80174094",
@@ -21386,7 +21924,8 @@
       ],
       "groups": [
         "80041319"
-      ]
+      ],
+      "melonId": "1705551"
     },
     "kr-songsohee": {
       "bugsId": "80126489",
@@ -21436,7 +21975,8 @@
           "album": "창작 댄스 뮤지컬 Kiss The 춘향"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "43459"
     },
     "kr-sumijo": {
       "bugsId": "3986",
@@ -21463,7 +22003,8 @@
           "album": "Opera Love"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "2089"
     },
     "kr-mineunkyung": {
       "bugsId": "80113405",
@@ -21643,7 +22184,8 @@
         "80284055",
         "80319902",
         "80409755"
-      ]
+      ],
+      "melonId": "2760294"
     },
     "kr-chudahyechagis": {
       "bugsId": "20108505",
@@ -21763,7 +22305,8 @@
       "groups": [
         "8067791",
         "80189931"
-      ]
+      ],
+      "melonId": "164914"
     },
     "kr-secondmoon": {
       "bugsId": "80002377",
@@ -22345,19 +22888,60 @@
       "groups": []
     },
     "kr-winterplay": {
-      "bugsId": "8316725",
-      "name": "Winterplay",
+      "bugsId": "",
+      "name": "윈터플레이",
       "referenceSongs": [
         {
-          "title": "Winterplay",
-          "album": "Yoona's Street Original Soundtrack"
+          "title": "눈 내리던 어느 날",
+          "album": "첫눈처럼 설레던 그 시절의 겨울"
         },
         {
-          "title": "Quando, Quando, Quando",
-          "album": "Bossa The Best"
+          "title": "깐부 (456 & 001)",
+          "album": "깐부 (456 & 001)"
+        },
+        {
+          "title": "깐부 (067 & 240)",
+          "album": "깐부 (067 & 240)"
+        },
+        {
+          "title": "TAKE FIVE",
+          "album": "Jazz Cookin'"
+        },
+        {
+          "title": "HOW DEEP IS YOUR LOVE (Feat. Christina)",
+          "album": "Jazz Cookin'"
+        },
+        {
+          "title": "JAZZ FOO FOO (Rejazzed)",
+          "album": "Jazz Cookin'"
+        },
+        {
+          "title": "연극이 끝난 후 (Feat. Grace)",
+          "album": "Jazz Cookin'"
+        },
+        {
+          "title": "IMAGINE (Feat. Aberdeen Orange)",
+          "album": "Jazz Cookin'"
+        },
+        {
+          "title": "VANILLA SKY",
+          "album": "Jazz Cookin'"
+        },
+        {
+          "title": "STAND BY YOUR MAN (Feat. Aberdeen Orange)",
+          "album": "Jazz Cookin'"
+        },
+        {
+          "title": "LOVE ME TENDER (Feat. 이현우)",
+          "album": "Jazz Cookin'"
+        },
+        {
+          "title": "WHAT A WONDERFUL WORLD",
+          "album": "Jazz Cookin'"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "236770"
     },
     "kr-oksoophotostudio": {
       "bugsId": "80012568",
@@ -22415,7 +22999,8 @@
           "album": "잃어버린 정/ 이별의 부산항/ 순정"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "29"
     },
     "kr-hellogayoung": {
       "bugsId": "80176790",
@@ -22675,7 +23260,8 @@
           "album": "Choi Sung Soo 9.5 Special"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "35"
     },
     "kr-leeyong": {
       "bugsId": "4919",
@@ -22844,6 +23430,22 @@
         {
           "title": "못해",
           "album": "시크릿 가든 (SBS 주말드라마) - Special"
+        },
+        {
+          "title": "비와 당신",
+          "album": "슈퍼대디열 (tvN 금토드라마) OST - Part.5"
+        },
+        {
+          "title": "Not-Boyfriend",
+          "album": "Not-Boyfriend"
+        },
+        {
+          "title": "3년 쯤에",
+          "album": "그 남자 그 여자"
+        },
+        {
+          "title": "어디에 (Piano ver.)",
+          "album": "나쁜남자 (SBS 수목드라마)"
         }
       ],
       "groups": [
@@ -22875,7 +23477,8 @@
           "album": "Mind Control"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "5154"
     },
     "kr-kimtaeyoungfemalesinger": {
       "bugsId": "6239",
@@ -22902,34 +23505,64 @@
           "album": "Until I Die...."
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "5964"
     },
     "kr-kimbokyung": {
-      "bugsId": "20235161",
-      "name": "김보경",
+      "bugsId": "",
+      "name": "김보경 (NEON)",
       "referenceSongs": [
         {
-          "title": "(민)달팽이",
-          "album": "(민)달팽이"
+          "title": "별의 요람(Twilight)",
+          "album": "별의 요람(Twilight)"
         },
         {
-          "title": "(민)달팽이 (Instrumental)",
-          "album": "(민)달팽이"
+          "title": "기분 좋은 꿈을 꾸러 가요",
+          "album": "기분 좋은 꿈을 꾸러 가요"
         },
         {
-          "title": "혼자라 느낄때면 (MR)",
-          "album": "내이름은아이 OST"
+          "title": "기분 좋은 꿈을 꾸러 가요 (Inst.)",
+          "album": "기분 좋은 꿈을 꾸러 가요"
         },
         {
-          "title": "내이름은아이 (MR)",
-          "album": "내이름은아이 OST"
+          "title": "The And (Feat. 키썸)",
+          "album": "The And"
         },
         {
-          "title": "혼자라 느낄때면",
-          "album": "내이름은아이 OST"
+          "title": "The And (Inst.)",
+          "album": "The And"
+        },
+        {
+          "title": "Say My Name",
+          "album": "Say My Name"
+        },
+        {
+          "title": "Storm",
+          "album": "Storm"
+        },
+        {
+          "title": "Storm (Inst.)",
+          "album": "Storm"
+        },
+        {
+          "title": "TOP",
+          "album": "TOP"
+        },
+        {
+          "title": "저기 빛나는 별처럼",
+          "album": "효심이네 각자도생 OST"
+        },
+        {
+          "title": "너의 곁에 있을게 (사주왕 X 김보경 (NEON))",
+          "album": "너의 곁에 있을게 (사주왕 X 김보경 (NEON))"
+        },
+        {
+          "title": "너의 곁에 있을게 (사주왕 X 김보경 (NEON)) (Inst.)",
+          "album": "너의 곁에 있을게 (사주왕 X 김보경 (NEON))"
         }
       ],
-      "groups": []
+      "groups": [],
+      "melonId": "60829"
     },
     "kr-theray": {
       "bugsId": "80018682",
@@ -24836,182 +25469,2270 @@
     },
     "kr-bizniz": {
       "bugsId": "80051451",
-      "name": "비즈니즈(Bizniz)"
+      "name": "비즈니즈(Bizniz)",
+      "referenceSongs": [
+        {
+          "title": "적셔 (feat. 쇼리 Of 마이티마우스)",
+          "album": "#evolution"
+        },
+        {
+          "title": "Suga Luv (feat. 아이유)",
+          "album": "Suga Luv"
+        },
+        {
+          "title": "Suga Luv (Valentine Mix) (feat. 아이유)",
+          "album": "The Brand New 1st Single"
+        },
+        {
+          "title": "너 없는 크리스마스 (feat. Bumkey)",
+          "album": "너 없는 크리스마스"
+        },
+        {
+          "title": "몰랐어 (feat. 장혜진)",
+          "album": "Angstblute (앙스트블뤼테)"
+        },
+        {
+          "title": "싱글맨 (feat. Bumkey)",
+          "album": "Strictly Bizniz"
+        },
+        {
+          "title": "Go Get'em (Feat. Rudals)",
+          "album": "Go Get'em"
+        },
+        {
+          "title": "죽은 위인들의 사회 (feat. 베이식, Microdot)",
+          "album": "죽은 위인들의 사회"
+        },
+        {
+          "title": "DONOTHING (Feat. 유자)",
+          "album": "DONOTHING"
+        },
+        {
+          "title": "Hero Music (feat. L.E.O, Basick, 블록버스터, Pento, J'kyun, SQ, Huckleberry P, B-Free)",
+          "album": "Ego"
+        },
+        {
+          "title": "Scientist (feat. 범키)",
+          "album": "#evolution"
+        },
+        {
+          "title": "Grand Finale (feat. Loco, Swings & San E)",
+          "album": "Grand Finale"
+        }
+      ]
     },
     "kr-bryn": {
       "bugsId": "20062770",
-      "name": "브린 (Bryn)"
+      "name": "브린 (Bryn)",
+      "referenceSongs": [
+        {
+          "title": "stop talking! (feat. Jvcki Wai)",
+          "album": "Q"
+        },
+        {
+          "title": "Runaway",
+          "album": "Runaway"
+        },
+        {
+          "title": "CUPID (Feat. 박지민) (Prod. sAewoo)",
+          "album": "쇼미더머니 8 Episode 4"
+        },
+        {
+          "title": "Lilly",
+          "album": "Lilly"
+        }
+      ]
     },
     "kr-june": {
       "bugsId": "80275163",
-      "name": "준(JUNE)"
+      "name": "준(JUNE)",
+      "referenceSongs": [
+        {
+          "title": "날씨의 하루",
+          "album": "Ending"
+        },
+        {
+          "title": "Autumn Leaves (Feat. CHEEZE)",
+          "album": "HAVE A NICE TRIP!"
+        },
+        {
+          "title": "TO. YOU",
+          "album": "TO. YOU"
+        },
+        {
+          "title": "10cm",
+          "album": "10cm"
+        },
+        {
+          "title": "Gas Station",
+          "album": "HAVE A NICE TRIP!"
+        }
+      ]
     },
     "kr-kimhyunchul": {
       "bugsId": "98",
-      "name": "김현철"
+      "name": "김현철",
+      "referenceSongs": [
+        {
+          "title": "왜 그래",
+          "album": "Who Stepped On It"
+        },
+        {
+          "title": "그대안의 블루 (두사람의 테마)",
+          "album": "그대안의 블루"
+        },
+        {
+          "title": "Drive(Feat.죠지)",
+          "album": "김현철 10집 \"돛\""
+        },
+        {
+          "title": "봄이 와 (feat. 롤러코스터)",
+          "album": "... 그리고 김현철"
+        },
+        {
+          "title": "일생을",
+          "album": "동야동조(冬夜冬朝)"
+        }
+      ]
     },
     "kr-jae": {
       "bugsId": "1938",
-      "name": "제이(J.ae)"
+      "name": "제이(J.ae)",
+      "referenceSongs": [
+        {
+          "title": "어제처럼",
+          "album": "In Love"
+        },
+        {
+          "title": "831 8",
+          "album": "In Love"
+        },
+        {
+          "title": "Time Out",
+          "album": "In Love"
+        },
+        {
+          "title": "사르르 (I Wanna Be Your Love) (feat. 정엽)",
+          "album": "Sentimental"
+        },
+        {
+          "title": "No.5 (Rap feat. 은지원)",
+          "album": "Sentimental"
+        }
+      ]
     },
     "kr-moonsujin": {
       "bugsId": "20068400",
-      "name": "문수진 (Moon Sujin)"
+      "name": "문수진 (Moon Sujin)",
+      "referenceSongs": [
+        {
+          "title": "Only U (Feat. 페노메코)",
+          "album": "Only U"
+        },
+        {
+          "title": "밤거리 (Feat. Zion.T)",
+          "album": "밤거리 (Feat. Zion.T)"
+        },
+        {
+          "title": "Day n Nite (Feat. 식케이)",
+          "album": "Day n Nite"
+        },
+        {
+          "title": "you",
+          "album": "you"
+        }
+      ]
     },
     "kr-next": {
       "bugsId": "35967",
-      "name": "넥스트(N.EX.T)"
+      "name": "넥스트(N.EX.T)",
+      "referenceSongs": [
+        {
+          "title": "Here, I Stand For You (Original ver.)",
+          "album": "Here, I Stand For You"
+        },
+        {
+          "title": "날아라 병아리",
+          "album": "The Return Of N.EX.T Part 1 The Being"
+        },
+        {
+          "title": "우리 앞의 생이 끝나갈 때",
+          "album": "Regame?"
+        },
+        {
+          "title": "인형의 기사 Part Ⅱ",
+          "album": "Home"
+        },
+        {
+          "title": "힘겨워하는 연인들을 위하여",
+          "album": "The Return Of N.EX.T Part 2: The World"
+        }
+      ]
     },
     "kr-diablokoreanband": {
       "bugsId": "16444",
-      "name": "DIABLO (디아블로)"
+      "name": "DIABLO (디아블로)",
+      "referenceSongs": [
+        {
+          "title": "Sorrow (Mr. Breaker Part.3)",
+          "album": "The Keeper Of Souls"
+        },
+        {
+          "title": "목소리",
+          "album": "보이스3 (OCN 토일드라마) OST - Part.1"
+        },
+        {
+          "title": "Dust (feat. 윤도현) (Korean ver.)",
+          "album": "Undefined"
+        },
+        {
+          "title": "HarLem DesIre (feat. Polydive)",
+          "album": "Dumb"
+        },
+        {
+          "title": "Your Name",
+          "album": "Dumb"
+        }
+      ]
     },
     "kr-rumblefish": {
       "bugsId": "80001277",
-      "name": "럼블 피쉬(Rumble Fish)"
+      "name": "럼블 피쉬(Rumble Fish)",
+      "referenceSongs": [
+        {
+          "title": "비와 당신 (영화 '라디오 스타 '삽입곡)",
+          "album": "Memory For You"
+        },
+        {
+          "title": "한사람을 위한 마음",
+          "album": "한사람을 위한 마음"
+        },
+        {
+          "title": "으라차차",
+          "album": "Have A Nice Dream"
+        },
+        {
+          "title": "그대 내게 다시",
+          "album": "그대 내게 다시"
+        },
+        {
+          "title": "예감 좋은 날",
+          "album": "Swing Attack"
+        }
+      ]
     },
     "kr-leejihyoung": {
       "bugsId": "80016755",
-      "name": "이지형"
+      "name": "이지형",
+      "referenceSongs": [
+        {
+          "title": "봄의 기적",
+          "album": "이지형 소품집 Vol.2 - 봄의 기적"
+        },
+        {
+          "title": "Duet",
+          "album": "Duet"
+        },
+        {
+          "title": "널 사랑하겠어",
+          "album": "널 사랑하겠어"
+        },
+        {
+          "title": "산책",
+          "album": "Spectrum"
+        },
+        {
+          "title": "아름다웠네 (With 계피)",
+          "album": "청춘마끼아또"
+        }
+      ]
     },
     "kr-hareem": {
       "bugsId": "7151",
-      "name": "하림"
+      "name": "하림",
+      "referenceSongs": [
+        {
+          "title": "사랑이 다른 사랑으로 잊혀지네",
+          "album": "Whistle In A Maze"
+        },
+        {
+          "title": "출국(出國)",
+          "album": "다중인격자(多重人格者)"
+        },
+        {
+          "title": "난치병(難治病)",
+          "album": "다중인격자(多重人格者)"
+        },
+        {
+          "title": "출국(出國) (인천국제공항 Ver.)",
+          "album": "JTBC 비긴어게인 코리아 Episode.1"
+        }
+      ]
     },
     "kr-cloud": {
       "bugsId": "8068159",
-      "name": "구름"
+      "name": "구름",
+      "referenceSongs": [
+        {
+          "title": "지금껏 그랬듯 앞으로도 계속",
+          "album": "Cloud. 2 '지금껏 그랬듯 앞으로도 계속'"
+        },
+        {
+          "title": "더 나은 사람",
+          "album": "Cloud. 1 '더 나은 사람'"
+        },
+        {
+          "title": "마피아",
+          "album": "Cloud. 4 'Mafia'"
+        },
+        {
+          "title": "사랑한다는 말은 부끄러운 게 아냐",
+          "album": "사랑한다는 말은 부끄러운 게 아냐"
+        },
+        {
+          "title": "하늘, 손, 풍선",
+          "album": "하늘, 손, 풍선"
+        }
+      ]
     },
     "kr-bumjin": {
       "bugsId": "20058357",
-      "name": "범진"
+      "name": "범진",
+      "referenceSongs": [
+        {
+          "title": "인사",
+          "album": "인사"
+        },
+        {
+          "title": "그대 내 맘에",
+          "album": "웰컴투 삼달리 OST Part.5"
+        },
+        {
+          "title": "처음 그 자리에",
+          "album": "처음 그 자리에"
+        },
+        {
+          "title": "우린 한 편의 소설로 남겠죠 (이별소설)",
+          "album": "우린 한 편의 소설로 남겠죠"
+        },
+        {
+          "title": "나무가 되는 중",
+          "album": "나무가 되는 중"
+        }
+      ]
     },
     "kr-jungwoofemalesinger": {
       "bugsId": "20085813",
-      "name": "정우"
+      "name": "정우",
+      "referenceSongs": [
+        {
+          "title": "나에게서 당신에게",
+          "album": "여섯 번째 토요일"
+        },
+        {
+          "title": "클라우드 쿠쿠 랜드",
+          "album": "클라우드 쿠쿠 랜드"
+        },
+        {
+          "title": "양",
+          "album": "양｜종말"
+        },
+        {
+          "title": "철의 삶",
+          "album": "철의 삶"
+        },
+        {
+          "title": "Ding!",
+          "album": "Ding!"
+        }
+      ]
     },
     "kr-9andthenumbers": {
       "bugsId": "80062575",
-      "name": "9와 숫자들"
+      "name": "9와 숫자들",
+      "referenceSongs": [
+        {
+          "title": "평정심",
+          "album": "수렴과 발산 (Solitude and Solidarity)"
+        },
+        {
+          "title": "높은 마음",
+          "album": "높은 마음"
+        },
+        {
+          "title": "눈물바람",
+          "album": "유예"
+        },
+        {
+          "title": "빙글",
+          "album": "빙글빙글"
+        },
+        {
+          "title": "그대만 보였네",
+          "album": "유예"
+        }
+      ]
     },
     "kr-nunco": {
       "bugsId": "80013831",
-      "name": "눈뜨고 코베인"
+      "name": "눈뜨고 코베인",
+      "referenceSongs": [
+        {
+          "title": "당신 발 밑",
+          "album": "Murder's High"
+        },
+        {
+          "title": "지구를 지키지 말거라",
+          "album": "Tales"
+        },
+        {
+          "title": "사랑의 응급환자 삐뽀삐뽀",
+          "album": "사랑의 응급환자 삐뽀삐뽀"
+        },
+        {
+          "title": "외로운 것이 외로운 거지",
+          "album": "파는 물건 [재발매]"
+        },
+        {
+          "title": "새벽의 분리수거",
+          "album": "새벽의 분리수거"
+        }
+      ]
     },
     "kr-god": {
       "bugsId": "1403",
-      "name": "지오디(god)"
+      "name": "지오디(god)",
+      "referenceSongs": [
+        {
+          "title": "촛불 하나",
+          "album": "Chapter 3"
+        },
+        {
+          "title": "길",
+          "album": "Chapter 4"
+        },
+        {
+          "title": "사랑해 그리고 기억해",
+          "album": "Chapter 2"
+        },
+        {
+          "title": "거짓말",
+          "album": "Chapter 3"
+        },
+        {
+          "title": "길 (Song by 아이유, 헨리, 조현아, 양다일)",
+          "album": "THEN & NOW"
+        }
+      ]
     },
     "kr-aoa": {
       "bugsId": "80132659",
-      "name": "에이오에이(AOA)"
+      "name": "에이오에이(AOA)",
+      "referenceSongs": [
+        {
+          "title": "심쿵해 (Heart Attack)",
+          "album": "Heart Attack"
+        },
+        {
+          "title": "짧은 치마 (Miniskirt)",
+          "album": "짧은 치마"
+        },
+        {
+          "title": "빙글뱅글 (Bingle Bangle)",
+          "album": "BINGLE BANGLE"
+        },
+        {
+          "title": "사뿐사뿐",
+          "album": "사뿐사뿐"
+        },
+        {
+          "title": "단발머리 (Short Hair)",
+          "album": "단발머리"
+        }
+      ]
     },
     "kr-kimheejae": {
       "bugsId": "20100267",
-      "name": "김희재"
+      "name": "김희재",
+      "referenceSongs": [
+        {
+          "title": "따라따라와 (Prod. by 영탁)",
+          "album": "따라따라와"
+        },
+        {
+          "title": "나는 남자다",
+          "album": "내일은 미스터트롯 결승전 베스트"
+        },
+        {
+          "title": "짠짠짠",
+          "album": "희재 (熙栽)"
+        },
+        {
+          "title": "별, 그대",
+          "album": "별, 그대"
+        }
+      ]
     },
     "kr-choisuho": {
       "bugsId": "13060166",
-      "name": "최수호"
+      "name": "최수호",
+      "referenceSongs": [
+        {
+          "title": "조선의 남자",
+          "album": "미스터트롯2 준결승전 신곡미션"
+        },
+        {
+          "title": "나불도 연가",
+          "album": "현역가왕2 준결승 1대1 장르대첩"
+        },
+        {
+          "title": "월하가약",
+          "album": "미스터트롯2 1:1 데스매치 베스트 PART2"
+        },
+        {
+          "title": "갈무리",
+          "album": "미스터트롯2 예선 베스트 PART1"
+        },
+        {
+          "title": "너 T야",
+          "album": "현역가왕2 결승전 신곡미션"
+        }
+      ]
     },
     "kr-hongja": {
       "bugsId": "80229209",
-      "name": "홍자"
+      "name": "홍자",
+      "referenceSongs": [
+        {
+          "title": "사랑 참",
+          "album": "미스트롯 LEGEND MISSION"
+        },
+        {
+          "title": "상사화",
+          "album": "미스트롯 DEATH MATCH"
+        },
+        {
+          "title": "너 떠난 후에",
+          "album": "현역가왕3 예선전 마녀사냥 PART 2"
+        },
+        {
+          "title": "비나리",
+          "album": "미스트롯 DEATH MATCH"
+        },
+        {
+          "title": "여기요",
+          "album": "미스트롯 FINAL STAGE"
+        }
+      ]
     },
     "kr-kimtaeyeontrotsinger": {
       "bugsId": "20104416",
-      "name": "김태연"
+      "name": "김태연",
+      "referenceSongs": [
+        {
+          "title": "바람길",
+          "album": "내일은 미스트롯2 레전드 미션 베스트 준결승1"
+        },
+        {
+          "title": "아버지의 강",
+          "album": "내일은 미스트롯2 결승전 인생곡 미션"
+        },
+        {
+          "title": "간데요 글쎄",
+          "album": "내일은 미스트롯2 데스매치 PART1"
+        },
+        {
+          "title": "단현",
+          "album": "현역가왕3 예선전 마녀사냥 PART 2"
+        },
+        {
+          "title": "오세요",
+          "album": "내일은 미스트롯2 결승전 작곡가미션"
+        }
+      ]
     },
     "kr-jungdakyung": {
       "bugsId": "20045480",
-      "name": "정다경"
+      "name": "정다경",
+      "referenceSongs": [
+        {
+          "title": "사랑의 신호등",
+          "album": "미스트롯 FINAL STAGE"
+        },
+        {
+          "title": "열두 줄",
+          "album": "미스트롯 DEATH MATCH"
+        },
+        {
+          "title": "좋습니다",
+          "album": "좋습니다"
+        },
+        {
+          "title": "약손",
+          "album": "미스트롯 FINAL STAGE"
+        },
+        {
+          "title": "가슴 아프게",
+          "album": "미스트롯 LEGEND MISSION"
+        }
+      ]
     },
     "kr-ohyujin": {
       "bugsId": "12115495",
-      "name": "오유진"
+      "name": "오유진",
+      "referenceSongs": [
+        {
+          "title": "예쁘잖아",
+          "album": "미스트롯3 신곡미션 준결승전"
+        },
+        {
+          "title": "모란",
+          "album": "미스트롯3 1:1 데스매치 베스트 PART3"
+        },
+        {
+          "title": "돌팔매",
+          "album": "미스트롯3 1:1 서바이벌 베스트 PART1"
+        }
+      ]
     },
     "kr-kimeuiyoung": {
       "bugsId": "12118897",
-      "name": "김의영"
+      "name": "김의영",
+      "referenceSongs": [
+        {
+          "title": "용두산 엘레지",
+          "album": "내일은 미스트롯2 예선전 베스트 PART2"
+        },
+        {
+          "title": "도찐개찐",
+          "album": "김의영 1st Album (내게 오세요)"
+        },
+        {
+          "title": "물레방아 도는데",
+          "album": "내일은 미스트롯2 결승전 인생곡 미션"
+        },
+        {
+          "title": "청춘열차",
+          "album": "내 딸 하자 PART3"
+        }
+      ]
     },
     "kr-jungmiae": {
       "bugsId": "80330242",
-      "name": "정미애"
+      "name": "정미애",
+      "referenceSongs": [
+        {
+          "title": "수은등",
+          "album": "꿀맛"
+        },
+        {
+          "title": "장녹수",
+          "album": "꿀맛"
+        },
+        {
+          "title": "라밤바",
+          "album": "꿀맛"
+        },
+        {
+          "title": "꿀맛",
+          "album": "꿀맛"
+        },
+        {
+          "title": "세상 참 잘 돌아가네",
+          "album": "세상 참 잘 돌아가네"
+        }
+      ]
     },
     "kr-sookhaeng": {
       "bugsId": "80112328",
-      "name": "숙행"
+      "name": "숙행",
+      "referenceSongs": [
+        {
+          "title": "나야 나",
+          "album": "미스트롯 LEGEND MISSION"
+        },
+        {
+          "title": "미워도 다시 한 번",
+          "album": "미스트롯 LEGEND MISSION Ⅱ"
+        },
+        {
+          "title": "가시리",
+          "album": "가시리"
+        },
+        {
+          "title": "참참참",
+          "album": "참참참"
+        },
+        {
+          "title": "0순위",
+          "album": "0순위"
+        }
+      ]
     },
     "kr-kangsaneh": {
       "bugsId": "2149",
-      "name": "강산에(San-Eh Kang)"
+      "name": "강산에(San-Eh Kang)",
+      "referenceSongs": [
+        {
+          "title": "거꾸로 강을 거슬러 오르는 저 힘찬 연어들처럼",
+          "album": "연어"
+        },
+        {
+          "title": "넌 할 수 있어",
+          "album": "나는 사춘기"
+        },
+        {
+          "title": "...라구요",
+          "album": "...라구요"
+        },
+        {
+          "title": "얼마나 좋을까",
+          "album": "일리 있는 사랑 (tvN 월화드라마) OST - Part.1"
+        },
+        {
+          "title": "널 보고 있으면",
+          "album": "나는 사춘기"
+        }
+      ]
     },
     "kr-handongjoon": {
       "bugsId": "6284",
-      "name": "한동준"
+      "name": "한동준",
+      "referenceSongs": [
+        {
+          "title": "너를 사랑해",
+          "album": "너를 사랑해"
+        },
+        {
+          "title": "사랑의 서약",
+          "album": "사랑의 서약"
+        },
+        {
+          "title": "그대가 이 세상에 있는 것만으로",
+          "album": "그대가 이 세상에 있는 것만으로"
+        },
+        {
+          "title": "사랑의 마음 가득히",
+          "album": "사랑의 서약"
+        },
+        {
+          "title": "너를 사랑해",
+          "album": "먼데이뮤직 시즌 1"
+        }
+      ]
     },
     "kr-leekyuseok": {
       "bugsId": "5829",
-      "name": "이규석"
+      "name": "이규석",
+      "referenceSongs": [
+        {
+          "title": "기차와 소나무",
+          "album": "기차와 소나무"
+        },
+        {
+          "title": "기차와 소나무 (2004 ver.)",
+          "album": "New Single 2004"
+        },
+        {
+          "title": "울음 (duet with 조아라) (이루 '까만안경' 원곡)",
+          "album": "New Single 2004"
+        },
+        {
+          "title": "까만 안경 (울음 2004)",
+          "album": "생각이 난다"
+        },
+        {
+          "title": "사랑을 찾아서",
+          "album": "사랑을 찾아서"
+        }
+      ]
     },
     "kr-kimhyunsik": {
       "bugsId": "6015",
-      "name": "김현식"
+      "name": "김현식",
+      "referenceSongs": [
+        {
+          "title": "내사랑 내곁에 (응답하라 1988 삽입곡)",
+          "album": "Kim Hyun Sik Vol.6"
+        },
+        {
+          "title": "비처럼 음악처럼",
+          "album": "김현식 III"
+        },
+        {
+          "title": "추억 만들기",
+          "album": "Kim Hyun Sik Vol.6"
+        },
+        {
+          "title": "사랑 사랑 사랑 (응답하라 1988 삽입곡)",
+          "album": "Kim Hyun Sik Vol.6"
+        },
+        {
+          "title": "사랑했어요",
+          "album": "Kim Hyun Sik Vol.6"
+        }
+      ]
     },
     "kr-kangsusie": {
       "bugsId": "4804",
-      "name": "강수지"
+      "name": "강수지",
+      "referenceSongs": [
+        {
+          "title": "보라빛 향기",
+          "album": "Kang Soo Jee"
+        },
+        {
+          "title": "흩어진 나날들",
+          "album": "Kang Soo Jee II"
+        },
+        {
+          "title": "혼자만의 겨울",
+          "album": "Ks's First Single For You"
+        },
+        {
+          "title": "시간속의 향기",
+          "album": "Kang Soo Jee II"
+        },
+        {
+          "title": "필요한 건 시간일 뿐 (Plus)",
+          "album": "Loveletter Mailed 10 Years Ago"
+        }
+      ]
     },
     "kr-leesangeun": {
       "bugsId": "2472",
-      "name": "이상은(Lee Tzsche)"
+      "name": "이상은(Lee Tzsche)",
+      "referenceSongs": [
+        {
+          "title": "언젠가는",
+          "album": "Darkness"
+        },
+        {
+          "title": "비밀의 화원",
+          "album": "신비체험"
+        },
+        {
+          "title": "담다디 (대상)",
+          "album": "제 9회 MBC 강변가요제"
+        },
+        {
+          "title": "사랑할꺼야",
+          "album": "이상은 2집"
+        },
+        {
+          "title": "삶은 여행",
+          "album": "The 3rd Place"
+        }
+      ]
     },
     "kr-eunhee": {
       "bugsId": "15221",
-      "name": "은희"
+      "name": "은희",
+      "referenceSongs": [
+        {
+          "title": "꽃반지 끼고",
+          "album": "은희 골든"
+        },
+        {
+          "title": "등대지기",
+          "album": "은희 골든"
+        },
+        {
+          "title": "연가",
+          "album": "은희 골든"
+        },
+        {
+          "title": "쌍뚜아마미",
+          "album": "은희 스테레오 제 4집"
+        },
+        {
+          "title": "꿈 길",
+          "album": "은희 스테레오 제 1집"
+        }
+      ]
     },
     "kr-yangsookyung": {
       "bugsId": "4884",
-      "name": "양수경"
+      "name": "양수경",
+      "referenceSongs": [
+        {
+          "title": "사랑은 창밖에 빗물같아요",
+          "album": "사랑은 창밖에 빗물같아요"
+        },
+        {
+          "title": "사랑은 차가운 유혹",
+          "album": "사랑은 차가운 유혹"
+        },
+        {
+          "title": "당신은 어디 있나요",
+          "album": "이별의 끝은 어디인가요"
+        },
+        {
+          "title": "이별의 끝은 어디인가요",
+          "album": "이별의 끝은 어디인가요"
+        },
+        {
+          "title": "바라볼 수 없는 그대",
+          "album": "사랑은 창밖에 빗물같아요"
+        }
+      ]
     },
     "kr-kimdonghee": {
       "bugsId": "80028320",
-      "name": "김동희"
+      "name": "김동희",
+      "referenceSongs": [
+        {
+          "title": "썸데이 (싱글파파는 열애중 OST 삽입곡)",
+          "album": "Halfway"
+        },
+        {
+          "title": "그대를 그대를",
+          "album": "Halfway"
+        },
+        {
+          "title": "사랑을 몰랐죠 (뉴하트 OST 삽입곡)",
+          "album": "Halfway"
+        },
+        {
+          "title": "이번만은 (feat. 노블레스)",
+          "album": "Love In Winter"
+        },
+        {
+          "title": "헤어질 땐 말없이",
+          "album": "Halfway"
+        }
+      ]
     },
     "kr-toy": {
       "bugsId": "22751",
-      "name": "토이(Toy)"
+      "name": "토이(Toy)",
+      "referenceSongs": [
+        {
+          "title": "여전히 아름다운지 (feat. 김연우)",
+          "album": "A Night In Seoul"
+        },
+        {
+          "title": "세 사람 (With 성시경)",
+          "album": "Da Capo"
+        },
+        {
+          "title": "좋은 사람 (feat. 김형중)",
+          "album": "Fermata"
+        },
+        {
+          "title": "그녀가 말했다 (With 권진아)",
+          "album": "Da Capo"
+        },
+        {
+          "title": "U & I (With Crush & 빈지노)",
+          "album": "Da Capo"
+        }
+      ]
     },
     "kr-kimjisoo": {
       "bugsId": "80079591",
-      "name": "김지수"
+      "name": "김지수",
+      "referenceSongs": [
+        {
+          "title": "Romantic Wish",
+          "album": "쇼파르뮤직 컴필레이션 Vol.2 [Romantic Wish]"
+        },
+        {
+          "title": "같이 살자",
+          "album": "야차 Meets 슈퍼스타K2 (OCN 방영 드라마)"
+        },
+        {
+          "title": "Dream All Day",
+          "album": "A dream"
+        },
+        {
+          "title": "Chocolate Drive",
+          "album": "Kim Ji Soo 1st Mini Album"
+        }
+      ]
     },
     "kr-hummingurbanstereo": {
       "bugsId": "80000467",
-      "name": "HUS(허밍어반스테레오)"
+      "name": "HUS(허밍어반스테레오)",
+      "referenceSongs": [
+        {
+          "title": "Hawaian Couple (영화 '내 사랑' 주제곡, 에뛰드 복숭아송 원곡)",
+          "album": "Purple Drop"
+        },
+        {
+          "title": "Insomnia (feat. Humming Girl)",
+          "album": "Baby Love"
+        },
+        {
+          "title": "넌 그날 (feat. 유인나)",
+          "album": "그날"
+        },
+        {
+          "title": "샐러드 기념일",
+          "album": "Very Very Nice! And Short Cake"
+        },
+        {
+          "title": "커피 한잔 어때? (feat. 요조)",
+          "album": "커피프린스 1호점 (MBC 월화드라마) OST"
+        }
+      ]
     },
     "kr-lee-suhyun": {
       "bugsId": "80203306",
-      "name": "이수현"
+      "name": "이수현",
+      "referenceSongs": [
+        {
+          "title": "푸른 산호초",
+          "album": "J-POP REMAKE Vol.3"
+        },
+        {
+          "title": "아직 너의 시간에 살아",
+          "album": "사이코지만 괜찮아 OST Part.4"
+        },
+        {
+          "title": "ALIEN",
+          "album": "ALIEN"
+        },
+        {
+          "title": "소리",
+          "album": "미스터 션샤인 (tvN 주말드라마) OST - Part.4"
+        },
+        {
+          "title": "연의 편지",
+          "album": "연의 편지 OST"
+        }
+      ]
     },
     "kr-yerin": {
       "bugsId": "80229498",
-      "name": "예린 (YERIN)"
+      "name": "예린 (YERIN)",
+      "referenceSongs": [
+        {
+          "title": "너무 예뻐",
+          "album": "너무 예뻐 (예린 (YERIN) X 룰루랄라 프렌즈 2)"
+        },
+        {
+          "title": "조각별 (Shooting Star) (Prod. PATEKO (파테코))",
+          "album": "REACH YOU"
+        },
+        {
+          "title": "ARIA",
+          "album": "ARIA"
+        }
+      ]
     },
     "kr-noelrapper": {
       "bugsId": "20037655",
       "name": "NO:EL",
-      "referenceSongs": []
+      "referenceSongs": [
+        {
+          "title": "굽 (feat. Loco)",
+          "album": "ELLEONOEL"
+        },
+        {
+          "title": "비틀비틀",
+          "album": "TRIPONOEL"
+        },
+        {
+          "title": "영원히",
+          "album": "TRIPONOEL"
+        },
+        {
+          "title": "Damn! (Feat. 블랙넛)",
+          "album": "DOUBLEONOEL"
+        },
+        {
+          "title": "Celebration (Prod. By Minit) (Feat. Jhnovr)",
+          "album": "18'F/W"
+        }
+      ]
     },
     "kr-x1": {
       "bugsId": "20089818",
       "name": "X1 (엑스원)",
-      "referenceSongs": []
+      "referenceSongs": [
+        {
+          "title": "FLASH",
+          "album": "비상 : QUANTUM LEAP"
+        },
+        {
+          "title": "웃을 때 제일 예뻐",
+          "album": "비상 : QUANTUM LEAP"
+        },
+        {
+          "title": "U GOT IT (X1 Ver.)",
+          "album": "비상 : QUANTUM LEAP"
+        },
+        {
+          "title": "Stand Up (Intro.)",
+          "album": "비상 : QUANTUM LEAP"
+        },
+        {
+          "title": "움직여 (MOVE) (Prod. by ZICO) (X1 Ver.)",
+          "album": "비상 : QUANTUM LEAP"
+        }
+      ]
     },
     "kr-kimsawolandkimhaewon": {
       "bugsId": "80206562",
       "name": "김사월X김해원",
-      "referenceSongs": []
+      "referenceSongs": [
+        {
+          "title": "비밀",
+          "album": "{비밀}"
+        },
+        {
+          "title": "지옥으로 가버려",
+          "album": "{비밀}"
+        },
+        {
+          "title": "안아줘",
+          "album": "{비밀}"
+        },
+        {
+          "title": "허니 베이비 (Honey Baby)",
+          "album": "허니 베이비 (Honey Baby)"
+        },
+        {
+          "title": "회전목마",
+          "album": "{비밀}"
+        }
+      ],
+      "melonId": "786850"
+    },
+    "kr-vince": {
+      "bugsId": "20092373",
+      "name": "Vince",
+      "referenceSongs": [
+        {
+          "title": "차차차 (feat. G-DRAGON)",
+          "album": "차차차 (feat. G-DRAGON)"
+        },
+        {
+          "title": "비상사태 (Feat. Zion.T)",
+          "album": "The Drive"
+        },
+        {
+          "title": "맨날 (Feat. Okasian)",
+          "album": "맨날"
+        },
+        {
+          "title": "나와",
+          "album": "The Drive"
+        }
+      ],
+      "groups": []
+    },
+    "kr-schizo": {
+      "bugsId": "40529",
+      "name": "스키조",
+      "referenceSongs": [
+        {
+          "title": "Fight",
+          "album": "Fight Against The World"
+        },
+        {
+          "title": "Like a Motor (Feat. 라하늘)",
+          "album": "Like a Motor"
+        },
+        {
+          "title": "버스 안에서 (feat. 김현숙)",
+          "album": "Mutation"
+        },
+        {
+          "title": "Bomb! Bomb! Bomb!",
+          "album": "Bomb! Bomb! Bomb!"
+        },
+        {
+          "title": "Body Movin'",
+          "album": "Dumbo Shit"
+        }
+      ],
+      "groups": [
+        "8009454",
+        "20258009",
+        "20258833",
+        "80401397"
+      ]
+    },
+    "kr-ohsiyoung": {
+      "bugsId": "80297245",
+      "name": "오시영",
+      "referenceSongs": [
+        {
+          "title": "너무 예뻐",
+          "album": "너무 예뻐"
+        },
+        {
+          "title": "사르르",
+          "album": "사르르"
+        },
+        {
+          "title": "봄이 온듯해",
+          "album": "너무 예뻐"
+        },
+        {
+          "title": "좋아해도 돼",
+          "album": "너무 예뻐"
+        },
+        {
+          "title": "여름이 좋아",
+          "album": "너무 예뻐"
+        }
+      ],
+      "groups": []
+    },
+    "kr-ohjieun": {
+      "bugsId": "80050252",
+      "name": "오지은",
+      "referenceSongs": [
+        {
+          "title": "또 왜 그래",
+          "album": "또 왜 그래"
+        },
+        {
+          "title": "고작",
+          "album": "[3]"
+        },
+        {
+          "title": "오늘은 하늘에 별이 참 많다",
+          "album": "지은 (해피로봇 에디션)"
+        },
+        {
+          "title": "날 사랑하는게 아니고",
+          "album": "지은"
+        },
+        {
+          "title": "익숙한 새벽 3시",
+          "album": "지은"
+        }
+      ],
+      "groups": [
+        "20015667"
+      ]
+    },
+    "kr-iloylo": {
+      "bugsId": "20035852",
+      "name": "일로와이로",
+      "referenceSongs": [
+        {
+          "title": "뚜뚜뚜 (feat. 전승호 Of The Hans)",
+          "album": "뚜뚜뚜"
+        },
+        {
+          "title": "오후의 프라푸치노",
+          "album": "만우절"
+        },
+        {
+          "title": "하얀 거짓말",
+          "album": "만우절"
+        },
+        {
+          "title": "TV Show",
+          "album": "TV에 내가 나왔으면 정말 좋겠네"
+        },
+        {
+          "title": "검정색 사실",
+          "album": "만우절"
+        }
+      ],
+      "groups": [
+        "80271613",
+        "80275888",
+        "80284054",
+        "80304461"
+      ]
+    },
+    "kr-ref": {
+      "bugsId": "1396",
+      "name": "R.ef",
+      "referenceSongs": [
+        {
+          "title": "이별 공식",
+          "album": "Rave Effect!!"
+        },
+        {
+          "title": "상심",
+          "album": "Rave Effect!!"
+        },
+        {
+          "title": "찬란한 사랑 (상심 Ⅱ)",
+          "album": "Back To The Black"
+        },
+        {
+          "title": "고요속의 외침",
+          "album": "Rave Effect!!"
+        },
+        {
+          "title": "마음속을 걸어가",
+          "album": "Back To The Black"
+        }
+      ],
+      "groups": [
+        "4873",
+        "9872",
+        "8012491"
+      ]
+    },
+    "kr-jaehatrotsinger": {
+      "bugsId": "20060347",
+      "name": "재하",
+      "referenceSongs": [
+        {
+          "title": "연인",
+          "album": "현역가왕2 예선전 PART 2 & 데스매치 PART 1"
+        },
+        {
+          "title": "왜 날",
+          "album": "현역가왕2 준결승 1대1 장르대첩"
+        },
+        {
+          "title": "안 돼요 안 돼",
+          "album": "트롯 전국체전 PART.9"
+        },
+        {
+          "title": "무정 부르스",
+          "album": "트롯 전국체전 PART.10"
+        },
+        {
+          "title": "나쁜 남자",
+          "album": "미스터트롯2 예선 베스트 PART2"
+        }
+      ],
+      "groups": [
+        "13096178"
+      ]
+    },
+    "kr-choiwoojin": {
+      "bugsId": "20023021",
+      "name": "최우진",
+      "referenceSongs": [
+        {
+          "title": "아미새",
+          "album": "미스터트롯2 예선 베스트 PART1"
+        },
+        {
+          "title": "텅",
+          "album": "무명전설 [1대1 데스매치 PART.2]"
+        },
+        {
+          "title": "그물",
+          "album": "현역가왕2 예선전 PART 1"
+        },
+        {
+          "title": "춘몽가 (春夢歌)",
+          "album": "춘몽가 (春夢歌)"
+        },
+        {
+          "title": "사랑은 무죄다",
+          "album": "누나야 / 직진"
+        }
+      ],
+      "groups": []
+    },
+    "kr-woosoonsil": {
+      "bugsId": "9364",
+      "name": "우순실",
+      "referenceSongs": [
+        {
+          "title": "잃어버린 우산",
+          "album": "우순실"
+        },
+        {
+          "title": "잃어버린 우산",
+          "album": "대학가요제 Forever Golden Best (Best Of Best)"
+        },
+        {
+          "title": "잊혀지지 않아요",
+          "album": "우순실"
+        },
+        {
+          "title": "꼬깃 꼬깃해진 편지",
+          "album": "우순실 2집"
+        },
+        {
+          "title": "커텐을 젖히면",
+          "album": "우순실"
+        }
+      ],
+      "groups": []
+    },
+    "kr-leedongwoo": {
+      "bugsId": "39005",
+      "name": "이동우",
+      "referenceSongs": [
+        {
+          "title": "톡탁 (What A Wonderful Cane)",
+          "album": "Walking - The 2nd Album"
+        },
+        {
+          "title": "완전한 사랑 (The Love in You)",
+          "album": "완전한 사랑 (The Love in You) - SM STATION"
+        },
+        {
+          "title": "Fly with you",
+          "album": "LEE DONG WOO 'SMILE' TURNING TO JAZZ"
+        },
+        {
+          "title": "커피나무 (Marry Me)",
+          "album": "Walking - The 2nd Album"
+        }
+      ],
+      "groups": [
+        "8007602",
+        "9591"
+      ]
+    },
+    "kr-hpresso": {
+      "bugsId": "20125549",
+      "name": "흉스프레소",
+      "referenceSongs": [
+        {
+          "title": "Musica",
+          "album": "더 베스트 컬렉션"
+        },
+        {
+          "title": "Per Te",
+          "album": "더 베스트 컬렉션"
+        },
+        {
+          "title": "El Tango De Roxanne",
+          "album": "더 베스트 컬렉션"
+        },
+        {
+          "title": "Vincero",
+          "album": "더 베스트 컬렉션"
+        },
+        {
+          "title": "Si Tu Me Amas",
+          "album": "더 베스트 컬렉션"
+        }
+      ],
+      "groups": []
+    },
+    "kr-heikyunghong": {
+      "bugsId": "1000472",
+      "name": "홍혜경",
+      "referenceSongs": [
+        {
+          "title": "I Miss Mt. Keumkang (그리운 금강산)",
+          "album": "Korean Songs (홍혜경 한국 가곡집)"
+        },
+        {
+          "title": "Mozart:: Die Zauberflote - \"Ach, Ich Fuhl's",
+          "album": "Opera Arias"
+        },
+        {
+          "title": "My Heart (내 마음)",
+          "album": "Korean Songs (홍혜경 한국 가곡집)"
+        },
+        {
+          "title": "Dongshimcho (동심초)",
+          "album": "Korean Songs (홍혜경 한국 가곡집)"
+        },
+        {
+          "title": "Donizetti:: Don Pasquale - \"Quel Guardo Il Cavaliere",
+          "album": "Opera Arias"
+        }
+      ],
+      "groups": [],
+      "melonId": "32976"
+    },
+    "kr-songmindo": {
+      "bugsId": "15299",
+      "name": "송민도",
+      "referenceSongs": [
+        {
+          "title": "나 하나의 사랑",
+          "album": "송민도 히트전집"
+        },
+        {
+          "title": "카츄샤의 노래",
+          "album": "송민도 히트전집"
+        },
+        {
+          "title": "여옥의 노래",
+          "album": "송민도 히트전집"
+        },
+        {
+          "title": "청실홍실",
+          "album": "송민도 히트전집"
+        },
+        {
+          "title": "고향초",
+          "album": "송민도 히트전집"
+        }
+      ],
+      "groups": []
+    },
+    "kr-jungwonyoungband": {
+      "bugsId": "80013236",
+      "name": "정원영 밴드",
+      "referenceSongs": [
+        {
+          "title": "YK259 Zipper",
+          "album": "정원영 Band EP"
+        },
+        {
+          "title": "불멸의 연인",
+          "album": "정원영 밴드 2"
+        },
+        {
+          "title": "가령",
+          "album": "HOME"
+        },
+        {
+          "title": "서초동 그이",
+          "album": "정원영 밴드 2"
+        },
+        {
+          "title": "朋朋朋(붕붕붕)",
+          "album": "정원영 Band EP"
+        }
+      ],
+      "groups": []
+    },
+    "kr-thegrace": {
+      "bugsId": "80008746",
+      "name": "천상지희 더 그레이스",
+      "referenceSongs": [
+        {
+          "title": "한번 더, OK? (One More Time, OK?)",
+          "album": "한번 더, OK?"
+        },
+        {
+          "title": "Dancer In The Rain",
+          "album": "한번 더, OK?"
+        },
+        {
+          "title": "열정 (My Everything) (Bonus Track)",
+          "album": "한번 더, OK?"
+        },
+        {
+          "title": "Too Good",
+          "album": "Too Good"
+        },
+        {
+          "title": "Boomerang (Bonus Track)",
+          "album": "한번 더, OK?"
+        }
+      ],
+      "groups": [
+        "7827",
+        "31693",
+        "80004042",
+        "80008748",
+        "8007602"
+      ]
+    },
+    "kr-leeyerin": {
+      "bugsId": "427",
+      "name": "이예린",
+      "referenceSongs": [
+        {
+          "title": "늘 지금처럼",
+          "album": "Impression"
+        },
+        {
+          "title": "포플러 나무 아래",
+          "album": "LEE YE RIN"
+        },
+        {
+          "title": "변심(變心)",
+          "album": "Stay"
+        },
+        {
+          "title": "용서",
+          "album": "용서"
+        },
+        {
+          "title": "야래향",
+          "album": "야래향"
+        }
+      ],
+      "groups": []
+    },
+    "kr-kimhojoong": {
+      "bugsId": "80150416",
+      "name": "김호중",
+      "referenceSongs": [
+        {
+          "title": "만개 (Prod. 신지후)",
+          "album": "우리家"
+        },
+        {
+          "title": "나보다 더 사랑해요",
+          "album": "우리家"
+        },
+        {
+          "title": "빛이 나는 사람",
+          "album": "빛이 나는 사람"
+        },
+        {
+          "title": "그중에 그대를 만나",
+          "album": "삼남매가 용감하게 OST Part.1"
+        },
+        {
+          "title": "나의 목소리로",
+          "album": "나의 목소리로"
+        }
+      ],
+      "groups": []
+    },
+    "kr-limkim": {
+      "bugsId": "80110447",
+      "name": "림킴 (김예림)",
+      "referenceSongs": [
+        {
+          "title": "행복한 나를",
+          "album": "응답하라 1994 (tvN 드라마) OST - Part.5"
+        },
+        {
+          "title": "All Right",
+          "album": "A Voice"
+        },
+        {
+          "title": "Rain",
+          "album": "Goodbye 20"
+        },
+        {
+          "title": "Number 1",
+          "album": "Goodbye 20"
+        }
+      ],
+      "groups": [
+        "80122736",
+        "80110446"
+      ]
+    },
+    "kr-sogumm": {
+      "bugsId": "20060859",
+      "name": "sogumm",
+      "referenceSongs": [
+        {
+          "title": "큰 꿈 (Feat. pH-1) (Prod. TOIL)",
+          "album": "사인히어(SignHere) episode3"
+        },
+        {
+          "title": "위로 (Feat. 10CM)",
+          "album": "위로"
+        },
+        {
+          "title": "야유회",
+          "album": "야유회"
+        }
+      ],
+      "groups": [
+        "20059759"
+      ]
+    },
+    "kr-usungeun": {
+      "bugsId": "80071960",
+      "name": "유성은",
+      "referenceSongs": [
+        {
+          "title": "Be OK (feat. 배치기)",
+          "album": "Be OK"
+        },
+        {
+          "title": "말리꽃",
+          "album": "칠전팔기 구해라 (Mnet 뮤직드라마) OST - Part.3"
+        },
+        {
+          "title": "질투 (Duet 키썸)",
+          "album": "질투"
+        },
+        {
+          "title": "Nothing (feat. 문별 Of 마마무)",
+          "album": "2nd Mini Album"
+        },
+        {
+          "title": "이대로 멈춰",
+          "album": "Be OK"
+        }
+      ],
+      "groups": [
+        "80127581",
+        "14296486"
+      ]
+    },
+    "kr-dickpunks": {
+      "bugsId": "80064099",
+      "name": "딕펑스 (DPNS)",
+      "referenceSongs": [
+        {
+          "title": "Viva 청춘",
+          "album": "Viva Primavera"
+        },
+        {
+          "title": "안녕 여자친구",
+          "album": "Hello Goodbye"
+        },
+        {
+          "title": "한강에서 놀아요",
+          "album": "한강에서 놀아요"
+        },
+        {
+          "title": "이 사람이다",
+          "album": "투윅스 (Music from the Original TV Series), Pt. 5"
+        },
+        {
+          "title": "썬글라스",
+          "album": "썬글라스"
+        }
+      ],
+      "groups": [
+        "80110082",
+        "80110083",
+        "80110085",
+        "80110086"
+      ]
+    },
+    "kr-isaachong": {
+      "bugsId": "80193057",
+      "name": "홍이삭",
+      "referenceSongs": [
+        {
+          "title": "내사랑 내곁에",
+          "album": "폭싹 속았수다 OST from the Netflix Series - 3막"
+        },
+        {
+          "title": "하나님의 세계",
+          "album": "하나님의 세계"
+        },
+        {
+          "title": "Fallin'",
+          "album": "눈물의 여왕 OST Part.5"
+        },
+        {
+          "title": "사랑은 하니까 (Prod. 최유리)",
+          "album": "사랑은 하니까 (Prod. 최유리)"
+        },
+        {
+          "title": "I Love You (Prod. 김도훈)",
+          "album": "싱어게인3 - 무명가수전 Episode.12"
+        }
+      ],
+      "groups": [
+        "20056387",
+        "80332205",
+        "13512348",
+        "20220598"
+      ]
+    },
+    "kr-choiyuree": {
+      "bugsId": "20084746",
+      "name": "최유리",
+      "referenceSongs": [
+        {
+          "title": "생각을 멈추다 보면",
+          "album": "생각을 멈추다 보면"
+        },
+        {
+          "title": "숲",
+          "album": "유영"
+        },
+        {
+          "title": "잘 지내자, 우리",
+          "album": "잘 지내자, 우리"
+        },
+        {
+          "title": "밤, 바다",
+          "album": "여행: 플리(playlist) OST Part.2"
+        },
+        {
+          "title": "그댄 행복에 살텐데 (2022)",
+          "album": "그댄 행복에 살텐데 (2022)"
+        }
+      ],
+      "groups": []
+    },
+    "kr-zea": {
+      "bugsId": "80062789",
+      "name": "제국의아이들",
+      "referenceSongs": [
+        {
+          "title": "후유증",
+          "album": "Spectacular"
+        },
+        {
+          "title": "바람의 유령",
+          "album": "Illusion"
+        },
+        {
+          "title": "숨소리",
+          "album": "First Homme"
+        },
+        {
+          "title": "Mazeltov",
+          "album": "Lovability"
+        },
+        {
+          "title": "Step By Step",
+          "album": "Illusion"
+        }
+      ],
+      "groups": [
+        "8014184",
+        "80062870",
+        "80062871",
+        "80062872",
+        "80062874",
+        "80062875",
+        "80062876",
+        "80062877",
+        "80062878"
+      ]
+    },
+    "kr-bae173": {
+      "bugsId": "80346587",
+      "name": "BAE173 (비에이이173)",
+      "referenceSongs": [
+        {
+          "title": "Turned Up",
+          "album": "NEW CHAPTER : DESEAR"
+        },
+        {
+          "title": "단 하루 하루만 내 여자친구가 돼줄래",
+          "album": "NEW CHAPTER : DESEAR"
+        },
+        {
+          "title": "반하겠어 (Crush on U)",
+          "album": "INTERSECTION : SPARK"
+        },
+        {
+          "title": "사랑했다",
+          "album": "INTERSECTION : TRACE"
+        },
+        {
+          "title": "CRIMINAL",
+          "album": "PEAK TIME - 3Round <Originals Match>"
+        }
+      ],
+      "groups": [
+        "80333799",
+        "80333805",
+        "80346588",
+        "80346589",
+        "80346590",
+        "80346591",
+        "80346592",
+        "80346593",
+        "80346594",
+        "20190143"
+      ]
+    },
+    "kr-namjin": {
+      "bugsId": "4808",
+      "name": "남진",
+      "referenceSongs": [
+        {
+          "title": "당신이 좋아",
+          "album": "너 말이야 / 잘가라 청춘아"
+        },
+        {
+          "title": "둥지",
+          "album": "남진 35주년 기념"
+        },
+        {
+          "title": "나야 나",
+          "album": "Happiness"
+        },
+        {
+          "title": "빈잔",
+          "album": "뽀뽀 / 이력서"
+        },
+        {
+          "title": "상사화",
+          "album": "남진 2014 - 파트너"
+        }
+      ],
+      "groups": []
+    },
+    "kr-kimdahyuntrotsinger": {
+      "bugsId": "20116763",
+      "name": "김다현",
+      "referenceSongs": [
+        {
+          "title": "회룡포",
+          "album": "내일은 미스트롯2 데스매치 PART1"
+        },
+        {
+          "title": "인연이라 슬펐노라",
+          "album": "내일은 미스트롯2 결승전 작곡가미션"
+        },
+        {
+          "title": "훨훨훨",
+          "album": "내일은 미스트롯2 레전드 미션 베스트 준결승1"
+        },
+        {
+          "title": "어머니",
+          "album": "내일은 미스트롯2 결승전 인생곡 미션"
+        },
+        {
+          "title": "세월 베고 길게 누운 구름 한 조각",
+          "album": "현역가왕 한 곡 대결 & 뒤집기 한 판"
+        }
+      ],
+      "groups": [
+        "20213962"
+      ]
+    },
+    "kr-leemija": {
+      "bugsId": "4908",
+      "name": "이미자",
+      "referenceSongs": [
+        {
+          "title": "섬마을 선생님",
+          "album": "이미자 Remaster Screen Music Collection"
+        },
+        {
+          "title": "동백아가씨",
+          "album": "백영호 작곡집 - 이미자 스테레오힛트송 제1집"
+        },
+        {
+          "title": "섬마을 선생님",
+          "album": "박춘석 작곡집 - 이미자 스테레오 힛트 제5집"
+        },
+        {
+          "title": "여자의 일생",
+          "album": "이것이 인생이다 (KBS 드라마)"
+        },
+        {
+          "title": "동백아가씨",
+          "album": "이미자 힛트앨범 1집"
+        }
+      ],
+      "groups": []
+    },
+    "kr-kimsanghee": {
+      "bugsId": "41",
+      "name": "김상희",
+      "referenceSongs": [
+        {
+          "title": "코스모스 피어 있는 길",
+          "album": "괜찮아"
+        },
+        {
+          "title": "코스모스 피어 있는길",
+          "album": "김상희 (사계절/사랑의 빛) (카세트 Ver.)"
+        },
+        {
+          "title": "대머리 총각",
+          "album": "괜찮아"
+        },
+        {
+          "title": "빨간 선인장",
+          "album": "괜찮아"
+        },
+        {
+          "title": "괜찮아",
+          "album": "괜찮아"
+        }
+      ],
+      "groups": []
+    },
+    "kr-ahnyeseul": {
+      "bugsId": "80137713",
+      "name": "안예슬",
+      "referenceSongs": [
+        {
+          "title": "너와 내가 우리가 된 그날부터",
+          "album": "너와 내가 우리가 된 그날부터"
+        },
+        {
+          "title": "Flowering Heart♡",
+          "album": "플라워링 하트 (EBS TV만화) OST"
+        },
+        {
+          "title": "Love in Love (feat. 최정철)",
+          "album": "Love in Love"
+        },
+        {
+          "title": "고마워 내 곁에 있어줘서",
+          "album": "고마워 내 곁에 있어줘서"
+        }
+      ],
+      "groups": []
+    },
+    "kr-kimgreem": {
+      "bugsId": "80079364",
+      "name": "김그림",
+      "referenceSongs": [
+        {
+          "title": "너 밖엔 없더라",
+          "album": "Fly High"
+        },
+        {
+          "title": "니 생각",
+          "album": "2011 月刊 尹鍾信 September"
+        },
+        {
+          "title": "언제나 봄날 (feat. EB)",
+          "album": "언제나 봄날"
+        },
+        {
+          "title": "사랑이란게 뭐 이래요",
+          "album": "사랑이란게 뭐 이래요"
+        },
+        {
+          "title": "연애 (Love Song)",
+          "album": "연애"
+        }
+      ],
+      "groups": []
+    },
+    "kr-kimhyunjung": {
+      "bugsId": "56527",
+      "name": "김현정",
+      "referenceSongs": [
+        {
+          "title": "그녀와의 이별",
+          "album": "Legend"
+        },
+        {
+          "title": "멍",
+          "album": "The Third Eye"
+        },
+        {
+          "title": "되돌아온 이별",
+          "album": "A Sea Gull Of Dream"
+        },
+        {
+          "title": "혼자한 사랑",
+          "album": "Legend"
+        },
+        {
+          "title": "단칼 (Dance)",
+          "album": "Diet"
+        }
+      ],
+      "groups": []
+    },
+    "kr-taeyeon": {
+      "bugsId": "80026437",
+      "name": "태연",
+      "referenceSongs": [
+        {
+          "title": "만찬가",
+          "album": "J-POP REMAKE Vol.1"
+        },
+        {
+          "title": "사계 (Four Seasons)",
+          "album": "사계 (Four Seasons)"
+        },
+        {
+          "title": "11:11",
+          "album": "My Voice - The 1st Album Deluxe Edition"
+        },
+        {
+          "title": "그대라는 시",
+          "album": "호텔 델루나 OST Part.3"
+        },
+        {
+          "title": "Rain",
+          "album": "Rain - SM STATION"
+        }
+      ],
+      "groups": [
+        "80180547",
+        "80359977",
+        "80319964",
+        "80125876",
+        "80026432"
+      ]
+    },
+    "kr-jisoo": {
+      "bugsId": "80265677",
+      "name": "지수",
+      "referenceSongs": [
+        {
+          "title": "꽃",
+          "album": "ME"
+        },
+        {
+          "title": "earthquake",
+          "album": "AMORTAGE"
+        },
+        {
+          "title": "CLICK",
+          "album": "CLICK"
+        },
+        {
+          "title": "Your Love",
+          "album": "AMORTAGE"
+        },
+        {
+          "title": "EYES CLOSED",
+          "album": "EYES CLOSED (2X)"
+        }
+      ],
+      "groups": [
+        "20022492"
+      ]
+    },
+    "kr-jin": {
+      "bugsId": "80180883",
+      "name": "진",
+      "referenceSongs": [
+        {
+          "title": "The Astronaut",
+          "album": "The Astronaut"
+        },
+        {
+          "title": "Running Wild",
+          "album": "Happy"
+        },
+        {
+          "title": "Don’t Say You Love Me",
+          "album": "Echo"
+        },
+        {
+          "title": "I'll Be There",
+          "album": "Happy"
+        }
+      ],
+      "groups": [
+        "80079394"
+      ]
+    },
+    "kr-jhope": {
+      "bugsId": "80180886",
+      "name": "j-hope",
+      "referenceSongs": [
+        {
+          "title": "SPAGHETTI (feat. j-hope of BTS)",
+          "album": "SPAGHETTI"
+        },
+        {
+          "title": "Sweet Dreams (feat. Miguel)",
+          "album": "Sweet Dreams (feat. Miguel)"
+        },
+        {
+          "title": "Killin' It Girl (Solo Version)",
+          "album": "Killin' It Girl (feat. GloRilla)"
+        },
+        {
+          "title": "MONA LISA",
+          "album": "MONA LISA"
+        }
+      ],
+      "groups": [
+        "80079394"
+      ]
+    },
+    "kr-taemin": {
+      "bugsId": "80044240",
+      "name": "태민",
+      "referenceSongs": [
+        {
+          "title": "FLOAT",
+          "album": "PHASE 1 : Soft Violence"
+        },
+        {
+          "title": "MOVE",
+          "album": "MOVE - The 2nd Album"
+        },
+        {
+          "title": "Criminal",
+          "album": "Never Gonna Dance Again : Act 1 - The 3rd Album"
+        },
+        {
+          "title": "Press Your Number",
+          "album": "Press It - The 1st Album"
+        },
+        {
+          "title": "WANT",
+          "album": "WANT - The 2nd Mini Album"
+        }
+      ],
+      "groups": [
+        "80139110",
+        "80144094",
+        "80044237",
+        "80232413",
+        "80334031"
+      ]
+    },
+    "kr-baekhyun": {
+      "bugsId": "80120269",
+      "name": "백현",
+      "referenceSongs": [
+        {
+          "title": "Dream (Prod. by 박근태)",
+          "album": "Dream"
+        },
+        {
+          "title": "너를 사랑하고 있어",
+          "album": "낭만닥터 김사부 2 OST Part.1"
+        },
+        {
+          "title": "Candy",
+          "album": "Delight - The 2nd Mini Album"
+        }
+      ],
+      "groups": [
+        "20027628",
+        "80155940",
+        "80334031",
+        "80120224"
+      ]
+    },
+    "kr-kimhyemijazzsinger": {
+      "bugsId": "80023572",
+      "name": "혜미",
+      "referenceSongs": [
+        {
+          "title": "비가",
+          "album": "Smoothy"
+        },
+        {
+          "title": "You're My Everything (feat. K.Will)",
+          "album": "Smoothy"
+        },
+        {
+          "title": "불면증",
+          "album": "Smoothy"
+        },
+        {
+          "title": "얼마나 더 (feat. PK 헤만)",
+          "album": "Smoothy"
+        },
+        {
+          "title": "비가 (Orginal ver.)",
+          "album": "Smoothy"
+        }
+      ],
+      "groups": [
+        "20008965"
+      ]
+    },
+    "kr-jungjaewon": {
+      "bugsId": "20049225",
+      "name": "정재원",
+      "referenceSongs": [
+        {
+          "title": "확인",
+          "album": "확인 (爴讱)"
+        },
+        {
+          "title": "하늘꽃",
+          "album": "From Star"
+        },
+        {
+          "title": "밤 별",
+          "album": "From Star"
+        },
+        {
+          "title": "내 곁을 떠나가지 말아요",
+          "album": "내 곁을 떠나가지 말아요"
+        },
+        {
+          "title": "From Star",
+          "album": "From Star"
+        }
+      ],
+      "groups": []
     }
   }
 }

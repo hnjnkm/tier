@@ -230,7 +230,7 @@ export default function App() {
         </Pool>
         <DragOverlay dropAnimation={null}>{activeArtist && <div className="artist-card compact overlay-card"><Avatar artist={activeArtist} portrait={portraits[activeArtist.id]} /><span className="artist-name">{activeArtist.name}</span></div>}</DragOverlay>
       </DndContext>
-      <footer className="site-footer">사진 · 벅스 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · YouTube Music 한국</footer>
+      <footer className="site-footer">사진 · 벅스 / 멜론 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · YouTube Music / 국내 음원</footer>
     </main>
     {selected && <ArtistDialog key={selected.id} artist={selected} portrait={portraits[selected.id]} tier={findTier(board, selected.id)} favorites={board.favorites[selected.id] ?? []} onMove={target => setBoard(current => moveArtist(current, selected.id, target))} onToggle={(song: Song) => setBoard(current => toggleSong(current, selected.id, song))} onClose={closeArtist} />}
     {notice && <div className="toast" role="status"><Check size={16} /><span>{notice}</span><button onClick={() => setNotice('')} aria-label="알림 닫기"><X size={14} /></button></div>}

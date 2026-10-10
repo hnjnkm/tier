@@ -28,7 +28,7 @@ export interface Portrait {
   crop?: { left: number; top: number; width: number; height: number };
   pageUrl: string;
   title: string;
-  provider?: 'bugs' | 'wikimedia';
+  provider?: 'bugs' | 'melon' | 'wikimedia';
 }
 export interface Song {
   id: string;
@@ -47,15 +47,19 @@ export interface Song {
   releaseOrder?: number;
   popularityRank?: number;
 }
-export interface SongCatalog {
-  source: 'youtube-music';
+interface CatalogContents {
   artistId: string;
-  channelId: string;
   updatedAt: string;
   complete: boolean;
   songs: Song[];
   albums?: MusicAlbum[];
 }
+export type SongCatalog = CatalogContents & (
+  { source: 'youtube-music'; channelId: string } |
+  { source: 'youtube-music'; members: { artistId: string; channelId: string }[]; ranking: 'unit-rotation'; channelId?: never } |
+  { source: 'bugs'; bugsArtistId: number; reason: 'youtube-catalog-unavailable' } |
+  { source: 'melon'; melonArtistId: number; reason: 'youtube-catalog-unavailable' }
+);
 export interface MusicAlbum { id: string; title: string; year?: string; artwork?: string; songIds: string[] }
 export interface Board {
   version: 1;

@@ -18,6 +18,7 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
   const [albumId, setAlbumId] = useState('');
   const [sort, setSort] = useState<SongSort>('popular');
   const [source, setSource] = useState('');
+  const [groupCollection, setGroupCollection] = useState(false);
   const [complete, setComplete] = useState(true);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -36,8 +37,9 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
     setLoading(true); setError('');
     void (async () => {
       try {
-        const data = await getJson<{ songs: Song[]; albums?: MusicAlbum[]; source?: string; complete?: boolean }>(`/api/artists/${encodeURIComponent(artist.id)}/songs`, controller.signal);
+        const data = await getJson<{ songs: Song[]; albums?: MusicAlbum[]; source?: string; complete?: boolean; members?: unknown[] }>(`/api/artists/${encodeURIComponent(artist.id)}/songs`, controller.signal);
         setSongs(data.songs); setAlbums(data.albums); setSource(data.source ?? ''); setComplete(data.complete !== false);
+        setGroupCollection(!!data.members?.length);
       } catch (error) {
         if (!controller.signal.aborted) { setError(error instanceof Error ? error.message : '곡을 불러오지 못했어요.'); setSongs([]); }
       } finally { if (!controller.signal.aborted) setLoading(false); }
@@ -74,7 +76,7 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
       <div className="dialog-artist">
         <Avatar artist={artist} portrait={portrait} className="dialog-avatar" />
         <div><h2 id="artist-dialog-title">{artist.name}</h2><p>{artist.kind === 'solo' ? '솔로' : '그룹'} <span>·</span> {GENDER_LABELS[artist.gender]}</p>
-          {portrait && <a className="portrait-source" href={portrait.pageUrl} target="_blank" rel="noreferrer">사진 출처 · {portrait.provider === 'bugs' ? '벅스' : 'Wikimedia'} <ExternalLink size={11} /></a>}
+          {portrait && <a className="portrait-source" href={portrait.pageUrl} target="_blank" rel="noreferrer">사진 출처 · {portrait.provider === 'bugs' ? '벅스' : portrait.provider === 'melon' ? '멜론' : 'Wikimedia'} <ExternalLink size={11} /></a>}
         </div>
       </div>
       <div className="dialog-tier"><span>나의 티어</span><div className="tier-picker">{TIERS.map(item => <button key={item} className={`tier-pick tier-${item} ${tier === item ? 'selected' : ''}`} aria-label={`${artist.name} ${item} 티어로 이동`} aria-pressed={tier === item} onClick={() => onMove(item)}>{item}</button>)}<button className={`pool-pick ${!tier ? 'selected' : ''}`} aria-pressed={!tier} onClick={() => onMove('pool')}>보관함</button></div></div>
@@ -89,7 +91,7 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
         })}</div>
       </section>
       <section className="song-search-section">
-        <div className="section-label"><h3>곡 검색</h3><span className="provider-label">{source === 'youtube-music' ? 'YouTube Music · 한국' : source === 'apple-music-kr' ? 'Apple Music · 한국' : ''}</span></div>
+        <div className="section-label"><h3>곡 검색</h3><span className="provider-label">{source === 'youtube-music' ? 'YouTube Music · 한국' : source === 'bugs' ? '벅스 · 한국' : source === 'melon' ? '멜론 · 한국' : source === 'apple-music-kr' ? 'Apple Music · 한국' : ''}</span></div>
         <label className="search-field song-search"><Search size={18} /><input aria-label="곡 제목 검색" value={query} onChange={event => setQuery(event.target.value)} placeholder="곡 제목으로 검색" maxLength={100} />{query && <button onClick={() => setQuery('')} aria-label="곡 검색어 지우기"><X size={15} /></button>}</label>
         <div className="song-filters">
           <select aria-label="곡 정렬" value={sort} onChange={event => setSort(event.target.value as SongSort)}><option value="popular">인기순</option><option value="latest">최신순</option><option value="album">앨범순</option></select>
@@ -97,7 +99,9 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
           <span>{results.length}곡</span>
         </div>
         {sort === 'latest' && <p className="catalog-status">발매일이 없는 곡은 발매연도 기준</p>}
-        {sort === 'popular' && source === 'youtube-music' && <p className="catalog-status">YouTube Music 아티스트 곡 순서 기준</p>}
+        {sort === 'popular' && source === 'youtube-music' && <p className="catalog-status">{groupCollection ? '유닛별 인기곡을 번갈아 표시' : 'YouTube Music 아티스트 곡 순서 기준'}</p>}
+        {source === 'bugs' && <p className="catalog-status">YouTube Music에서 인물을 확인할 수 없어 검증된 국내 목록으로 보완했어요.{sort === 'popular' ? ' 벅스 인기곡 순서 기준' : ''}</p>}
+        {source === 'melon' && <p className="catalog-status">YouTube Music에서 인물을 확인할 수 없어 검증된 국내 목록으로 보완했어요.{sort === 'popular' ? ' 멜론 인기곡 순서 기준' : ''}</p>}
         {!complete && <p className="catalog-status">일부 앨범을 갱신 중이에요.</p>}
         <div className="song-results" aria-live="polite" aria-busy={loading}>
           {loading ? <div className="result-message"><LoaderCircle className="spin" size={25} /><p>이 가수의 곡을 찾고 있어요</p></div> : error ? <div className="result-message"><Disc3 size={30} /><p>{error}</p><button className="text-button" onClick={() => setRetry(value => value + 1)}>다시 시도</button></div> : !results.length ? <div className="result-message"><Search size={28} /><p>{query || albumId ? '선택한 조건에 맞는 곡이 없어요.' : '등록된 음원을 찾지 못했어요.'}</p>{(query || albumId) && <button className="text-button" onClick={() => { setQuery(''); setAlbumId(''); }}>전체 곡 보기</button>}</div> : results.map(song => {
@@ -106,7 +110,7 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
               <div className="result-art">{song.artwork ? <img src={imageUrl(song.artwork)} loading="lazy" alt="" /> : <Disc3 size={22} />}</div>
               <div className="song-info"><strong title={song.title}>{song.title}</strong><span title={song.album}>{song.artistName} · {song.album}{song.year ? ` · ${song.year}` : ''}</span></div>
               {song.previewUrl && <button className="icon-button preview-button" onClick={() => play(song)} aria-label={`${song.title} ${playing === song.id ? '미리듣기 중지' : '미리듣기'}`}>{playing === song.id ? <Pause size={15} /> : <Play size={15} />}</button>}
-              {!song.previewUrl && song.url && <a className="icon-button preview-button" href={song.url} target="_blank" rel="noreferrer" aria-label={`${song.title} YouTube Music에서 듣기`}><Play size={15} /></a>}
+              {!song.previewUrl && song.url && <a className="icon-button preview-button" href={song.url} target="_blank" rel="noreferrer" aria-label={`${song.title} ${source === 'bugs' ? '벅스' : source === 'melon' ? '멜론' : 'YouTube Music'}에서 듣기`}><Play size={15} /></a>}
               <button className={`equip-button ${selected ? 'selected' : ''}`} aria-label={`${song.title} ${selected ? '선택 해제' : '대표곡으로 선택'}`} aria-pressed={selected} onClick={() => selectSong(song)}>{selected ? <Check size={17} /> : <Plus size={17} />}<span>{selected ? '선택됨' : '선택'}</span></button>
             </div>;
           })}

@@ -31,6 +31,40 @@ async function providers(page: Page) {
   await page.route('https://musicbrainz.org/ws/2/artist/**', route => route.fulfill({ headers: { 'access-control-allow-origin': '*' }, json: { artists: [{ id: '12345678-1234-1234-1234-123456789abc', name: '새가수', type: 'Person', gender: 'female', country: 'KR' }] } }));
 }
 
+test('verified domestic supplements show their actual source and keep favorites after a reload', async ({ page }) => {
+  await providers(page);
+  const song = { id: 'bugs:80371845', title: '비가', artistName: '혜미', artistId: 80023572, album: 'Smoothy', albumId: 'bugs-album:8030622', trackNumber: 1, year: '2007', releaseDate: '2007-10-16', locale: 'ko-KR', url: 'https://music.bugs.co.kr/track/80371845' };
+  await page.route('**/music/kr-kimhyemijazzsinger.json', route => route.fulfill({ json: { source: 'bugs', artistId: 'kr-kimhyemijazzsinger', bugsArtistId: 80023572, reason: 'youtube-catalog-unavailable', updatedAt: '2026-10-10T00:00:00Z', complete: true, songs: [song] } }));
+  await page.goto('./');
+  await page.getByLabel('가수 이름 검색').fill('혜미');
+  await page.locator('[data-artist-id="kr-kimhyemijazzsinger"] .artist-main').click();
+  await expect(page.getByText('벅스 · 한국', { exact: true })).toBeVisible();
+  await expect(page.getByRole('dialog')).toContainText('검증된 국내 목록으로 보완');
+  await expect(page.getByRole('link', { name: '비가 벅스에서 듣기' })).toHaveAttribute('href', song.url);
+  await page.getByRole('button', { name: '혜미 S 티어로 이동' }).click();
+  await page.getByRole('button', { name: '비가 대표곡으로 선택', exact: true }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await page.reload();
+  await expect(page.getByTestId('favorites-briefing')).toContainText('비가');
+});
+
+test('a corrected Korean namesake uses the reviewed Melon identity and restores its selected song', async ({ page }) => {
+  await providers(page);
+  const song = { id: 'melon:1877126', title: '사랑을 위하여', artistName: '김종환', artistId: 1107, album: '사랑을 위하여', albumId: 'melon-album:382274', trackNumber: 1, year: '1997', locale: 'ko-KR', url: 'https://www.melon.com/song/detail.htm?songId=1877126' };
+  await page.route('**/music/kr-kimjonghwan.json', route => route.fulfill({ json: { source: 'melon', artistId: 'kr-kimjonghwan', melonArtistId: 1107, reason: 'youtube-catalog-unavailable', updatedAt: '2026-10-10T00:00:00Z', complete: true, songs: [song] } }));
+  await page.goto('./');
+  await page.getByLabel('가수 이름 검색').fill('김종환');
+  await page.locator('[data-artist-id="kr-kimjonghwan"] .artist-main').click();
+  await expect(page.getByText('멜론 · 한국', { exact: true })).toBeVisible();
+  await expect(page.getByRole('link', { name: '사진 출처 · 멜론' })).toHaveAttribute('href', 'https://www.melon.com/artist/detail.htm?artistId=1107');
+  await expect(page.getByRole('link', { name: '사랑을 위하여 멜론에서 듣기' })).toHaveAttribute('href', song.url);
+  await page.getByRole('button', { name: '김종환 S 티어로 이동' }).click();
+  await page.getByRole('button', { name: '사랑을 위하여 대표곡으로 선택', exact: true }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  await page.reload();
+  await expect(page.getByTestId('favorites-briefing')).toContainText('사랑을 위하여');
+});
+
 test('existing English Roy Kim selections migrate to official Korean titles without losing choices', async ({ page }) => {
   await providers(page);
   const royArtistId = 572430917;
