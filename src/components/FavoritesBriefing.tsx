@@ -16,7 +16,7 @@ export function FavoritesBriefing({ artists, favorites, portraits, onOpen, onAdd
         <Avatar artist={artist} portrait={portraits[artist.id]} className="briefing-avatar" />
         <span className="favorite-copy">
           <strong className="favorite-name">{artist.name}</strong>
-          {favorites[artist.id]?.length ? <span className="favorite-songs">{favorites[artist.id].map(song => <span key={song.id}>{song.title}</span>)}</span> : <span className="favorite-empty">곡 선택</span>}
+          {favorites[artist.id]?.length ? <span className="favorite-songs">{favorites[artist.id].map(song => <span key={song.id} title={song.title}>{song.title}</span>)}</span> : <span className="favorite-empty">곡 선택</span>}
         </span>
       </button>)}
     </div>}

@@ -4,6 +4,7 @@ import { CATALOG } from '../src/data/artists';
 import { validateSongCatalog } from '../src/song-catalog';
 import type { Portrait } from '../src/types';
 import families from '../src/data/music-families.json';
+import channels from '../src/data/youtube-channels.json';
 
 const portraits: Record<string, Portrait> = JSON.parse(await readFile('src/data/portraits.json', 'utf8')).portraits;
 const missingPhotos: string[] = [], invalidPhotos: string[] = [], missingMusic: string[] = [], invalidMusic: string[] = [];
@@ -14,6 +15,9 @@ for (const artist of CATALOG) {
   else {
     try {
       if (!/^portraits\/kr-[a-z0-9-]+\.[a-f0-9]{12}\.webp$/.test(photo.localPath)) throw new Error('Invalid path');
+      if (photo.provider === 'youtube-music' && ((channels as Record<string, string>)[artist.id] !== photo.channelId
+        || !/^UC[\w-]{22}$/.test(photo.channelId ?? '') || photo.pageUrl !== `https://music.youtube.com/channel/${photo.channelId}`
+        || !['yt3.googleusercontent.com', 'yt3.ggpht.com', 'lh3.googleusercontent.com'].includes(new URL(photo.url).hostname))) throw new Error('Unverified photo channel');
       const data = sharp(await readFile(`public/${photo.localPath}`));
       const info = await data.metadata();
       if (info.width !== 256 || info.height !== 256 || (await data.stats()).entropy < 1) throw new Error('Invalid photo');

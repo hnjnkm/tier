@@ -6,6 +6,13 @@ export const plainText = (value: string) => value.replace(/<[^>]*>/g, ' ').repla
   return String.fromCodePoint(parseInt(entity.slice(entity[2] === 'x' ? 3 : 2, -1), entity[2] === 'x' ? 16 : 10));
 }).replace(/\s+/g, ' ').trim();
 
+export function releaseFields(value: string): Pick<Song, 'year' | 'releaseDate'> {
+  const match = /^(\d{4})(?:\.(\d{2})(?:\.(\d{2}))?)?\.?$/.exec(plainText(value));
+  if (!match || match[2] && (Number(match[2]) < 1 || Number(match[2]) > 12)) return {};
+  if (match[3] && (Number(match[3]) < 1 || Number(match[3]) > new Date(Date.UTC(Number(match[1]), Number(match[2]), 0)).getUTCDate())) return {};
+  return { year: match[1], ...(match[2] ? { releaseDate: match.slice(1).filter(Boolean).join('-') } : {}) };
+}
+
 export function parseBugsSongs(html: string, artistId: number, artistName: string): Song[] {
   const songs = new Map<string, Song>();
   for (const match of html.matchAll(/<tr\b([^>]*\btrackId="\d+"[^>]*)>([\s\S]*?)<\/tr>/g)) {
@@ -29,7 +36,7 @@ export function parseBugsAlbum(html: string, albumId: string, artistId: number, 
   if (!html.includes(`rel="canonical" href="https://music.bugs.co.kr/album/${albumId}"`)) throw new Error(`Wrong album: ${albumId}`);
   const title = plainText(html.match(/<header\b[^>]*class="[^"]*\bpgTitle\b[^"]*"[^>]*>[\s\S]*?<h1>([\s\S]*?)<\/h1>/)?.[1] ?? '');
   if (!title) throw new Error(`Missing album title: ${albumId}`);
-  const date = html.match(/<th\b[^>]*>발매일<\/th>[\s\S]*?<time\b[^>]*>(\d{4}\.\d{2}\.\d{2})<\/time>/)?.[1]?.replaceAll('.', '-');
+  const release = releaseFields(html.match(/<th\b[^>]*>발매일<\/th>[\s\S]*?<time\b[^>]*>([\s\S]*?)<\/time>/)?.[1] ?? '');
   const artwork = html.match(/<meta\s+property="og:image"\s+content="(https:\/\/image\.bugsm\.co\.kr\/album\/images\/[^" ]+)"/)?.[1]?.replace(/\/album\/images\/\d+\//, '/album/images/200/');
   const songs = parseBugsSongs(html, artistId, artistName).filter(song => song.albumId === `bugs-album:${albumId}`);
   const rows = [...html.matchAll(/<tr\b[^>]*trackId="(\d+)"[^>]*>/g)].map(match => `bugs:${match[1]}`);
@@ -37,7 +44,7 @@ export function parseBugsAlbum(html: string, albumId: string, artistId: number, 
     song.album = title;
     song.trackNumber = rows.indexOf(song.id) + 1;
     if (artwork) song.artwork = plainText(artwork);
-    if (date) { song.releaseDate = date; song.year = date.slice(0, 4); }
+    Object.assign(song, release);
   }
   return songs;
 }

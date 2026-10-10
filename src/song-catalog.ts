@@ -15,25 +15,33 @@ export function selectedSong(song: Song, favorites: Song[]): Song | undefined {
 }
 
 export function songAlbums(songs: Song[], albums?: MusicAlbum[]): MusicAlbum[] {
-  if (albums) return [...albums].sort((a, b) => titleOrder.compare(a.title, b.title));
   const grouped = new Map<string, MusicAlbum>();
   for (const song of songs) {
     const id = song.albumId ?? song.album;
     if (!id) continue;
-    const album = grouped.get(id) ?? { id, title: song.album, year: song.year, artwork: song.artwork, songIds: [] };
+    const album = grouped.get(id) ?? { id, title: song.album, artwork: song.artwork, songIds: [] };
     album.songIds.push(song.id); grouped.set(id, album);
   }
-  return [...grouped.values()].sort((a, b) => titleOrder.compare(a.title, b.title));
+  const songYears = new Map<string, Set<string>>();
+  for (const song of songs) if (/^\d{4}$/.test(song.year ?? '')) {
+    const years = songYears.get(song.id) ?? new Set<string>();
+    years.add(song.year!); songYears.set(song.id, years);
+  }
+  return (albums ?? [...grouped.values()]).map(album => {
+    const years = new Set(album.songIds.flatMap(id => [...(songYears.get(id) ?? [])]));
+    return { ...album, year: /^\d{4}$/.test(album.year ?? '') ? album.year : years.size === 1 ? [...years][0] : undefined };
+  }).sort((a, b) => (b.year ?? '').localeCompare(a.year ?? '') || titleOrder.compare(a.title, b.title) || a.id.localeCompare(b.id));
 }
 
-export function visibleSongs(songs: Song[], query: string, sort: SongSort, album?: MusicAlbum): Song[] {
+export function visibleSongs(songs: Song[], query: string, sort: SongSort, album?: MusicAlbum, catalogAlbums?: MusicAlbum[]): Song[] {
   const ids = album ? new Set(album.songIds) : undefined;
   const result = songs.filter(song => (!ids || ids.has(song.id)) && normalize(song.title).includes(normalize(query)));
   const fallback = (a: Song, b: Song) => titleOrder.compare(a.title, b.title) || a.id.localeCompare(b.id);
+  const albums = sort === 'album' ? new Map(songAlbums(songs, catalogAlbums).map((item, index) => [item.id, index])) : undefined;
   return result.sort((a, b) => {
     if (sort === 'latest') return (b.releaseDate ?? b.year ?? '').localeCompare(a.releaseDate ?? a.year ?? '')
       || (a.releaseOrder ?? Number.MAX_SAFE_INTEGER) - (b.releaseOrder ?? Number.MAX_SAFE_INTEGER) || fallback(a, b);
-    if (sort === 'album') return titleOrder.compare(a.album, b.album)
+    if (sort === 'album') return (albums!.get(a.albumId ?? a.album) ?? Number.MAX_SAFE_INTEGER) - (albums!.get(b.albumId ?? b.album) ?? Number.MAX_SAFE_INTEGER)
       || (a.trackNumber ?? Number.MAX_SAFE_INTEGER) - (b.trackNumber ?? Number.MAX_SAFE_INTEGER) || fallback(a, b);
     return (a.popularityRank ?? Number.MAX_SAFE_INTEGER) - (b.popularityRank ?? Number.MAX_SAFE_INTEGER) || fallback(a, b);
   });

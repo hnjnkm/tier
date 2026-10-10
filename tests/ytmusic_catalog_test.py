@@ -100,6 +100,23 @@ class CatalogTests(unittest.TestCase):
         self.assertIn('드라마 OST', [album['title'] for album in result['albums']])
         self.assertNotIn('MPRE_foreign', [album['id'] for album in result['albums']])
 
+    def test_playlist_versions_keep_the_exact_album_year_when_audio_video_ids_differ(self):
+        class Alternate(Provider):
+            def get_album(self, album_id):
+                result = super().get_album(album_id)
+                if album_id == 'MPRE_ost':
+                    result['views'] = '2022년'
+                    result['tracks'][0]['videoId'] = 'ostother001'
+                return result
+        with tempfile.TemporaryDirectory() as cache:
+            result = CatalogBuilder(Alternate(), Path(cache), pause=0).build({'id': 'kr-gil', 'name': '길'}, CHANNEL, {'channelId': CHANNEL, 'songs': {'browseId': 'VLartist-songs'}, 'albums': {}, 'singles': {}})
+        song = next(s for s in result['songs'] if s['id'] == 'youtube:ostsong0001')
+        album = next(a for a in result['albums'] if a['id'] == 'MPRE_ost')
+        self.assertEqual(song['year'], '2022')
+        self.assertEqual(song['albumId'], 'MPRE_ost')
+        self.assertEqual(album['year'], '2022')
+        self.assertIn(song['id'], album['songIds'])
+
     def test_incomplete_foreign_recommendation_does_not_abort_the_artist_catalog(self):
         class WithForeign(Provider):
             def get_album(self, album_id):
@@ -148,6 +165,15 @@ class CatalogTests(unittest.TestCase):
             builder = CatalogBuilder(provider, Path(cache), pause=0)
             with self.assertRaisesRegex(ValueError, 'verified'):
                 builder.resolve({'id': 'kr-gil', 'name': '길', 'englishName': 'Gil', 'aliases': [], 'identity': {'referenceSongs': []}})
+
+    def test_parentheses_in_the_official_stage_name_are_preserved_during_resolution(self):
+        class StageName(Provider):
+            def search(self, query, filter, limit):
+                return [{'artist': 'f(x)', 'browseId': CHANNEL}]
+        with tempfile.TemporaryDirectory() as cache:
+            channel, _ = CatalogBuilder(StageName(), Path(cache), pause=0).resolve({'id': 'kr-fx', 'name': 'f(x)', 'englishName': 'f(x)', 'aliases': [],
+                'identity': {'referenceSongs': [{'title': '노래 0'}, {'title': '노래 1'}]}})
+        self.assertEqual(channel, CHANNEL)
 
     def test_one_release_requires_the_verified_album_as_well_as_the_song(self):
         class SingleProvider(Provider):

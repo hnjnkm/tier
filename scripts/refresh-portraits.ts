@@ -11,7 +11,7 @@ const namesTarget = resolve('src/data/provider-names.json');
 const saved = JSON.parse(await readFile(target, 'utf8')) as { portraits: Record<string, Portrait> };
 const portraits = { ...saved.portraits };
 const refreshAll = process.argv.includes('--all');
-const artists = ALL_CATALOG_ARTISTS.filter(artist => refreshAll || !portraits[artist.id]);
+const artists = ALL_CATALOG_ARTISTS.filter(artist => portraits[artist.id]?.provider !== 'youtube-music' && (refreshAll || !portraits[artist.id]));
 const dispatcher = new EnvHttpProxyAgent();
 let next = 0, done = 0, added = 0, failed = 0, unmatched = 0;
 let requestQueue = Promise.resolve();

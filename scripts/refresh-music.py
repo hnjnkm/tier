@@ -220,8 +220,9 @@ class CatalogBuilder:
         for query in queries:
             for result in self.request("search", query, filter="artists", limit=20):
                 channel = result.get("browseId", "")
-                name = re.sub(r"\s*\([^()]*\)\s*$", "", result.get("artist", result.get("title", "")))
-                if CHANNEL.fullmatch(channel) and normalized(name) in names:
+                name = result.get("artist", result.get("title", ""))
+                plain_name = re.sub(r"\s*\([^()]*\)\s*$", "", name)
+                if CHANNEL.fullmatch(channel) and {normalized(name), normalized(plain_name)} & names:
                     candidates[channel] = result
         if not candidates:
             # Artist search can omit an indexed performer. A song credit is
@@ -317,6 +318,7 @@ class CatalogBuilder:
                     releases[item["browseId"]] = item
         songs: dict[str, dict] = {}
         albums = []
+        release_metadata = {}
         participating = {track.get("album", {}).get("id") for track in popular if isinstance(track.get("album"), dict)
                          and {a.get("id") for a in track.get("artists", [])} & credited_channels}
         for album_id in participating:
@@ -338,6 +340,7 @@ class CatalogBuilder:
             album_credits = {a.get("id") for a in album.get("artists") or []}
             if not album_credits & credited_channels and album_id not in participating:
                 continue
+            release_metadata[album_id] = album
             order = len(albums)
             album_songs = []
             for track_index, track in enumerate(album.get("tracks", [])):
@@ -397,9 +400,18 @@ class CatalogBuilder:
             if title:
                 album_id = album.get("id") if isinstance(album, dict) else None
                 album_id = album_id or "playlist:" + normalized(title)
+                song["albumId"] = album_id
+                metadata = release_metadata.get(album_id, {})
+                if re.fullmatch(r"\d{4}", str(metadata.get("year", ""))):
+                    song["year"] = str(metadata["year"])
                 entry = next((a for a in albums if a["id"] == album_id), None)
                 if not entry:
                     entry = {"id": album_id, "title": title, "songIds": []}
+                    if song.get("year"):
+                        entry["year"] = song["year"]
+                    artwork = image_url(metadata.get("thumbnails"))
+                    if artwork:
+                        entry["artwork"] = artwork
                     albums.append(entry)
                 entry["songIds"].append(song_id)
         if not songs:

@@ -56,7 +56,7 @@ test('a corrected Korean namesake uses the reviewed Melon identity and restores 
   await page.getByLabel('가수 이름 검색').fill('김종환');
   await page.locator('[data-artist-id="kr-kimjonghwan"] .artist-main').click();
   await expect(page.getByText('멜론 · 한국', { exact: true })).toBeVisible();
-  await expect(page.getByRole('link', { name: '사진 출처 · 멜론' })).toHaveAttribute('href', 'https://www.melon.com/artist/detail.htm?artistId=1107');
+  await expect(page.getByRole('link', { name: '사진 출처 · YouTube Music' })).toHaveAttribute('href', /^https:\/\/music\.youtube\.com\/channel\/UC[\w-]{22}$/);
   await expect(page.getByRole('link', { name: '사랑을 위하여 멜론에서 듣기' })).toHaveAttribute('href', song.url);
   await page.getByRole('button', { name: '김종환 S 티어로 이동' }).click();
   await page.getByRole('button', { name: '사랑을 위하여 대표곡으로 선택', exact: true }).click();
@@ -122,7 +122,7 @@ test('Pages subpath loads assets and direct providers, then persists three songs
   const photo = page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"] img');
   await expect(photo).toHaveAttribute('src', /^\/tier\/portraits\/kr-iu\.[a-f0-9]+\.webp$/);
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
-  await expect(page.getByRole('link', { name: '사진 출처 · 벅스' })).toHaveAttribute('href', /^https:\/\/music\.bugs\.co\.kr\/artist\/\d+$/);
+  await expect(page.getByRole('link', { name: '사진 출처 · YouTube Music' })).toHaveAttribute('href', /^https:\/\/music\.youtube\.com\/channel\/UC[\w-]{22}$/);
   await expect(page.getByRole('button', { name: 'Unrelated 대표곡으로 선택', exact: true })).toHaveCount(0);
   await page.getByLabel('곡 제목 검색').fill('밤편지');
   await expect(page.getByRole('button', { name: '밤편지 대표곡으로 선택', exact: true })).toBeVisible();
@@ -138,6 +138,37 @@ test('Pages subpath loads assets and direct providers, then persists three songs
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
   await expect(page.getByLabel('선택한 대표곡').locator('.song-slot.filled')).toHaveCount(3);
   expect(localApiRequests).toEqual([]);
+});
+
+test('long favorite titles fit one line on desktop and mobile, and album choices display years newest first', async ({ page }) => {
+  await providers(page);
+  const title = 'Prime Time (Remix) (With ODEE, CHANGMO, Hash Swan, Dok2) (feat. 오디(ODEE), 창모(CHANGMO), 해쉬 스완(Hash Swan), 도끼(Dok2))';
+  await page.route('**/music/kr-iu.json', route => route.fulfill({ json: { source: 'youtube-music', artistId: 'kr-iu', channelId, updatedAt: '2026-10-10T00:00:00Z', complete: true,
+    songs: [
+      { id: 'youtube:video000000', title, artistName: '아이유', artistId: channelId, album: '오래된 앨범', albumId: 'old', year: '2015', trackNumber: 1, locale: 'ko-KR', url: 'https://music.youtube.com/watch?v=video000000' },
+      { id: 'youtube:video000001', title: '새 곡', artistName: '아이유', artistId: channelId, album: '새 앨범', albumId: 'new', year: '2026', trackNumber: 1, locale: 'ko-KR', url: 'https://music.youtube.com/watch?v=video000001' },
+      { id: 'youtube:video000002', title: '발매연도 미확인 곡', artistName: '아이유', artistId: channelId, album: '가나다', albumId: 'unknown', locale: 'ko-KR', url: 'https://music.youtube.com/watch?v=video000002' },
+    ] } }));
+  await page.goto('./');
+  await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
+  await expect(page.getByLabel('앨범 선택').locator('option')).toHaveText(['전체 앨범', '새 앨범 (2026)', '오래된 앨범 (2015)', '가나다 (연도 미확인)']);
+  await page.getByLabel('곡 정렬').selectOption('album');
+  await expect(page.locator('.song-result .song-info > strong')).toHaveText(['새 곡', title, '발매연도 미확인 곡']);
+  await page.getByRole('button', { name: `${title} 대표곡으로 선택`, exact: true }).click();
+  await page.getByRole('button', { name: '아이유 S 티어로 이동' }).click();
+  await page.getByRole('button', { name: '선택 완료' }).click();
+  for (const width of [1280, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    const song = page.getByTestId('favorites-briefing').locator('.favorite-songs > span');
+    await expect(song).toHaveAttribute('title', title);
+    const layout = await song.evaluate(element => {
+      const style = getComputedStyle(element);
+      return { height: element.getBoundingClientRect().height, lineHeight: Number.parseFloat(style.lineHeight), ellipsis: style.textOverflow,
+        overflowing: element.scrollWidth > element.clientWidth, pageFits: document.documentElement.scrollWidth <= window.innerWidth };
+    });
+    expect(layout.ellipsis).toBe('ellipsis'); expect(layout.overflowing).toBe(true);
+    expect(layout.height).toBeLessThanOrEqual(layout.lineHeight + 1); expect(layout.pageFits).toBe(true);
+  }
 });
 
 test('genre filters apply only to discovery, and idol member searches resolve to the group', async ({ page }) => {

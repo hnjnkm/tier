@@ -86,7 +86,8 @@ button, a { touch-action: manipulation; }
 .favorites-briefing .briefing-avatar > span { font-size: 9px; }
 .favorite-copy { flex: 1; min-width: 0; }
 .favorite-name { display: block; font-size: 12px; font-weight: 500; line-height: 1.4; margin-bottom: 5px; overflow-wrap: anywhere; }
-.favorite-songs { display: flex; flex-direction: column; gap: 2px; font-size: 11px; line-height: 1.5; color: #555; overflow-wrap: anywhere; }
+.favorite-songs { display: flex; flex-direction: column; gap: 2px; font-size: 11px; line-height: 1.5; color: #555; }
+.favorite-songs > span { display: block; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .favorite-empty { font-size: 10px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
 .favorite-entry:hover .favorite-name { text-decoration: underline; text-underline-offset: 3px; }
 

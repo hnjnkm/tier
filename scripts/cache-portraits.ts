@@ -1,12 +1,16 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, unlink, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { EnvHttpProxyAgent, fetch } from 'undici';
 import sharp from 'sharp';
 import type { Portrait } from '../src/types';
 
 const target = 'src/data/portraits.json';
-const catalog = JSON.parse(await readFile(target, 'utf8')) as { portraits: Record<string, Portrait & { localPath?: string }> };
-const entries = Object.entries(catalog.portraits).filter(([id]) => id !== 'kr-gil' || !catalog.portraits[id].url.includes('/3213.jpg'));
+const catalog = JSON.parse(await readFile(target, 'utf8')) as { updatedAt?: string; provider?: string; portraits: Record<string, Portrait & { localPath?: string }> };
+const youtube = process.argv.includes('--youtube');
+const candidates = youtube ? JSON.parse(await readFile('/tmp/tier-youtube-portraits.json', 'utf8')) as Record<string, Portrait> : catalog.portraits;
+const entries = Object.entries(candidates).filter(([id, portrait]) => !youtube || portrait.provider === 'youtube-music'
+  && /^UC[\w-]{22}$/.test(portrait.channelId ?? '') && portrait.pageUrl === `https://music.youtube.com/channel/${portrait.channelId}`)
+  .filter(([id, portrait]) => id !== 'kr-gil' || !portrait.url.includes('/3213.jpg'));
 await mkdir('public/portraits', { recursive: true });
 const dispatcher = new EnvHttpProxyAgent();
 let next = 0, done = 0;
@@ -16,10 +20,12 @@ async function worker() {
   while (next < entries.length) {
     const [id, portrait] = entries[next++];
     try {
-      if (portrait.localPath) {
-        const existing = await readFile(`public/${portrait.localPath}`).catch(() => null);
+      const previous = catalog.portraits[id];
+      const cachedPath = portrait.localPath ?? (previous?.url === portrait.url && previous.provider === portrait.provider ? previous.localPath : undefined);
+      if (cachedPath) {
+        const existing = await readFile(`public/${cachedPath}`).catch(() => null);
         const info = existing ? await sharp(existing).metadata() : undefined;
-        if (info?.width === 256 && info.height === 256) { done++; continue; }
+        if (info?.width === 256 && info.height === 256 && existing && (await sharp(existing).stats()).entropy >= 1) { catalog.portraits[id] = { ...portrait, localPath: cachedPath }; done++; continue; }
       }
       let lastError: Error | undefined;
       for (let attempt = 0; attempt < 3; attempt++) {
@@ -37,10 +43,11 @@ async function worker() {
           const photo = sharp(bytes).rotate();
           if (portrait.crop) photo.extract(portrait.crop);
           const image = await photo.resize(256, 256, { fit: 'cover', position: sharp.strategy.attention }).webp({ quality: 82 }).toBuffer();
+          if ((await sharp(image).stats()).entropy < 1) throw new Error('Blank cropped provider image');
           const hash = createHash('sha256').update(image).digest('hex');
           const localPath = `portraits/${id}.${hash.slice(0, 12)}.webp`;
           await writeFile(`public/${localPath}`, image);
-          portrait.localPath = localPath;
+          catalog.portraits[id] = { ...portrait, localPath };
           metadata[id] = { hash, originalWidth: original.width, originalHeight: original.height, entropy: stats.entropy };
           lastError = undefined; break;
         } catch (error) {
@@ -56,7 +63,16 @@ async function worker() {
 }
 try {
   await Promise.all(Array.from({ length: 8 }, worker));
+  if (youtube) {
+    catalog.updatedAt = new Date().toISOString();
+    catalog.provider = 'Verified YouTube Music artist profiles with preserved domestic supplements';
+  }
   await writeFile(target, JSON.stringify(catalog, null, 2) + '\n');
+  const retained = new Set(Object.values(catalog.portraits).map(portrait => portrait.localPath));
+  for (const file of await readdir('public/portraits')) {
+    const artistId = /^(kr-[a-z0-9-]+)\.[a-f0-9]{12}\.webp$/.exec(file)?.[1];
+    if (artistId && catalog.portraits[artistId] && !retained.has(`portraits/${file}`)) await unlink(`public/portraits/${file}`);
+  }
   await writeFile('/tmp/tier-portrait-cache-report.json', JSON.stringify({ failures, metadata }, null, 2));
   console.log(`Cached ${Object.values(catalog.portraits).filter(portrait => portrait.localPath).length} portraits; ${failures.length} failed`);
 } finally { await dispatcher.close(); }

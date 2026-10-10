@@ -1,5 +1,5 @@
 import type { Song } from '../src/types';
-import { plainText } from './bugs-catalog';
+import { plainText, releaseFields } from './bugs-catalog';
 
 export function parseMelonSongs(html: string, artistId: number, artistName: string, album?: { id: string; title: string }) {
   const songs: Song[] = [];
@@ -32,11 +32,11 @@ export function parseMelonAlbum(html: string, albumId: string, artistId: number,
   const title = plainText(html.match(/<div class="song_name">[\s\S]*?<strong class="none">[^<]*<\/strong>([\s\S]*?)<\/div>/)?.[1] ?? '');
   if (!title) throw new Error('Missing Melon album title');
   const artwork = html.match(/property="og:image"\s+content="(https:\/\/cdnimg\.melon\.co\.kr\/[^" ]+)"/)?.[1];
-  const date = html.match(/<dt>발매일<\/dt>\s*<dd>(\d{4}\.\d{2}\.\d{2})<\/dd>/)?.[1]?.replaceAll('.', '-');
+  const release = releaseFields(html.match(/<dt>발매일<\/dt>\s*<dd>([\s\S]*?)<\/dd>/)?.[1] ?? '');
   const songs = parseMelonSongs(html, artistId, artistName, { id: albumId, title });
   for (const song of songs) {
     if (artwork) song.artwork = plainText(artwork);
-    if (date) { song.releaseDate = date; song.year = date.slice(0, 4); }
+    Object.assign(song, release);
   }
   return songs;
 }

@@ -5,7 +5,7 @@ import { createBrowserApi } from '../src/browser-media';
 import { mergeMusicFamily, selectedSong, songAlbums, validateSongCatalog, visibleSongs } from '../src/song-catalog';
 import { createBoard, parseBoard, toggleSong } from '../src/domain';
 import type { Song, SongCatalog } from '../src/types';
-import { parseBugsAlbum } from '../scripts/bugs-catalog';
+import { parseBugsAlbum, releaseFields } from '../scripts/bugs-catalog';
 import { parseMelonAlbum, parseMelonSongs, melonLastOffset } from '../scripts/melon-catalog';
 
 const channel = `UC${'a'.repeat(22)}`;
@@ -43,6 +43,25 @@ test('popular, latest, and album order have defined results and album filtering 
   assert.equal(visibleSongs(songs, '마지막', 'popular', old).length, 0);
 });
 
+test('album browsing groups complete releases newest first, keeps track order, and puts unverified years last', () => {
+  const tracks = [
+    { ...songs[0], albumId: 'old', album: '가장 먼저 가나다', year: '2017', trackNumber: 1 },
+    { ...songs[1], albumId: 'new', album: '최근 앨범', year: undefined, trackNumber: 2 },
+    { ...songs[2], albumId: 'unknown', album: '미확인', year: undefined, trackNumber: 1 },
+    { ...songs[3], albumId: 'new', album: '최근 앨범', year: undefined, trackNumber: 1 },
+  ];
+  const releases = [
+    { id: 'unknown', title: '미확인', songIds: [tracks[2].id] },
+    { id: 'old', title: '가장 먼저 가나다', songIds: [tracks[0].id] },
+    { id: 'new', title: '최근 앨범', year: '2026', songIds: [tracks[1].id, tracks[3].id] },
+  ];
+  const original = structuredClone(releases);
+  assert.deepEqual(songAlbums(tracks, releases).map(album => [album.id, album.year]), [['new', '2026'], ['old', '2017'], ['unknown', undefined]]);
+  assert.deepEqual(visibleSongs(tracks, '', 'album', undefined, releases).map(song => song.id), [tracks[3].id, tracks[1].id, tracks[0].id, tracks[2].id]);
+  assert.deepEqual(releases, original);
+  assert.equal(songAlbums([{ ...tracks[0], year: '2017' }, { ...tracks[1], albumId: 'old', year: '2026' }])[0].year, undefined);
+});
+
 test('saved Korean iTunes choices can be removed through matching YouTube rows and survive export/import', () => {
   const song: Song = { ...songs[0], title: '그때 헤어지면 돼', album: '그때 헤어지면 돼' };
   const previous: Song = { ...song, id: 'itunes:123', artistId: 572430917, album: '그때 헤어지면 돼 - Single' };
@@ -68,6 +87,14 @@ test('domestic album dates come from the release field and credits stay inside t
   assert.equal(result.length, 1); assert.equal(result[0].releaseDate, '2007-10-16'); assert.equal(result[0].year, '2007'); assert.equal(result[0].trackNumber, 1);
   assert.throws(() => parseBugsAlbum(html, '999', 80023572, '혜미'), /Wrong album/);
   assert.equal(result[0].album, 'Smoothy');
+});
+
+test('older release fields preserve their actual year or month without inventing a release day', () => {
+  assert.deepEqual(releaseFields('1989.08'), { year: '1989', releaseDate: '1989-08' });
+  assert.deepEqual(releaseFields('1997'), { year: '1997' });
+  assert.deepEqual(releaseFields('-'), {});
+  assert.deepEqual(releaseFields('2026.13.01'), {});
+  assert.deepEqual(releaseFields('2026.02.30'), {});
 });
 
 test('Melon supplements require the independently reviewed ID and keep album credits and release dates', () => {

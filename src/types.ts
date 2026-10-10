@@ -28,7 +28,8 @@ export interface Portrait {
   crop?: { left: number; top: number; width: number; height: number };
   pageUrl: string;
   title: string;
-  provider?: 'bugs' | 'melon' | 'wikimedia';
+  provider?: 'bugs' | 'melon' | 'wikimedia' | 'youtube-music';
+  channelId?: string;
 }
 export interface Song {
   id: string;
