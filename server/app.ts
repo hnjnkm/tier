@@ -1,5 +1,6 @@
 import express from 'express';
 import { CATALOG } from '../src/data/artists';
+import { COLLECTIONS } from '../src/collections';
 import { DataError, createMediaService, parseSongIds, type MediaService } from './media';
 import { getAsset } from './assets';
 
@@ -7,7 +8,10 @@ export function createApp(media: MediaService = createMediaService()) {
   const app = express();
   app.disable('x-powered-by');
   app.get('/api/health', (_req, res) => res.json({ status: 'ok', catalogCount: CATALOG.length }));
-  app.get('/api/catalog', (_req, res) => res.json({ artists: CATALOG }));
+  app.get('/api/catalog', (req, res) => {
+    if (req.query.collection !== undefined && req.query.collection !== 'korean' && req.query.collection !== 'global') return res.status(400).json({ error: '티어표를 확인해 주세요.' });
+    res.json({ artists: COLLECTIONS[req.query.collection === 'global' ? 'global' : 'korean'].artists });
+  });
   for (const kind of ['image', 'audio'] as const) app.get(`/api/${kind}`, async (req, res, next) => {
     try {
       const asset = await getAsset(req.query.url, kind);
@@ -18,7 +22,8 @@ export function createApp(media: MediaService = createMediaService()) {
     try {
       const query = typeof req.query.q === 'string' ? req.query.q.trim() : '';
       if (query.length < 2 || query.length > 100) return res.status(400).json({ error: '검색어는 2~100자로 입력해 주세요.' });
-      res.json({ artists: await media.searchArtists(query), source: 'musicbrainz' });
+      if (req.query.collection !== undefined && req.query.collection !== 'korean' && req.query.collection !== 'global') return res.status(400).json({ error: '티어표를 확인해 주세요.' });
+      res.json({ artists: await media.searchArtists(query, req.query.collection === 'global' ? 'global' : 'korean'), source: 'musicbrainz' });
     } catch (error) { next(error); }
   });
   app.get('/api/portraits', async (req, res, next) => {

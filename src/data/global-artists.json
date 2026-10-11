@@ -1,0 +1,2332 @@
+[
+  {
+    "id": "global-taylor-swift",
+    "name": "Taylor Swift",
+    "englishName": "Taylor Swift",
+    "aliases": [
+      "테일러 스위프트"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "folk"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Cruel Summer",
+      "Love Story"
+    ]
+  },
+  {
+    "id": "global-ariana-grande",
+    "name": "Ariana Grande",
+    "englishName": "Ariana Grande",
+    "aliases": [
+      "아리아나 그란데"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "7 rings",
+      "thank u, next"
+    ]
+  },
+  {
+    "id": "global-beyonce",
+    "name": "Beyoncé",
+    "englishName": "Beyoncé",
+    "aliases": [
+      "비욘세"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Halo",
+      "Crazy In Love"
+    ]
+  },
+  {
+    "id": "global-rihanna",
+    "name": "Rihanna",
+    "englishName": "Rihanna",
+    "aliases": [
+      "리한나"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Diamonds",
+      "Umbrella"
+    ]
+  },
+  {
+    "id": "global-adele",
+    "name": "Adele",
+    "englishName": "Adele",
+    "aliases": [
+      "아델"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "ballad",
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Someone Like You",
+      "Hello"
+    ]
+  },
+  {
+    "id": "global-billie-eilish",
+    "name": "Billie Eilish",
+    "englishName": "Billie Eilish",
+    "aliases": [
+      "빌리 아일리시"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "bad guy",
+      "BIRDS OF A FEATHER"
+    ]
+  },
+  {
+    "id": "global-lady-gaga",
+    "name": "Lady Gaga",
+    "englishName": "Lady Gaga",
+    "aliases": [
+      "레이디 가가"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Poker Face",
+      "Bad Romance"
+    ]
+  },
+  {
+    "id": "global-dua-lipa",
+    "name": "Dua Lipa",
+    "englishName": "Dua Lipa",
+    "aliases": [
+      "두아 리파"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Levitating",
+      "Don't Start Now"
+    ]
+  },
+  {
+    "id": "global-olivia-rodrigo",
+    "name": "Olivia Rodrigo",
+    "englishName": "Olivia Rodrigo",
+    "aliases": [
+      "올리비아 로드리고"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "drivers license",
+      "good 4 u"
+    ]
+  },
+  {
+    "id": "global-sabrina-carpenter",
+    "name": "Sabrina Carpenter",
+    "englishName": "Sabrina Carpenter",
+    "aliases": [
+      "사브리나 카펜터"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Espresso",
+      "Please Please Please"
+    ]
+  },
+  {
+    "id": "global-bruno-mars",
+    "name": "Bruno Mars",
+    "englishName": "Bruno Mars",
+    "aliases": [
+      "브루노 마스"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Just the Way You Are",
+      "That's What I Like"
+    ]
+  },
+  {
+    "id": "global-ed-sheeran",
+    "name": "Ed Sheeran",
+    "englishName": "Ed Sheeran",
+    "aliases": [
+      "에드 시런"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "folk",
+      "ballad"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Shape of You",
+      "Perfect"
+    ]
+  },
+  {
+    "id": "global-justin-bieber",
+    "name": "Justin Bieber",
+    "englishName": "Justin Bieber",
+    "aliases": [
+      "저스틴 비버"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Love Yourself",
+      "Sorry"
+    ]
+  },
+  {
+    "id": "global-the-weeknd",
+    "name": "The Weeknd",
+    "englishName": "The Weeknd",
+    "aliases": [
+      "위켄드"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Blinding Lights",
+      "Save Your Tears"
+    ]
+  },
+  {
+    "id": "global-harry-styles",
+    "name": "Harry Styles",
+    "englishName": "Harry Styles",
+    "aliases": [
+      "해리 스타일스"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "As It Was",
+      "Watermelon Sugar"
+    ]
+  },
+  {
+    "id": "global-post-malone",
+    "name": "Post Malone",
+    "englishName": "Post Malone",
+    "aliases": [
+      "포스트 말론"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Circles",
+      "Sunflower"
+    ]
+  },
+  {
+    "id": "global-charlie-puth",
+    "name": "Charlie Puth",
+    "englishName": "Charlie Puth",
+    "aliases": [
+      "찰리 푸스"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "ballad"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Attention",
+      "We Don't Talk Anymore"
+    ]
+  },
+  {
+    "id": "global-sia",
+    "name": "Sia",
+    "englishName": "Sia",
+    "aliases": [
+      "시아"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Chandelier",
+      "Cheap Thrills"
+    ]
+  },
+  {
+    "id": "global-katy-perry",
+    "name": "Katy Perry",
+    "englishName": "Katy Perry",
+    "aliases": [
+      "케이티 페리"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Firework",
+      "Roar"
+    ]
+  },
+  {
+    "id": "global-miley-cyrus",
+    "name": "Miley Cyrus",
+    "englishName": "Miley Cyrus",
+    "aliases": [
+      "마일리 사이러스"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Flowers",
+      "Wrecking Ball"
+    ]
+  },
+  {
+    "id": "global-lana-del-rey",
+    "name": "Lana Del Rey",
+    "englishName": "Lana Del Rey",
+    "aliases": [
+      "라나 델 레이"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "indie",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Summertime Sadness",
+      "Young And Beautiful"
+    ]
+  },
+  {
+    "id": "global-lorde",
+    "name": "Lorde",
+    "englishName": "Lorde",
+    "aliases": [
+      "로드"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "indie",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Royals",
+      "Team"
+    ]
+  },
+  {
+    "id": "global-halsey",
+    "name": "Halsey",
+    "englishName": "Halsey",
+    "aliases": [
+      "할시"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Without Me",
+      "Bad At Love"
+    ]
+  },
+  {
+    "id": "global-doja-cat",
+    "name": "Doja Cat",
+    "englishName": "Doja Cat",
+    "aliases": [
+      "도자 캣"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "hiphop",
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Say So",
+      "Woman"
+    ]
+  },
+  {
+    "id": "global-camila-cabello",
+    "name": "Camila Cabello",
+    "englishName": "Camila Cabello",
+    "aliases": [
+      "카밀라 카베요"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Havana",
+      "Señorita"
+    ]
+  },
+  {
+    "id": "global-shawn-mendes",
+    "name": "Shawn Mendes",
+    "englishName": "Shawn Mendes",
+    "aliases": [
+      "숀 멘데스"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "ballad"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "There's Nothing Holdin' Me Back",
+      "Treat You Better"
+    ]
+  },
+  {
+    "id": "global-sam-smith",
+    "name": "Sam Smith",
+    "englishName": "Sam Smith",
+    "aliases": [
+      "샘 스미스"
+    ],
+    "gender": "unknown",
+    "kind": "solo",
+    "genres": [
+      "ballad",
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Stay With Me",
+      "I'm Not The Only One"
+    ]
+  },
+  {
+    "id": "global-troye-sivan",
+    "name": "Troye Sivan",
+    "englishName": "Troye Sivan",
+    "aliases": [
+      "트로이 시반"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Youth",
+      "Angel Baby"
+    ]
+  },
+  {
+    "id": "global-conan-gray",
+    "name": "Conan Gray",
+    "englishName": "Conan Gray",
+    "aliases": [
+      "코난 그레이"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Heather",
+      "Maniac"
+    ]
+  },
+  {
+    "id": "global-chappell-roan",
+    "name": "Chappell Roan",
+    "englishName": "Chappell Roan",
+    "aliases": [
+      "채플 론"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Good Luck, Babe!",
+      "Pink Pony Club"
+    ]
+  },
+  {
+    "id": "global-coldplay",
+    "name": "Coldplay",
+    "englishName": "Coldplay",
+    "aliases": [
+      "콜드플레이"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Viva La Vida",
+      "Yellow"
+    ]
+  },
+  {
+    "id": "global-maroon-5",
+    "name": "Maroon 5",
+    "englishName": "Maroon 5",
+    "aliases": [
+      "마룬 파이브",
+      "마룬5"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "dance",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Sugar",
+      "Memories"
+    ]
+  },
+  {
+    "id": "global-imagine-dragons",
+    "name": "Imagine Dragons",
+    "englishName": "Imagine Dragons",
+    "aliases": [
+      "이매진 드래곤스"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Believer",
+      "Thunder"
+    ]
+  },
+  {
+    "id": "global-onerepublic",
+    "name": "OneRepublic",
+    "englishName": "OneRepublic",
+    "aliases": [
+      "원리퍼블릭"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "dance",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Counting Stars",
+      "I Ain't Worried"
+    ]
+  },
+  {
+    "id": "global-linkin-park",
+    "name": "Linkin Park",
+    "englishName": "Linkin Park",
+    "aliases": [
+      "린킨 파크"
+    ],
+    "gender": "mixed",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "In the End",
+      "Numb"
+    ]
+  },
+  {
+    "id": "global-queen",
+    "name": "Queen",
+    "englishName": "Queen",
+    "aliases": [
+      "퀸"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Bohemian Rhapsody",
+      "Don't Stop Me Now"
+    ]
+  },
+  {
+    "id": "global-the-beatles",
+    "name": "The Beatles",
+    "englishName": "The Beatles",
+    "aliases": [
+      "비틀즈"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock",
+      "folk"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Let It Be",
+      "Hey Jude"
+    ]
+  },
+  {
+    "id": "global-the-rolling-stones",
+    "name": "The Rolling Stones",
+    "englishName": "The Rolling Stones",
+    "aliases": [
+      "롤링 스톤스"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Paint It, Black",
+      "Angie"
+    ]
+  },
+  {
+    "id": "global-oasis",
+    "name": "Oasis",
+    "englishName": "Oasis",
+    "aliases": [
+      "오아시스"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Don't Look Back In Anger",
+      "Wonderwall"
+    ]
+  },
+  {
+    "id": "global-radiohead",
+    "name": "Radiohead",
+    "englishName": "Radiohead",
+    "aliases": [
+      "라디오헤드"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock",
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Creep",
+      "No Surprises"
+    ]
+  },
+  {
+    "id": "global-arctic-monkeys",
+    "name": "Arctic Monkeys",
+    "englishName": "Arctic Monkeys",
+    "aliases": [
+      "아틱 몽키즈"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock",
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Do I Wanna Know?",
+      "I Wanna Be Yours"
+    ]
+  },
+  {
+    "id": "global-the-1975",
+    "name": "The 1975",
+    "englishName": "The 1975",
+    "aliases": [
+      "더 1975"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock",
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Somebody Else",
+      "Chocolate"
+    ]
+  },
+  {
+    "id": "global-muse",
+    "name": "Muse",
+    "englishName": "Muse",
+    "aliases": [
+      "뮤즈"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Starlight",
+      "Uprising"
+    ]
+  },
+  {
+    "id": "global-metallica",
+    "name": "Metallica",
+    "englishName": "Metallica",
+    "aliases": [
+      "메탈리카"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Enter Sandman",
+      "Nothing Else Matters"
+    ]
+  },
+  {
+    "id": "global-nirvana",
+    "name": "Nirvana",
+    "englishName": "Nirvana",
+    "aliases": [
+      "너바나"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Smells Like Teen Spirit",
+      "Come As You Are"
+    ]
+  },
+  {
+    "id": "global-foo-fighters",
+    "name": "Foo Fighters",
+    "englishName": "Foo Fighters",
+    "aliases": [
+      "푸 파이터스"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Everlong",
+      "The Pretender"
+    ]
+  },
+  {
+    "id": "global-green-day",
+    "name": "Green Day",
+    "englishName": "Green Day",
+    "aliases": [
+      "그린 데이"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Basket Case",
+      "Wake Me up When September Ends"
+    ]
+  },
+  {
+    "id": "global-red-hot-chili-peppers",
+    "name": "Red Hot Chili Peppers",
+    "englishName": "Red Hot Chili Peppers",
+    "aliases": [
+      "레드 핫 칠리 페퍼스"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Californication",
+      "Under the Bridge"
+    ]
+  },
+  {
+    "id": "global-paramore",
+    "name": "Paramore",
+    "englishName": "Paramore",
+    "aliases": [
+      "파라모어"
+    ],
+    "gender": "mixed",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Misery Business",
+      "Still Into You"
+    ]
+  },
+  {
+    "id": "global-fleetwood-mac",
+    "name": "Fleetwood Mac",
+    "englishName": "Fleetwood Mac",
+    "aliases": [
+      "플리트우드 맥"
+    ],
+    "gender": "mixed",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Dreams",
+      "The Chain"
+    ]
+  },
+  {
+    "id": "global-abba",
+    "name": "ABBA",
+    "englishName": "ABBA",
+    "aliases": [
+      "아바"
+    ],
+    "gender": "mixed",
+    "kind": "group",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Dancing Queen",
+      "Mamma Mia"
+    ]
+  },
+  {
+    "id": "global-michael-jackson",
+    "name": "Michael Jackson",
+    "englishName": "Michael Jackson",
+    "aliases": [
+      "마이클 잭슨"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Billie Jean",
+      "Beat It"
+    ]
+  },
+  {
+    "id": "global-madonna",
+    "name": "Madonna",
+    "englishName": "Madonna",
+    "aliases": [
+      "마돈나"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Like A Virgin",
+      "Like A Prayer"
+    ]
+  },
+  {
+    "id": "global-whitney-houston",
+    "name": "Whitney Houston",
+    "englishName": "Whitney Houston",
+    "aliases": [
+      "휘트니 휴스턴"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "ballad",
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "I Will Always Love You",
+      "I Have Nothing"
+    ]
+  },
+  {
+    "id": "global-celine-dion",
+    "name": "Céline Dion",
+    "englishName": "Céline Dion",
+    "aliases": [
+      "셀린 디온"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "ballad",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "My Heart Will Go On",
+      "Because You Loved Me"
+    ]
+  },
+  {
+    "id": "global-elton-john",
+    "name": "Elton John",
+    "englishName": "Elton John",
+    "aliases": [
+      "엘튼 존"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rock",
+      "ballad"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Your Song",
+      "Rocket Man"
+    ]
+  },
+  {
+    "id": "global-billy-joel",
+    "name": "Billy Joel",
+    "englishName": "Billy Joel",
+    "aliases": [
+      "빌리 조엘"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rock",
+      "ballad"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Piano Man",
+      "Uptown Girl"
+    ]
+  },
+  {
+    "id": "global-david-bowie",
+    "name": "David Bowie",
+    "englishName": "David Bowie",
+    "aliases": [
+      "데이비드 보위"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Heroes",
+      "Starman"
+    ]
+  },
+  {
+    "id": "global-prince",
+    "name": "Prince",
+    "englishName": "Prince",
+    "aliases": [
+      "프린스",
+      "Prince & The Revolution",
+      "Prince and The Revolution"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Purple Rain",
+      "Kiss"
+    ]
+  },
+  {
+    "id": "global-stevie-wonder",
+    "name": "Stevie Wonder",
+    "englishName": "Stevie Wonder",
+    "aliases": [
+      "스티비 원더"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Isn't She Lovely",
+      "Superstition"
+    ]
+  },
+  {
+    "id": "global-daft-punk",
+    "name": "Daft Punk",
+    "englishName": "Daft Punk",
+    "aliases": [
+      "다프트 펑크"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Get Lucky",
+      "One More Time"
+    ]
+  },
+  {
+    "id": "global-avicii",
+    "name": "Avicii",
+    "englishName": "Avicii",
+    "aliases": [
+      "아비치"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Wake Me Up",
+      "The Nights"
+    ]
+  },
+  {
+    "id": "global-calvin-harris",
+    "name": "Calvin Harris",
+    "englishName": "Calvin Harris",
+    "aliases": [
+      "캘빈 해리스"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Summer",
+      "Feel So Close"
+    ]
+  },
+  {
+    "id": "global-david-guetta",
+    "name": "David Guetta",
+    "englishName": "David Guetta",
+    "aliases": [
+      "데이비드 게타"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Titanium",
+      "Hey Mama"
+    ]
+  },
+  {
+    "id": "global-zedd",
+    "name": "Zedd",
+    "englishName": "Zedd",
+    "aliases": [
+      "제드"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Clarity",
+      "Stay"
+    ]
+  },
+  {
+    "id": "global-marshmello",
+    "name": "Marshmello",
+    "englishName": "Marshmello",
+    "aliases": [
+      "마시멜로"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Alone",
+      "Silence"
+    ]
+  },
+  {
+    "id": "global-alan-walker",
+    "name": "Alan Walker",
+    "englishName": "Alan Walker",
+    "aliases": [
+      "알렌 워커"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Faded",
+      "Alone"
+    ]
+  },
+  {
+    "id": "global-the-chainsmokers",
+    "name": "The Chainsmokers",
+    "englishName": "The Chainsmokers",
+    "aliases": [
+      "체인스모커스"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Closer",
+      "Something Just Like This"
+    ]
+  },
+  {
+    "id": "global-kendrick-lamar",
+    "name": "Kendrick Lamar",
+    "englishName": "Kendrick Lamar",
+    "aliases": [
+      "켄드릭 라마"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "HUMBLE.",
+      "Not Like Us"
+    ]
+  },
+  {
+    "id": "global-drake",
+    "name": "Drake",
+    "englishName": "Drake",
+    "aliases": [
+      "드레이크"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop",
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "God's Plan",
+      "Hotline Bling"
+    ]
+  },
+  {
+    "id": "global-eminem",
+    "name": "Eminem",
+    "englishName": "Eminem",
+    "aliases": [
+      "에미넴"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Lose Yourself",
+      "Without Me"
+    ]
+  },
+  {
+    "id": "global-kanye-west",
+    "name": "Kanye West",
+    "englishName": "Kanye West",
+    "aliases": [
+      "카니예 웨스트",
+      "예"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Stronger",
+      "Heartless"
+    ]
+  },
+  {
+    "id": "global-jay-z",
+    "name": "JAY-Z",
+    "englishName": "JAY-Z",
+    "aliases": [
+      "제이지"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Empire State Of Mind",
+      "Numb / Encore"
+    ]
+  },
+  {
+    "id": "global-travis-scott",
+    "name": "Travis Scott",
+    "englishName": "Travis Scott",
+    "aliases": [
+      "트래비스 스콧"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "SICKO MODE",
+      "goosebumps"
+    ]
+  },
+  {
+    "id": "global-j-cole",
+    "name": "J. Cole",
+    "englishName": "J. Cole",
+    "aliases": [
+      "제이 콜"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "No Role Modelz",
+      "MIDDLE CHILD"
+    ]
+  },
+  {
+    "id": "global-tyler-the-creator",
+    "name": "Tyler, The Creator",
+    "englishName": "Tyler, The Creator",
+    "aliases": [
+      "타일러 더 크리에이터"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop",
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "See You Again",
+      "EARFQUAKE"
+    ]
+  },
+  {
+    "id": "global-childish-gambino",
+    "name": "Childish Gambino",
+    "englishName": "Childish Gambino",
+    "aliases": [
+      "차일디시 감비노"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop",
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Redbone",
+      "This Is America"
+    ]
+  },
+  {
+    "id": "global-snoop-dogg",
+    "name": "Snoop Dogg",
+    "englishName": "Snoop Dogg",
+    "aliases": [
+      "스눕 독"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Drop It Like It's Hot",
+      "Young, Wild & Free"
+    ]
+  },
+  {
+    "id": "global-2pac",
+    "name": "2Pac",
+    "englishName": "2Pac",
+    "aliases": [
+      "투팍",
+      "투팍 샤커"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "California Love",
+      "Changes"
+    ]
+  },
+  {
+    "id": "global-the-notorious-b-i-g",
+    "name": "The Notorious B.I.G.",
+    "englishName": "The Notorious B.I.G.",
+    "aliases": [
+      "노토리어스 비아이지",
+      "빅기"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Juicy",
+      "Big Poppa"
+    ]
+  },
+  {
+    "id": "global-nas",
+    "name": "Nas",
+    "englishName": "Nas",
+    "aliases": [
+      "나스"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "N.Y. State of Mind",
+      "If I Ruled the World"
+    ]
+  },
+  {
+    "id": "global-a-ap-rocky",
+    "name": "A$AP Rocky",
+    "englishName": "A$AP Rocky",
+    "aliases": [
+      "에이셉 라키"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Praise The Lord",
+      "L$D"
+    ]
+  },
+  {
+    "id": "global-future",
+    "name": "Future",
+    "englishName": "Future",
+    "aliases": [
+      "퓨처"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Mask Off",
+      "Life Is Good"
+    ]
+  },
+  {
+    "id": "global-lil-wayne",
+    "name": "Lil Wayne",
+    "englishName": "Lil Wayne",
+    "aliases": [
+      "릴 웨인"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Lollipop",
+      "A Milli"
+    ]
+  },
+  {
+    "id": "global-nicki-minaj",
+    "name": "Nicki Minaj",
+    "englishName": "Nicki Minaj",
+    "aliases": [
+      "니키 미나즈"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "hiphop",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Super Bass",
+      "Starships"
+    ]
+  },
+  {
+    "id": "global-cardi-b",
+    "name": "Cardi B",
+    "englishName": "Cardi B",
+    "aliases": [
+      "카디 비"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Bodak Yellow",
+      "I Like It"
+    ]
+  },
+  {
+    "id": "global-juice-wrld",
+    "name": "Juice WRLD",
+    "englishName": "Juice WRLD",
+    "aliases": [
+      "주스 월드"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Lucid Dreams",
+      "All Girls Are The Same"
+    ]
+  },
+  {
+    "id": "global-frank-ocean",
+    "name": "Frank Ocean",
+    "englishName": "Frank Ocean",
+    "aliases": [
+      "프랭크 오션"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Thinkin Bout You",
+      "Pink + White"
+    ]
+  },
+  {
+    "id": "global-sza",
+    "name": "SZA",
+    "englishName": "SZA",
+    "aliases": [
+      "시저"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Kill Bill",
+      "Snooze"
+    ]
+  },
+  {
+    "id": "global-alicia-keys",
+    "name": "Alicia Keys",
+    "englishName": "Alicia Keys",
+    "aliases": [
+      "앨리샤 키스"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "ballad"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "If I Ain't Got You",
+      "No One"
+    ]
+  },
+  {
+    "id": "global-usher",
+    "name": "Usher",
+    "englishName": "Usher",
+    "aliases": [
+      "어셔"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Yeah!",
+      "My Boo"
+    ]
+  },
+  {
+    "id": "global-chris-brown",
+    "name": "Chris Brown",
+    "englishName": "Chris Brown",
+    "aliases": [
+      "크리스 브라운"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "With You",
+      "Under The Influence"
+    ]
+  },
+  {
+    "id": "global-john-legend",
+    "name": "John Legend",
+    "englishName": "John Legend",
+    "aliases": [
+      "존 레전드"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "ballad"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "All of Me",
+      "Ordinary People"
+    ]
+  },
+  {
+    "id": "global-daniel-caesar",
+    "name": "Daniel Caesar",
+    "englishName": "Daniel Caesar",
+    "aliases": [
+      "다니엘 시저"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Best Part",
+      "Get You"
+    ]
+  },
+  {
+    "id": "global-h-e-r",
+    "name": "H.E.R.",
+    "englishName": "H.E.R.",
+    "aliases": [
+      "허"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "rnb"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Focus",
+      "Hard Place"
+    ]
+  },
+  {
+    "id": "global-anderson-paak",
+    "name": "Anderson .Paak",
+    "englishName": "Anderson .Paak",
+    "aliases": [
+      "앤더슨 팩"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "hiphop"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Come Down",
+      "Make It Better"
+    ]
+  },
+  {
+    "id": "global-joji",
+    "name": "Joji",
+    "englishName": "Joji",
+    "aliases": [
+      "조지"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Glimpse of Us",
+      "SLOW DANCING IN THE DARK"
+    ]
+  },
+  {
+    "id": "global-niki",
+    "name": "NIKI",
+    "englishName": "NIKI",
+    "aliases": [
+      "니키"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Every Summertime",
+      "lowkey"
+    ]
+  },
+  {
+    "id": "global-keshi",
+    "name": "keshi",
+    "englishName": "keshi",
+    "aliases": [
+      "케시"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "like i need u",
+      "beside you"
+    ]
+  },
+  {
+    "id": "global-laufey",
+    "name": "Laufey",
+    "englishName": "Laufey",
+    "aliases": [
+      "라우페이"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "jazz"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "From The Start",
+      "Falling Behind"
+    ]
+  },
+  {
+    "id": "global-norah-jones",
+    "name": "Norah Jones",
+    "englishName": "Norah Jones",
+    "aliases": [
+      "노라 존스"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "jazz",
+      "folk"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Don't Know Why",
+      "Come Away With Me"
+    ]
+  },
+  {
+    "id": "global-amy-winehouse",
+    "name": "Amy Winehouse",
+    "englishName": "Amy Winehouse",
+    "aliases": [
+      "에이미 와인하우스"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "jazz"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Back To Black",
+      "Rehab"
+    ]
+  },
+  {
+    "id": "global-hozier",
+    "name": "Hozier",
+    "englishName": "Hozier",
+    "aliases": [
+      "호지어"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "folk",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Take Me to Church",
+      "Too Sweet"
+    ]
+  },
+  {
+    "id": "global-bon-iver",
+    "name": "Bon Iver",
+    "englishName": "Bon Iver",
+    "aliases": [
+      "본 이베어"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "folk",
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Skinny Love",
+      "Holocene"
+    ]
+  },
+  {
+    "id": "global-clairo",
+    "name": "Clairo",
+    "englishName": "Clairo",
+    "aliases": [
+      "클레어",
+      "클레어로"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "indie"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Sofia",
+      "Pretty Girl"
+    ]
+  },
+  {
+    "id": "global-mitski",
+    "name": "Mitski",
+    "englishName": "Mitski",
+    "aliases": [
+      "미츠키"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "indie",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "My Love Mine All Mine",
+      "Nobody"
+    ]
+  },
+  {
+    "id": "global-cigarettes-after-sex",
+    "name": "Cigarettes After Sex",
+    "englishName": "Cigarettes After Sex",
+    "aliases": [
+      "시가렛 애프터 섹스"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "indie",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Apocalypse",
+      "K."
+    ]
+  },
+  {
+    "id": "global-tame-impala",
+    "name": "Tame Impala",
+    "englishName": "Tame Impala",
+    "aliases": [
+      "테임 임팔라"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "indie",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "The Less I Know The Better",
+      "Let It Happen"
+    ]
+  },
+  {
+    "id": "global-bad-bunny",
+    "name": "Bad Bunny",
+    "englishName": "Bad Bunny",
+    "aliases": [
+      "배드 버니"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Tití Me Preguntó",
+      "DÁKITI"
+    ]
+  },
+  {
+    "id": "global-rosalia",
+    "name": "ROSALÍA",
+    "englishName": "ROSALÍA",
+    "aliases": [
+      "로살리아"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "DESPECHÁ",
+      "BIZCOCHITO"
+    ]
+  },
+  {
+    "id": "global-shakira",
+    "name": "Shakira",
+    "englishName": "Shakira",
+    "aliases": [
+      "샤키라"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Hips Don't Lie",
+      "Whenever, Wherever"
+    ]
+  },
+  {
+    "id": "global-yoasobi",
+    "name": "YOASOBI",
+    "englishName": "YOASOBI",
+    "aliases": [
+      "요아소비"
+    ],
+    "gender": "mixed",
+    "kind": "group",
+    "genres": [
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "アイドル",
+      "夜に駆ける"
+    ]
+  },
+  {
+    "id": "global-ado",
+    "name": "Ado",
+    "englishName": "Ado",
+    "aliases": [
+      "아도"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Usseewa",
+      "New Genesis"
+    ]
+  },
+  {
+    "id": "global-kenshi-yonezu",
+    "name": "Kenshi Yonezu",
+    "englishName": "Kenshi Yonezu",
+    "aliases": [
+      "요네즈 켄시",
+      "米津玄師"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Lemon",
+      "KICK BACK"
+    ]
+  },
+  {
+    "id": "global-fujii-kaze",
+    "name": "Fujii Kaze",
+    "englishName": "Fujii Kaze",
+    "aliases": [
+      "후지이 카제",
+      "藤井風"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Shinunoga E-Wa",
+      "Kirari"
+    ]
+  },
+  {
+    "id": "global-vaundy",
+    "name": "Vaundy",
+    "englishName": "Vaundy",
+    "aliases": [
+      "바운디"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Kaiju no Hanauta",
+      "odoriko"
+    ]
+  },
+  {
+    "id": "global-hikaru-utada",
+    "name": "Hikaru Utada",
+    "englishName": "Hikaru Utada",
+    "aliases": [
+      "우타다 히카루",
+      "宇多田ヒカル"
+    ],
+    "gender": "unknown",
+    "kind": "solo",
+    "genres": [
+      "rnb",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "First Love",
+      "Automatic"
+    ]
+  },
+  {
+    "id": "global-king-gnu",
+    "name": "King Gnu",
+    "englishName": "King Gnu",
+    "aliases": [
+      "킹 누"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Hakujitsu",
+      "SPECIALZ"
+    ]
+  },
+  {
+    "id": "global-official-hige-dandism",
+    "name": "Official HIGE DANdism",
+    "englishName": "Official HIGE DANdism",
+    "aliases": [
+      "오피셜히게단디즘",
+      "Official髭男dism"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Pretender",
+      "Subtitle"
+    ]
+  },
+  {
+    "id": "global-mrs-green-apple",
+    "name": "Mrs. GREEN APPLE",
+    "englishName": "Mrs. GREEN APPLE",
+    "aliases": [
+      "미세스 그린 애플"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Dance Hall",
+      "Ao To Natsu"
+    ]
+  },
+  {
+    "id": "global-radwimps",
+    "name": "RADWIMPS",
+    "englishName": "RADWIMPS",
+    "aliases": [
+      "래드윔프스"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "前前前世",
+      "スパークル"
+    ]
+  },
+  {
+    "id": "global-one-ok-rock",
+    "name": "ONE OK ROCK",
+    "englishName": "ONE OK ROCK",
+    "aliases": [
+      "원 오크 록"
+    ],
+    "gender": "male",
+    "kind": "group",
+    "genres": [
+      "rock"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Wherever you are",
+      "The Beginning"
+    ]
+  },
+  {
+    "id": "global-lisa",
+    "name": "LiSA",
+    "englishName": "LiSA",
+    "aliases": [
+      "리사"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "rock",
+      "dance"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Gurenge",
+      "homura"
+    ]
+  },
+  {
+    "id": "global-aimer",
+    "name": "Aimer",
+    "englishName": "Aimer",
+    "aliases": [
+      "에메"
+    ],
+    "gender": "female",
+    "kind": "solo",
+    "genres": [
+      "dance",
+      "ballad"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Zankyosanka",
+      "Kataomoi"
+    ]
+  },
+  {
+    "id": "global-nujabes",
+    "name": "Nujabes",
+    "englishName": "Nujabes",
+    "aliases": [
+      "누자베스"
+    ],
+    "gender": "male",
+    "kind": "solo",
+    "genres": [
+      "hiphop",
+      "jazz"
+    ],
+    "source": "catalog",
+    "proofSongs": [
+      "Feather",
+      "Luv(sic)"
+    ]
+  }
+]

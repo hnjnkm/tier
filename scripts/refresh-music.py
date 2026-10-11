@@ -137,6 +137,18 @@ def image_url(thumbnails: list[dict] | None) -> str | None:
     return max(valid, key=lambda t: t.get("width", 0)).get("url") if valid else None
 
 
+def reference_variants(song: dict) -> set[str]:
+    # Reviewed translations belong to the same recording. They must not count
+    # as two independent proof songs when disambiguating namesakes.
+    return set().union(*(recording_variants(title) for title in [song["title"], *song.get("titleAliases", [])]))
+
+
+def album_identity(value: str) -> str:
+    # For artist identity only, deluxe/remaster labels refer to the same release.
+    # Track catalogs retain every edition. Live albums and tributes stay distinct.
+    return normalized(re.sub(r"\s*\((?:deluxe|expanded|remaster(?:ed)?|\d{4}\s+remaster)[^()]*\)\s*$", "", value, flags=re.I))
+
+
 def different_performer(artist_id: str, title: str, album: str) -> bool:
     # A provider can merge two Korean namesakes into the same topic channel.
     # Exclude only recordings independently credited to the other performer.
@@ -210,7 +222,7 @@ class CatalogBuilder:
                 raise ValueError("Invalid verified channel ID")
             return pinned, self.request("get_artist", pinned)
         reference_songs = list({recording_title(s["title"]): s for s in artist.get("identity", {}).get("referenceSongs", [])}.values())
-        references = [recording_variants(s["title"]) for s in reference_songs]
+        references = [reference_variants(s) for s in reference_songs]
         if not references:
             raise ValueError("Artist requires a verified YouTube Music channel ID")
         required = min(2, len(references))
@@ -229,8 +241,9 @@ class CatalogBuilder:
             # eligible only when the reviewed title AND album match; the usual
             # independent discography verification still runs below.
             for reference in reference_songs[:4]:
-                for song in self.request("search", artist["name"] + " " + reference["title"], filter="songs", limit=20):
-                    if not recording_variants(song.get("title", "")) & recording_variants(reference["title"]) or normalized((song.get("album") or {}).get("name", "")) != normalized(reference.get("album", "")):
+                query_title = next(iter(reference.get("titleAliases", [])), reference["title"])
+                for song in self.request("search", artist["name"] + " " + query_title, filter="songs", limit=20):
+                    if not recording_variants(song.get("title", "")) & reference_variants(reference) or normalized((song.get("album") or {}).get("name", "")) != normalized(reference.get("album", "")):
                         continue
                     for credit in song.get("artists", []):
                         channel = credit.get("id") or ""
@@ -277,10 +290,11 @@ class CatalogBuilder:
                         album_proof |= any(recording_variants(s.get("title", "")) & references[0] for s in album.get("tracks", []))
             if matches() < required or not album_proof:
                 for reference in reference_songs[:3]:
-                    for song in self.request("search", artist["name"] + " " + reference["title"], filter="songs", limit=10):
+                    query_title = next(iter(reference.get("titleAliases", [])), reference["title"])
+                    for song in self.request("search", artist["name"] + " " + query_title, filter="songs", limit=10):
                         credits = {a.get("id") for a in song.get("artists", [])}
                         variants = recording_variants(song.get("title", ""))
-                        if credits & {channel, profile.get("channelId")} and variants & recording_variants(reference["title"]):
+                        if credits & {channel, profile.get("channelId")} and variants & reference_variants(reference):
                             proof_songs.append(song)
                             titles.update(variants)
                             if required == 1 and normalized((song.get("album") or {}).get("name", "")) == normalized(reference.get("album", "")):
@@ -289,8 +303,8 @@ class CatalogBuilder:
                         break
             if matches() >= required and album_proof:
                 verified.append((channel, profile))
-                pairs = sum(any(recording_variants(song.get('title', '')) & recording_variants(reference['title'])
-                                and reference.get('album') and normalized((song.get('album') or {}).get('name', '')) == normalized(reference['album'])
+                pairs = sum(any(recording_variants(song.get('title', '')) & reference_variants(reference)
+                                and reference.get('album') and album_identity((song.get('album') or {}).get('name', '')) == album_identity(reference['album'])
                                 for song in proof_songs) for reference in reference_songs)
                 if pairs >= required:
                     release_verified.append((channel, profile))

@@ -67,7 +67,7 @@ try {
   await writeFile(target, JSON.stringify(catalog, null, 2) + '\n');
   const retained = new Set(Object.values(catalog.portraits).map(portrait => portrait.localPath));
   for (const file of await readdir('public/portraits')) {
-    const artistId = /^(kr-[a-z0-9-]+)\.[a-f0-9]{12}\.webp$/.exec(file)?.[1];
+    const artistId = /^((?:kr|global)-[a-z0-9-]+)\.[a-f0-9]{12}\.webp$/.exec(file)?.[1];
     if (artistId && catalog.portraits[artistId] && !retained.has(`portraits/${file}`)) await unlink(`public/portraits/${file}`);
   }
   await writeFile('/tmp/tier-portrait-cache-report.json', JSON.stringify({ failures, metadata }, null, 2));

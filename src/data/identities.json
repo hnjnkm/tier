@@ -27733,6 +27733,7693 @@
         }
       ],
       "groups": []
+    },
+    "global-ariana-grande": {
+      "bugsId": "80117591",
+      "referenceSongs": [
+        {
+          "title": "Santa Tell Me (Naughty Version)",
+          "album": "Christmas & Chill"
+        },
+        {
+          "title": "thank u, next",
+          "album": "thank u, next"
+        },
+        {
+          "title": "7 rings",
+          "album": "thank u, next"
+        },
+        {
+          "title": "Problem (feat. Iggy Azalea)",
+          "album": "My Everything (Deluxe)"
+        },
+        {
+          "title": "Stuck with U",
+          "album": "Stuck with U"
+        }
+      ],
+      "proofSongs": [
+        "7 rings",
+        "thank u, next"
+      ]
+    },
+    "global-rihanna": {
+      "bugsId": "80012248",
+      "referenceSongs": [
+        {
+          "title": "This Is What You Came For",
+          "album": "This Is What You Came For"
+        },
+        {
+          "title": "Work (feat. Drake)",
+          "album": "ANTI (Deluxe)"
+        },
+        {
+          "title": "Take A Bow",
+          "album": "Good Girl Gone Bad: Reloaded"
+        },
+        {
+          "title": "Umbrella (feat. JAY-Z)",
+          "album": "Good Girl Gone Bad: Reloaded"
+        },
+        {
+          "title": "Love The Way You Lie (Part II) (feat. Eminem) (Pt. 2)",
+          "album": "Loud"
+        },
+        {
+          "title": "Diamonds",
+          "album": "Unapologetic"
+        },
+        {
+          "title": "We Found Love (feat. Calvin Harris)",
+          "album": "We Found Love"
+        },
+        {
+          "title": "S&M",
+          "album": "Loud"
+        },
+        {
+          "title": "Bitch Better Have My Money",
+          "album": "Bitch Better Have My Money"
+        },
+        {
+          "title": "Love On The Brain",
+          "album": "ANTI (Deluxe)"
+        },
+        {
+          "title": "Rude Boy",
+          "album": "Rated R"
+        },
+        {
+          "title": "Hate That I Love You (feat. Ne-Yo)",
+          "album": "Good Girl Gone Bad: Reloaded"
+        },
+        {
+          "title": "Needed Me",
+          "album": "ANTI (Deluxe)"
+        },
+        {
+          "title": "Don't Stop The Music",
+          "album": "Good Girl Gone Bad: Reloaded"
+        },
+        {
+          "title": "Only Girl (In The World)",
+          "album": "Loud"
+        },
+        {
+          "title": "Right Now (feat. David Guetta) (Dyro Radio Edit)",
+          "album": "Right Now (Remixes)"
+        },
+        {
+          "title": "California King Bed (Album Version)",
+          "album": "Loud"
+        },
+        {
+          "title": "Kiss It Better",
+          "album": "ANTI (Deluxe)"
+        },
+        {
+          "title": "Lift Me Up (영화 \"블랙 팬서: 와칸다 포에버\" OST)",
+          "album": "Lift Me Up (영화 \"블랙 팬서: 와칸다 포에버\" OST)"
+        },
+        {
+          "title": "Work (feat. Drake) (R3hab Remix)",
+          "album": "Work (Remixes)"
+        },
+        {
+          "title": "What's My Name? (feat. Drake) (Album Version)",
+          "album": "Loud"
+        },
+        {
+          "title": "Stay (feat. Mikky Ekko)",
+          "album": "Unapologetic"
+        },
+        {
+          "title": "Where Have You Been (Album Version)",
+          "album": "Talk That Talk (Deluxe)"
+        },
+        {
+          "title": "S&M Remix (feat. Britney Spears)",
+          "album": "S&M Remix"
+        },
+        {
+          "title": "Disturbia",
+          "album": "Good Girl Gone Bad: Reloaded"
+        },
+        {
+          "title": "Shut Up And Drive",
+          "album": "Good Girl Gone Bad: Reloaded"
+        },
+        {
+          "title": "Consideration (feat. SZA)",
+          "album": "ANTI (Deluxe)"
+        },
+        {
+          "title": "We Ride (Album Version)",
+          "album": "A Girl Like Me"
+        },
+        {
+          "title": "Close To You",
+          "album": "ANTI (Deluxe)"
+        },
+        {
+          "title": "Desperado",
+          "album": "ANTI (Deluxe)"
+        }
+      ],
+      "proofSongs": [
+        "Diamonds",
+        "Umbrella"
+      ]
+    },
+    "global-adele": {
+      "bugsId": "80042562",
+      "referenceSongs": [
+        {
+          "title": "Someone Like You",
+          "album": "21"
+        },
+        {
+          "title": "Hello",
+          "album": "25"
+        },
+        {
+          "title": "Rolling in the Deep",
+          "album": "21"
+        },
+        {
+          "title": "When We Were Young",
+          "album": "25"
+        },
+        {
+          "title": "Make You Feel My Love",
+          "album": "19"
+        }
+      ],
+      "proofSongs": [
+        "Someone Like You",
+        "Hello"
+      ]
+    },
+    "global-dua-lipa": {
+      "bugsId": "80245167",
+      "referenceSongs": [
+        {
+          "title": "Don't Start Now",
+          "album": "Future Nostalgia"
+        },
+        {
+          "title": "Levitating",
+          "album": "Future Nostalgia"
+        },
+        {
+          "title": "New Rules",
+          "album": "Dua Lipa (Deluxe)"
+        },
+        {
+          "title": "Kiss and Make Up",
+          "album": "Dua Lipa (Complete Edition)"
+        }
+      ],
+      "proofSongs": [
+        "Levitating",
+        "Don't Start Now"
+      ]
+    },
+    "global-beyonce": {
+      "bugsId": "3209",
+      "referenceSongs": [
+        {
+          "title": "Love On Top",
+          "album": "4"
+        },
+        {
+          "title": "Halo",
+          "album": "I Am... Sasha Fierce [Platinum Edition]"
+        },
+        {
+          "title": "Listen (From The Motion Picture Dreamgirls)",
+          "album": "B'Day [Deluxe Edition]"
+        },
+        {
+          "title": "Crazy In Love (feat. Jay-Z)",
+          "album": "Dangerously In Love"
+        },
+        {
+          "title": "Honesty (Bonus Track)",
+          "album": "I Am... Sasha Fierce [Platinum Edition]"
+        }
+      ],
+      "proofSongs": [
+        "Halo",
+        "Crazy In Love"
+      ]
+    },
+    "global-billie-eilish": {
+      "bugsId": "8584120",
+      "referenceSongs": [
+        {
+          "title": "bad guy",
+          "album": "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?"
+        },
+        {
+          "title": "BIRDS OF A FEATHER",
+          "album": "HIT ME HARD AND SOFT"
+        },
+        {
+          "title": "idontwannabeyouanymore",
+          "album": "dont smile at me"
+        },
+        {
+          "title": "come out and play",
+          "album": "come out and play"
+        },
+        {
+          "title": "wish you were gay",
+          "album": "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?"
+        }
+      ],
+      "proofSongs": [
+        "bad guy",
+        "BIRDS OF A FEATHER"
+      ]
+    },
+    "global-sabrina-carpenter": {
+      "bugsId": "80172356",
+      "referenceSongs": [
+        {
+          "title": "Espresso",
+          "album": "Espresso EP"
+        },
+        {
+          "title": "Manchild",
+          "album": "Man’s Best Friend"
+        },
+        {
+          "title": "Please Please Please",
+          "album": "Please Please Please"
+        },
+        {
+          "title": "Tears",
+          "album": "Man’s Best Friend"
+        }
+      ],
+      "proofSongs": [
+        "Espresso",
+        "Please Please Please"
+      ]
+    },
+    "global-bruno-mars": {
+      "bugsId": "80072173",
+      "referenceSongs": [
+        {
+          "title": "APT.",
+          "album": "APT."
+        },
+        {
+          "title": "That's What I Like",
+          "album": "24K Magic"
+        },
+        {
+          "title": "When I Was Your Man",
+          "album": "Unorthodox Jukebox"
+        },
+        {
+          "title": "Marry You",
+          "album": "Doo-Wops & Hooligans [International ver.]"
+        },
+        {
+          "title": "Leave The Door Open",
+          "album": "An Evening With Silk Sonic"
+        },
+        {
+          "title": "Treasure",
+          "album": "Unorthodox Jukebox"
+        },
+        {
+          "title": "Just the Way You Are",
+          "album": "Doo-Wops & Hooligans"
+        },
+        {
+          "title": "24K Magic",
+          "album": "24K Magic"
+        },
+        {
+          "title": "I Just Might",
+          "album": "The Romantic"
+        },
+        {
+          "title": "Too Good to Say Goodbye",
+          "album": "24K Magic"
+        },
+        {
+          "title": "Runaway Baby",
+          "album": "Doo-Wops & Hooligans [International ver.]"
+        },
+        {
+          "title": "Risk It All",
+          "album": "The Romantic"
+        },
+        {
+          "title": "Count on Me",
+          "album": "Doo-Wops & Hooligans"
+        },
+        {
+          "title": "Versace on the Floor",
+          "album": "24K Magic"
+        },
+        {
+          "title": "Finesse (Remix) (feat. Cardi B)",
+          "album": "Finesse (Remix)"
+        },
+        {
+          "title": "Talking To The Moon",
+          "album": "Doo-Wops & Hooligans [International ver.]"
+        },
+        {
+          "title": "Grenade",
+          "album": "The Grenade Sessions"
+        },
+        {
+          "title": "The Lazy Song",
+          "album": "Doo-Wops & Hooligans [International ver.]"
+        },
+        {
+          "title": "It Will Rain",
+          "album": "It Will Rain"
+        },
+        {
+          "title": "Smokin Out The Window",
+          "album": "An Evening With Silk Sonic"
+        },
+        {
+          "title": "Cha Cha Cha",
+          "album": "The Romantic"
+        },
+        {
+          "title": "Locked out of Heaven",
+          "album": "Unorthodox Jukebox"
+        },
+        {
+          "title": "Finesse",
+          "album": "24K Magic"
+        },
+        {
+          "title": "Skate",
+          "album": "An Evening With Silk Sonic"
+        },
+        {
+          "title": "Treasure (Cash Cash Radio Mix)",
+          "album": "Treasure Remix"
+        },
+        {
+          "title": "Young Girls",
+          "album": "Unorthodox Jukebox"
+        },
+        {
+          "title": "God Was Showing Off",
+          "album": "The Romantic"
+        },
+        {
+          "title": "Chunky",
+          "album": "24K Magic"
+        },
+        {
+          "title": "On My Soul",
+          "album": "The Romantic"
+        },
+        {
+          "title": "Talking To The Moon (Acoustic Piano ver.)",
+          "album": "Doo-Wops & Hooligans [International ver.]"
+        }
+      ],
+      "proofSongs": [
+        "Just the Way You Are",
+        "That's What I Like"
+      ]
+    },
+    "global-olivia-rodrigo": {
+      "bugsId": "80272554",
+      "referenceSongs": [
+        {
+          "title": "drop dead",
+          "album": "drop dead"
+        },
+        {
+          "title": "drivers license",
+          "album": "SOUR"
+        },
+        {
+          "title": "deja vu",
+          "album": "SOUR"
+        },
+        {
+          "title": "good 4 u",
+          "album": "SOUR"
+        },
+        {
+          "title": "vampire",
+          "album": "GUTS"
+        }
+      ],
+      "proofSongs": [
+        "drivers license",
+        "good 4 u"
+      ]
+    },
+    "global-the-weeknd": {
+      "bugsId": "80114581",
+      "referenceSongs": [
+        {
+          "title": "Blinding Lights",
+          "album": "After Hours"
+        },
+        {
+          "title": "I Feel It Coming (feat. Daft Punk)",
+          "album": "Starboy"
+        },
+        {
+          "title": "Out of Time",
+          "album": "Dawn FM"
+        },
+        {
+          "title": "Die For You",
+          "album": "Starboy"
+        },
+        {
+          "title": "Save Your Tears (Remix)",
+          "album": "Save Your Tears (Remix)"
+        }
+      ],
+      "proofSongs": [
+        "Blinding Lights",
+        "Save Your Tears"
+      ]
+    },
+    "global-harry-styles": {
+      "bugsId": "80203520",
+      "referenceSongs": [
+        {
+          "title": "Sign of the Times",
+          "album": "Harry Styles"
+        },
+        {
+          "title": "Watermelon Sugar",
+          "album": "Fine Line"
+        },
+        {
+          "title": "As It Was",
+          "album": "Harry's House"
+        },
+        {
+          "title": "Falling",
+          "album": "Fine Line"
+        },
+        {
+          "title": "Adore You",
+          "album": "Fine Line"
+        }
+      ],
+      "proofSongs": [
+        "As It Was",
+        "Watermelon Sugar"
+      ]
+    },
+    "global-charlie-puth": {
+      "bugsId": "80221620",
+      "referenceSongs": [
+        {
+          "title": "Dangerously",
+          "album": "Nine Track Mind (Deluxe Edition)"
+        },
+        {
+          "title": "I Don’t Think That I Like Her",
+          "album": "CHARLIE"
+        },
+        {
+          "title": "Attention",
+          "album": "Voicenotes"
+        },
+        {
+          "title": "One Call Away",
+          "album": "Nine Track Mind (Deluxe Edition)"
+        },
+        {
+          "title": "That's Hilarious",
+          "album": "CHARLIE"
+        },
+        {
+          "title": "We Don't Talk Anymore (feat. Selena Gomez)",
+          "album": "Nine Track Mind (Deluxe Edition)"
+        },
+        {
+          "title": "Done for Me (feat. Kehlani)",
+          "album": "Voicenotes"
+        },
+        {
+          "title": "That’s Not How This Works (feat. Dan + Shay)",
+          "album": "That’s Not How This Works (feat. Dan + Shay)"
+        },
+        {
+          "title": "How Long",
+          "album": "Voicenotes"
+        },
+        {
+          "title": "Light Switch",
+          "album": "CHARLIE"
+        },
+        {
+          "title": "Marvin Gaye (feat. Meghan Trainor)",
+          "album": "Nine Track Mind (Deluxe Edition)"
+        },
+        {
+          "title": "Up All Night",
+          "album": "Nine Track Mind (Deluxe Edition)"
+        },
+        {
+          "title": "Left Right Left",
+          "album": "Nine Track Mind (Deluxe Edition)"
+        },
+        {
+          "title": "Beat Yourself Up",
+          "album": "Whatever's Clever!"
+        },
+        {
+          "title": "Reply To This",
+          "album": "Whatever's Clever! (Expanded)"
+        },
+        {
+          "title": "Suffer",
+          "album": "Nine Track Mind (Deluxe Edition)"
+        },
+        {
+          "title": "The Way I Am",
+          "album": "Voicenotes"
+        },
+        {
+          "title": "Changes",
+          "album": "Whatever's Clever!"
+        },
+        {
+          "title": "Smells Like Me",
+          "album": "CHARLIE"
+        },
+        {
+          "title": "Some Type of Love",
+          "album": "Nine Track Mind (Deluxe Edition)"
+        },
+        {
+          "title": "LA Girls",
+          "album": "Voicenotes"
+        },
+        {
+          "title": "Cry (feat. Kenny G)",
+          "album": "Whatever's Clever!"
+        },
+        {
+          "title": "Patient",
+          "album": "Voicenotes"
+        },
+        {
+          "title": "Loser",
+          "album": "CHARLIE"
+        },
+        {
+          "title": "Home (feat. Hikaru Utada)",
+          "album": "Home (feat. Hikaru Utada)"
+        },
+        {
+          "title": "River",
+          "album": "Nine Track Mind (Deluxe Edition)"
+        },
+        {
+          "title": "Girlfriend",
+          "album": "Girlfriend"
+        },
+        {
+          "title": "Hero",
+          "album": "Hero"
+        },
+        {
+          "title": "As You Are (feat. Shy Carter)",
+          "album": "Nine Track Mind (Deluxe Edition)"
+        },
+        {
+          "title": "Charlie Be Quiet!",
+          "album": "CHARLIE"
+        }
+      ],
+      "proofSongs": [
+        "Attention",
+        "We Don't Talk Anymore"
+      ]
+    },
+    "global-post-malone": {
+      "bugsId": "80244475",
+      "referenceSongs": [
+        {
+          "title": "Circles",
+          "album": "The Diamond Collection"
+        },
+        {
+          "title": "Goodbyes (feat. Young Thug)",
+          "album": "Hollywood's Bleeding"
+        },
+        {
+          "title": "I Like You (A Happier Song) (feat. Doja Cat)",
+          "album": "Twelve Carat Toothache"
+        },
+        {
+          "title": "Better Now",
+          "album": "The Diamond Collection"
+        },
+        {
+          "title": "Myself",
+          "album": "Hollywood's Bleeding"
+        },
+        {
+          "title": "Wow.",
+          "album": "Hollywood's Bleeding"
+        },
+        {
+          "title": "Deja Vu (feat. Justin Bieber)",
+          "album": "Stoney (Deluxe)"
+        },
+        {
+          "title": "Psycho (feat. Ty Dolla $ign)",
+          "album": "The Diamond Collection"
+        },
+        {
+          "title": "rockstar (feat. 21 Savage)",
+          "album": "The Diamond Collection"
+        },
+        {
+          "title": "Congratulations (feat. Quavo)",
+          "album": "The Diamond Collection"
+        },
+        {
+          "title": "Wrapped Around Your Finger",
+          "album": "Twelve Carat Toothache"
+        },
+        {
+          "title": "Overdrive",
+          "album": "AUSTIN"
+        },
+        {
+          "title": "One Right Now",
+          "album": "One Right Now"
+        },
+        {
+          "title": "Staring At The Sun (feat. SZA)",
+          "album": "Hollywood's Bleeding"
+        },
+        {
+          "title": "I Had Some Help (feat. Morgan Wallen)",
+          "album": "F-1 Trillion"
+        },
+        {
+          "title": "Cooped Up (feat. Roddy Ricch)",
+          "album": "Twelve Carat Toothache"
+        },
+        {
+          "title": "Stay",
+          "album": "beerbongs & bentleys"
+        },
+        {
+          "title": "Hollywood's Bleeding",
+          "album": "Hollywood's Bleeding"
+        },
+        {
+          "title": "Motley Crew",
+          "album": "Motley Crew"
+        },
+        {
+          "title": "Saint-Tropez",
+          "album": "Hollywood's Bleeding"
+        },
+        {
+          "title": "Take What You Want (feat. Ozzy Osbourne, Travis Scott)",
+          "album": "Hollywood's Bleeding"
+        },
+        {
+          "title": "Chemical",
+          "album": "The Diamond Collection"
+        },
+        {
+          "title": "Die For Me (feat. Future, Halsey)",
+          "album": "Hollywood's Bleeding"
+        },
+        {
+          "title": "Mourning",
+          "album": "AUSTIN"
+        },
+        {
+          "title": "Enemies (feat. DaBaby)",
+          "album": "Hollywood's Bleeding"
+        },
+        {
+          "title": "White Iverson",
+          "album": "The Diamond Collection"
+        },
+        {
+          "title": "Candy Paint",
+          "album": "beerbongs & bentleys"
+        },
+        {
+          "title": "Speedometer",
+          "album": "AUSTIN"
+        },
+        {
+          "title": "I Fall Apart",
+          "album": "The Diamond Collection"
+        },
+        {
+          "title": "92 Explorer",
+          "album": "beerbongs & bentleys"
+        }
+      ],
+      "proofSongs": [
+        "Circles",
+        "Sunflower"
+      ]
+    },
+    "global-katy-perry": {
+      "bugsId": "80045209",
+      "referenceSongs": [
+        {
+          "title": "Roar",
+          "album": "PRISM"
+        },
+        {
+          "title": "Firework",
+          "album": "Teenage Dream"
+        },
+        {
+          "title": "Never Really Over",
+          "album": "Smile"
+        },
+        {
+          "title": "Last Friday Night (T.G.I.F.)",
+          "album": "Teenage Dream: The Complete Confection"
+        },
+        {
+          "title": "Chained To The Rhythm (feat. Skip Marley)",
+          "album": "Witness (Deluxe)"
+        }
+      ],
+      "proofSongs": [
+        "Firework",
+        "Roar"
+      ]
+    },
+    "global-miley-cyrus": {
+      "bugsId": "80021690",
+      "referenceSongs": [
+        {
+          "title": "Flowers",
+          "album": "Endless Summer Vacation"
+        },
+        {
+          "title": "Party In The U.S.A.",
+          "album": "The Time Of Our Lives (International Version)"
+        },
+        {
+          "title": "End of the World",
+          "album": "Something Beautiful"
+        },
+        {
+          "title": "Wrecking Ball",
+          "album": "Bangerz (Deluxe Version)"
+        },
+        {
+          "title": "We Can't Stop",
+          "album": "Bangerz [Standard ver.]"
+        }
+      ],
+      "proofSongs": [
+        "Flowers",
+        "Wrecking Ball"
+      ]
+    },
+    "global-sia": {
+      "bugsId": "80010088",
+      "referenceSongs": [
+        {
+          "title": "Snowman",
+          "album": "Everyday Is Christmas (Snowman Deluxe Edition)"
+        },
+        {
+          "title": "Chandelier",
+          "album": "1000 Forms Of Fear"
+        },
+        {
+          "title": "Unstoppable",
+          "album": "This Is Acting"
+        },
+        {
+          "title": "The Greatest (feat. Kendrick Lamar)",
+          "album": "This Is Acting (Deluxe Version)"
+        },
+        {
+          "title": "Santa's Coming for Us",
+          "album": "Everyday Is Christmas (Snowman Deluxe Edition)"
+        },
+        {
+          "title": "Cheap Thrills (feat. Sean Paul)",
+          "album": "This Is Acting (Deluxe Version)"
+        },
+        {
+          "title": "Cheap Thrills",
+          "album": "This Is Acting"
+        },
+        {
+          "title": "Alive",
+          "album": "This Is Acting"
+        },
+        {
+          "title": "Candy Cane Lane",
+          "album": "Everyday Is Christmas (Snowman Deluxe Edition)"
+        },
+        {
+          "title": "Flames",
+          "album": "Flames"
+        },
+        {
+          "title": "Move Your Body (Alan Walker Remix)",
+          "album": "This Is Acting (Deluxe Version)"
+        },
+        {
+          "title": "Bird Set Free",
+          "album": "This Is Acting"
+        },
+        {
+          "title": "Ho Ho Ho",
+          "album": "Everyday Is Christmas (Snowman Deluxe Edition)"
+        },
+        {
+          "title": "Never Give Up (From \"Lion\" Soundtrack)",
+          "album": "Lion (Original Motion Picture Soundtrack)"
+        },
+        {
+          "title": "Big Girls Cry",
+          "album": "1000 Forms Of Fear"
+        },
+        {
+          "title": "Elastic Heart",
+          "album": "1000 Forms Of Fear (Deluxe Version)"
+        },
+        {
+          "title": "Chandelier (Piano Version)",
+          "album": "1000 Forms Of Fear (Deluxe Version)"
+        },
+        {
+          "title": "Everyday Is Christmas",
+          "album": "Everyday Is Christmas (Snowman Deluxe Edition)"
+        },
+        {
+          "title": "Reaper",
+          "album": "This Is Acting"
+        },
+        {
+          "title": "Together",
+          "album": "Together (F9 Remixes)"
+        },
+        {
+          "title": "Helium (Sia vs. David Guetta & Afrojack)",
+          "album": "Helium (Sia vs. David Guetta & Afrojack)"
+        },
+        {
+          "title": "Breathe Me",
+          "album": "Colour The Small One (Deluxe Edition)"
+        },
+        {
+          "title": "Underneath the Mistletoe",
+          "album": "Everyday Is Christmas (Snowman Deluxe Edition)"
+        },
+        {
+          "title": "Move Your Body",
+          "album": "This Is Acting"
+        },
+        {
+          "title": "Helium",
+          "album": "Fifty Shades Darker (Original Motion Picture Soundtrack)"
+        },
+        {
+          "title": "Fire Meet Gasoline",
+          "album": "1000 Forms Of Fear (Deluxe Version)"
+        },
+        {
+          "title": "California Dreamin'",
+          "album": "San Andreas (Original Motion Picture Soundtrack)"
+        },
+        {
+          "title": "I'm In Here",
+          "album": "We Are Born"
+        },
+        {
+          "title": "Dressed In Black (박찬욱, 전지현 '헤라 (HERA)' 광고 삽입곡)",
+          "album": "1000 Forms Of Fear"
+        },
+        {
+          "title": "Snowflake",
+          "album": "Everyday Is Christmas (Snowman Deluxe Edition)"
+        }
+      ],
+      "proofSongs": [
+        "Chandelier",
+        "Cheap Thrills"
+      ]
+    },
+    "global-lorde": {
+      "bugsId": "80157265",
+      "referenceSongs": [
+        {
+          "title": "Liability",
+          "album": "Melodrama"
+        },
+        {
+          "title": "Royals",
+          "album": "Pure Heroine"
+        },
+        {
+          "title": "Team",
+          "album": "Pure Heroine"
+        },
+        {
+          "title": "Green Light",
+          "album": "Melodrama"
+        },
+        {
+          "title": "Perfect Places",
+          "album": "Melodrama"
+        }
+      ],
+      "proofSongs": [
+        "Royals",
+        "Team"
+      ]
+    },
+    "global-lana-del-rey": {
+      "bugsId": "80117628",
+      "referenceSongs": [
+        {
+          "title": "Young And Beautiful",
+          "album": "Young And Beautiful"
+        },
+        {
+          "title": "Summertime Sadness",
+          "album": "Born To Die (Deluxe Version)"
+        },
+        {
+          "title": "Love",
+          "album": "Lust For Life"
+        },
+        {
+          "title": "Born To Die",
+          "album": "Born To Die"
+        },
+        {
+          "title": "Diet Mountain Dew",
+          "album": "Born To Die"
+        }
+      ],
+      "proofSongs": [
+        "Summertime Sadness",
+        "Young And Beautiful"
+      ]
+    },
+    "global-halsey": {
+      "bugsId": "80230076",
+      "referenceSongs": [
+        {
+          "title": "Without Me",
+          "album": "Manic"
+        },
+        {
+          "title": "You should be sad",
+          "album": "Manic"
+        },
+        {
+          "title": "Bad At Love",
+          "album": "hopeless fountain kingdom (Live From Webster Hall)"
+        },
+        {
+          "title": "Now Or Never",
+          "album": "hopeless fountain kingdom (Live From Webster Hall)"
+        },
+        {
+          "title": "Colors",
+          "album": "BADLANDS (Deluxe)"
+        },
+        {
+          "title": "Graveyard",
+          "album": "Manic"
+        },
+        {
+          "title": "SUGA's Interlude",
+          "album": "Manic"
+        },
+        {
+          "title": "3am",
+          "album": "Manic"
+        },
+        {
+          "title": "Lilith (Diablo IV Anthem)",
+          "album": "Lilith (feat. SUGA) (Diablo IV Anthem) (Diablo IV Anthem)"
+        },
+        {
+          "title": "Could Have Been Me",
+          "album": "싱2게더 (Sing 2) OST"
+        },
+        {
+          "title": "Not Afraid Anymore ((50가지 그림자: 심연 (Fifty Shades Darker OST))",
+          "album": "Fifty Shades Darker (Original Motion Picture Soundtrack)"
+        },
+        {
+          "title": "Nightmare",
+          "album": "If I Can’t Have Love, I Want Power (Extended)"
+        },
+        {
+          "title": "Alone (feat. Big Sean, Stefflon Don)",
+          "album": "hopeless fountain kingdom (Live From Webster Hall)"
+        },
+        {
+          "title": "Sorry",
+          "album": "hopeless fountain kingdom (Live From Webster Hall)"
+        },
+        {
+          "title": "Roman Holiday",
+          "album": "BADLANDS (Deluxe)"
+        },
+        {
+          "title": "Without Me (feat. Juice WRLD)",
+          "album": "Manic"
+        },
+        {
+          "title": "Eyes Closed",
+          "album": "hopeless fountain kingdom (Live From Webster Hall)"
+        },
+        {
+          "title": "Finally // beautiful stranger",
+          "album": "Manic"
+        },
+        {
+          "title": "Colors (Stripped)",
+          "album": "Badlands (Decade Edition Anthology)"
+        },
+        {
+          "title": "Ghost",
+          "album": "BADLANDS (Deluxe)"
+        },
+        {
+          "title": "clementine",
+          "album": "Manic"
+        },
+        {
+          "title": "Life's A Mess",
+          "album": "Legends Never Die"
+        },
+        {
+          "title": "So Good",
+          "album": "So Good"
+        },
+        {
+          "title": "New Americana",
+          "album": "BADLANDS"
+        },
+        {
+          "title": "forget me too",
+          "album": "Tickets To My Downfall"
+        },
+        {
+          "title": "Gasoline",
+          "album": "BADLANDS (Deluxe)"
+        },
+        {
+          "title": "Strangers (feat. Lauren Jauregui)",
+          "album": "hopeless fountain kingdom (Live From Webster Hall)"
+        },
+        {
+          "title": "Panic Attack",
+          "album": "The Great Impersonator (Deluxe)"
+        },
+        {
+          "title": "Die 4 Me",
+          "album": "Die 4 Me"
+        },
+        {
+          "title": "Afraid of the Dark (Demo)",
+          "album": "The Great Impersonator (Deluxe)"
+        }
+      ],
+      "proofSongs": [
+        "Without Me",
+        "Bad At Love"
+      ]
+    },
+    "global-doja-cat": {
+      "bugsId": "80185652",
+      "referenceSongs": [
+        {
+          "title": "Boss Bitch",
+          "album": "Birds of Prey: The Album"
+        },
+        {
+          "title": "Kiss Me More (feat. SZA)",
+          "album": "Planet Her (Deluxe)"
+        },
+        {
+          "title": "Say So",
+          "album": "Hot Pink"
+        },
+        {
+          "title": "Paint The Town Red",
+          "album": "Scarlet"
+        },
+        {
+          "title": "Like That (feat. Gucci Mane)",
+          "album": "Hot Pink"
+        },
+        {
+          "title": "Agora Hills",
+          "album": "Scarlet"
+        },
+        {
+          "title": "Jealous Type",
+          "album": "Vie"
+        },
+        {
+          "title": "Woman",
+          "album": "Planet Her"
+        },
+        {
+          "title": "Juicy",
+          "album": "Amala (Deluxe Version)"
+        },
+        {
+          "title": "Take Me Dancing (feat. SZA)",
+          "album": "Vie"
+        },
+        {
+          "title": "Say So (feat. Nicki Minaj)",
+          "album": "Say So"
+        },
+        {
+          "title": "Need to Know",
+          "album": "Planet Her"
+        },
+        {
+          "title": "Freak",
+          "album": "Freak"
+        },
+        {
+          "title": "Vegas (From the Original Motion Picture Soundtrack ELVIS)",
+          "album": "Vegas (From the Original Motion Picture Soundtrack ELVIS)"
+        },
+        {
+          "title": "Gorgeous",
+          "album": "Vie"
+        },
+        {
+          "title": "Love To Dream",
+          "album": "Planet Her"
+        },
+        {
+          "title": "Get Into It (Yuh)",
+          "album": "Planet Her"
+        },
+        {
+          "title": "I Don't Do Drugs (feat. Ariana Grande)",
+          "album": "Planet Her"
+        },
+        {
+          "title": "Streets",
+          "album": "Hot Pink"
+        },
+        {
+          "title": "Ain't Shit",
+          "album": "Planet Her"
+        },
+        {
+          "title": "Stranger",
+          "album": "Vie"
+        },
+        {
+          "title": "Cyber Sex",
+          "album": "Hot Pink"
+        },
+        {
+          "title": "Attention",
+          "album": "Scarlet"
+        },
+        {
+          "title": "So High",
+          "album": "Purrr!"
+        },
+        {
+          "title": "Candy",
+          "album": "Amala"
+        },
+        {
+          "title": "Cards",
+          "album": "Vie"
+        },
+        {
+          "title": "Rules",
+          "album": "Hot Pink"
+        },
+        {
+          "title": "MOOO!",
+          "album": "Amala (Deluxe Version)"
+        },
+        {
+          "title": "AAAHH MEN!",
+          "album": "Vie"
+        },
+        {
+          "title": "Say So (Original Version) (feat. Nicki Minaj)",
+          "album": "Say So (Original Version)"
+        }
+      ],
+      "proofSongs": [
+        "Say So",
+        "Woman"
+      ]
+    },
+    "global-shawn-mendes": {
+      "bugsId": "80196428",
+      "referenceSongs": [
+        {
+          "title": "There's Nothing Holdin' Me Back",
+          "album": "Illuminate [New Deluxe Ver.]"
+        },
+        {
+          "title": "If I Can't Have You",
+          "album": "Shawn Mendes (Deluxe)"
+        },
+        {
+          "title": "Treat You Better",
+          "album": "Illuminate [New Deluxe Ver.]"
+        },
+        {
+          "title": "Fallin' All In You",
+          "album": "Shawn Mendes"
+        }
+      ],
+      "proofSongs": [
+        "There's Nothing Holdin' Me Back",
+        "Treat You Better"
+      ]
+    },
+    "global-camila-cabello": {
+      "bugsId": "80255282",
+      "referenceSongs": [
+        {
+          "title": "Havana (feat. Young Thug)",
+          "album": "Camila"
+        },
+        {
+          "title": "Señorita",
+          "album": "Señorita"
+        },
+        {
+          "title": "Never Be the Same",
+          "album": "Camila"
+        },
+        {
+          "title": "Bad Things",
+          "album": "bloom (Deluxe)"
+        },
+        {
+          "title": "Real Friends",
+          "album": "Camila"
+        }
+      ],
+      "proofSongs": [
+        "Havana",
+        "Señorita"
+      ]
+    },
+    "global-troye-sivan": {
+      "bugsId": "80195120",
+      "referenceSongs": [
+        {
+          "title": "Youth",
+          "album": "Blue Neighbourhood [Deluxe Edition]"
+        },
+        {
+          "title": "i'm so tired...",
+          "album": "i'm so tired..."
+        },
+        {
+          "title": "Fools",
+          "album": "Blue Neighbourhood [Deluxe Edition]"
+        },
+        {
+          "title": "for him. (feat. Allday)",
+          "album": "Blue Neighbourhood [Deluxe Edition]"
+        },
+        {
+          "title": "Angel Baby",
+          "album": "Angel Baby"
+        }
+      ],
+      "proofSongs": [
+        "Youth",
+        "Angel Baby"
+      ]
+    },
+    "global-conan-gray": {
+      "bugsId": "80321173",
+      "referenceSongs": [
+        {
+          "title": "Maniac",
+          "album": "Kid Krow"
+        },
+        {
+          "title": "Heather",
+          "album": "Kid Krow"
+        },
+        {
+          "title": "Overdrive",
+          "album": "Overdrive"
+        },
+        {
+          "title": "Memories",
+          "album": "Superache"
+        }
+      ],
+      "proofSongs": [
+        "Heather",
+        "Maniac"
+      ]
+    },
+    "global-sam-smith": {
+      "bugsId": "80147640",
+      "referenceSongs": [
+        {
+          "title": "I'm Not The Only One",
+          "album": "In The Lonely Hour"
+        },
+        {
+          "title": "Too Good At Goodbyes",
+          "album": "The Thrill Of It All (Special Edition)"
+        },
+        {
+          "title": "Stay With Me",
+          "album": "In The Lonely Hour"
+        },
+        {
+          "title": "To Die For (Bonus Track)",
+          "album": "Love Goes"
+        },
+        {
+          "title": "Dancing With A Stranger",
+          "album": "Dancing With A Stranger"
+        }
+      ],
+      "proofSongs": [
+        "Stay With Me",
+        "I'm Not The Only One"
+      ]
+    },
+    "global-chappell-roan": {
+      "bugsId": "80288591",
+      "referenceSongs": [
+        {
+          "title": "Good Luck, Babe!",
+          "album": "Good Luck, Babe!"
+        },
+        {
+          "title": "Pink Pony Club",
+          "album": "The Rise and Fall of a Midwest Princess"
+        },
+        {
+          "title": "HOT TO GO!",
+          "album": "The Rise and Fall of a Midwest Princess"
+        },
+        {
+          "title": "The Subway",
+          "album": "The Subway"
+        },
+        {
+          "title": "Red Wine Supernova",
+          "album": "The Rise and Fall of a Midwest Princess"
+        }
+      ],
+      "proofSongs": [
+        "Good Luck, Babe!",
+        "Pink Pony Club"
+      ]
+    },
+    "global-coldplay": {
+      "bugsId": "583",
+      "referenceSongs": [
+        {
+          "title": "Viva La Vida",
+          "album": "Viva La Vida Or Death And All His Friends"
+        },
+        {
+          "title": "My Universe",
+          "album": "My Universe (Streaming Ver.)"
+        },
+        {
+          "title": "Yellow",
+          "album": "Parachutes"
+        },
+        {
+          "title": "Everglow",
+          "album": "A Head Full of Dreams"
+        }
+      ],
+      "proofSongs": [
+        "Viva La Vida",
+        "Yellow"
+      ]
+    },
+    "global-maroon-5": {
+      "bugsId": "55461",
+      "referenceSongs": [
+        {
+          "title": "Sugar",
+          "album": "V [Deluxe Edition]"
+        },
+        {
+          "title": "Memories",
+          "album": "JORDI (Deluxe)"
+        },
+        {
+          "title": "Don't Wanna Know (feat. Kendrick Lamar)",
+          "album": "Red Pill Blues [Deluxe Edition]"
+        },
+        {
+          "title": "What Lovers Do (feat. SZA)",
+          "album": "Red Pill Blues [Deluxe Edition]"
+        },
+        {
+          "title": "Maps",
+          "album": "V [Deluxe Edition]"
+        }
+      ],
+      "proofSongs": [
+        "Sugar",
+        "Memories"
+      ]
+    },
+    "global-onerepublic": {
+      "bugsId": "80023514",
+      "referenceSongs": [
+        {
+          "title": "I Ain't Worried",
+          "album": "Artificial Paradise (Deluxe)"
+        },
+        {
+          "title": "Counting Stars",
+          "album": "Native"
+        },
+        {
+          "title": "Nobody (from Kaiju No. 8)",
+          "album": "Artificial Paradise (Deluxe)"
+        },
+        {
+          "title": "Rescue Me",
+          "album": "Human (Deluxe)"
+        }
+      ],
+      "proofSongs": [
+        "Counting Stars",
+        "I Ain't Worried"
+      ]
+    },
+    "global-imagine-dragons": {
+      "bugsId": "80121520",
+      "referenceSongs": [
+        {
+          "title": "Thunder",
+          "album": "Evolve"
+        },
+        {
+          "title": "Believer",
+          "album": "Evolve"
+        },
+        {
+          "title": "Warriors",
+          "album": "Smoke + Mirrors (Deluxe)"
+        },
+        {
+          "title": "Natural ('다이나핏' CF 삽입곡)",
+          "album": "Origins (Deluxe)"
+        }
+      ],
+      "proofSongs": [
+        "Believer",
+        "Thunder"
+      ]
+    },
+    "global-linkin-park": {
+      "bugsId": "14969",
+      "referenceSongs": [
+        {
+          "title": "Faint",
+          "album": "Meteora"
+        },
+        {
+          "title": "Numb",
+          "album": "Meteora (Bonus Track Version) Meteora (3 Bonus Tracks)"
+        },
+        {
+          "title": "In the End",
+          "album": "Hybrid Theory"
+        },
+        {
+          "title": "New Divide",
+          "album": "Iridescent"
+        },
+        {
+          "title": "Heavy Is the Crown",
+          "album": "From Zero"
+        }
+      ],
+      "proofSongs": [
+        "In the End",
+        "Numb"
+      ]
+    },
+    "global-queen": {
+      "bugsId": "33684",
+      "referenceSongs": [
+        {
+          "title": "Bohemian Rhapsody",
+          "album": "The Platinum Collection"
+        },
+        {
+          "title": "Love Of My Life",
+          "album": "Queen Forever"
+        },
+        {
+          "title": "Somebody To Love",
+          "album": "Queen Forever"
+        },
+        {
+          "title": "Don't Stop Me Now (...Revisited)",
+          "album": "Bohemian Rhapsody (The Original Soundtrack)"
+        },
+        {
+          "title": "Another One Bites The Dust",
+          "album": "The Platinum Collection"
+        }
+      ],
+      "proofSongs": [
+        "Bohemian Rhapsody",
+        "Don't Stop Me Now"
+      ]
+    },
+    "global-the-rolling-stones": {
+      "bugsId": "471",
+      "referenceSongs": [
+        {
+          "title": "Paint It, Black",
+          "album": "Aftermath"
+        },
+        {
+          "title": "As Tears Go By (Mono Version)",
+          "album": "December’s Children (And Everybody’s)"
+        },
+        {
+          "title": "(I Can't Get No) Satisfaction (Mono)",
+          "album": "Out Of Our Heads"
+        },
+        {
+          "title": "Angie (Remastered 2009)",
+          "album": "Goats Head Soup (Remastered 2009)"
+        },
+        {
+          "title": "Miss You (Remastered)",
+          "album": "Some Girls (Deluxe Version)"
+        }
+      ],
+      "proofSongs": [
+        "Paint It, Black",
+        "Angie"
+      ]
+    },
+    "global-oasis": {
+      "bugsId": "64439",
+      "referenceSongs": [
+        {
+          "title": "Don't Look Back In Anger",
+          "album": "(What's The Story) Morning Glory?"
+        },
+        {
+          "title": "Wonderwall",
+          "album": "(What's The Story) Morning Glory?"
+        },
+        {
+          "title": "Whatever (Remastered)",
+          "album": "Definitely Maybe (Remastered)"
+        },
+        {
+          "title": "Champagne Supernova",
+          "album": "(What's The Story) Morning Glory?"
+        },
+        {
+          "title": "Stand by Me",
+          "album": "Be Here Now"
+        }
+      ],
+      "proofSongs": [
+        "Don't Look Back In Anger",
+        "Wonderwall"
+      ]
+    },
+    "global-radiohead": {
+      "bugsId": "4013",
+      "referenceSongs": [
+        {
+          "title": "Creep",
+          "album": "Pablo Honey"
+        },
+        {
+          "title": "No Surprises",
+          "album": "OK Computer"
+        },
+        {
+          "title": "High and Dry",
+          "album": "The Bends"
+        },
+        {
+          "title": "Fake Plastic Trees",
+          "album": "The Bends"
+        },
+        {
+          "title": "Karma Police",
+          "album": "OK Computer"
+        }
+      ],
+      "proofSongs": [
+        "Creep",
+        "No Surprises"
+      ]
+    },
+    "global-arctic-monkeys": {
+      "bugsId": "80016418",
+      "referenceSongs": [
+        {
+          "title": "No. 1 Party Anthem",
+          "album": "AM"
+        },
+        {
+          "title": "Do I Wanna Know?",
+          "album": "AM"
+        },
+        {
+          "title": "Why'd You Only Call Me When You're High?",
+          "album": "AM"
+        },
+        {
+          "title": "I Wanna Be Yours",
+          "album": "AM"
+        },
+        {
+          "title": "505",
+          "album": "Favourite Worst Nightmare"
+        }
+      ],
+      "proofSongs": [
+        "Do I Wanna Know?",
+        "I Wanna Be Yours"
+      ]
+    },
+    "global-the-1975": {
+      "bugsId": "80152297",
+      "referenceSongs": [
+        {
+          "title": "Give Yourself A Try",
+          "album": "A Brief Inquiry Into Online Relationships"
+        },
+        {
+          "title": "Sincerity Is Scary",
+          "album": "A Brief Inquiry Into Online Relationships"
+        },
+        {
+          "title": "Chocolate",
+          "album": "The 1975"
+        },
+        {
+          "title": "The Sound",
+          "album": "I Like It When You Sleep, For You Are So Beautiful Yet So Unaware Of It"
+        },
+        {
+          "title": "Robbers",
+          "album": "The 1975"
+        },
+        {
+          "title": "Somebody Else",
+          "album": "I Like It When You Sleep, For You Are So Beautiful Yet So Unaware Of It"
+        },
+        {
+          "title": "Paris",
+          "album": "I Like It When You Sleep, For You Are So Beautiful Yet So Unaware Of It"
+        },
+        {
+          "title": "About You",
+          "album": "Being Funny In A Foreign Language"
+        },
+        {
+          "title": "It's Not Living (If It's Not With You)",
+          "album": "A Brief Inquiry Into Online Relationships"
+        },
+        {
+          "title": "UGH!",
+          "album": "I Like It When You Sleep, For You Are So Beautiful Yet So Unaware Of It"
+        },
+        {
+          "title": "I Always Wanna Die (Sometimes)",
+          "album": "A Brief Inquiry Into Online Relationships"
+        },
+        {
+          "title": "Love Me",
+          "album": "I Like It When You Sleep, For You Are So Beautiful Yet So Unaware Of It"
+        },
+        {
+          "title": "Settle Down",
+          "album": "The 1975"
+        },
+        {
+          "title": "Guys",
+          "album": "Notes On A Conditional Form"
+        },
+        {
+          "title": "I'm In Love With You",
+          "album": "Being Funny In A Foreign Language"
+        },
+        {
+          "title": "Happiness",
+          "album": "Happiness"
+        },
+        {
+          "title": "She's American",
+          "album": "I Like It When You Sleep, For You Are So Beautiful Yet So Unaware Of It"
+        },
+        {
+          "title": "Love It If We Made It",
+          "album": "A Brief Inquiry Into Online Relationships"
+        },
+        {
+          "title": "Nana",
+          "album": "I Like It When You Sleep, For You Are So Beautiful Yet So Unaware Of It"
+        },
+        {
+          "title": "Me & You Together Song",
+          "album": "Notes On A Conditional Form"
+        },
+        {
+          "title": "Girls",
+          "album": "The 1975"
+        },
+        {
+          "title": "Be My Mistake",
+          "album": "A Brief Inquiry Into Online Relationships"
+        },
+        {
+          "title": "TOOTIMETOOTIMETOOTIME",
+          "album": "A Brief Inquiry Into Online Relationships"
+        },
+        {
+          "title": "The Birthday Party",
+          "album": "The Birthday Party"
+        },
+        {
+          "title": "A Change Of Heart",
+          "album": "I Like It When You Sleep, For You Are So Beautiful Yet So Unaware Of It"
+        },
+        {
+          "title": "Oh Caroline",
+          "album": "Being Funny In A Foreign Language"
+        },
+        {
+          "title": "Sex",
+          "album": "The 1975"
+        },
+        {
+          "title": "All I Need To Hear",
+          "album": "All I Need To Hear"
+        },
+        {
+          "title": "Chocolate (Acoustic Version)",
+          "album": "Sex EP"
+        },
+        {
+          "title": "If I Believe You",
+          "album": "I Like It When You Sleep, For You Are So Beautiful Yet So Unaware Of It"
+        }
+      ],
+      "proofSongs": [
+        "Somebody Else",
+        "Chocolate"
+      ]
+    },
+    "global-muse": {
+      "bugsId": "41676",
+      "referenceSongs": [
+        {
+          "title": "Time is Running Out",
+          "album": "Absolution"
+        },
+        {
+          "title": "Something Human",
+          "album": "Simulation Theory (Super Deluxe)"
+        },
+        {
+          "title": "Supermassive Black Hole",
+          "album": "Black Hole & Revelations"
+        },
+        {
+          "title": "Starlight",
+          "album": "Black Hole & Revelations"
+        },
+        {
+          "title": "Hysteria",
+          "album": "Absolution"
+        },
+        {
+          "title": "Plug in Baby",
+          "album": "Origin of Symmetry"
+        },
+        {
+          "title": "Uprising",
+          "album": "Uprising"
+        },
+        {
+          "title": "Panic Station",
+          "album": "The 2nd Law"
+        },
+        {
+          "title": "Stockholm Syndrome",
+          "album": "Absolution"
+        },
+        {
+          "title": "Madness",
+          "album": "The 2nd Law"
+        },
+        {
+          "title": "Unintended",
+          "album": "Showbiz"
+        },
+        {
+          "title": "Can't Take My Eyes off You",
+          "album": "Dead Star / In Your World"
+        },
+        {
+          "title": "Mercy",
+          "album": "Drones"
+        },
+        {
+          "title": "Psycho",
+          "album": "Drones"
+        },
+        {
+          "title": "Knights Of Cydonia",
+          "album": "Black Hole & Revelations"
+        },
+        {
+          "title": "Neutron Star Collision (Love Is Forever) (트와일라잇 3 - 이클립스 삽입곡)",
+          "album": "Neutron Star Collision (Love Is Forever)"
+        },
+        {
+          "title": "Follow Me (영화 '월드워 Z' 엔딩곡)",
+          "album": "The 2nd Law"
+        },
+        {
+          "title": "Feeling Good",
+          "album": "Origin of Symmetry"
+        },
+        {
+          "title": "Map Of The Problematique",
+          "album": "Black Hole & Revelations"
+        },
+        {
+          "title": "The Handler",
+          "album": "Drones"
+        },
+        {
+          "title": "Resistance",
+          "album": "The Resistance"
+        },
+        {
+          "title": "New Born",
+          "album": "Origin of Symmetry"
+        },
+        {
+          "title": "Survival",
+          "album": "The 2nd Law"
+        },
+        {
+          "title": "Thought Contagion",
+          "album": "Simulation Theory (Super Deluxe)"
+        },
+        {
+          "title": "Dead Inside",
+          "album": "Drones"
+        },
+        {
+          "title": "Bliss",
+          "album": "Origin of Symmetry"
+        },
+        {
+          "title": "Supremacy",
+          "album": "The 2nd Law"
+        },
+        {
+          "title": "Undisclosed Desires",
+          "album": "The Resistance"
+        },
+        {
+          "title": "Hush",
+          "album": "The Wow! Signal"
+        },
+        {
+          "title": "Cryogen",
+          "album": "The Wow! Signal"
+        }
+      ],
+      "proofSongs": [
+        "Starlight",
+        "Uprising"
+      ]
+    },
+    "global-metallica": {
+      "bugsId": "46677",
+      "referenceSongs": [
+        {
+          "title": "Enter Sandman (Remastered 2021)",
+          "album": "Metallica (Remastered 2021)"
+        },
+        {
+          "title": "Master Of Puppets (Remastered) (넷플릭스 ‘기묘한 이야기’ 시즌 4 삽입곡)",
+          "album": "Master Of Puppets (Deluxe Box Set / Remastered)"
+        },
+        {
+          "title": "Fuel",
+          "album": "Reload"
+        },
+        {
+          "title": "Nothing Else Matters (Remastered 2021)",
+          "album": "Metallica (Remastered 2021)"
+        },
+        {
+          "title": "Whiskey In The Jar",
+          "album": "Garage Inc."
+        }
+      ],
+      "proofSongs": [
+        "Enter Sandman",
+        "Nothing Else Matters"
+      ]
+    },
+    "global-taylor-swift": {
+      "bugsId": "80039092",
+      "referenceSongs": [
+        {
+          "title": "Cruel Summer",
+          "album": "Lover"
+        },
+        {
+          "title": "Love Story",
+          "album": "Fearless [International ver.]"
+        },
+        {
+          "title": "Anti-Hero",
+          "album": "Midnights (3am Edition)"
+        },
+        {
+          "title": "Look What You Made Me Do",
+          "album": "reputation"
+        },
+        {
+          "title": "Blank Space",
+          "album": "1989 (Deluxe)"
+        }
+      ],
+      "proofSongs": [
+        "Cruel Summer",
+        "Love Story"
+      ]
+    },
+    "global-foo-fighters": {
+      "bugsId": "34755",
+      "referenceSongs": [
+        {
+          "title": "Virginia Moon",
+          "album": "In Your Honor"
+        },
+        {
+          "title": "The Pretender",
+          "album": "Echoes, Silence, Patience & Grace"
+        },
+        {
+          "title": "Walk",
+          "album": "Wasting Light [Deluxe ver.]"
+        },
+        {
+          "title": "Everlong",
+          "album": "The Colour And The Shape"
+        },
+        {
+          "title": "Best of You",
+          "album": "In Your Honor"
+        }
+      ],
+      "proofSongs": [
+        "Everlong",
+        "The Pretender"
+      ]
+    },
+    "global-green-day": {
+      "bugsId": "550",
+      "referenceSongs": [
+        {
+          "title": "Last Night on Earth",
+          "album": "21st Century Breakdown"
+        },
+        {
+          "title": "Wake Me up When September Ends",
+          "album": "American Idiot"
+        },
+        {
+          "title": "Basket Case",
+          "album": "Dookie"
+        },
+        {
+          "title": "Holiday",
+          "album": "American Idiot"
+        },
+        {
+          "title": "21 Guns",
+          "album": "21st Century Breakdown"
+        }
+      ],
+      "proofSongs": [
+        "Basket Case",
+        "Wake Me up When September Ends"
+      ]
+    },
+    "global-red-hot-chili-peppers": {
+      "bugsId": "6738",
+      "referenceSongs": [
+        {
+          "title": "Can't Stop",
+          "album": "By The Way"
+        },
+        {
+          "title": "Snow (Hey Oh)",
+          "album": "Stadium Arcadium"
+        },
+        {
+          "title": "Dani California",
+          "album": "Stadium Arcadium"
+        },
+        {
+          "title": "Otherside",
+          "album": "Californication"
+        },
+        {
+          "title": "Dark Necessities",
+          "album": "The Getaway"
+        },
+        {
+          "title": "Californication",
+          "album": "Californication"
+        },
+        {
+          "title": "Scar Tissue",
+          "album": "Californication (Deluxe Edition)"
+        },
+        {
+          "title": "Sick Love",
+          "album": "The Getaway"
+        },
+        {
+          "title": "By the Way",
+          "album": "By The Way"
+        },
+        {
+          "title": "Under The Bridge",
+          "album": "Blood Sugar Sex Magik"
+        },
+        {
+          "title": "Coffee Shop (2014 Remaster)",
+          "album": "One Hot Minute"
+        },
+        {
+          "title": "Give It Away",
+          "album": "Blood Sugar Sex Magik"
+        },
+        {
+          "title": "Hump de Bump",
+          "album": "Stadium Arcadium"
+        },
+        {
+          "title": "The Adventures of Rain Dance Maggie",
+          "album": "I'm with You"
+        },
+        {
+          "title": "The Getaway",
+          "album": "The Getaway"
+        },
+        {
+          "title": "Road Trippin'",
+          "album": "Californication (Deluxe Edition)"
+        },
+        {
+          "title": "Tell Me Baby",
+          "album": "Stadium Arcadium"
+        },
+        {
+          "title": "Go Robot",
+          "album": "The Getaway"
+        },
+        {
+          "title": "Wet Sand",
+          "album": "Stadium Arcadium"
+        },
+        {
+          "title": "Around the World",
+          "album": "Californication"
+        },
+        {
+          "title": "Charlie",
+          "album": "Stadium Arcadium"
+        },
+        {
+          "title": "Snow [Hey Oh] (Album Version)",
+          "album": "Snow [Hey Oh]"
+        },
+        {
+          "title": "Higher Ground (Remastered 2003)",
+          "album": "Mother's Milk"
+        },
+        {
+          "title": "The Zephyr Song",
+          "album": "By The Way"
+        },
+        {
+          "title": "Look Around",
+          "album": "I'm with You"
+        },
+        {
+          "title": "Aeroplane (2014 Remaster)",
+          "album": "One Hot Minute"
+        },
+        {
+          "title": "Dosed",
+          "album": "By The Way"
+        },
+        {
+          "title": "Parallel Universe",
+          "album": "Californication"
+        },
+        {
+          "title": "We Turn Red",
+          "album": "The Getaway"
+        },
+        {
+          "title": "Black Summer",
+          "album": "Unlimited Love"
+        }
+      ],
+      "proofSongs": [
+        "Californication",
+        "Under the Bridge"
+      ]
+    },
+    "global-paramore": {
+      "bugsId": "80040246",
+      "referenceSongs": [
+        {
+          "title": "The Only Exception",
+          "album": "Brand New Eyes"
+        },
+        {
+          "title": "Still into You",
+          "album": "Paramore"
+        },
+        {
+          "title": "Hard Times",
+          "album": "After Laughter"
+        },
+        {
+          "title": "Misguided Ghosts",
+          "album": "Brand New Eyes"
+        },
+        {
+          "title": "Ain't It Fun",
+          "album": "Paramore"
+        },
+        {
+          "title": "Misery Business",
+          "album": "Riot!"
+        },
+        {
+          "title": "Decode (Bonus Track)",
+          "album": "Brand New Eyes"
+        },
+        {
+          "title": "Monster (Transformers Soundtrack Version)",
+          "album": "Monster (Transformers Soundtrack Version)"
+        },
+        {
+          "title": "Told You So",
+          "album": "After Laughter"
+        },
+        {
+          "title": "Liar",
+          "album": "This Is Why"
+        },
+        {
+          "title": "Ignorance",
+          "album": "Brand New Eyes"
+        },
+        {
+          "title": "crushcrushcrush",
+          "album": "Riot!"
+        },
+        {
+          "title": "All I Wanted",
+          "album": "Brand New Eyes"
+        },
+        {
+          "title": "Brick By Boring Brick",
+          "album": "Brand New Eyes"
+        },
+        {
+          "title": "Ain't It Fun (Radio Edit)",
+          "album": "Ain't It Fun Remix EP"
+        },
+        {
+          "title": "Escape Route (Bonus Track)",
+          "album": "Paramore (Deluxe Edition)"
+        },
+        {
+          "title": "That's What You Get",
+          "album": "Riot!"
+        },
+        {
+          "title": "Rose-Colored Boy",
+          "album": "After Laughter"
+        },
+        {
+          "title": "Miracle",
+          "album": "Riot!"
+        },
+        {
+          "title": "I Caught Myself",
+          "album": "I Caught Myself"
+        },
+        {
+          "title": "Turn It Off",
+          "album": "Brand New Eyes"
+        },
+        {
+          "title": "Last Hope",
+          "album": "Paramore"
+        },
+        {
+          "title": "Hate to See Your Heart Break",
+          "album": "Paramore"
+        },
+        {
+          "title": "Decode [Acoustic Version]",
+          "album": "Decode"
+        },
+        {
+          "title": "When It Rains",
+          "album": "Riot!"
+        },
+        {
+          "title": "Fake Happy (Edit)",
+          "album": "Fake Happy (Edit)"
+        },
+        {
+          "title": "Pressure",
+          "album": "All We Know Is Falling"
+        },
+        {
+          "title": "Grow Up",
+          "album": "Paramore"
+        },
+        {
+          "title": "This Is Why",
+          "album": "This Is Why"
+        },
+        {
+          "title": "Hallelujah",
+          "album": "Riot!"
+        }
+      ],
+      "proofSongs": [
+        "Misery Business",
+        "Still Into You"
+      ]
+    },
+    "global-fleetwood-mac": {
+      "bugsId": "33598",
+      "referenceSongs": [
+        {
+          "title": "Dreams (2004 Remaster)",
+          "album": "Rumours (Super Deluxe)"
+        },
+        {
+          "title": "The Chain (2004 Remaster)",
+          "album": "Rumours (Super Deluxe)"
+        },
+        {
+          "title": "Landslide (2017 Remaster)",
+          "album": "Fleetwood Mac (Deluxe Edition)"
+        },
+        {
+          "title": "Little Lies (2018 Remaster)",
+          "album": "50 Years - Don't Stop (Streaming Ver.)"
+        },
+        {
+          "title": "Don't Stop (2004 Remaster)",
+          "album": "Rumours"
+        }
+      ],
+      "proofSongs": [
+        "Dreams",
+        "The Chain"
+      ]
+    },
+    "global-abba": {
+      "bugsId": "473",
+      "referenceSongs": [
+        {
+          "title": "Dancing Queen",
+          "album": "Arrival [30th Anniversary Deluxe Edition]"
+        },
+        {
+          "title": "The Winner Takes It All",
+          "album": "The Abba Story [English Language ver.]"
+        },
+        {
+          "title": "I Have A Dream",
+          "album": "The Abba Story [English Language ver.]"
+        },
+        {
+          "title": "Gimme! Gimme! Gimme! (A Man After Midnight)",
+          "album": "The Abba Story [English Language ver.]"
+        },
+        {
+          "title": "Mamma Mia",
+          "album": "The Abba Story [English Language ver.]"
+        }
+      ],
+      "proofSongs": [
+        "Dancing Queen",
+        "Mamma Mia"
+      ]
+    },
+    "global-michael-jackson": {
+      "bugsId": "8009999",
+      "referenceSongs": [
+        {
+          "title": "Love Never Felt So Good",
+          "album": "XSCAPE"
+        },
+        {
+          "title": "Billie Jean",
+          "album": "Thriller 25 Super Deluxe Edition"
+        },
+        {
+          "title": "Beat It",
+          "album": "Thriller"
+        },
+        {
+          "title": "Heal the World",
+          "album": "Dangerous"
+        },
+        {
+          "title": "Ben",
+          "album": "Ben"
+        }
+      ],
+      "proofSongs": [
+        "Billie Jean",
+        "Beat It"
+      ]
+    },
+    "global-madonna": {
+      "bugsId": "4591",
+      "referenceSongs": [
+        {
+          "title": "Vogue",
+          "album": "Celebration (Deluxe Version)"
+        },
+        {
+          "title": "Material Girl",
+          "album": "Like a Virgin"
+        },
+        {
+          "title": "Bring Your Love",
+          "album": "CONFESSIONS II"
+        },
+        {
+          "title": "Like a Virgin",
+          "album": "Like a Virgin"
+        },
+        {
+          "title": "Hung Up",
+          "album": "Confessions on a Dance Floor"
+        },
+        {
+          "title": "Take a Bow",
+          "album": "Bedtime Stories"
+        },
+        {
+          "title": "4 Minutes (feat. Justin Timberlake And Timbaland)",
+          "album": "Hard Candy"
+        },
+        {
+          "title": "La Isla Bonita",
+          "album": "La Isla Bonita"
+        },
+        {
+          "title": "Don't Cry for Me Argentina",
+          "album": "Music from the Motion Picture \"Evita\""
+        },
+        {
+          "title": "Crazy for You",
+          "album": "Celebration (Deluxe Version)"
+        },
+        {
+          "title": "Bitch I'm Madonna (feat. Nicki Minaj)",
+          "album": "Bitch I'm Madonna"
+        },
+        {
+          "title": "Music",
+          "album": "Music [Special Edition]"
+        },
+        {
+          "title": "Celebration",
+          "album": "Celebration (Remixes)"
+        },
+        {
+          "title": "Like a Prayer",
+          "album": "Celebration (Deluxe Version)"
+        },
+        {
+          "title": "Danceteria",
+          "album": "CONFESSIONS II"
+        },
+        {
+          "title": "Holiday",
+          "album": "Madonna"
+        },
+        {
+          "title": "Papa Don't Preach",
+          "album": "True Blue"
+        },
+        {
+          "title": "Give It 2 Me",
+          "album": "Hard Candy"
+        },
+        {
+          "title": "True Blue",
+          "album": "True Blue"
+        },
+        {
+          "title": "Living For Love",
+          "album": "Living For Love"
+        },
+        {
+          "title": "Frozen",
+          "album": "Ray Of Light"
+        },
+        {
+          "title": "Give Me All Your Luvin' (feat. Nicki Minaj & M.I.A.)",
+          "album": "Give Me All Your Luvin'"
+        },
+        {
+          "title": "Into the Groove",
+          "album": "Angel"
+        },
+        {
+          "title": "4 Minutes (feat. Justin Timberlake & Timbaland)",
+          "album": "4 Minutes (feat. Justin Timberlake and Timbaland) [Remixes]"
+        },
+        {
+          "title": "I Feel So Free",
+          "album": "CONFESSIONS II"
+        },
+        {
+          "title": "Love Sensation",
+          "album": "CONFESSIONS II"
+        },
+        {
+          "title": "American Pie",
+          "album": "Music"
+        },
+        {
+          "title": "I'll Remember (Theme from the Motion Picture With Honors)",
+          "album": "I'll Remember"
+        },
+        {
+          "title": "Live to Tell",
+          "album": "True Blue"
+        },
+        {
+          "title": "Justify My Love",
+          "album": "Celebration (Deluxe Version)"
+        }
+      ],
+      "proofSongs": [
+        "Like A Virgin",
+        "Like A Prayer"
+      ]
+    },
+    "global-whitney-houston": {
+      "bugsId": "32479",
+      "referenceSongs": [
+        {
+          "title": "I Will Always Love You",
+          "album": "보디가드 (The Bodyguard)"
+        },
+        {
+          "title": "Greatest Love of All",
+          "album": "Whitney Houston (The Deluxe Anniversary Edition)"
+        },
+        {
+          "title": "I Have Nothing",
+          "album": "보디가드 (The Bodyguard)"
+        },
+        {
+          "title": "Run To You",
+          "album": "보디가드 (The Bodyguard)"
+        },
+        {
+          "title": "Saving All My Love for You",
+          "album": "Whitney Houston (The Deluxe Anniversary Edition)"
+        }
+      ],
+      "proofSongs": [
+        "I Will Always Love You",
+        "I Have Nothing"
+      ]
+    },
+    "global-celine-dion": {
+      "bugsId": "1080",
+      "referenceSongs": [
+        {
+          "title": "My Heart Will Go On (Love Theme from \"Titanic\")",
+          "album": "Let's Talk About Love"
+        },
+        {
+          "title": "The Power Of Love",
+          "album": "The Colour Of My Love"
+        },
+        {
+          "title": "Beauty And The Beast (duet with Peabo Bryson)",
+          "album": "Celine Dion"
+        },
+        {
+          "title": "Because You Loved Me (Theme From 'Up Close And Personal')",
+          "album": "Falling Into You [Import]"
+        }
+      ],
+      "proofSongs": [
+        "My Heart Will Go On",
+        "Because You Loved Me"
+      ]
+    },
+    "global-ed-sheeran": {
+      "bugsId": "80103713",
+      "referenceSongs": [
+        {
+          "title": "Shape of You",
+          "album": "÷ [Deluxe]"
+        },
+        {
+          "title": "Thinking Out Loud",
+          "album": "X [Deluxe Edition]"
+        },
+        {
+          "title": "Bad Habits",
+          "album": "="
+        },
+        {
+          "title": "Perfect",
+          "album": "÷ [Deluxe]"
+        },
+        {
+          "title": "Photograph",
+          "album": "X [Deluxe Edition]"
+        }
+      ],
+      "proofSongs": [
+        "Shape of You",
+        "Perfect"
+      ]
+    },
+    "global-billy-joel": {
+      "bugsId": "32401",
+      "referenceSongs": [
+        {
+          "title": "Piano Man",
+          "album": "Piano Man"
+        },
+        {
+          "title": "Honesty",
+          "album": "52nd Street"
+        },
+        {
+          "title": "Just the Way You Are",
+          "album": "The Stranger"
+        },
+        {
+          "title": "Vienna",
+          "album": "The Stranger"
+        },
+        {
+          "title": "Uptown Girl",
+          "album": "An Innocent Man"
+        }
+      ],
+      "proofSongs": [
+        "Piano Man",
+        "Uptown Girl"
+      ]
+    },
+    "global-david-bowie": {
+      "bugsId": "32774",
+      "referenceSongs": [
+        {
+          "title": "Starman",
+          "album": "Ziggy Stardust"
+        },
+        {
+          "title": "Heroes",
+          "album": "Heroes"
+        },
+        {
+          "title": "Space Oddity (2015 Remaster)",
+          "album": "David Bowie (aka Space Oddity) [2015 Remaster]"
+        },
+        {
+          "title": "Moonage Daydream",
+          "album": "Ziggy Stardust"
+        },
+        {
+          "title": "Where Are We Now?",
+          "album": "The Next Day Extra"
+        }
+      ],
+      "proofSongs": [
+        "Heroes",
+        "Starman"
+      ]
+    },
+    "global-prince": {
+      "bugsId": "6312",
+      "referenceSongs": [
+        {
+          "title": "When Doves Cry",
+          "album": "Ultimate"
+        },
+        {
+          "title": "Cream",
+          "album": "Diamonds And Pearls"
+        },
+        {
+          "title": "Nothing Compares 2 U",
+          "album": "Originals"
+        },
+        {
+          "title": "With This Tear",
+          "album": "With This Tear"
+        },
+        {
+          "title": "The Most Beautiful Girl In the World",
+          "album": "The Gold Experience"
+        },
+        {
+          "title": "1999 (2019 Remaster)",
+          "album": "1999 (Remastered)"
+        },
+        {
+          "title": "New Power Generation",
+          "album": "Music from Graffiti Bridge"
+        },
+        {
+          "title": "1999 (Edit)",
+          "album": "Ultimate"
+        },
+        {
+          "title": "Stone",
+          "album": "Stone"
+        },
+        {
+          "title": "Soft and Wet",
+          "album": "For You"
+        },
+        {
+          "title": "I Wanna Be Your Lover (Single Version)",
+          "album": "Ultimate"
+        },
+        {
+          "title": "FALLINLOVE2NITE (feat. Zooey Deschanel)",
+          "album": "FALLINLOVE2NITE"
+        },
+        {
+          "title": "Chelsea Rodgers",
+          "album": "Planet Earth"
+        },
+        {
+          "title": "Musicology",
+          "album": "Musicology"
+        },
+        {
+          "title": "U Got The Look",
+          "album": "Sign 'O' The Times"
+        },
+        {
+          "title": "I Feel for You",
+          "album": "I Feel for You (Acoustic Demo) / I Feel for You"
+        },
+        {
+          "title": "Batdance",
+          "album": "Batman"
+        },
+        {
+          "title": "Kiss (Extended ver.)",
+          "album": "Ultimate Prince"
+        },
+        {
+          "title": "U Make My Sun Shine (feat. Angie Stone)",
+          "album": "The Chocolate Invasion (Trax From The NPG Music Club Volume One)"
+        },
+        {
+          "title": "Sign 'O' The Times",
+          "album": "Sign 'O' The Times"
+        },
+        {
+          "title": "Sometimes It Snows In April (LP ver.)",
+          "album": "Parade - Music From The Motion Picture Under The Cherry Moon"
+        },
+        {
+          "title": "Gett Off (LP Version)",
+          "album": "Diamonds And Pearls"
+        },
+        {
+          "title": "Call My Name",
+          "album": "Musicology"
+        },
+        {
+          "title": "Sign 'O' the Times (Single Version)",
+          "album": "Ultimate"
+        },
+        {
+          "title": "My Name Is Prince",
+          "album": "Ultimate Prince"
+        },
+        {
+          "title": "Purple Rain",
+          "album": "Carrier Dome, Syracuse, New York, March 30th, 1985"
+        },
+        {
+          "title": "7",
+          "album": "Ultimate Prince"
+        },
+        {
+          "title": "THIS COULD B US",
+          "album": "HITNRUN Phase One"
+        },
+        {
+          "title": "I Am You",
+          "album": "Timeless"
+        },
+        {
+          "title": "Thieves in the Temple",
+          "album": "Music from Graffiti Bridge"
+        }
+      ],
+      "proofSongs": [
+        "Purple Rain",
+        "Kiss"
+      ]
+    },
+    "global-the-beatles": {
+      "bugsId": "32397",
+      "referenceSongs": [
+        {
+          "title": "Yesterday (Remastered 2009)",
+          "album": "Help! (Remastered 2009)"
+        },
+        {
+          "title": "Let It Be (Single Version / 2021 Mix)",
+          "album": "Let It Be (Super Deluxe)"
+        },
+        {
+          "title": "Hey Jude (2015 Mix)",
+          "album": "The Beatles 1967 – 1970 (2023 Edition)"
+        },
+        {
+          "title": "I Will (2018 Mix)",
+          "album": "The Beatles (White Album / Super Deluxe)"
+        },
+        {
+          "title": "Let It Be (Remastered 2009)",
+          "album": "Let It Be (Remastered 2009)"
+        }
+      ],
+      "proofSongs": [
+        "Let It Be",
+        "Hey Jude"
+      ]
+    },
+    "global-daft-punk": {
+      "bugsId": "35606",
+      "referenceSongs": [
+        {
+          "title": "Something About Us",
+          "album": "Discovery"
+        },
+        {
+          "title": "Harder, Better, Faster, Stronger",
+          "album": "Discovery"
+        },
+        {
+          "title": "Get Lucky (Radio Edit - feat. Pharrell Williams and Nile Rodgers)",
+          "album": "Get Lucky (Radio Edit - feat. Pharrell Williams and Nile Rodgers)"
+        },
+        {
+          "title": "One More Time",
+          "album": "Discovery"
+        },
+        {
+          "title": "Give Life Back to Music",
+          "album": "Random Access Memories"
+        },
+        {
+          "title": "Something About Us (Love Theme from Interstella 5555)",
+          "album": "Something About Us (Love Theme from Interstella)"
+        },
+        {
+          "title": "Giorgio by Moroder",
+          "album": "Random Access Memories"
+        },
+        {
+          "title": "Within",
+          "album": "Random Access Memories"
+        },
+        {
+          "title": "The Game of Love",
+          "album": "Random Access Memories"
+        },
+        {
+          "title": "Veridis Quo",
+          "album": "Discovery"
+        },
+        {
+          "title": "Digital Love",
+          "album": "Discovery"
+        },
+        {
+          "title": "Beyond",
+          "album": "Random Access Memories"
+        },
+        {
+          "title": "Technologic",
+          "album": "Human After All"
+        },
+        {
+          "title": "TRON Legacy (End Titles) (From \"TRON: Legacy\"/Score)",
+          "album": "TRON: Legacy"
+        },
+        {
+          "title": "Contact",
+          "album": "Random Access Memories"
+        },
+        {
+          "title": "Aerodynamic",
+          "album": "Discovery"
+        },
+        {
+          "title": "Robot Rock",
+          "album": "Human After All"
+        },
+        {
+          "title": "Da Funk",
+          "album": "Homework"
+        },
+        {
+          "title": "Technologic (Radio Edit)",
+          "album": "Technologic"
+        },
+        {
+          "title": "Motherboard",
+          "album": "Random Access Memories"
+        },
+        {
+          "title": "Around the World / Harder, Better, Faster, Stronger",
+          "album": "Alive 2007"
+        },
+        {
+          "title": "Around the World",
+          "album": "Homework"
+        },
+        {
+          "title": "Voyager",
+          "album": "Discovery"
+        },
+        {
+          "title": "Derezzed (From \"TRON: Legacy\"/Score)",
+          "album": "TRON: Legacy"
+        },
+        {
+          "title": "Derezzed (feat. Negin) (From TRON: Legacy/Avicii \"So Amazing Mix\") (영화 '트론' OST )",
+          "album": "Derezzed ((From “TRON: Legacy”) [Avicii \"So Amazing Mix\"] [Feat. Negin])"
+        },
+        {
+          "title": "Face To Face",
+          "album": "Discovery"
+        },
+        {
+          "title": "One More Time (12 Mix)",
+          "album": "One More Time"
+        },
+        {
+          "title": "Digital Love (Radio Edit)",
+          "album": "Digital Love"
+        },
+        {
+          "title": "Human After All (SebastiAn Remix)",
+          "album": "Human After All (Remixes)"
+        },
+        {
+          "title": "Around the World (Radio Edit)",
+          "album": "Around The World"
+        }
+      ],
+      "proofSongs": [
+        "Get Lucky",
+        "One More Time"
+      ]
+    },
+    "global-avicii": {
+      "bugsId": "80096278",
+      "referenceSongs": [
+        {
+          "title": "The Nights",
+          "album": "The Days / Nights (EP)"
+        },
+        {
+          "title": "Waiting For Love",
+          "album": "Stories"
+        },
+        {
+          "title": "Wake Me Up",
+          "album": "True"
+        },
+        {
+          "title": "Lonely Together (feat. Rita Ora)",
+          "album": "AVĪCI (01)"
+        },
+        {
+          "title": "Without You",
+          "album": "AVĪCI (01)"
+        }
+      ],
+      "proofSongs": [
+        "Wake Me Up",
+        "The Nights"
+      ]
+    },
+    "global-calvin-harris": {
+      "bugsId": "80024973",
+      "referenceSongs": [
+        {
+          "title": "Feels (feat. Katy Perry, Big Sean, Pharrell)",
+          "album": "Funk Wav Bounces Vol.1"
+        },
+        {
+          "title": "Slide (feat. Frank Ocean, Migos)",
+          "album": "Funk Wav Bounces Vol.1"
+        },
+        {
+          "title": "One Kiss",
+          "album": "One Kiss"
+        },
+        {
+          "title": "Summer",
+          "album": "Motion"
+        },
+        {
+          "title": "Outside (feat. Ellie Goulding)",
+          "album": "Motion"
+        },
+        {
+          "title": "Rollin (feat. Future, Khalid)",
+          "album": "Funk Wav Bounces Vol.1"
+        },
+        {
+          "title": "Heatstroke (feat. Young Thug, Ariana Grande, Pharrell)",
+          "album": "Funk Wav Bounces Vol.1"
+        },
+        {
+          "title": "My Way",
+          "album": "96 Months"
+        },
+        {
+          "title": "Over Now",
+          "album": "Over Now"
+        },
+        {
+          "title": "Blame (feat. John Newman)",
+          "album": "Motion"
+        },
+        {
+          "title": "Feel So Close (Radio Edit)",
+          "album": "18 Months"
+        },
+        {
+          "title": "Let's Go (feat. Ne-Yo)",
+          "album": "18 Months"
+        },
+        {
+          "title": "I Need Your Love (feat. Ellie Goulding)",
+          "album": "18 Months"
+        },
+        {
+          "title": "Holiday (feat. Snoop Dogg, John Legend, Takeoff)",
+          "album": "Funk Wav Bounces Vol.1"
+        },
+        {
+          "title": "Under Control (feat. Hurts)",
+          "album": "Under Control"
+        },
+        {
+          "title": "Pray to God (Calvin Harris vs Mike Pickering Hacienda Remix) (feat. HAIM)",
+          "album": "Pray to God (Calvin Harris vs Mike Pickering Hacienda Remix)"
+        },
+        {
+          "title": "Cash Out (feat. Schoolboy Q, PARTYNEXTDOOR, DRAM)",
+          "album": "Funk Wav Bounces Vol.1"
+        },
+        {
+          "title": "Faking It (feat. Kehlani, Lil Yachty)",
+          "album": "Funk Wav Bounces Vol.1"
+        },
+        {
+          "title": "Blessings",
+          "album": "Blessings"
+        },
+        {
+          "title": "Potion",
+          "album": "Potion"
+        },
+        {
+          "title": "Sweet Nothing (feat. Florence Welch)",
+          "album": "18 Months"
+        },
+        {
+          "title": "Prayers Up (feat. Travis Scott, A-Trak)",
+          "album": "Funk Wav Bounces Vol.1"
+        },
+        {
+          "title": "Hard to Love (feat. Jessie Reyez)",
+          "album": "Funk Wav Bounces Vol.1"
+        },
+        {
+          "title": "Skrt On Me (feat. Nicki Minaj)",
+          "album": "Funk Wav Bounces Vol.1"
+        },
+        {
+          "title": "Thinking About You (feat. Ayah Marar)",
+          "album": "18 Months"
+        },
+        {
+          "title": "Hype",
+          "album": "Hype"
+        },
+        {
+          "title": "Open Wide (feat. Big Sean)",
+          "album": "Motion"
+        },
+        {
+          "title": "By Your Side (feat. Tom Grennan)",
+          "album": "96 Months"
+        },
+        {
+          "title": "Faith",
+          "album": "Motion"
+        },
+        {
+          "title": "Faking It (feat. Kehlani & Lil Yachty) (Radio Edit)",
+          "album": "Faking It (Radio Edit)"
+        }
+      ],
+      "proofSongs": [
+        "Summer",
+        "Feel So Close"
+      ]
+    },
+    "global-david-guetta": {
+      "bugsId": "80009895",
+      "referenceSongs": [
+        {
+          "title": "Hey Mama (feat. Nicki Minaj, Bebe Rexha & Afrojack)",
+          "album": "Listen"
+        },
+        {
+          "title": "Titanium (feat. Sia)",
+          "album": "Nothing but the Beat (Ultimate Edition)"
+        },
+        {
+          "title": "Bad (feat. Vassy) (Radio Edit)",
+          "album": "Listen Again"
+        },
+        {
+          "title": "2U (feat. Justin Bieber)",
+          "album": "7"
+        }
+      ],
+      "proofSongs": [
+        "Titanium",
+        "Hey Mama"
+      ]
+    },
+    "global-zedd": {
+      "bugsId": "80122075",
+      "referenceSongs": [
+        {
+          "title": "Stay",
+          "album": "Stay"
+        },
+        {
+          "title": "The Middle",
+          "album": "The Middle"
+        },
+        {
+          "title": "Get Low",
+          "album": "Get Low"
+        },
+        {
+          "title": "Good Thing",
+          "album": "Good Thing"
+        },
+        {
+          "title": "Clarity (feat. Foxes)",
+          "album": "Clarity [Deluxe Edition]"
+        },
+        {
+          "title": "I Want You To Know (feat. Selena Gomez)",
+          "album": "True Colors"
+        },
+        {
+          "title": "Beautiful Now (feat. Jon Bellion)",
+          "album": "True Colors"
+        },
+        {
+          "title": "Funny",
+          "album": "Funny (Remixes)"
+        },
+        {
+          "title": "Stay The Night (feat. Hayley Williams Of Paramore)",
+          "album": "Clarity [Deluxe Edition]"
+        },
+        {
+          "title": "Candyman",
+          "album": "Candyman"
+        },
+        {
+          "title": "Make You Say",
+          "album": "Make You Say"
+        },
+        {
+          "title": "Spectrum (feat. Matthew Koma)",
+          "album": "Clarity"
+        },
+        {
+          "title": "365",
+          "album": "365"
+        },
+        {
+          "title": "Find You (feat. Matthew Koma, Miriam Bryant)",
+          "album": "Clarity (Deluxe)"
+        },
+        {
+          "title": "Ignite (2016 League Of Legends World Championship) (리그 오브 레전드 2016 월드 챔피언십 주제곡)",
+          "album": "Ignite (2016 League Of Legends World Championship)"
+        },
+        {
+          "title": "Daisy",
+          "album": "True Colors"
+        },
+        {
+          "title": "Papercut (feat. Troye Sivan)",
+          "album": "True Colors"
+        },
+        {
+          "title": "Addicted To A Memory (feat. Bahari)",
+          "album": "True Colors"
+        },
+        {
+          "title": "Done With Love",
+          "album": "True Colors"
+        },
+        {
+          "title": "Good Thing (feat. Kehlani) (Osrin Remix)",
+          "album": "Good Thing (Remixes)"
+        },
+        {
+          "title": "True Colors",
+          "album": "True Colors"
+        },
+        {
+          "title": "Stay The Night (feat. Hayley Williams Of Paramore) (Zedd & Kevin Drew Extended Remix)",
+          "album": "Stay The Night (Zedd & Kevin Drew Extended Remix)"
+        },
+        {
+          "title": "Transmission (feat. X Ambassadors, Logic)",
+          "album": "True Colors"
+        },
+        {
+          "title": "Stay (Tritonal Remix)",
+          "album": "Stay (Remixes)"
+        },
+        {
+          "title": "Push Play",
+          "album": "Clarity [Deluxe Edition]"
+        },
+        {
+          "title": "Alive (Zedd Remix) (With Empire Of The Sun)",
+          "album": "Clarity [Deluxe Edition]"
+        },
+        {
+          "title": "Automatic Yes",
+          "album": "Automatic Yes"
+        },
+        {
+          "title": "Lucky",
+          "album": "Telos"
+        },
+        {
+          "title": "Follow You Down (feat. Bright Lights)",
+          "album": "Clarity [Deluxe Edition]"
+        },
+        {
+          "title": "Clarity (feat. Foxes) (Zedd Union Mix)",
+          "album": "Clarity (Remixes)"
+        }
+      ],
+      "proofSongs": [
+        "Clarity",
+        "Stay"
+      ]
+    },
+    "global-justin-bieber": {
+      "bugsId": "80057730",
+      "referenceSongs": [
+        {
+          "title": "Off My Face",
+          "album": "Justice"
+        },
+        {
+          "title": "Love Yourself",
+          "album": "Purpose (Deluxe)"
+        },
+        {
+          "title": "Peaches (feat. Daniel Caesar, Giveon)",
+          "album": "Justice"
+        },
+        {
+          "title": "Baby (feat. Ludacris)",
+          "album": "My Worlds (International Version)"
+        },
+        {
+          "title": "DAISIES",
+          "album": "SWAG"
+        },
+        {
+          "title": "Sorry",
+          "album": "Purpose (Deluxe)"
+        },
+        {
+          "title": "Beauty And A Beat (feat. Nicki Minaj)",
+          "album": "Believe (Deluxe Edition)"
+        },
+        {
+          "title": "What Do You Mean?",
+          "album": "Purpose (Deluxe)"
+        },
+        {
+          "title": "Holy (feat. Chance The Rapper)",
+          "album": "Justice"
+        },
+        {
+          "title": "Mistletoe",
+          "album": "Under The Mistletoe (Deluxe Edition)"
+        },
+        {
+          "title": "Yummy",
+          "album": "Changes"
+        },
+        {
+          "title": "Hold On",
+          "album": "Justice"
+        },
+        {
+          "title": "YUKON",
+          "album": "SWAG"
+        },
+        {
+          "title": "Ghost",
+          "album": "Justice"
+        },
+        {
+          "title": "Intentions (feat. Quavo)",
+          "album": "Changes"
+        },
+        {
+          "title": "GO BABY",
+          "album": "SWAG"
+        },
+        {
+          "title": "Lonely",
+          "album": "Lonely"
+        },
+        {
+          "title": "Boyfriend (Acoustic Version)",
+          "album": "Believe Acoustic"
+        },
+        {
+          "title": "SPEED DEMON",
+          "album": "SWAG II"
+        },
+        {
+          "title": "Anyone",
+          "album": "Justice"
+        },
+        {
+          "title": "Deserve You",
+          "album": "Justice"
+        },
+        {
+          "title": "Boyfriend",
+          "album": "Believe"
+        },
+        {
+          "title": "As I Am (feat. Khalid)",
+          "album": "Justice"
+        },
+        {
+          "title": "Come Around Me",
+          "album": "Changes"
+        },
+        {
+          "title": "Red Eye (feat. TroyBoi)",
+          "album": "Justice (The Complete Edition)"
+        },
+        {
+          "title": "One Less Lonely Girl",
+          "album": "My World"
+        },
+        {
+          "title": "LOVE SONG",
+          "album": "SWAG II"
+        },
+        {
+          "title": "All I Want For Christmas Is You (SuperFestive!) Duet with Mariah Carey",
+          "album": "Under The Mistletoe (Deluxe Edition)"
+        },
+        {
+          "title": "Friends",
+          "album": "Friends"
+        },
+        {
+          "title": "As Long As You Love Me (feat. Big Sean)",
+          "album": "Believe"
+        }
+      ],
+      "proofSongs": [
+        "Love Yourself",
+        "Sorry"
+      ]
+    },
+    "global-alan-walker": {
+      "bugsId": "80255459",
+      "referenceSongs": [
+        {
+          "title": "Faded",
+          "album": "Different World"
+        },
+        {
+          "title": "On My Way (배틀그라운드 모바일 배경음악)",
+          "album": "On My Way"
+        },
+        {
+          "title": "All Falls Down (feat. Juliander)",
+          "album": "All Falls Down"
+        },
+        {
+          "title": "Alone",
+          "album": "Different World"
+        },
+        {
+          "title": "The Drum",
+          "album": "Walkerverse, Pt. I"
+        }
+      ],
+      "proofSongs": [
+        "Faded",
+        "Alone"
+      ]
+    },
+    "global-the-chainsmokers": {
+      "bugsId": "80143014",
+      "referenceSongs": [
+        {
+          "title": "Closer (feat. Halsey)",
+          "album": "Collage EP"
+        },
+        {
+          "title": "Something Just Like This",
+          "album": "Something Just Like This"
+        },
+        {
+          "title": "Paris",
+          "album": "Memories...Do Not Open"
+        },
+        {
+          "title": "Don't Let Me Down (feat. Daya)",
+          "album": "Collage EP"
+        },
+        {
+          "title": "#SELFIE",
+          "album": "#SELFIE"
+        }
+      ],
+      "proofSongs": [
+        "Closer",
+        "Something Just Like This"
+      ]
+    },
+    "global-kendrick-lamar": {
+      "bugsId": "80105349",
+      "referenceSongs": [
+        {
+          "title": "All The Stars (From \"Black Panther: The Album\") (영화 '블랙 팬서' OST)",
+          "album": "Black Panther The Album Music From And Inspired By"
+        },
+        {
+          "title": "Not Like Us",
+          "album": "Not Like Us"
+        },
+        {
+          "title": "Pray For Me",
+          "album": "Pray For Me"
+        },
+        {
+          "title": "LOVE. (feat. Zacari)",
+          "album": "DAMN."
+        },
+        {
+          "title": "HUMBLE.",
+          "album": "DAMN."
+        },
+        {
+          "title": "DNA.",
+          "album": "DAMN."
+        },
+        {
+          "title": "tv off (feat. Lefty Gunplay)",
+          "album": "GNX"
+        },
+        {
+          "title": "squabble up",
+          "album": "GNX"
+        },
+        {
+          "title": "Alright",
+          "album": "To Pimp A Butterfly"
+        },
+        {
+          "title": "Now Or Never (feat. Mary J.Blige)",
+          "album": "Good Kid, m.A.A.d City [Deluxe ver.]"
+        },
+        {
+          "title": "N95",
+          "album": "Mr. Morale & The Big Steppers"
+        },
+        {
+          "title": "LOYALTY. (feat. Rihanna)",
+          "album": "DAMN."
+        },
+        {
+          "title": "i",
+          "album": "To Pimp A Butterfly"
+        },
+        {
+          "title": "heart pt. 6",
+          "album": "GNX"
+        },
+        {
+          "title": "peekaboo (feat. Az Chike)",
+          "album": "GNX"
+        },
+        {
+          "title": "m.A.A.d city (feat. MC EIHT)",
+          "album": "good kid, m.A.A.d city (Deluxe)"
+        },
+        {
+          "title": "King Kunta",
+          "album": "To Pimp A Butterfly"
+        },
+        {
+          "title": "Money Trees (feat. Jay Rock)",
+          "album": "good kid, m.A.A.d city (Deluxe)"
+        },
+        {
+          "title": "HUMBLE. (SKRILLEX REMIX)",
+          "album": "HUMBLE. (SKRILLEX REMIX)"
+        },
+        {
+          "title": "Die Hard",
+          "album": "Mr. Morale & The Big Steppers"
+        },
+        {
+          "title": "Backseat Freestyle",
+          "album": "good kid, m.A.A.d city (Deluxe)"
+        },
+        {
+          "title": "Like That",
+          "album": "WE DON'T TRUST YOU"
+        },
+        {
+          "title": "Swimming Pools (Drank) (Extended Version)",
+          "album": "good kid, m.A.A.d city (Deluxe)"
+        },
+        {
+          "title": "ELEMENT.",
+          "album": "DAMN."
+        },
+        {
+          "title": "All The Stars (From \"Black Panther: The Album\")",
+          "album": "All The Stars"
+        },
+        {
+          "title": "These Walls (feat. Bilal, Anna Wise, Thundercat)",
+          "album": "To Pimp A Butterfly"
+        },
+        {
+          "title": "euphoria",
+          "album": "euphoria"
+        },
+        {
+          "title": "PRIDE.",
+          "album": "DAMN."
+        },
+        {
+          "title": "Poetic Justice (feat. Drake)",
+          "album": "good kid, m.A.A.d city (Deluxe)"
+        },
+        {
+          "title": "XXX. (feat. U2)",
+          "album": "DAMN."
+        }
+      ],
+      "proofSongs": [
+        "HUMBLE.",
+        "Not Like Us"
+      ]
+    },
+    "global-drake": {
+      "bugsId": "80058247",
+      "referenceSongs": [
+        {
+          "title": "God's Plan",
+          "album": "Scorpion"
+        },
+        {
+          "title": "Hotline Bling",
+          "album": "Views"
+        },
+        {
+          "title": "One Dance (feat. Kyla, WizKid)",
+          "album": "Views"
+        },
+        {
+          "title": "In My Feelings",
+          "album": "Scorpion"
+        },
+        {
+          "title": "Hold On, We're Going Home",
+          "album": "Hold On, We're Going Home"
+        }
+      ],
+      "proofSongs": [
+        "God's Plan",
+        "Hotline Bling"
+      ]
+    },
+    "global-eminem": {
+      "bugsId": "1205",
+      "referenceSongs": [
+        {
+          "title": "Lose Yourself",
+          "album": "Curtain Call: The Hits"
+        },
+        {
+          "title": "The Monster (feat. Rihanna)",
+          "album": "The Marshall Mathers LP2 (Deluxe)"
+        },
+        {
+          "title": "Love The Way You Lie (feat. Rihanna)",
+          "album": "Recovery"
+        },
+        {
+          "title": "Without Me",
+          "album": "The Eminem Show"
+        },
+        {
+          "title": "Godzilla (feat. Juice WRLD)",
+          "album": "Music To Be Murdered By"
+        }
+      ],
+      "proofSongs": [
+        "Lose Yourself",
+        "Without Me"
+      ]
+    },
+    "global-kanye-west": {
+      "bugsId": "44181",
+      "referenceSongs": [
+        {
+          "title": "Stronger",
+          "album": "Graduation"
+        },
+        {
+          "title": "Runaway (feat. Pusha T)",
+          "album": "My Beautiful Dark Twisted Fantasy"
+        },
+        {
+          "title": "Black Skinhead",
+          "album": "Yeezus"
+        },
+        {
+          "title": "Gold Digger (feat. Jamie Foxx)",
+          "album": "Late Registration"
+        },
+        {
+          "title": "Ni**as In Paris",
+          "album": "Watch The Throne"
+        },
+        {
+          "title": "POWER",
+          "album": "My Beautiful Dark Twisted Fantasy"
+        },
+        {
+          "title": "I Love It",
+          "album": "I Love It"
+        },
+        {
+          "title": "Famous (Feat. Rihanna)",
+          "album": "The Life Of Pablo"
+        },
+        {
+          "title": "God Is",
+          "album": "JESUS IS KING"
+        },
+        {
+          "title": "Monster (feat. JAY-Z, Rick Ross, Bon Iver, Nicki Minaj)",
+          "album": "My Beautiful Dark Twisted Fantasy"
+        },
+        {
+          "title": "Father Stretch My Hands Pt. 1",
+          "album": "The Life Of Pablo"
+        },
+        {
+          "title": "Ghost Town (feat. PARTYNEXTDOOR)",
+          "album": "ye"
+        },
+        {
+          "title": "All Of The Lights",
+          "album": "My Beautiful Dark Twisted Fantasy"
+        },
+        {
+          "title": "Through The Wire",
+          "album": "The College Dropout"
+        },
+        {
+          "title": "Touch The Sky (feat. Lupe Fiasco)",
+          "album": "Late Registration"
+        },
+        {
+          "title": "Good Life (feat. T-Pain)",
+          "album": "Graduation"
+        },
+        {
+          "title": "Runaway (feat. Pusha T) (Explicit Version)",
+          "album": "Runaway (Explicit Version)"
+        },
+        {
+          "title": "Only One (feat. Paul McCartney)",
+          "album": "Only One"
+        },
+        {
+          "title": "Heartless",
+          "album": "808s & Heartbreak"
+        },
+        {
+          "title": "Flashing Lights (feat. Dwele)",
+          "album": "Graduation"
+        },
+        {
+          "title": "Hurricane (feat. Lil Baby)",
+          "album": "Hurricane"
+        },
+        {
+          "title": "Heard 'Em Say (feat. Adam Levine)",
+          "album": "Late Registration"
+        },
+        {
+          "title": "Jail",
+          "album": "Donda"
+        },
+        {
+          "title": "Bound 2",
+          "album": "Yeezus"
+        },
+        {
+          "title": "Mercy (feat. Pusha T, Big Sean, 2 Chainz)",
+          "album": "Mercy"
+        },
+        {
+          "title": "Dark Fantasy",
+          "album": "My Beautiful Dark Twisted Fantasy"
+        },
+        {
+          "title": "On Sight",
+          "album": "Yeezus"
+        },
+        {
+          "title": "I Wonder",
+          "album": "Graduation"
+        },
+        {
+          "title": "No Church In The Wild (feat. Frank Ocean, The-Dream)",
+          "album": "Watch The Throne"
+        },
+        {
+          "title": "Love Lockdown (Album Version)",
+          "album": "808s & Heartbreak"
+        }
+      ],
+      "proofSongs": [
+        "Stronger",
+        "Heartless"
+      ]
+    },
+    "global-jay-z": {
+      "bugsId": "19073",
+      "referenceSongs": [
+        {
+          "title": "Empire State Of Mind (feat. Alicia Keys)",
+          "album": "The Blueprint 3"
+        },
+        {
+          "title": "Numb/Encore (Explicit Version)",
+          "album": "Collision Course"
+        },
+        {
+          "title": "Run This Town (feat. Rihanna, Kanye West)",
+          "album": "The Blueprint 3"
+        },
+        {
+          "title": "Holy Grail (feat. Justin Timberlake)",
+          "album": "Magna Carta... Holy Grail"
+        }
+      ],
+      "proofSongs": [
+        "Empire State Of Mind",
+        "Numb / Encore"
+      ]
+    },
+    "global-travis-scott": {
+      "bugsId": "80154375",
+      "referenceSongs": [
+        {
+          "title": "SICKO MODE",
+          "album": "ASTROWORLD"
+        },
+        {
+          "title": "FE!N (feat. Playboi Carti)",
+          "album": "UTOPIA"
+        },
+        {
+          "title": "Goosebumps (feat. Kendrick Lamar)",
+          "album": "The Hate U Give (Original Motion Picture Soundtrack)"
+        },
+        {
+          "title": "HIGHEST IN THE ROOM",
+          "album": "HIGHEST IN THE ROOM"
+        },
+        {
+          "title": "Antisocial",
+          "album": "No.6 Collaborations Project"
+        }
+      ],
+      "proofSongs": [
+        "SICKO MODE",
+        "goosebumps"
+      ]
+    },
+    "global-j-cole": {
+      "bugsId": "80090304",
+      "referenceSongs": [
+        {
+          "title": "on the street (with J. Cole)",
+          "album": "on the street (with J. Cole)"
+        },
+        {
+          "title": "MIDDLE CHILD",
+          "album": "MIDDLE CHILD"
+        },
+        {
+          "title": "Wet Dreamz",
+          "album": "2014 Forest Hills Drive"
+        },
+        {
+          "title": "Work Out",
+          "album": "Cole World: The Sideline Story"
+        },
+        {
+          "title": "Apparently",
+          "album": "2014 Forest Hills Drive"
+        },
+        {
+          "title": "No Role Modelz",
+          "album": "2014 Forest Hills Drive"
+        },
+        {
+          "title": "Crooked Smile (feat. TLC)",
+          "album": "Born Sinner (Deluxe Version)"
+        },
+        {
+          "title": "KOD",
+          "album": "KOD"
+        },
+        {
+          "title": "ATM",
+          "album": "KOD"
+        },
+        {
+          "title": "Tribe",
+          "album": "Milky Way"
+        },
+        {
+          "title": "Love Yourz",
+          "album": "2014 Forest Hills Drive"
+        },
+        {
+          "title": "A Tale Of 2 Citiez",
+          "album": "2014 Forest Hills Drive"
+        },
+        {
+          "title": "SAFETY",
+          "album": "The Fall-Off"
+        },
+        {
+          "title": "Power Trip (feat. Miguel)",
+          "album": "Born Sinner"
+        },
+        {
+          "title": "Kevin’s Heart",
+          "album": "KOD"
+        },
+        {
+          "title": "Motiv8",
+          "album": "KOD"
+        },
+        {
+          "title": "G.O.M.D",
+          "album": "2014 Forest Hills Drive"
+        },
+        {
+          "title": "Deja Vu",
+          "album": "4 Your Eyez Only"
+        },
+        {
+          "title": "Fire Squad",
+          "album": "2014 Forest Hills Drive"
+        },
+        {
+          "title": "She Knows (feat. Cults, Amber Coffman)",
+          "album": "Born Sinner"
+        },
+        {
+          "title": "a m a r i",
+          "album": "The Off-Season"
+        },
+        {
+          "title": "everybody dies",
+          "album": "everybody dies"
+        },
+        {
+          "title": "Change",
+          "album": "4 Your Eyez Only"
+        },
+        {
+          "title": "Born Sinner (feat. James Fauntleroy)",
+          "album": "Born Sinner (Deluxe Version)"
+        },
+        {
+          "title": "Neighbors",
+          "album": "4 Your Eyez Only"
+        },
+        {
+          "title": "Immortal",
+          "album": "4 Your Eyez Only"
+        },
+        {
+          "title": "1985 (Intro to “The Fall Off”)",
+          "album": "KOD"
+        },
+        {
+          "title": "m y . l i f e",
+          "album": "The Off-Season"
+        },
+        {
+          "title": "p r i d e . i s . t h e . d e v i l",
+          "album": "The Off-Season"
+        },
+        {
+          "title": "Foldin Clothes",
+          "album": "4 Your Eyez Only"
+        }
+      ],
+      "proofSongs": [
+        "No Role Modelz",
+        "MIDDLE CHILD"
+      ]
+    },
+    "global-tyler-the-creator": {
+      "bugsId": "80106621",
+      "referenceSongs": [
+        {
+          "title": "Sugar On My Tongue",
+          "album": "DON'T TAP THE GLASS"
+        },
+        {
+          "title": "See You Again (feat. Kali Uchis)",
+          "album": "Flower Boy"
+        },
+        {
+          "title": "EARFQUAKE",
+          "album": "IGOR"
+        },
+        {
+          "title": "Darling, I (feat. Teezo Touchdown)",
+          "album": "CHROMAKOPIA"
+        },
+        {
+          "title": "Sticky (feat. GloRilla, Sexyy Red, Lil Wayne)",
+          "album": "CHROMAKOPIA"
+        }
+      ],
+      "proofSongs": [
+        "See You Again",
+        "EARFQUAKE"
+      ]
+    },
+    "global-childish-gambino": {
+      "bugsId": "80110691",
+      "referenceSongs": [
+        {
+          "title": "Redbone",
+          "album": "\"Awaken, My Love!\""
+        },
+        {
+          "title": "This Is America",
+          "album": "This Is America"
+        },
+        {
+          "title": "Damn Right (feat. Childish Gambino & Kali Uchis)",
+          "album": "Ruby"
+        },
+        {
+          "title": "Sober",
+          "album": "Kauai"
+        },
+        {
+          "title": "Feels Like Summer",
+          "album": "Summer Pack"
+        }
+      ],
+      "proofSongs": [
+        "Redbone",
+        "This Is America"
+      ]
+    },
+    "global-snoop-dogg": {
+      "bugsId": "14536",
+      "referenceSongs": [
+        {
+          "title": "Young, Wild & Free (feat. Bruno Mars)",
+          "album": "Young, Wild & Free (feat. Bruno Mars)"
+        },
+        {
+          "title": "Drop It Like It's Hot (feat. Pharrell)",
+          "album": "R&G (Rhythm & Gangsta): The Masterpiece"
+        },
+        {
+          "title": "Nuthin' But A 'G' Thang",
+          "album": "Greatest Hits"
+        }
+      ],
+      "proofSongs": [
+        "Drop It Like It's Hot",
+        "Young, Wild & Free"
+      ]
+    },
+    "global-2pac": {
+      "bugsId": "3053",
+      "referenceSongs": [
+        {
+          "title": "Do For Love",
+          "album": "R U Still Down? [Remember Me]"
+        },
+        {
+          "title": "California Love (feat. Roger Troutman, Dr. Dre) (Original Version)",
+          "album": "Greatest Hits"
+        },
+        {
+          "title": "Changes (feat. Talent)",
+          "album": "The Best of 2Pac"
+        },
+        {
+          "title": "Life Goes On",
+          "album": "All Eyez On Me"
+        },
+        {
+          "title": "Hit 'Em Up (feat. The Outlawz) (Single Version)",
+          "album": "Greatest Hits"
+        }
+      ],
+      "proofSongs": [
+        "California Love",
+        "Changes"
+      ]
+    },
+    "global-the-notorious-b-i-g": {
+      "bugsId": "34561",
+      "referenceSongs": [
+        {
+          "title": "Big Poppa",
+          "album": "Ready To Die"
+        },
+        {
+          "title": "Hypnotize",
+          "album": "Life After Death"
+        },
+        {
+          "title": "Juicy",
+          "album": "Ready To Die"
+        },
+        {
+          "title": "Old Thing Back (feat. Ja Rule and Ralph Tresvant)",
+          "album": "Old Thing Back (feat. Ja Rule and Ralph Tresvant)"
+        },
+        {
+          "title": "Mo Money Mo Problems (feat. Mase & Puff Daddy)",
+          "album": "Life After Death"
+        }
+      ],
+      "proofSongs": [
+        "Juicy",
+        "Big Poppa"
+      ]
+    },
+    "global-nas": {
+      "bugsId": "11668",
+      "referenceSongs": [
+        {
+          "title": "Nas Is Like",
+          "album": "I Am..."
+        },
+        {
+          "title": "Doo Rags",
+          "album": "The Lost Tapes"
+        },
+        {
+          "title": "Hip Hop Is Dead (feat. Will.I.Am)",
+          "album": "Hip Hop Is Dead"
+        },
+        {
+          "title": "N.Y. State of Mind",
+          "album": "Illmatic"
+        },
+        {
+          "title": "I Can",
+          "album": "God's Son"
+        },
+        {
+          "title": "The Message",
+          "album": "It Was Written"
+        },
+        {
+          "title": "The World Is Yours",
+          "album": "Illmatic"
+        },
+        {
+          "title": "Life's a Bitch (feat. AZ, Olu Dara)",
+          "album": "Illmatic"
+        },
+        {
+          "title": "Halftime",
+          "album": "Illmatic"
+        },
+        {
+          "title": "Represent",
+          "album": "Illmatic"
+        },
+        {
+          "title": "If I Ruled the World (Imagine That) (feat. Lauryn Hill)",
+          "album": "It Was Written"
+        },
+        {
+          "title": "Memory Lane (Sittin' in da Park)",
+          "album": "Illmatic"
+        },
+        {
+          "title": "The Genesis",
+          "album": "Illmatic"
+        },
+        {
+          "title": "One Love (feat. Q-Tip)",
+          "album": "Illmatic"
+        },
+        {
+          "title": "As We Enter",
+          "album": "As We Enter"
+        },
+        {
+          "title": "Can't Forget About You (feat. Chrisette Michele)",
+          "album": "Can't Forget About You"
+        },
+        {
+          "title": "It Ain't Hard to Tell",
+          "album": "Illmatic"
+        },
+        {
+          "title": "Purple",
+          "album": "The Lost Tapes"
+        },
+        {
+          "title": "Made You Look",
+          "album": "God's Son"
+        },
+        {
+          "title": "Cherry Wine (feat. Amy Winehouse)",
+          "album": "Life Is Good (Deluxe)"
+        },
+        {
+          "title": "One Time 4 Your Mind",
+          "album": "Illmatic"
+        },
+        {
+          "title": "The Don",
+          "album": "Life Is Good (Deluxe)"
+        },
+        {
+          "title": "Rodeo (feat. Nas)",
+          "album": "Rodeo (feat. Nas)"
+        },
+        {
+          "title": "Cops Shot The Kid (feat. Kanye West)",
+          "album": "NASIR"
+        },
+        {
+          "title": "Hero (feat. Keri Hilson)",
+          "album": "Untitled"
+        },
+        {
+          "title": "Thugz Mansion (N.Y.) (feat. 2Pac & J. Phoenix)",
+          "album": "God's Son"
+        },
+        {
+          "title": "Loco-Motive (feat. Large Professor)",
+          "album": "Life Is Good (Deluxe)"
+        },
+        {
+          "title": "One Mic",
+          "album": "Stillmatic"
+        },
+        {
+          "title": "Not For Radio (feat. Puff Daddy, 070 Shake)",
+          "album": "NASIR"
+        },
+        {
+          "title": "Rule (feat. Amerie)",
+          "album": "Stillmatic"
+        }
+      ],
+      "proofSongs": [
+        "N.Y. State of Mind",
+        "If I Ruled the World"
+      ]
+    },
+    "global-a-ap-rocky": {
+      "bugsId": "80118222",
+      "referenceSongs": [
+        {
+          "title": "Praise The Lord (Da Shine) (feat. Skepta)",
+          "album": "TESTING"
+        },
+        {
+          "title": "Wild For The Night (feat. Skrillex & Birdy Nam Nam)",
+          "album": "Long.Live.A$AP [Deluxe Explicit ver.]"
+        },
+        {
+          "title": "F**kin' Problems (feat. Drake, 2 Chainz & Kendrick Lamar)",
+          "album": "Long.Live.A$AP [Deluxe Explicit ver.]"
+        },
+        {
+          "title": "Everyday (feat. Mark Ronson, Miguel, Rod Stewart)",
+          "album": "AT.LONG.LAST.A$AP"
+        }
+      ],
+      "proofSongs": [
+        "Praise The Lord",
+        "L$D"
+      ]
+    },
+    "global-future": {
+      "bugsId": "80097200",
+      "referenceSongs": [
+        {
+          "title": "Mask Off",
+          "album": "FUTURE"
+        },
+        {
+          "title": "Life Is Good (feat. Drake)",
+          "album": "High Off Life"
+        },
+        {
+          "title": "WAIT FOR U (feat. Drake, Tems)",
+          "album": "I NEVER LIKED YOU"
+        },
+        {
+          "title": "Low Life (feat. The Weeknd)",
+          "album": "EVOL"
+        }
+      ],
+      "proofSongs": [
+        "Mask Off",
+        "Life Is Good"
+      ]
+    },
+    "global-lil-wayne": {
+      "bugsId": "80003741",
+      "referenceSongs": [
+        {
+          "title": "6 Foot 7 Foot (feat. Cory Gunz)",
+          "album": "Tha Carter IV (Explicit Version)"
+        },
+        {
+          "title": "A Milli",
+          "album": "Tha Carter III [Deluxe Edition]"
+        },
+        {
+          "title": "Love Me (feat. Future, Drake)",
+          "album": "I Am Not A Human Being II (Deluxe)"
+        },
+        {
+          "title": "Lollipop (feat. Static Major)",
+          "album": "Tha Carter III [Deluxe Edition]"
+        },
+        {
+          "title": "Nothing but Trouble (Instagram Models) [From 808: The Music]",
+          "album": "Nothing but Trouble (Instagram Models) [From 808: The Music]"
+        },
+        {
+          "title": "How To Love",
+          "album": "Tha Carter IV (Explicit Version)"
+        },
+        {
+          "title": "Uproar (feat. Swizz Beatz)",
+          "album": "Tha Carter V"
+        },
+        {
+          "title": "Shimmy (feat. Doja Cat)",
+          "album": "Funeral (Deluxe)"
+        },
+        {
+          "title": "Mirror (feat. Bruno Mars)",
+          "album": "Tha Carter IV (Complete Edition)"
+        },
+        {
+          "title": "Mona Lisa (feat. Kendrick Lamar)",
+          "album": "Tha Carter V"
+        },
+        {
+          "title": "Main One (feat. Tyga)",
+          "album": "Main One"
+        },
+        {
+          "title": "Mrs. Officer (feat. Bobby Valentino)",
+          "album": "Tha Carter III [Deluxe Edition]"
+        },
+        {
+          "title": "Believe Me (feat. Drake)",
+          "album": "Believe Me"
+        },
+        {
+          "title": "She Will",
+          "album": "She Will"
+        },
+        {
+          "title": "Tie My Hands (feat. Robin Thicke)",
+          "album": "Tha Carter III [Deluxe Edition]"
+        },
+        {
+          "title": "Got Money (feat. T-Pain)",
+          "album": "Tha Carter III [Deluxe Edition]"
+        },
+        {
+          "title": "Right Above It (feat. Drake)",
+          "album": "I Am Not A Human Being (Explicit Version)"
+        },
+        {
+          "title": "Drop The World (feat. Eminem)",
+          "album": "Rebirth (International Explicit Deluxe Version)"
+        },
+        {
+          "title": "Lollipop (Remix) (feat. Kanye West, Static Major)",
+          "album": "Lollipop (Remix)"
+        },
+        {
+          "title": "Dedicate",
+          "album": "Tha Carter V"
+        },
+        {
+          "title": "Start A Fire (feat. Christina Milian)",
+          "album": "Start A Fire"
+        },
+        {
+          "title": "Lonely",
+          "album": "Lonely"
+        },
+        {
+          "title": "Don’t Cry (feat. XXXTENTACION)",
+          "album": "Tha Carter V"
+        },
+        {
+          "title": "Comfortable (feat. Babyface)",
+          "album": "Tha Carter III [Deluxe Edition]"
+        },
+        {
+          "title": "Rich As Fuck (feat. 2 Chainz)",
+          "album": "I Am Not A Human Being II (Deluxe)"
+        },
+        {
+          "title": "Let It Fly (feat. Travis Scott)",
+          "album": "Tha Carter V"
+        },
+        {
+          "title": "Mama Mia",
+          "album": "Funeral"
+        },
+        {
+          "title": "Mr. Carter (feat. Jay-Z)",
+          "album": "Tha Carter III [Deluxe Edition]"
+        },
+        {
+          "title": "Beat The Shit (feat. Gunplay)",
+          "album": "I Am Not A Human Being II (Deluxe)"
+        },
+        {
+          "title": "John (feat. Rick Ross) (Explicit Version)",
+          "album": "Tha Carter IV (Explicit Version)"
+        }
+      ],
+      "proofSongs": [
+        "Lollipop",
+        "A Milli"
+      ]
+    },
+    "global-nicki-minaj": {
+      "bugsId": "80065183",
+      "referenceSongs": [
+        {
+          "title": "Starships",
+          "album": "Pink Friday ... Roman Reloaded (Deluxe Edition)"
+        },
+        {
+          "title": "High School (feat. Lil Wayne)",
+          "album": "Pink Friday: Roman Reloaded The Re-Up (Explicit Version)"
+        },
+        {
+          "title": "Anaconda",
+          "album": "The Pinkprint"
+        },
+        {
+          "title": "Chun-Li",
+          "album": "Queen"
+        },
+        {
+          "title": "Super Freaky Girl",
+          "album": "Queen Radio: Volume 1"
+        },
+        {
+          "title": "Super Bass",
+          "album": "Pink Friday [Deluxe Edition]"
+        },
+        {
+          "title": "MotorSport",
+          "album": "Culture II"
+        },
+        {
+          "title": "Pound The Alarm",
+          "album": "Pink Friday ... Roman Reloaded (Deluxe Edition)"
+        },
+        {
+          "title": "Barbie World (with Aqua) [From Barbie The Album]",
+          "album": "Barbie World (with Aqua) [From Barbie The Album] [Versions]"
+        },
+        {
+          "title": "Bed (feat. Ariana Grande)",
+          "album": "Queen"
+        },
+        {
+          "title": "Bed Of Lies (feat. Skylar Grey)",
+          "album": "The Pinkprint"
+        },
+        {
+          "title": "Barbie Dreams",
+          "album": "Queen"
+        },
+        {
+          "title": "Only (feat. Lil Wayne, Chris Brown, Drake)",
+          "album": "The Pinkprint"
+        },
+        {
+          "title": "Va Va Voom",
+          "album": "Pink Friday: Roman Reloaded The Re-Up (Explicit Version)"
+        },
+        {
+          "title": "Beez In The Trap (feat. 2 Chainz)",
+          "album": "Pink Friday: Roman Reloaded The Re-Up (Explicit Version)"
+        },
+        {
+          "title": "No Frauds",
+          "album": "No Frauds"
+        },
+        {
+          "title": "Truffle Butter (feat. Drake, Lil Wayne)",
+          "album": "Queen Radio: Volume 1"
+        },
+        {
+          "title": "Barbie Tingz",
+          "album": "Barbie Tingz"
+        },
+        {
+          "title": "Feeling Myself (feat. Beyoncé)",
+          "album": "The Pinkprint"
+        },
+        {
+          "title": "Moment 4 Life (feat. Drake)",
+          "album": "Pink Friday"
+        },
+        {
+          "title": "Familia (feat. Bantu) (Spider-Man: Into the Spider-Verse)",
+          "album": "스파이더맨: 뉴 유니버스 (Spider-Man: Into The Spider-Verse) OST"
+        },
+        {
+          "title": "The Night Is Still Young",
+          "album": "The Pinkprint"
+        },
+        {
+          "title": "Right By My Side (feat. Chris Brown)",
+          "album": "Pink Friday: Roman Reloaded The Re-Up (Explicit Version)"
+        },
+        {
+          "title": "MEGATRON",
+          "album": "MEGATRON"
+        },
+        {
+          "title": "Don't Hurt Me",
+          "album": "Cold Summer"
+        },
+        {
+          "title": "Get On Your Knees (feat. Ariana Grande)",
+          "album": "The Pinkprint"
+        },
+        {
+          "title": "Needle (feat. Drake)",
+          "album": "Pink Friday 2"
+        },
+        {
+          "title": "Fly (feat. Rihanna)",
+          "album": "Pink Friday"
+        },
+        {
+          "title": "Majesty (feat. Eminem)",
+          "album": "Queen"
+        },
+        {
+          "title": "Poke It Out",
+          "album": "Die Lit"
+        }
+      ],
+      "proofSongs": [
+        "Super Bass",
+        "Starships"
+      ]
+    },
+    "global-cardi-b": {
+      "bugsId": "80264457",
+      "referenceSongs": [
+        {
+          "title": "WAP (feat. Megan Thee Stallion)",
+          "album": "AM I THE DRAMA?"
+        },
+        {
+          "title": "I Like It",
+          "album": "Invasion of Privacy"
+        },
+        {
+          "title": "Please Me",
+          "album": "Please Me"
+        },
+        {
+          "title": "Up",
+          "album": "AM I THE DRAMA?"
+        },
+        {
+          "title": "Bodak Yellow",
+          "album": "Invasion of Privacy"
+        }
+      ],
+      "proofSongs": [
+        "Bodak Yellow",
+        "I Like It"
+      ]
+    },
+    "global-juice-wrld": {
+      "bugsId": "80308166",
+      "referenceSongs": [
+        {
+          "title": "Lucid Dreams",
+          "album": "Goodbye & Good Riddance"
+        },
+        {
+          "title": "Hide (feat. Seezyn)",
+          "album": "스파이더맨: 뉴 유니버스 (Spider-Man: Into The Spider-Verse) OST"
+        },
+        {
+          "title": "Come & Go",
+          "album": "Legends Never Die"
+        },
+        {
+          "title": "Smile",
+          "album": "Smile"
+        },
+        {
+          "title": "Bandit",
+          "album": "Bandit"
+        },
+        {
+          "title": "Robbery",
+          "album": "Death Race For Love (Bonus Track Version)"
+        },
+        {
+          "title": "Graduation",
+          "album": "Graduation"
+        },
+        {
+          "title": "Fast",
+          "album": "Death Race For Love (Bonus Track Version)"
+        },
+        {
+          "title": "Armed And Dangerous",
+          "album": "Goodbye & Good Riddance"
+        },
+        {
+          "title": "Wishing Well",
+          "album": "Legends Never Die"
+        },
+        {
+          "title": "All Girls Are The Same",
+          "album": "Goodbye & Good Riddance"
+        },
+        {
+          "title": "Legends",
+          "album": "Fighting Demons (Digital Deluxe)"
+        },
+        {
+          "title": "Girl Of My Dreams",
+          "album": "Fighting Demons (Digital Deluxe)"
+        },
+        {
+          "title": "Righteous",
+          "album": "Legends Never Die"
+        },
+        {
+          "title": "Wandered To LA",
+          "album": "Fighting Demons (Digital Deluxe)"
+        },
+        {
+          "title": "Black & White",
+          "album": "Goodbye & Good Riddance"
+        },
+        {
+          "title": "Lean Wit Me",
+          "album": "Goodbye & Good Riddance"
+        },
+        {
+          "title": "Real Shit",
+          "album": "Real Shit"
+        },
+        {
+          "title": "Life's A Mess II",
+          "album": "Life's A Mess II"
+        },
+        {
+          "title": "Ring Ring (feat. Clever)",
+          "album": "Death Race For Love (Bonus Track Version)"
+        },
+        {
+          "title": "Empty",
+          "album": "Death Race For Love (Bonus Track Version)"
+        },
+        {
+          "title": "Hear Me Calling",
+          "album": "Death Race For Love (Bonus Track Version)"
+        },
+        {
+          "title": "Hard Work Pays Off",
+          "album": "Future & Juice WRLD Present... WRLD ON DRUGS"
+        },
+        {
+          "title": "Conversations",
+          "album": "Legends Never Die"
+        },
+        {
+          "title": "Lucid Dreams (feat. Lil Uzi Vert) (Remix)",
+          "album": "Goodbye & Good Riddance (Anniversary)"
+        },
+        {
+          "title": "Maze",
+          "album": "Death Race For Love (Bonus Track Version)"
+        },
+        {
+          "title": "Wasted (feat. Lil Uzi Vert)",
+          "album": "Goodbye & Good Riddance"
+        },
+        {
+          "title": "Stay High",
+          "album": "Legends Never Die"
+        },
+        {
+          "title": "Blood On My Jeans",
+          "album": "Legends Never Die"
+        },
+        {
+          "title": "Titanic",
+          "album": "Legends Never Die"
+        }
+      ],
+      "proofSongs": [
+        "Lucid Dreams",
+        "All Girls Are The Same"
+      ]
+    },
+    "global-frank-ocean": {
+      "bugsId": "80102602",
+      "referenceSongs": [
+        {
+          "title": "Pink + White",
+          "album": "Blonde"
+        },
+        {
+          "title": "Thinkin Bout You",
+          "album": "channel ORANGE"
+        },
+        {
+          "title": "Super Rich Kids (feat. Earl Sweatshirt)",
+          "album": "channel ORANGE"
+        },
+        {
+          "title": "Lost",
+          "album": "channel ORANGE"
+        },
+        {
+          "title": "Sweet Life",
+          "album": "channel ORANGE"
+        }
+      ],
+      "proofSongs": [
+        "Thinkin Bout You",
+        "Pink + White"
+      ]
+    },
+    "global-sza": {
+      "bugsId": "80210863",
+      "referenceSongs": [
+        {
+          "title": "luther",
+          "album": "GNX"
+        },
+        {
+          "title": "Kill Bill",
+          "album": "SOS"
+        },
+        {
+          "title": "Open Arms (feat. Travis Scott)",
+          "album": "SOS"
+        },
+        {
+          "title": "Snooze",
+          "album": "SOS"
+        }
+      ],
+      "proofSongs": [
+        "Kill Bill",
+        "Snooze"
+      ]
+    },
+    "global-alicia-keys": {
+      "bugsId": "6178",
+      "referenceSongs": [
+        {
+          "title": "If I Ain't Got You",
+          "album": "The Diary Of Alicia Keys"
+        },
+        {
+          "title": "No One",
+          "album": "As I Am"
+        },
+        {
+          "title": "Tears Always Win",
+          "album": "Girl On Fire"
+        },
+        {
+          "title": "Girl on Fire",
+          "album": "Girl on Fire (Remixes) - EP"
+        },
+        {
+          "title": "Fallin'",
+          "album": "Songs In A Minor"
+        }
+      ],
+      "proofSongs": [
+        "If I Ain't Got You",
+        "No One"
+      ]
+    },
+    "global-usher": {
+      "bugsId": "4440",
+      "referenceSongs": [
+        {
+          "title": "Yeah! (feat. Lil' Jon & Ludacris)",
+          "album": "Confessions (Expanded Edition)"
+        },
+        {
+          "title": "DJ Got Us Fallin' In Love",
+          "album": "Raymond v Raymond [Deluxe Edition] (International ver.)"
+        },
+        {
+          "title": "Scream",
+          "album": "Looking 4 Myself [Deluxe ver.]"
+        },
+        {
+          "title": "U Remind Me",
+          "album": "8701 [Special Edition]"
+        },
+        {
+          "title": "Come Thru",
+          "album": "Over It"
+        },
+        {
+          "title": "Hey Daddy (Daddy's Home) (feat. Plies)",
+          "album": "Hey Daddy (Daddy's Home)"
+        },
+        {
+          "title": "Burn (Confession Special Edition Version)",
+          "album": "Confessions (Expanded Edition)"
+        },
+        {
+          "title": "She Came II Give It II U (feat. Nicki Minaj)",
+          "album": "She Came II Give It II U"
+        },
+        {
+          "title": "My Boo (duet with Alicia Keys)",
+          "album": "My Boo - With Alicia Keys"
+        },
+        {
+          "title": "OMG",
+          "album": "Raymond v Raymond [Deluxe Edition] (International ver.)"
+        },
+        {
+          "title": "Slow Jam (feat. Monica)",
+          "album": "My Way [Clean Version]"
+        },
+        {
+          "title": "U Got It Bad",
+          "album": "8701 [Special Edition]"
+        },
+        {
+          "title": "There Goes My Baby",
+          "album": "Raymond v Raymond [Deluxe Edition] (International ver.)"
+        },
+        {
+          "title": "Love In This Club (feat. Young Jeezy)",
+          "album": "Here I Stand"
+        },
+        {
+          "title": "Good Kisser",
+          "album": "Good Kisser"
+        },
+        {
+          "title": "I Don't Mind (feat. Juicy J)",
+          "album": "I Don't Mind"
+        },
+        {
+          "title": "No Limit (feat. Young Thug)",
+          "album": "Hard II Love"
+        },
+        {
+          "title": "Looking 4 Myself (feat. Luke Steele)",
+          "album": "Looking 4 Myself [Deluxe ver.]"
+        },
+        {
+          "title": "Don't Waste My Time (feat. Ella Mai)",
+          "album": "Don't Waste My Time"
+        },
+        {
+          "title": "Good Good (Explicit)",
+          "album": "Good Good"
+        },
+        {
+          "title": "Twisted (feat. Pharrell)",
+          "album": "Looking 4 Myself [Deluxe ver.]"
+        },
+        {
+          "title": "More (RedOne Jimmy Joker Remix)",
+          "album": "More"
+        },
+        {
+          "title": "DJ Got Us Fallin' In Love (MK Ultras Mix) (feat. Pitbull)",
+          "album": "DJ Got Us Fallin' In Love (MK Ultras Mix)"
+        },
+        {
+          "title": "You Make Me Wanna...",
+          "album": "My Way [Clean Version]"
+        },
+        {
+          "title": "Climax",
+          "album": "Looking 4 Myself [Deluxe ver.]"
+        },
+        {
+          "title": "Bop",
+          "album": "COMING HOME"
+        },
+        {
+          "title": "Nice & Slow",
+          "album": "My Way [Clean Version]"
+        },
+        {
+          "title": "Keep On Dancin'",
+          "album": "COMING HOME"
+        },
+        {
+          "title": "Rivals (feat. Future)",
+          "album": "Hard II Love"
+        },
+        {
+          "title": "Standing Next to You (USHER Remix)",
+          "album": "COMING HOME"
+        }
+      ],
+      "proofSongs": [
+        "Yeah!",
+        "My Boo"
+      ]
+    },
+    "global-lady-gaga": {
+      "bugsId": "80046429",
+      "referenceSongs": [
+        {
+          "title": "Die With A Smile",
+          "album": "Die With A Smile"
+        },
+        {
+          "title": "Always Remember Us This Way",
+          "album": "스타 이즈 본 (A Star Is Born) OST"
+        },
+        {
+          "title": "Shallow",
+          "album": "스타 이즈 본 (A Star Is Born) OST"
+        },
+        {
+          "title": "Rain On Me",
+          "album": "Rain On Me"
+        },
+        {
+          "title": "Poker Face",
+          "album": "The Fame Monster (International Deluxe)"
+        },
+        {
+          "title": "Abracadabra",
+          "album": "MAYHEM"
+        },
+        {
+          "title": "I'll Never Love Again (Extended Version)",
+          "album": "스타 이즈 본 (A Star Is Born) OST"
+        },
+        {
+          "title": "Bad Romance",
+          "album": "The Fame Monster (International Deluxe)"
+        },
+        {
+          "title": "Born This Way",
+          "album": "Born This Way (International Special Edition Version)"
+        },
+        {
+          "title": "RUNWAY",
+          "album": "악마는 프라다를 입는다 2 OST"
+        },
+        {
+          "title": "Telephone (feat. Beyoncé)",
+          "album": "The Fame Monster (International Deluxe)"
+        },
+        {
+          "title": "Sour Candy",
+          "album": "Sour Candy"
+        },
+        {
+          "title": "Hold My Hand",
+          "album": "탑건 : 매버릭 (Top Gun: Maverick) (영화 OST)"
+        },
+        {
+          "title": "Just Dance (feat. Colby O'Donis)",
+          "album": "The Fame"
+        },
+        {
+          "title": "Million Reasons",
+          "album": "Joanne (Deluxe)"
+        },
+        {
+          "title": "Applause",
+          "album": "ARTPOP"
+        },
+        {
+          "title": "Stupid Love",
+          "album": "Chromatica"
+        },
+        {
+          "title": "The Cure",
+          "album": "The Cure"
+        },
+        {
+          "title": "Judas",
+          "album": "Born This Way (International Special Edition Version)"
+        },
+        {
+          "title": "Bloody Mary",
+          "album": "Born This Way (International Special Edition Version)"
+        },
+        {
+          "title": "The Edge Of Glory",
+          "album": "Born This Way (International Special Edition Version)"
+        },
+        {
+          "title": "Paparazzi",
+          "album": "The Fame Monster (International Deluxe)"
+        },
+        {
+          "title": "Close To You",
+          "album": "Harlequin"
+        },
+        {
+          "title": "The Dead Dance",
+          "album": "MAYHEM"
+        },
+        {
+          "title": "Disease",
+          "album": "MAYHEM"
+        },
+        {
+          "title": "Shape of a Woman",
+          "album": "악마는 프라다를 입는다 2 OST"
+        },
+        {
+          "title": "Is That Alright?",
+          "album": "스타 이즈 본 (A Star Is Born) OST"
+        },
+        {
+          "title": "Kill For Love",
+          "album": "MAYHEM"
+        },
+        {
+          "title": "La Vie En Rose",
+          "album": "스타 이즈 본 (A Star Is Born) OST"
+        },
+        {
+          "title": "Perfect Illusion",
+          "album": "Joanne (Deluxe)"
+        }
+      ],
+      "proofSongs": [
+        "Poker Face",
+        "Bad Romance"
+      ]
+    },
+    "global-john-legend": {
+      "bugsId": "80003839",
+      "referenceSongs": [
+        {
+          "title": "All of Me",
+          "album": "Love In The Future (Expanded Edition)"
+        },
+        {
+          "title": "P.D.A. (We Just Don't Care)",
+          "album": "Once Again"
+        },
+        {
+          "title": "Start A Fire",
+          "album": "La La Land (Original Motion Picture Soundtrack)"
+        },
+        {
+          "title": "Bring Me Love",
+          "album": "A Legendary Christmas"
+        },
+        {
+          "title": "Ordinary People",
+          "album": "Get Lifted [Special Edition]"
+        },
+        {
+          "title": "Overload (feat. Miguel)",
+          "album": "DARKNESS AND LIGHT"
+        },
+        {
+          "title": "Save Room",
+          "album": "Once Again"
+        },
+        {
+          "title": "I Do",
+          "album": "Bigger Love"
+        },
+        {
+          "title": "Open Your Eyes (Album Version)",
+          "album": "Love In The Future (Expanded Edition)"
+        },
+        {
+          "title": "Let It Snow",
+          "album": "A Legendary Christmas (Super Deluxe)"
+        },
+        {
+          "title": "Winter Wonderland",
+          "album": "A Legendary Christmas (Super Deluxe)"
+        },
+        {
+          "title": "Written In The Stars",
+          "album": "Written In The Stars"
+        },
+        {
+          "title": "Love Me Now",
+          "album": "DARKNESS AND LIGHT"
+        },
+        {
+          "title": "Someday (From the August Rush Soundtrack)",
+          "album": "어거스트 러쉬 (August Rush) OST"
+        },
+        {
+          "title": "You Deserve It All",
+          "album": "You Deserve It All"
+        },
+        {
+          "title": "Under the Stars",
+          "album": "Under the Stars"
+        },
+        {
+          "title": "A Good Night",
+          "album": "A Good Night"
+        },
+        {
+          "title": "How Can I Blame You",
+          "album": "DARKNESS AND LIGHT"
+        },
+        {
+          "title": "I Know Better",
+          "album": "DARKNESS AND LIGHT"
+        },
+        {
+          "title": "Tonight (Best You Ever Had) (feat. Ludacris)",
+          "album": "Tonight (Best You Ever Had) (feat. Ludacris)"
+        },
+        {
+          "title": "Each Day Gets Better",
+          "album": "Once Again"
+        },
+        {
+          "title": "Wonder Woman",
+          "album": "LEGEND"
+        },
+        {
+          "title": "Penthouse Floor (feat. Chance The Rapper)",
+          "album": "DARKNESS AND LIGHT"
+        },
+        {
+          "title": "All She Wanna Do",
+          "album": "LEGEND"
+        },
+        {
+          "title": "Nervous",
+          "album": "LEGEND"
+        },
+        {
+          "title": "Dope (feat. J.I.D)",
+          "album": "LEGEND"
+        },
+        {
+          "title": "Maxine",
+          "album": "Once Again"
+        },
+        {
+          "title": "Stay With You",
+          "album": "Get Lifted [Special Edition]"
+        },
+        {
+          "title": "A Million (From 'About Last Night' OST)",
+          "album": "A Million (From 'About Last Night' OST)"
+        },
+        {
+          "title": "Conversations in the Dark",
+          "album": "Bigger Love"
+        }
+      ],
+      "proofSongs": [
+        "All of Me",
+        "Ordinary People"
+      ]
+    },
+    "global-daniel-caesar": {
+      "bugsId": "20026686",
+      "referenceSongs": [
+        {
+          "title": "Best Part (feat. H.E.R.)",
+          "album": "Freudian"
+        },
+        {
+          "title": "Always",
+          "album": "NEVER ENOUGH"
+        },
+        {
+          "title": "Who Knows",
+          "album": "Son Of Spergy"
+        },
+        {
+          "title": "Get You (feat. Kali Uchis)",
+          "album": "Freudian"
+        },
+        {
+          "title": "LOVE AGAIN",
+          "album": "CASE STUDY 01"
+        }
+      ],
+      "proofSongs": [
+        "Best Part",
+        "Get You"
+      ]
+    },
+    "global-elton-john": {
+      "bugsId": "1051",
+      "referenceSongs": [
+        {
+          "title": "Goodbye Yellow Brick Road (Remastered 2014)",
+          "album": "Goodbye Yellow Brick Road (40th Anniversary Celebration / Super Deluxe)"
+        },
+        {
+          "title": "Can You Feel The Love Tonight (Remastered)",
+          "album": "Diamonds (Deluxe)"
+        },
+        {
+          "title": "Sorry Seems To Be The Hardest Word",
+          "album": "Blue Moves"
+        },
+        {
+          "title": "Learn To Fly",
+          "album": "Learn To Fly"
+        },
+        {
+          "title": "Cold Heart (PNAU Remix)",
+          "album": "Cold Heart (PNAU Remix)"
+        },
+        {
+          "title": "Your Song",
+          "album": "Elton John"
+        },
+        {
+          "title": "Merry Christmas",
+          "album": "Merry Christmas"
+        },
+        {
+          "title": "We All Fall In Love Sometimes",
+          "album": "Captain Fantastic And The Brown Dirt Cowboy (Deluxe Edition)"
+        },
+        {
+          "title": "Candle In The Wind 1997",
+          "album": "Candle In The Wind 1997 / Something About ..."
+        },
+        {
+          "title": "Rocket Man (I Think It's Going To Be A Long, Long Time)",
+          "album": "Honky Chateau"
+        },
+        {
+          "title": "Crocodile Rock",
+          "album": "Don't Shoot Me I'm Only The Piano Player"
+        },
+        {
+          "title": "Don't Go Breaking My Heart",
+          "album": "Rocket Man [Digital Deluxe Album]"
+        },
+        {
+          "title": "Daniel",
+          "album": "Don't Shoot Me I'm Only The Piano Player"
+        },
+        {
+          "title": "After All",
+          "album": "After All"
+        },
+        {
+          "title": "Circle Of Life (Remastered)",
+          "album": "Diamonds (Deluxe)"
+        },
+        {
+          "title": "Something About The Way You Look Tonight (Single Edit / Remastered)",
+          "album": "Diamonds (Deluxe)"
+        },
+        {
+          "title": "Tonight",
+          "album": "Blue Moves"
+        },
+        {
+          "title": "Sacrifice",
+          "album": "Love Songs"
+        },
+        {
+          "title": "Hold Me Closer",
+          "album": "Hold Me Closer"
+        },
+        {
+          "title": "Candle In The Wind (Remastered 2014)",
+          "album": "Goodbye Yellow Brick Road (40th Anniversary Celebration / Super Deluxe)"
+        },
+        {
+          "title": "Tiny Dancer",
+          "album": "Madman Across The Water"
+        },
+        {
+          "title": "I'm Still Standing",
+          "album": "Too Low For Zero"
+        },
+        {
+          "title": "Nikita",
+          "album": "Ice On Fire"
+        },
+        {
+          "title": "Cold Heart (Acoustic)",
+          "album": "Cold Heart (Acoustic)"
+        },
+        {
+          "title": "Bennie And The Jets (Remastered 2014)",
+          "album": "Goodbye Yellow Brick Road (40th Anniversary Celebration / Super Deluxe)"
+        },
+        {
+          "title": "Empty Garden (Hey Hey Johnny) (Remastered 2003)",
+          "album": "Jump Up!"
+        },
+        {
+          "title": "(I'm Gonna) Love Me Again",
+          "album": "로켓맨 (Rocketman) OST"
+        },
+        {
+          "title": "Swing For The Fences",
+          "album": "Who Believes In Angels?"
+        },
+        {
+          "title": "Step Into Christmas (Remastered 1995)",
+          "album": "Caribou (Remastered 1995)"
+        },
+        {
+          "title": "I Guess That's Why They Call It The Blues",
+          "album": "Too Low For Zero"
+        }
+      ],
+      "proofSongs": [
+        "Your Song",
+        "Rocket Man"
+      ]
+    },
+    "global-anderson-paak": {
+      "bugsId": "80201595",
+      "referenceSongs": [
+        {
+          "title": "TOO BAD – Alan Walker Remix",
+          "album": "TOO BAD – Alan Walker Remix"
+        },
+        {
+          "title": "Make It Better (feat. Smokey Robinson)",
+          "album": "Ventura"
+        },
+        {
+          "title": "Lockdown (feat. JID, Noname & Jay Rock) [Remix]",
+          "album": "Lockdown (Remix Bundle)"
+        },
+        {
+          "title": "Am I Wrong (feat. Schoolboy Q)",
+          "album": "The Edge of Seventeen (Original Motion Picture Soundtrack)"
+        },
+        {
+          "title": "Fire In The Sky",
+          "album": "Shang-Chi and The Legend of The Ten Rings: The Album"
+        },
+        {
+          "title": "Rock Solid (Feat. Anderson .Paak)",
+          "album": "Rock Solid (Feat. Anderson .Paak)"
+        },
+        {
+          "title": "Tints (feat. Kendrick Lamar)",
+          "album": "Oxnard"
+        },
+        {
+          "title": "Caution",
+          "album": "K-POPS! (Music from and inspired by K-POPS! Motion Picture)"
+        },
+        {
+          "title": "Jet Black (feat. Brandy)",
+          "album": "Ventura"
+        },
+        {
+          "title": "Aftertaste (Inspired by the Original Motion Picture K-POPS!)",
+          "album": "K-POPS! (Music from and inspired by K-POPS! Motion Picture)"
+        },
+        {
+          "title": "Lockdown (Radio Edit)",
+          "album": "Lockdown (Remix Bundle)"
+        },
+        {
+          "title": "King James",
+          "album": "Ventura"
+        },
+        {
+          "title": "Bubblin (feat. Busta Rhymes) [Remix] (Clean Ver.)",
+          "album": "Bubblin (feat. Busta Rhymes) [Remix] (Clean Ver.)"
+        },
+        {
+          "title": "Bet On U",
+          "album": "K-POPS! (Music from and inspired by K-POPS! Motion Picture)"
+        },
+        {
+          "title": "NO CAP",
+          "album": "NO CAP"
+        },
+        {
+          "title": "Can’t Get Enough",
+          "album": "K-POPS! (Music from and inspired by K-POPS! Motion Picture)"
+        },
+        {
+          "title": "International",
+          "album": "K-POPS! (Music from and inspired by K-POPS! Motion Picture)"
+        },
+        {
+          "title": "Anywhere (feat. Snoop Dogg & The Last Artful, Dodgr)",
+          "album": "Oxnard"
+        },
+        {
+          "title": "Too Bad (K-POPS! Version)",
+          "album": "K-POPS! (Music from and inspired by K-POPS! Motion Picture)"
+        },
+        {
+          "title": "Winners Circle",
+          "album": "Ventura"
+        },
+        {
+          "title": "Lockdown (feat. Jay Rock) [Video Edit]",
+          "album": "Lockdown (Remix Bundle)"
+        },
+        {
+          "title": "Come Home (feat. Andre 3000)",
+          "album": "Ventura"
+        },
+        {
+          "title": "Come Down",
+          "album": "Iron Fist (Original Soundtrack)"
+        }
+      ],
+      "proofSongs": [
+        "Come Down",
+        "Make It Better"
+      ]
+    },
+    "global-joji": {
+      "bugsId": "20045090",
+      "referenceSongs": [
+        {
+          "title": "Glimpse of Us",
+          "album": "SMITHEREENS"
+        },
+        {
+          "title": "SLOW DANCING IN THE DARK",
+          "album": "BALLADS 1"
+        },
+        {
+          "title": "Peach Jam",
+          "album": "Head In The Clouds"
+        }
+      ],
+      "proofSongs": [
+        "Glimpse of Us",
+        "SLOW DANCING IN THE DARK"
+      ]
+    },
+    "global-stevie-wonder": {
+      "bugsId": "1123",
+      "referenceSongs": [
+        {
+          "title": "Someday at Christmas",
+          "album": "Someday at Christmas"
+        },
+        {
+          "title": "I Just Called To Say I Love You",
+          "album": "The Complete Stevie Wonder"
+        },
+        {
+          "title": "Isn't She Lovely",
+          "album": "Songs In The Key Of Life"
+        },
+        {
+          "title": "Lately",
+          "album": "Hotter Than July"
+        },
+        {
+          "title": "Faith (feat. Ariana Grande)",
+          "album": "씽 (Sing) OST [Deluxe]"
+        },
+        {
+          "title": "I Just Called To Say I Love you",
+          "album": "Number Ones [Deluxe Edition]"
+        },
+        {
+          "title": "You Are The Sunshine Of My Life",
+          "album": "Talking Book"
+        },
+        {
+          "title": "Superstition",
+          "album": "Talking Book"
+        },
+        {
+          "title": "Ribbon In The Sky",
+          "album": "Original Musiquarium"
+        },
+        {
+          "title": "Part-Time Lover",
+          "album": "In Square Circle"
+        },
+        {
+          "title": "Sir Duke",
+          "album": "Songs In The Key Of Life"
+        },
+        {
+          "title": "My Cherie Amour",
+          "album": "My Cherie Amour"
+        },
+        {
+          "title": "For Once In My Life",
+          "album": "For Once In My Life"
+        },
+        {
+          "title": "Overjoyed",
+          "album": "In Square Circle"
+        },
+        {
+          "title": "Part Time Lover",
+          "album": "Number Ones [Deluxe Edition]"
+        },
+        {
+          "title": "Yester-Me, Yester-You, Yesterday",
+          "album": "My Cherie Amour"
+        },
+        {
+          "title": "Moon Blue (Album Version)",
+          "album": "A Time To Love"
+        },
+        {
+          "title": "What Christmas Means To Me",
+          "album": "Mono Singles"
+        },
+        {
+          "title": "Where Is Our Love Song (feat. Gary Clark Jr.)",
+          "album": "Where Is Our Love Song"
+        },
+        {
+          "title": "Someday At Christmas",
+          "album": "Mono Singles"
+        },
+        {
+          "title": "I Wish",
+          "album": "Number Ones [Deluxe Edition]"
+        },
+        {
+          "title": "For Your Love",
+          "album": "Conversation Peace"
+        },
+        {
+          "title": "How Will I Know (feat. Aisha Morris) (Album Version)",
+          "album": "A Time To Love"
+        },
+        {
+          "title": "Ebony & Ivory (feat. Paul Mccartney)",
+          "album": "Number Ones [Deluxe Edition]"
+        },
+        {
+          "title": "Summer Soft",
+          "album": "Songs In The Key Of Life"
+        },
+        {
+          "title": "Don't You Worry 'Bout A Thing",
+          "album": "Innervisions"
+        },
+        {
+          "title": "Higher Ground",
+          "album": "Number Ones [Deluxe Edition]"
+        },
+        {
+          "title": "Positivity (feat. Aisha Morris) (Album Version)",
+          "album": "A Time To Love"
+        },
+        {
+          "title": "Can't Imagine Love Without You (Album Version)",
+          "album": "A Time To Love"
+        },
+        {
+          "title": "Shelter In The Rain",
+          "album": "A Time To Love"
+        }
+      ],
+      "proofSongs": [
+        "Isn't She Lovely",
+        "Superstition"
+      ]
+    },
+    "global-laufey": {
+      "bugsId": "80370997",
+      "referenceSongs": [
+        {
+          "title": "From The Start",
+          "album": "Bewitched: The Goddess Edition"
+        },
+        {
+          "title": "I Wish You Love",
+          "album": "Typical of Me EP"
+        },
+        {
+          "title": "Like the Movies",
+          "album": "Typical of Me EP"
+        },
+        {
+          "title": "Valentine",
+          "album": "Everything I Know About Love"
+        },
+        {
+          "title": "Must Be Love",
+          "album": "Bewitched"
+        },
+        {
+          "title": "Magnolia",
+          "album": "Typical of Me EP"
+        },
+        {
+          "title": "Falling Behind",
+          "album": "Everything I Know About Love"
+        },
+        {
+          "title": "Lover Girl",
+          "album": "A Matter of Time: The Final Hour (Clean Ver.)"
+        },
+        {
+          "title": "Fragile",
+          "album": "Everything I Know About Love"
+        },
+        {
+          "title": "Let You Break My Heart Again",
+          "album": "Let You Break My Heart Again"
+        },
+        {
+          "title": "What Love Will Do to You",
+          "album": "Everything I Know About Love"
+        },
+        {
+          "title": "Love to Keep Me Warm",
+          "album": "Love to Keep Me Warm"
+        },
+        {
+          "title": "Dreamer",
+          "album": "Bewitched"
+        },
+        {
+          "title": "Winter Wonderland",
+          "album": "A Very Laufey Holiday"
+        },
+        {
+          "title": "Everything I Know About Love",
+          "album": "Everything I Know About Love"
+        },
+        {
+          "title": "Night Light",
+          "album": "Everything I Know About Love"
+        },
+        {
+          "title": "Dance With You Tonight",
+          "album": "Everything I Know About Love"
+        },
+        {
+          "title": "The Christmas Waltz",
+          "album": "A Very Laufey Holiday"
+        },
+        {
+          "title": "Beautiful Stranger",
+          "album": "Everything I Know About Love"
+        },
+        {
+          "title": "Best Friend",
+          "album": "Typical of Me EP"
+        },
+        {
+          "title": "Promise",
+          "album": "Bewitched"
+        },
+        {
+          "title": "Street by Street",
+          "album": "Typical of Me EP"
+        },
+        {
+          "title": "Silver Lining",
+          "album": "A Matter of Time"
+        },
+        {
+          "title": "California and Me (feat. Philharmonia Orchestra)",
+          "album": "Bewitched"
+        },
+        {
+          "title": "Santa Claus Is Comin' To Town",
+          "album": "A Very Laufey Holiday"
+        },
+        {
+          "title": "Madwoman",
+          "album": "A Matter of Time: The Final Hour"
+        },
+        {
+          "title": "Bewitched",
+          "album": "Bewitched"
+        },
+        {
+          "title": "Clockwork",
+          "album": "A Matter of Time"
+        },
+        {
+          "title": "Misty",
+          "album": "Bewitched"
+        },
+        {
+          "title": "Lucky for Me",
+          "album": "Everything I Know About Love"
+        }
+      ],
+      "proofSongs": [
+        "From The Start",
+        "Falling Behind"
+      ]
+    },
+    "global-nirvana": {
+      "bugsId": "34551",
+      "referenceSongs": [
+        {
+          "title": "Smells Like Teen Spirit",
+          "album": "Nevermind"
+        },
+        {
+          "title": "Come As You Are",
+          "album": "Nevermind"
+        },
+        {
+          "title": "Lithium",
+          "album": "Nevermind"
+        },
+        {
+          "title": "In Bloom",
+          "album": "Nevermind"
+        },
+        {
+          "title": "Breed",
+          "album": "Nevermind"
+        }
+      ],
+      "proofSongs": [
+        "Smells Like Teen Spirit",
+        "Come As You Are"
+      ]
+    },
+    "global-norah-jones": {
+      "bugsId": "34558",
+      "referenceSongs": [
+        {
+          "title": "Don't Know Why",
+          "album": "Come Away With Me (Remastered 2022)"
+        },
+        {
+          "title": "Come Away With Me",
+          "album": "Come Away With Me (Remastered 2022)"
+        },
+        {
+          "title": "Carry On",
+          "album": "Day Breaks"
+        },
+        {
+          "title": "December",
+          "album": "The Fall (Deluxe Edition)"
+        }
+      ],
+      "proofSongs": [
+        "Don't Know Why",
+        "Come Away With Me"
+      ]
+    },
+    "global-amy-winehouse": {
+      "bugsId": "80004428",
+      "referenceSongs": [
+        {
+          "title": "You Know I'm No Good",
+          "album": "Back To Black"
+        },
+        {
+          "title": "Back To Black",
+          "album": "Back To Black"
+        },
+        {
+          "title": "Love Is A Losing Game",
+          "album": "Back To Black (Deluxe Edition)"
+        },
+        {
+          "title": "Rehab",
+          "album": "Back To Black"
+        }
+      ],
+      "proofSongs": [
+        "Back To Black",
+        "Rehab"
+      ]
+    },
+    "global-hozier": {
+      "bugsId": "80186622",
+      "referenceSongs": [
+        {
+          "title": "Take Me To Church",
+          "album": "Hozier (Special Edition)"
+        },
+        {
+          "title": "Too Sweet",
+          "album": "Unheard"
+        },
+        {
+          "title": "Someone New",
+          "album": "Hozier (Special Edition)"
+        },
+        {
+          "title": "Cherry Wine (Live)",
+          "album": "Hozier (Special Edition)"
+        },
+        {
+          "title": "Work Song",
+          "album": "Hozier (Special Edition)"
+        }
+      ],
+      "proofSongs": [
+        "Take Me to Church",
+        "Too Sweet"
+      ]
+    },
+    "global-keshi": {
+      "bugsId": "80332686",
+      "referenceSongs": [
+        {
+          "title": "summer",
+          "album": "skeletons"
+        },
+        {
+          "title": "Soft Spot",
+          "album": "Requiem"
+        },
+        {
+          "title": "drunk",
+          "album": "always (EP)"
+        },
+        {
+          "title": "right here",
+          "album": "bandaids"
+        },
+        {
+          "title": "2 soon",
+          "album": "THE REAPER"
+        },
+        {
+          "title": "always",
+          "album": "always (EP)"
+        },
+        {
+          "title": "WANTCHU",
+          "album": "WANTCHU (HTOWN REMIX)"
+        },
+        {
+          "title": "beside you",
+          "album": "beside you"
+        },
+        {
+          "title": "skeletons",
+          "album": "skeletons"
+        },
+        {
+          "title": "UNDERSTAND",
+          "album": "GABRIEL (Korean Special Edition)"
+        },
+        {
+          "title": "less of you",
+          "album": "bandaids"
+        },
+        {
+          "title": "Say",
+          "album": "Requiem"
+        },
+        {
+          "title": "alright",
+          "album": "bandaids"
+        },
+        {
+          "title": "blue",
+          "album": "bandaids"
+        },
+        {
+          "title": "xoxosos",
+          "album": "skeletons"
+        },
+        {
+          "title": "LIMBO",
+          "album": "GABRIEL (Korean Special Edition)"
+        },
+        {
+          "title": "like i need u",
+          "album": "THE REAPER"
+        },
+        {
+          "title": "Texas",
+          "album": "Requiem"
+        },
+        {
+          "title": "TOUCH",
+          "album": "GABRIEL (Korean Special Edition)"
+        },
+        {
+          "title": "SOMEBODY",
+          "album": "GABRIEL (Korean Special Edition)"
+        },
+        {
+          "title": "us",
+          "album": "always (EP)"
+        },
+        {
+          "title": "more",
+          "album": "always (EP)"
+        },
+        {
+          "title": "Kiss Me Right",
+          "album": "Requiem (Bonus Edition)"
+        },
+        {
+          "title": "Requiem",
+          "album": "Requiem"
+        },
+        {
+          "title": "Like That",
+          "album": "Requiem"
+        },
+        {
+          "title": "B.Y.S.",
+          "album": "always (EP)"
+        },
+        {
+          "title": "Dream",
+          "album": "Requiem"
+        },
+        {
+          "title": "atlas",
+          "album": "skeletons"
+        },
+        {
+          "title": "i swear i'll never leave again",
+          "album": "THE REAPER"
+        },
+        {
+          "title": "Inside Out",
+          "album": "Requiem (Deluxe)"
+        }
+      ],
+      "proofSongs": [
+        "like i need u",
+        "beside you"
+      ]
+    },
+    "global-bon-iver": {
+      "bugsId": "80054710",
+      "referenceSongs": [
+        {
+          "title": "Re:Stacks",
+          "album": "For Emma, Forever Ago"
+        },
+        {
+          "title": "Holocene",
+          "album": "Bon Iver"
+        },
+        {
+          "title": "Beach Baby",
+          "album": "Blood Bank"
+        },
+        {
+          "title": "Perth",
+          "album": "Bon Iver"
+        },
+        {
+          "title": "Everything Is Peaceful Love",
+          "album": "SABLE, fABLE"
+        },
+        {
+          "title": "Hey, Ma",
+          "album": "i,i"
+        },
+        {
+          "title": "Rosyln (With St. Vincent)",
+          "album": "트와일라잇 2: 뉴 문 (The Twilight Saga: New Moon) OST"
+        },
+        {
+          "title": "Wash",
+          "album": "Bon Iver"
+        },
+        {
+          "title": "33 “GOD”",
+          "album": "22, A Million"
+        },
+        {
+          "title": "Skinny Love",
+          "album": "For Emma, Forever Ago"
+        },
+        {
+          "title": "Flume",
+          "album": "For Emma, Forever Ago"
+        },
+        {
+          "title": "Blindsided",
+          "album": "For Emma, Forever Ago"
+        },
+        {
+          "title": "Calgary",
+          "album": "Bon Iver"
+        },
+        {
+          "title": "29 #Strafford APTS",
+          "album": "22, A Million"
+        },
+        {
+          "title": "For Emma",
+          "album": "For Emma, Forever Ago"
+        },
+        {
+          "title": "Tie you down",
+          "album": "Tie you down"
+        },
+        {
+          "title": "22 (OVER S∞∞N)",
+          "album": "22, A Million"
+        },
+        {
+          "title": "AWARDS SEASON",
+          "album": "SABLE, fABLE"
+        },
+        {
+          "title": "S P E Y S I D E",
+          "album": "SABLE, fABLE"
+        },
+        {
+          "title": "Michicant",
+          "album": "Bon Iver"
+        },
+        {
+          "title": "Day One (feat. Dijon, Flock Of Dimes)",
+          "album": "SABLE, fABLE"
+        },
+        {
+          "title": "Hinnom, TX",
+          "album": "Bon Iver"
+        },
+        {
+          "title": "U (Man Like)",
+          "album": "i,i"
+        },
+        {
+          "title": "Towers",
+          "album": "Bon Iver"
+        },
+        {
+          "title": "There's A Rhythmn",
+          "album": "SABLE, fABLE"
+        },
+        {
+          "title": "8 (circle)",
+          "album": "22, A Million"
+        },
+        {
+          "title": "Minnesota, Wi",
+          "album": "Bon Iver"
+        },
+        {
+          "title": "Beth / Rest",
+          "album": "Bon Iver"
+        },
+        {
+          "title": "The Wolves (Act I and II)",
+          "album": "For Emma, Forever Ago"
+        },
+        {
+          "title": "666 ʇ",
+          "album": "22, A Million"
+        }
+      ],
+      "proofSongs": [
+        "Skinny Love",
+        "Holocene"
+      ]
+    },
+    "global-clairo": {
+      "bugsId": "80290046",
+      "referenceSongs": [
+        {
+          "title": "Bubble Gum",
+          "album": "Bubble Gum"
+        },
+        {
+          "title": "Add Up My Love",
+          "album": "Charm"
+        },
+        {
+          "title": "Juna",
+          "album": "Charm"
+        },
+        {
+          "title": "Sofia",
+          "album": "Immunity"
+        },
+        {
+          "title": "Bags",
+          "album": "Immunity"
+        },
+        {
+          "title": "4EVER",
+          "album": "diary 001"
+        },
+        {
+          "title": "Pretty Girl",
+          "album": "diary 001"
+        },
+        {
+          "title": "Softly",
+          "album": "Immunity"
+        },
+        {
+          "title": "Better",
+          "album": "Better (SG Lewis x Clairo)"
+        },
+        {
+          "title": "Second Nature",
+          "album": "Charm"
+        },
+        {
+          "title": "Amoeba",
+          "album": "Sling"
+        },
+        {
+          "title": "Sinking",
+          "album": "Immunity"
+        },
+        {
+          "title": "Slow Dance",
+          "album": "Charm"
+        },
+        {
+          "title": "Blouse",
+          "album": "Sling"
+        },
+        {
+          "title": "Nomad",
+          "album": "Charm"
+        },
+        {
+          "title": "Sexy to Someone",
+          "album": "Charm"
+        },
+        {
+          "title": "Flaming Hot Cheetos",
+          "album": "diary 001"
+        },
+        {
+          "title": "Glory of the Snow",
+          "album": "Charm"
+        },
+        {
+          "title": "Alewife",
+          "album": "Immunity"
+        },
+        {
+          "title": "Reaper",
+          "album": "Sling"
+        },
+        {
+          "title": "Love Songs",
+          "album": "Love Songs"
+        },
+        {
+          "title": "Thank You",
+          "album": "Charm"
+        },
+        {
+          "title": "Pier 4",
+          "album": "Charm"
+        },
+        {
+          "title": "White Flag",
+          "album": "Immunity"
+        },
+        {
+          "title": "Closer To You",
+          "album": "Immunity"
+        },
+        {
+          "title": "North",
+          "album": "Immunity"
+        },
+        {
+          "title": "Impossible",
+          "album": "Immunity"
+        },
+        {
+          "title": "Terrapin",
+          "album": "Charm"
+        },
+        {
+          "title": "Echo",
+          "album": "Charm"
+        },
+        {
+          "title": "I Wouldn't Ask You",
+          "album": "Immunity"
+        }
+      ],
+      "proofSongs": [
+        "Sofia",
+        "Pretty Girl"
+      ]
+    },
+    "global-cigarettes-after-sex": {
+      "bugsId": "80288532",
+      "referenceSongs": [
+        {
+          "title": "K.",
+          "album": "Cigarettes After Sex"
+        },
+        {
+          "title": "Apocalypse",
+          "album": "Cigarettes After Sex"
+        },
+        {
+          "title": "Sweet",
+          "album": "Cigarettes After Sex"
+        },
+        {
+          "title": "Nothing's Gonna Hurt You Baby",
+          "album": "I."
+        },
+        {
+          "title": "Sunsetz",
+          "album": "Cigarettes After Sex"
+        }
+      ],
+      "proofSongs": [
+        "Apocalypse",
+        "K."
+      ]
+    },
+    "global-chris-brown": {
+      "bugsId": "80014200",
+      "referenceSongs": [
+        {
+          "title": "Go Crazy",
+          "album": "Slime & B"
+        },
+        {
+          "title": "With You",
+          "album": "Exclusive"
+        },
+        {
+          "title": "Ayo",
+          "album": "Fan of A Fan The Album (Expanded Edition)"
+        },
+        {
+          "title": "No Guidance (feat. Drake)",
+          "album": "Indigo"
+        },
+        {
+          "title": "Undecided",
+          "album": "Indigo"
+        },
+        {
+          "title": "Loyal (feat. Lil Wayne & Tyga)",
+          "album": "X [Deluxe ver.]"
+        },
+        {
+          "title": "Zero",
+          "album": "Royalty (Deluxe Version)"
+        },
+        {
+          "title": "Turn Up The Music",
+          "album": "Fortune [Deluxe ver.]"
+        },
+        {
+          "title": "Under The Influence",
+          "album": "Indigo (Extended)"
+        },
+        {
+          "title": "Fine China",
+          "album": "X [Deluxe ver.]"
+        },
+        {
+          "title": "Take You Down",
+          "album": "Exclusive [The Forever Edition]"
+        },
+        {
+          "title": "Look At Me Now (feat. Lil Wayne & Busta Rhymes)",
+          "album": "F.A.M.E. [Deluxe ver.]"
+        },
+        {
+          "title": "Kiss Kiss (feat. T-Pain)",
+          "album": "Exclusive"
+        },
+        {
+          "title": "Run It! (feat. Juelz Santana)",
+          "album": "Chris Brown"
+        },
+        {
+          "title": "This Christmas",
+          "album": "디스 크리스마스 (This Christmas)"
+        },
+        {
+          "title": "Don't Check On Me (feat. Justin Bieber, Ink)",
+          "album": "Indigo"
+        },
+        {
+          "title": "New Flame (feat. Usher & Rick Ross)",
+          "album": "X [Standard ver.]"
+        },
+        {
+          "title": "Party (feat. Gucci Mane, Usher)",
+          "album": "Heartbreak on a Full Moon"
+        },
+        {
+          "title": "City Girls",
+          "album": "Slime & B"
+        },
+        {
+          "title": "Obvious",
+          "album": "Obvious"
+        },
+        {
+          "title": "Fine By Me",
+          "album": "Royalty (Deluxe Version)"
+        },
+        {
+          "title": "Loyal (East Coast ver.) (feat. Lil Wayne & French Montana) (Dirty)",
+          "album": "Loyal (East Coast ver.) [Dirty]"
+        },
+        {
+          "title": "Questions",
+          "album": "Heartbreak on a Full Moon"
+        },
+        {
+          "title": "Wobble Up (feat. Nicki Minaj, G-Eazy)",
+          "album": "Indigo"
+        },
+        {
+          "title": "Paradise (Radio Edit)",
+          "album": "Paradise"
+        },
+        {
+          "title": "Back To Sleep (Clean ver.)",
+          "album": "Royalty [Edited ver.]"
+        },
+        {
+          "title": "Wet The Bed (feat. Ludacris)",
+          "album": "F.A.M.E. [Deluxe ver.]"
+        },
+        {
+          "title": "Add Me In",
+          "album": "X [Deluxe ver.]"
+        },
+        {
+          "title": "Fallin' (feat. Leon Thomas)",
+          "album": "BROWN"
+        },
+        {
+          "title": "Come Together (feat. H.E.R.)",
+          "album": "Indigo"
+        }
+      ],
+      "proofSongs": [
+        "With You",
+        "Under The Influence"
+      ]
+    },
+    "global-tame-impala": {
+      "bugsId": "80130299",
+      "referenceSongs": [
+        {
+          "title": "Dracula (feat. 제니 (JENNIE))",
+          "album": "Dracula (with JENNIE) + Instrumental"
+        },
+        {
+          "title": "Loser",
+          "album": "Deadbeat"
+        },
+        {
+          "title": "Dracula",
+          "album": "Dracula (with JENNIE) + Instrumental"
+        },
+        {
+          "title": "The Less I Know The Better",
+          "album": "Currents"
+        },
+        {
+          "title": "Borderline",
+          "album": "The Slow Rush"
+        },
+        {
+          "title": "Feels Like We Only Go Backwards",
+          "album": "Lonerism"
+        },
+        {
+          "title": "Dracula (Boys Noize Disko Version) (feat. 제니 (JENNIE))",
+          "album": "Dracula (Boys Noize Disko Version)"
+        },
+        {
+          "title": "Let It Happen",
+          "album": "Currents"
+        },
+        {
+          "title": "My Old Ways",
+          "album": "Deadbeat"
+        },
+        {
+          "title": "Yes I'm Changing",
+          "album": "Currents"
+        },
+        {
+          "title": "Is It True",
+          "album": "The Slow Rush"
+        },
+        {
+          "title": "New Person, Same Old Mistakes",
+          "album": "Currents"
+        },
+        {
+          "title": "Elephant",
+          "album": "Lonerism"
+        },
+        {
+          "title": "'Cause I'm A Man",
+          "album": "Currents"
+        },
+        {
+          "title": "The Moment",
+          "album": "Currents"
+        },
+        {
+          "title": "Lost In Yesterday",
+          "album": "The Slow Rush"
+        },
+        {
+          "title": "Nangs",
+          "album": "Currents"
+        },
+        {
+          "title": "End Of Summer",
+          "album": "Deadbeat"
+        },
+        {
+          "title": "Eventually",
+          "album": "Currents"
+        },
+        {
+          "title": "Mind Mischief",
+          "album": "Lonerism"
+        },
+        {
+          "title": "Love/Paranoia",
+          "album": "Currents"
+        },
+        {
+          "title": "Breathe Deeper",
+          "album": "The Slow Rush"
+        },
+        {
+          "title": "Instant Destiny",
+          "album": "The Slow Rush"
+        },
+        {
+          "title": "Disciples",
+          "album": "Currents"
+        },
+        {
+          "title": "Apocalypse Dreams",
+          "album": "Lonerism"
+        },
+        {
+          "title": "Gossip",
+          "album": "Currents"
+        },
+        {
+          "title": "Endors Toi",
+          "album": "Lonerism"
+        },
+        {
+          "title": "No Reply",
+          "album": "Deadbeat"
+        },
+        {
+          "title": "Be Above It",
+          "album": "Lonerism"
+        },
+        {
+          "title": "Patience",
+          "album": "Patience"
+        }
+      ],
+      "proofSongs": [
+        "The Less I Know The Better",
+        "Let It Happen"
+      ]
+    },
+    "global-mitski": {
+      "bugsId": "20021178",
+      "referenceSongs": [
+        {
+          "title": "My Love Mine All Mine",
+          "album": "The Land Is Inhospitable and So Are We"
+        },
+        {
+          "title": "Glide (cover)",
+          "album": "Glide (cover)"
+        },
+        {
+          "title": "If I Leave",
+          "album": "Nothing's About to Happen to Me"
+        },
+        {
+          "title": "Washing Machine Heart",
+          "album": "Be The Cowboy"
+        },
+        {
+          "title": "Nobody",
+          "album": "Be The Cowboy"
+        }
+      ],
+      "proofSongs": [
+        "My Love Mine All Mine",
+        "Nobody"
+      ]
+    },
+    "global-bad-bunny": {
+      "bugsId": "10500637",
+      "referenceSongs": [
+        {
+          "title": "DtMF",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        },
+        {
+          "title": "MIA (feat. Drake)",
+          "album": "X 100PRE"
+        },
+        {
+          "title": "Tití Me Preguntó",
+          "album": "Un Verano Sin Ti"
+        },
+        {
+          "title": "NUEVAYoL",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        },
+        {
+          "title": "MONACO",
+          "album": "nadie sabe lo que va a pasar mañana"
+        },
+        {
+          "title": "EoO",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        },
+        {
+          "title": "Mayores",
+          "album": "Mayores"
+        },
+        {
+          "title": "DÁKITI",
+          "album": "DÁKITI"
+        },
+        {
+          "title": "BAILE INoLVIDABLE",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        },
+        {
+          "title": "Me Porto Bonito",
+          "album": "Un Verano Sin Ti"
+        },
+        {
+          "title": "Yonaguni",
+          "album": "Yonaguni"
+        },
+        {
+          "title": "VOY A LLeVARTE PA PR",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        },
+        {
+          "title": "Yo Perreo Sola",
+          "album": "YHLQMDLG"
+        },
+        {
+          "title": "Moscow Mule",
+          "album": "Un Verano Sin Ti"
+        },
+        {
+          "title": "LA MuDANZA",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        },
+        {
+          "title": "Krippy Kush (Travis Scott Remix) (feat. Travis Scott, Rvssian)",
+          "album": "Krippy Kush (Travis Scott Remix)"
+        },
+        {
+          "title": "Ojitos Lindos",
+          "album": "Un Verano Sin Ti"
+        },
+        {
+          "title": "TURiSTA",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        },
+        {
+          "title": "WELTiTA",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        },
+        {
+          "title": "CAFé CON RON",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        },
+        {
+          "title": "Vete",
+          "album": "YHLQMDLG"
+        },
+        {
+          "title": "Efecto",
+          "album": "Un Verano Sin Ti"
+        },
+        {
+          "title": "Mayores (Urban Tropical)",
+          "album": "Mayores (Urban Tropical)"
+        },
+        {
+          "title": "Si Veo a Tu Mamá",
+          "album": "YHLQMDLG"
+        },
+        {
+          "title": "El Apagón",
+          "album": "Un Verano Sin Ti"
+        },
+        {
+          "title": "Después de la Playa",
+          "album": "Un Verano Sin Ti"
+        },
+        {
+          "title": "WHERE SHE GOES",
+          "album": "WHERE SHE GOES"
+        },
+        {
+          "title": "KETU TeCRÉ",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        },
+        {
+          "title": "un x100to",
+          "album": "un x100to"
+        },
+        {
+          "title": "EL CLúB",
+          "album": "DeBÍ TiRAR MáS FOToS"
+        }
+      ],
+      "proofSongs": [
+        "Tití Me Preguntó",
+        "DÁKITI"
+      ]
+    },
+    "global-niki": {
+      "bugsId": "20044938",
+      "referenceSongs": [
+        {
+          "title": "Every Summertime",
+          "album": "Every Summertime"
+        },
+        {
+          "title": "Indigo",
+          "album": "Indigo"
+        },
+        {
+          "title": "lowkey",
+          "album": "wanna take this downtown?"
+        },
+        {
+          "title": "Plans (feat. Vory)",
+          "album": "Head In The Clouds"
+        }
+      ],
+      "proofSongs": [
+        "Every Summertime",
+        "lowkey"
+      ]
+    },
+    "global-yoasobi": {
+      "bugsId": "11902012",
+      "referenceSongs": [
+        {
+          "title": "夜に駆ける (밤을 달리다, Into The Night / Yoru ni Kakeru)",
+          "album": "THE BOOK"
+        },
+        {
+          "title": "アイドル (애니메이션 '최애의 아이' 1기 오프닝곡)",
+          "album": "アイドル"
+        },
+        {
+          "title": "たぶん (아마도, Tabun)",
+          "album": "THE BOOK"
+        },
+        {
+          "title": "怪物",
+          "album": "THE BOOK 2"
+        },
+        {
+          "title": "群青 (군청, Gunjyo)",
+          "album": "THE BOOK"
+        }
+      ],
+      "proofSongs": [
+        "アイドル",
+        "夜に駆ける"
+      ]
+    },
+    "global-shakira": {
+      "bugsId": "11686",
+      "referenceSongs": [
+        {
+          "title": "Try Everything",
+          "album": "주토피아 (Zootopia) Original Motion Picture Soundtrack"
+        },
+        {
+          "title": "Waka Waka (This Time for Africa) (K-Mix)",
+          "album": "Sale el Sol"
+        },
+        {
+          "title": "Whenever, Wherever",
+          "album": "Laundry Service"
+        },
+        {
+          "title": "Hips Don't Lie (feat. Wyclef Jean)",
+          "album": "Oral Fixation Vol.2 [Special Package]"
+        }
+      ],
+      "proofSongs": [
+        "Hips Don't Lie",
+        "Whenever, Wherever"
+      ]
+    },
+    "global-kenshi-yonezu": {
+      "bugsId": "80188826",
+      "referenceSongs": [
+        {
+          "title": "Lemon",
+          "album": "Lemon"
+        },
+        {
+          "title": "IRIS OUT",
+          "album": "IRIS OUT"
+        },
+        {
+          "title": "KICK BACK",
+          "album": "KICK BACK"
+        },
+        {
+          "title": "LADY",
+          "album": "LADY"
+        }
+      ],
+      "proofSongs": [
+        "Lemon",
+        "KICK BACK"
+      ]
+    },
+    "global-rosalia": {
+      "bugsId": "8474670",
+      "referenceSongs": [
+        {
+          "title": "Berghain",
+          "album": "Berghain"
+        },
+        {
+          "title": "La Perla",
+          "album": "LUX"
+        },
+        {
+          "title": "Reliquia",
+          "album": "LUX"
+        },
+        {
+          "title": "CHICKEN TERIYAKI",
+          "album": "MOTOMAMI"
+        },
+        {
+          "title": "TKN",
+          "album": "TKN"
+        },
+        {
+          "title": "BIZCOCHITO",
+          "album": "MOTOMAMI"
+        },
+        {
+          "title": "Con Altura (feat. El Guincho)",
+          "album": "Con Altura"
+        },
+        {
+          "title": "Divinize",
+          "album": "LUX"
+        },
+        {
+          "title": "Sauvignon Blanc",
+          "album": "LUX"
+        },
+        {
+          "title": "Sexo, Violencia y Llantas",
+          "album": "LUX"
+        },
+        {
+          "title": "SAOKO",
+          "album": "MOTOMAMI"
+        },
+        {
+          "title": "MALAMENTE (Cap.1: Augurio)",
+          "album": "El Mal Querer"
+        },
+        {
+          "title": "Berghain (Remix)",
+          "album": "Berghain (Remix)"
+        },
+        {
+          "title": "Milionària",
+          "album": "Fucking Money Man"
+        },
+        {
+          "title": "Dios Es Un Stalker",
+          "album": "LUX"
+        },
+        {
+          "title": "A Palé",
+          "album": "A Palé"
+        },
+        {
+          "title": "La Yugular",
+          "album": "LUX"
+        },
+        {
+          "title": "De Madrugá",
+          "album": "LUX"
+        },
+        {
+          "title": "Mio Cristo Piange Diamanti",
+          "album": "LUX"
+        },
+        {
+          "title": "Magnolias",
+          "album": "LUX"
+        },
+        {
+          "title": "LLYLM",
+          "album": "LLYLM"
+        },
+        {
+          "title": "Mundo Nuevo",
+          "album": "LUX"
+        },
+        {
+          "title": "DESPECHÁ",
+          "album": "MOTOMAMI +"
+        },
+        {
+          "title": "LA FAMA",
+          "album": "MOTOMAMI"
+        },
+        {
+          "title": "LA NOCHE DE ANOCHE",
+          "album": "EL ÚLTIMO TOUR DEL MUNDO"
+        },
+        {
+          "title": "Aute Cuture",
+          "album": "Aute Cuture"
+        },
+        {
+          "title": "Focu 'Ranni",
+          "album": "LUX (Complete Works)"
+        },
+        {
+          "title": "DESPECHÁ RMX",
+          "album": "DESPECHÁ RMX"
+        },
+        {
+          "title": "Linda",
+          "album": "Linda"
+        },
+        {
+          "title": "CUUUUuuuuuute",
+          "album": "MOTOMAMI"
+        }
+      ],
+      "proofSongs": [
+        "DESPECHÁ",
+        "BIZCOCHITO"
+      ]
+    },
+    "global-fujii-kaze": {
+      "bugsId": "11879993",
+      "referenceSongs": [
+        {
+          "title": "Kirari",
+          "album": "LOVE ALL SERVE ALL",
+          "titleAliases": [
+            "きらり - Kirari",
+            "きらり"
+          ]
+        },
+        {
+          "title": "Shinunoga E-Wa",
+          "album": "HELP EVER HURT NEVER",
+          "titleAliases": [
+            "死ぬのがいいわ - Shinunoga E-Wa",
+            "死ぬのがいいわ"
+          ]
+        },
+        {
+          "title": "Matsuri",
+          "album": "LOVE ALL SERVE ALL",
+          "titleAliases": [
+            "まつり - Matsuri",
+            "まつり"
+          ]
+        },
+        {
+          "title": "Hana",
+          "album": "Hana (EP)"
+        },
+        {
+          "title": "Prema",
+          "album": "Prema"
+        }
+      ],
+      "proofSongs": [
+        "Shinunoga E-Wa",
+        "Kirari"
+      ]
+    },
+    "global-hikaru-utada": {
+      "bugsId": "12632",
+      "referenceSongs": [
+        {
+          "title": "JANE DOE",
+          "album": "JANE DOE"
+        },
+        {
+          "title": "First Love (일본드라마 '마녀의 조건' Theme)",
+          "album": "First Love",
+          "titleAliases": [
+            "First Love",
+            "First Love (Remastered 2018)",
+            "First Love (Remastered 2026)"
+          ]
+        },
+        {
+          "title": "Beautiful World",
+          "album": "Heart Station (Remastered 2018)",
+          "titleAliases": [
+            "Beautiful World (Remastered 2018)",
+            "Beautiful World (Remastered 2026)"
+          ]
+        },
+        {
+          "title": "Automatic",
+          "album": "First Love",
+          "titleAliases": [
+            "Automatic (Remastered 2018)",
+            "Automatic (Remastered 2026)"
+          ]
+        },
+        {
+          "title": "One Last Kiss",
+          "album": "One Last Kiss"
+        },
+        {
+          "title": "Kimini Muchuu (TBS 금요드라마 'Saiai' OST)",
+          "album": "BAD MODE"
+        },
+        {
+          "title": "Flavor Of Life (Ballad Version)",
+          "album": "Heart Station (Remastered 2018)"
+        },
+        {
+          "title": "Play a Love Song",
+          "album": "Hatsukoi"
+        },
+        {
+          "title": "Hatsukoi",
+          "album": "Hatsukoi"
+        },
+        {
+          "title": "Come Back To Me",
+          "album": "Come Back To Me"
+        },
+        {
+          "title": "Distance",
+          "album": "Distance (Remastered 2018)"
+        },
+        {
+          "title": "Time Will Tell",
+          "album": "First Love"
+        },
+        {
+          "title": "Flavor Of Life",
+          "album": "Heart Station (Remastered 2018)"
+        },
+        {
+          "title": "Prisoner Of Love",
+          "album": "Heart Station (Remastered 2018)"
+        },
+        {
+          "title": "Can You Keep A Secret?",
+          "album": "Distance (Remastered 2018)"
+        },
+        {
+          "title": "First Love (2022 Mix)",
+          "album": "First Love (2022 Mix)"
+        },
+        {
+          "title": "Movin' On Without You",
+          "album": "First Love"
+        },
+        {
+          "title": "Distance (M-flo Remix)",
+          "album": "Final Distance"
+        },
+        {
+          "title": "Sakura Nagashi",
+          "album": "Fantôme"
+        },
+        {
+          "title": "Beautiful World (Planitb Acoustica Mix / 2014 Remastered)",
+          "album": "Beautiful World (Planitb Acoustica Mix)"
+        },
+        {
+          "title": "Traveling",
+          "album": "Deep River (Remastered 2018)"
+        },
+        {
+          "title": "In My Room",
+          "album": "First Love"
+        },
+        {
+          "title": "Mine or Yours",
+          "album": "Mine or Yours"
+        },
+        {
+          "title": "Fly Me To The Moon (In Other Words) (2007 Mix)",
+          "album": "Heart Station (Remastered 2018)"
+        },
+        {
+          "title": "Anata",
+          "album": "Hatsukoi"
+        },
+        {
+          "title": "Sakura Drops",
+          "album": "Deep River (Remastered 2018)"
+        },
+        {
+          "title": "Time (애니메이션 '불멸의 그대에게' 주제곡)",
+          "album": "BAD MODE"
+        },
+        {
+          "title": "Stay Gold",
+          "album": "Heart Station (Remastered 2018)"
+        },
+        {
+          "title": "PAPPAPARADISE",
+          "album": "PAPPAPARADISE"
+        }
+      ],
+      "proofSongs": [
+        "First Love",
+        "Automatic"
+      ]
+    },
+    "global-official-hige-dandism": {
+      "bugsId": "80222456",
+      "referenceSongs": [
+        {
+          "title": "Pretender",
+          "album": "Official HIGE DANdism One-Man Tour 2019@Nippon Budokan"
+        },
+        {
+          "title": "TATTOO",
+          "album": "Rejoice"
+        },
+        {
+          "title": "115万キロのフィルム (115만 킬로의 필름)",
+          "album": "エスカパレード (Escaparade)"
+        },
+        {
+          "title": "Cry Baby * 애니메이션 [도쿄 리벤저스] 오프닝 테마",
+          "album": "Cry Baby"
+        },
+        {
+          "title": "Yesterday",
+          "album": "Traveler"
+        },
+        {
+          "title": "宿命 (Syukumei / 숙명)",
+          "album": "Traveler"
+        },
+        {
+          "title": "Subtitle",
+          "album": "Subtitle"
+        },
+        {
+          "title": "I LOVE...",
+          "album": "Editorial"
+        },
+        {
+          "title": "らしさ / Rashisa",
+          "album": "らしさ / Rashisa"
+        },
+        {
+          "title": "White Noise",
+          "album": "Rejoice"
+        },
+        {
+          "title": "Universe",
+          "album": "Editorial"
+        },
+        {
+          "title": "Same Blue",
+          "album": "Same Blue"
+        },
+        {
+          "title": "Mixed Nuts",
+          "album": "Mixed Nuts EP"
+        },
+        {
+          "title": "Cry Baby",
+          "album": "Editorial"
+        },
+        {
+          "title": "Stand By You",
+          "album": "Stand By You"
+        },
+        {
+          "title": "Make Me Wonder",
+          "album": "Make Me Wonder"
+        },
+        {
+          "title": "Stardust",
+          "album": "Stardust"
+        },
+        {
+          "title": "Laughter",
+          "album": "HELLO EP"
+        },
+        {
+          "title": "日常 / Nichijo",
+          "album": "Rejoice"
+        },
+        {
+          "title": "Sanitizer",
+          "album": "Sanitizer"
+        },
+        {
+          "title": "Elderflower",
+          "album": "Elderflower"
+        },
+        {
+          "title": "Pretender(Acoustic Ver)",
+          "album": "Pretender"
+        },
+        {
+          "title": "SOULSOUP",
+          "album": "Rejoice"
+        },
+        {
+          "title": "50%",
+          "album": "50%"
+        },
+        {
+          "title": "Chessboard",
+          "album": "Rejoice"
+        },
+        {
+          "title": "Sharon",
+          "album": "Rejoice"
+        },
+        {
+          "title": "No Doubt",
+          "album": "No Doubt"
+        },
+        {
+          "title": "Vintage",
+          "album": "Traveler"
+        },
+        {
+          "title": "HELLO",
+          "album": "HELLO EP"
+        },
+        {
+          "title": "異端なスター (이단적인 스타)",
+          "album": "レポート"
+        }
+      ],
+      "proofSongs": [
+        "Pretender",
+        "Subtitle"
+      ]
+    },
+    "global-radwimps": {
+      "bugsId": "80017785",
+      "referenceSongs": [
+        {
+          "title": "なんでもないや (movie ver.) / Nandemonaiya (movie ver.)",
+          "album": "君の名は。(너의 이름은./your name.)",
+          "titleAliases": [
+            "Nandemonaiya - movie ver."
+          ]
+        },
+        {
+          "title": "前前前世 (movie ver.) / Zenzenzense (movie ver.)",
+          "album": "君の名は。(너의 이름은./your name.)",
+          "titleAliases": [
+            "Zenzenzense - movie ver."
+          ]
+        },
+        {
+          "title": "夢灯籠 / Dream lantern",
+          "album": "君の名は。(너의 이름은./your name.)",
+          "titleAliases": [
+            "Dream lantern"
+          ]
+        },
+        {
+          "title": "スパークル (movie ver.) / Sparkle (movie ver.)",
+          "album": "君の名は。(너의 이름은./your name.)",
+          "titleAliases": [
+            "Sparkle - movie ver."
+          ]
+        },
+        {
+          "title": "すずめ / Suzume (feat. Toaka(토아카/十明))",
+          "album": "すずめ(Suzume) (feat. Toaka(토아카/十明))",
+          "titleAliases": [
+            "すずめ (feat. Toaka)",
+            "Suzume (feat. Toaka)"
+          ]
+        }
+      ],
+      "proofSongs": [
+        "前前前世",
+        "スパークル"
+      ]
+    },
+    "global-one-ok-rock": {
+      "bugsId": "80104032",
+      "referenceSongs": [
+        {
+          "title": "Wherever You Are",
+          "album": "Nicheシンドロ-ム (Niche Syndrome)"
+        },
+        {
+          "title": "完全感覺 Dreamer (Kanzen Kankaku Dreamer)",
+          "album": "Nicheシンドロ-ム (Niche Syndrome)"
+        },
+        {
+          "title": "The Beginning",
+          "album": "人生×僕 = (Zinsei Kakete Boku Wa)"
+        },
+        {
+          "title": "We Are",
+          "album": "Ambitions"
+        },
+        {
+          "title": "Clock Strikes",
+          "album": "人生×僕 = (Zinsei Kakete Boku Wa)"
+        }
+      ],
+      "proofSongs": [
+        "Wherever you are",
+        "The Beginning"
+      ]
+    },
+    "global-nujabes": {
+      "bugsId": "80011798",
+      "referenceSongs": [
+        {
+          "title": "Aruarian Dance",
+          "album": "사무라이 참프루 (Samurai Champloo) - Departure"
+        },
+        {
+          "title": "Luv (sic.) pt3 (Feat. Shing02)",
+          "album": "Modal Soul"
+        },
+        {
+          "title": "Luv (sic) pt2",
+          "album": "Luv(sic) Hexalogy"
+        },
+        {
+          "title": "Luv (Sic)",
+          "album": "Luv(sic) Hexalogy"
+        },
+        {
+          "title": "Feather (Feat. Cise Starr, Akin from CYNE)",
+          "album": "Modal Soul"
+        }
+      ],
+      "proofSongs": [
+        "Feather",
+        "Luv(sic)"
+      ]
+    },
+    "global-king-gnu": {
+      "bugsId": "80288599",
+      "referenceSongs": [
+        {
+          "title": "AIZO",
+          "album": "AIZO"
+        },
+        {
+          "title": "Sakayume",
+          "album": "THE GREATEST UNKNOWN"
+        },
+        {
+          "title": "SPECIALZ",
+          "album": "THE GREATEST UNKNOWN"
+        },
+        {
+          "title": "Hakujitsu",
+          "album": "CEREMONY"
+        },
+        {
+          "title": "Ichizu",
+          "album": "Ichizu"
+        }
+      ],
+      "proofSongs": [
+        "Hakujitsu",
+        "SPECIALZ"
+      ]
+    },
+    "global-vaundy": {
+      "bugsId": "20096334",
+      "referenceSongs": [
+        {
+          "title": "odoriko",
+          "album": "replica",
+          "titleAliases": [
+            "踊り子"
+          ]
+        },
+        {
+          "title": "Kaiju no Hanauta",
+          "album": "strobo",
+          "titleAliases": [
+            "怪獣の花唄"
+          ]
+        },
+        {
+          "title": "Tokyo Flash",
+          "album": "strobo",
+          "titleAliases": [
+            "東京フラッシュ"
+          ]
+        },
+        {
+          "title": "Koikaze ni nosete",
+          "album": "replica"
+        },
+        {
+          "title": "CHAINSAW BLOOD",
+          "album": "CHAINSAW BLOOD"
+        }
+      ],
+      "proofSongs": [
+        "Kaiju no Hanauta",
+        "odoriko"
+      ]
+    },
+    "global-mrs-green-apple": {
+      "bugsId": "80239886",
+      "referenceSongs": [
+        {
+          "title": "Lilac",
+          "album": "10",
+          "titleAliases": [
+            "ライラック - Lilac",
+            "ライラック"
+          ]
+        },
+        {
+          "title": "Inferno",
+          "album": "Attitude",
+          "titleAliases": [
+            "インフェルノ - Inferno",
+            "インフェルノ"
+          ]
+        },
+        {
+          "title": "Ao To Natsu",
+          "album": "Ao To Natsu",
+          "titleAliases": [
+            "青と夏 - Ao To Natsu",
+            "青と夏"
+          ]
+        },
+        {
+          "title": "Dance Hall",
+          "album": "Unity",
+          "titleAliases": [
+            "ダンスホール - Dance Hall",
+            "ダンスホール"
+          ]
+        },
+        {
+          "title": "lulu.",
+          "album": "lulu."
+        }
+      ],
+      "proofSongs": [
+        "Dance Hall",
+        "Ao To Natsu"
+      ]
+    },
+    "global-marshmello": {
+      "bugsId": "80009442",
+      "referenceSongs": [
+        {
+          "title": "Leave Before You Love Me",
+          "album": "The Family Business"
+        },
+        {
+          "title": "Be Kind",
+          "album": "Be Kind"
+        },
+        {
+          "title": "Slow Motion",
+          "album": "Slow Motion"
+        },
+        {
+          "title": "Alone",
+          "album": "Alone"
+        },
+        {
+          "title": "Numb",
+          "album": "Numb"
+        },
+        {
+          "title": "Silence (feat. Khalid)",
+          "album": "Silence"
+        },
+        {
+          "title": "Light It Up",
+          "album": "Light It Up"
+        },
+        {
+          "title": "OK Not To Be OK",
+          "album": "OK Not To Be OK"
+        },
+        {
+          "title": "Ritual (feat. Wrabel)",
+          "album": "Ritual"
+        },
+        {
+          "title": "Too Much (feat. Usher)",
+          "album": "Too Much"
+        },
+        {
+          "title": "Chasing Stars (feat. James Bay)",
+          "album": "Chasing Stars"
+        },
+        {
+          "title": "Moving On",
+          "album": "Moving On"
+        },
+        {
+          "title": "Do You Believe",
+          "album": "The Idea Of Her"
+        },
+        {
+          "title": "Another Drink",
+          "album": "Another Drink"
+        },
+        {
+          "title": "Save My Love",
+          "album": "Save My Love"
+        },
+        {
+          "title": "American Psycho",
+          "album": "American Psycho"
+        },
+        {
+          "title": "Be Kind (Surf Mesa Remix)",
+          "album": "Be Kind (Surf Mesa Remix)"
+        },
+        {
+          "title": "Save My Love (Nicky Romero Remix)",
+          "album": "Save My Love (Remixes)"
+        },
+        {
+          "title": "Fly (feat. Leah Culver)",
+          "album": "Fly"
+        },
+        {
+          "title": "Chasing Colors (feat. Noah Cyrus)",
+          "album": "Chasing Colors"
+        },
+        {
+          "title": "Other Boys",
+          "album": "Other Boys"
+        },
+        {
+          "title": "You Can Cry",
+          "album": "You Can Cry"
+        },
+        {
+          "title": "Be Kind (Stripped)",
+          "album": "Be Kind (Stripped)"
+        },
+        {
+          "title": "You & Me",
+          "album": "You & Me"
+        },
+        {
+          "title": "Holy Water",
+          "album": "Holy Water"
+        },
+        {
+          "title": "Magic",
+          "album": "Magic"
+        },
+        {
+          "title": "Back In Time",
+          "album": "Back In Time"
+        },
+        {
+          "title": "Spotlight",
+          "album": "Spotlight"
+        },
+        {
+          "title": "Tongue Tied (Duke & Jones Remix) (feat. Duke & Jones)",
+          "album": "Tongue Tied (Remixes)"
+        }
+      ],
+      "proofSongs": [
+        "Alone",
+        "Silence"
+      ]
+    },
+    "global-h-e-r": {
+      "bugsId": "80268911",
+      "referenceSongs": [
+        {
+          "title": "Focus",
+          "album": "H.E.R. Volume 1"
+        },
+        {
+          "title": "Blessed & Free",
+          "album": "Blessed & Free"
+        },
+        {
+          "title": "Comfortable",
+          "album": "Comfortable"
+        },
+        {
+          "title": "Hard Place",
+          "album": "I Used To Know Her"
+        },
+        {
+          "title": "Let Me In",
+          "album": "H.E.R."
+        }
+      ],
+      "proofSongs": [
+        "Focus",
+        "Hard Place"
+      ]
+    },
+    "global-aimer": {
+      "bugsId": "80242468",
+      "referenceSongs": [
+        {
+          "title": "Zankyosanka (애니메이션 '귀멸의 칼날 2기' 오프닝 곡)",
+          "album": "Zankyosanka / Asa ga kuru"
+        },
+        {
+          "title": "Kataomoi",
+          "album": "daydream"
+        },
+        {
+          "title": "Ref:rain",
+          "album": "Ref:rain / Mabayui Bakari"
+        },
+        {
+          "title": "Last Stardust",
+          "album": "DAWN"
+        },
+        {
+          "title": "A World Where the Sun Never Rises",
+          "album": "A World Where the Sun Never Rises"
+        }
+      ],
+      "proofSongs": [
+        "Zankyosanka",
+        "Kataomoi"
+      ]
+    },
+    "global-ado": {
+      "bugsId": "20116513",
+      "referenceSongs": [
+        {
+          "title": "Show",
+          "album": "Zanmu",
+          "titleAliases": [
+            "唱 - Show",
+            "唱"
+          ]
+        },
+        {
+          "title": "Backlight",
+          "album": "UTA'S SONGS ONE PIECE FILM RED"
+        },
+        {
+          "title": "Usseewa",
+          "album": "狂言 (Kyougen)",
+          "titleAliases": [
+            "うっせぇわ - Usseewa",
+            "うっせぇわ"
+          ]
+        },
+        {
+          "title": "New Genesis",
+          "album": "UTA'S SONGS ONE PIECE FILM RED",
+          "titleAliases": [
+            "新時代 (ウタ from ONE PIECE FILM RED)",
+            "新時代"
+          ]
+        },
+        {
+          "title": "I’m invincible",
+          "album": "UTA'S SONGS ONE PIECE FILM RED"
+        }
+      ],
+      "proofSongs": [
+        "Usseewa",
+        "New Genesis"
+      ]
+    },
+    "global-lisa": {
+      "bugsId": "80124919",
+      "referenceSongs": [
+        {
+          "title": "Gurenge",
+          "album": "LEO-NiNE",
+          "titleAliases": [
+            "紅蓮華 - Gurenge",
+            "紅蓮華"
+          ]
+        },
+        {
+          "title": "homura",
+          "album": "LANDER",
+          "titleAliases": [
+            "炎 - homura",
+            "炎"
+          ]
+        },
+        {
+          "title": "Shine in the Cruel Night",
+          "album": "LACE UP"
+        },
+        {
+          "title": "Gurenge -TV version-",
+          "album": "Gurenge"
+        },
+        {
+          "title": "Akeboshi",
+          "album": "LANDER"
+        }
+      ],
+      "proofSongs": [
+        "Gurenge",
+        "homura"
+      ]
     }
   }
 }

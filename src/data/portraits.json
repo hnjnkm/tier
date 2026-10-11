@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-11T03:52:47.645Z",
+  "updatedAt": "2026-10-11T06:06:39.359Z",
   "provider": "Verified Bugs and Melon artist profile photos",
   "portraits": {
     "kr-naul": {
@@ -6748,6 +6748,881 @@
       "title": "정재원",
       "provider": "bugs",
       "localPath": "portraits/kr-jungjaewon.7b990bd45c32.webp"
+    },
+    "global-ariana-grande": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801175/80117591.jpg?version=20260430002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/80117591",
+      "title": "Ariana Grande(아리아나 그란데)",
+      "provider": "bugs",
+      "localPath": "portraits/global-ariana-grande.601df8cfbdb6.webp"
+    },
+    "global-adele": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800425/80042562.jpg?version=20211016064316",
+      "pageUrl": "https://music.bugs.co.kr/artist/80042562",
+      "title": "Adele(아델)",
+      "provider": "bugs",
+      "localPath": "portraits/global-adele.371b4229afc5.webp"
+    },
+    "global-bruno-mars": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800721/80072173.jpg?version=20261001104010",
+      "pageUrl": "https://music.bugs.co.kr/artist/80072173",
+      "title": "Bruno Mars(브루노 마스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-bruno-mars.3d3c5ff6753c.webp"
+    },
+    "global-dua-lipa": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802451/80245167.jpg?version=20240519121627",
+      "pageUrl": "https://music.bugs.co.kr/artist/80245167",
+      "title": "Dua Lipa(두아 리파)",
+      "provider": "bugs",
+      "localPath": "portraits/global-dua-lipa.02fcf936b1b1.webp"
+    },
+    "global-rihanna": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800122/80012248.jpg?version=20221029002116",
+      "pageUrl": "https://music.bugs.co.kr/artist/80012248",
+      "title": "Rihanna(리아나)",
+      "provider": "bugs",
+      "localPath": "portraits/global-rihanna.08eaf6953e1a.webp"
+    },
+    "global-olivia-rodrigo": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802725/80272554.jpg?version=20260707002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80272554",
+      "title": "Olivia Rodrigo",
+      "provider": "bugs",
+      "localPath": "portraits/global-olivia-rodrigo.567f45ae3c3b.webp"
+    },
+    "global-billie-eilish": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/85841/8584120.jpg?version=20240520103444",
+      "pageUrl": "https://music.bugs.co.kr/artist/8584120",
+      "title": "Billie Eilish(빌리 아일리시)",
+      "provider": "bugs",
+      "localPath": "portraits/global-billie-eilish.edc26bbac959.webp"
+    },
+    "global-beyonce": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/32/3209.jpg?version=20240201002113",
+      "pageUrl": "https://music.bugs.co.kr/artist/3209",
+      "title": "Beyoncé(비욘세)",
+      "provider": "bugs",
+      "localPath": "portraits/global-beyonce.d45ea3fa88bf.webp"
+    },
+    "global-harry-styles": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802035/80203520.jpg?version=20260124002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/80203520",
+      "title": "Harry Styles(해리 스타일스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-harry-styles.67a8500eea30.webp"
+    },
+    "global-sabrina-carpenter": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801723/80172356.jpg?version=20240824002131",
+      "pageUrl": "https://music.bugs.co.kr/artist/80172356",
+      "title": "Sabrina Carpenter(사브리나 카펜터)",
+      "provider": "bugs",
+      "localPath": "portraits/global-sabrina-carpenter.950207b041de.webp"
+    },
+    "global-the-weeknd": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801145/80114581.jpg?version=20260922085108",
+      "pageUrl": "https://music.bugs.co.kr/artist/80114581",
+      "title": "The Weeknd(위켄드)",
+      "provider": "bugs",
+      "localPath": "portraits/global-the-weeknd.064aece31e64.webp"
+    },
+    "global-charlie-puth": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802216/80221620.jpg?version=20260123002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/80221620",
+      "title": "Charlie Puth(찰리 푸스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-charlie-puth.48098c507963.webp"
+    },
+    "global-post-malone": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802444/80244475.jpg?version=20230804002103",
+      "pageUrl": "https://music.bugs.co.kr/artist/80244475",
+      "title": "Post Malone(포스트 말론)",
+      "provider": "bugs",
+      "localPath": "portraits/global-post-malone.21d0c89dd9cf.webp"
+    },
+    "global-lana-del-rey": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801176/80117628.jpg?version=20250412002128",
+      "pageUrl": "https://music.bugs.co.kr/artist/80117628",
+      "title": "Lana Del Rey(라나 델 레이)",
+      "provider": "bugs",
+      "localPath": "portraits/global-lana-del-rey.a5e3b1483f0d.webp"
+    },
+    "global-lorde": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801572/80157265.jpg?version=20250425002116",
+      "pageUrl": "https://music.bugs.co.kr/artist/80157265",
+      "title": "Lorde(로드)",
+      "provider": "bugs",
+      "localPath": "portraits/global-lorde.e604266ad33a.webp"
+    },
+    "global-halsey": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802300/80230076.jpg?version=20240606064132",
+      "pageUrl": "https://music.bugs.co.kr/artist/80230076",
+      "title": "Halsey(할시)",
+      "provider": "bugs",
+      "localPath": "portraits/global-halsey.a33ec6a0fc94.webp"
+    },
+    "global-katy-perry": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800452/80045209.jpg?version=20251108002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80045209",
+      "title": "Katy Perry(케이티 페리)",
+      "provider": "bugs",
+      "localPath": "portraits/global-katy-perry.1268eb993984.webp"
+    },
+    "global-troye-sivan": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801951/80195120.jpg?version=20230715002131",
+      "pageUrl": "https://music.bugs.co.kr/artist/80195120",
+      "title": "Troye Sivan(트로이 시반)",
+      "provider": "bugs",
+      "localPath": "portraits/global-troye-sivan.ff95b55a1c14.webp"
+    },
+    "global-camila-cabello": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802552/80255282.jpg?version=20240629002114",
+      "pageUrl": "https://music.bugs.co.kr/artist/80255282",
+      "title": "Camila Cabello(카밀라 카베요)",
+      "provider": "bugs",
+      "localPath": "portraits/global-camila-cabello.b9e2261eb431.webp"
+    },
+    "global-sia": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800100/80010088.jpg?version=20260109002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/80010088",
+      "title": "Sia(시아)",
+      "provider": "bugs",
+      "localPath": "portraits/global-sia.6cc36168984f.webp"
+    },
+    "global-sam-smith": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801476/80147640.jpg?version=20260623180543",
+      "pageUrl": "https://music.bugs.co.kr/artist/80147640",
+      "title": "Sam Smith(샘 스미스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-sam-smith.e53d66196518.webp"
+    },
+    "global-doja-cat": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801856/80185652.jpg?version=20250826040000",
+      "pageUrl": "https://music.bugs.co.kr/artist/80185652",
+      "title": "Doja Cat(도자 캣)",
+      "provider": "bugs",
+      "localPath": "portraits/global-doja-cat.645a42f4f2b5.webp"
+    },
+    "global-shawn-mendes": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801964/80196428.jpg?version=20211203091006",
+      "pageUrl": "https://music.bugs.co.kr/artist/80196428",
+      "title": "Shawn Mendes(션 멘데스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-shawn-mendes.97fca8ccafa6.webp"
+    },
+    "global-chappell-roan": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802885/80288591.jpg?version=20260130002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80288591",
+      "title": "Chappell Roan",
+      "provider": "bugs",
+      "localPath": "portraits/global-chappell-roan.a1e24072a4ee.webp"
+    },
+    "global-conan-gray": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/803211/80321173.jpg?version=20250712002105",
+      "pageUrl": "https://music.bugs.co.kr/artist/80321173",
+      "title": "Conan Gray",
+      "provider": "bugs",
+      "localPath": "portraits/global-conan-gray.de6b57376b71.webp"
+    },
+    "global-miley-cyrus": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800216/80021690.jpg?version=20260903002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/80021690",
+      "title": "Miley Cyrus(마일리 사이러스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-miley-cyrus.c14315cc480c.webp"
+    },
+    "global-maroon-5": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/554/55461.jpg?version=20250621002111",
+      "pageUrl": "https://music.bugs.co.kr/artist/55461",
+      "title": "Maroon 5(마룬 파이브)",
+      "provider": "bugs",
+      "localPath": "portraits/global-maroon-5.27c147033fad.webp"
+    },
+    "global-onerepublic": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800235/80023514.jpg?version=20260404002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80023514",
+      "title": "OneRepublic(원리퍼블릭)",
+      "provider": "bugs",
+      "localPath": "portraits/global-onerepublic.beeb995ac475.webp"
+    },
+    "global-coldplay": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/5/583.jpg?version=20250403002112",
+      "pageUrl": "https://music.bugs.co.kr/artist/583",
+      "title": "Coldplay(콜드플레이)",
+      "provider": "bugs",
+      "localPath": "portraits/global-coldplay.1c12a753ab8f.webp"
+    },
+    "global-imagine-dragons": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801215/80121520.jpg?version=20220312002104",
+      "pageUrl": "https://music.bugs.co.kr/artist/80121520",
+      "title": "Imagine Dragons(이매진 드래곤스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-imagine-dragons.a2034603ce8b.webp"
+    },
+    "global-oasis": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/644/64439.jpg?version=20191228002124",
+      "pageUrl": "https://music.bugs.co.kr/artist/64439",
+      "title": "Oasis(오아시스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-oasis.cce79ab7e2fb.webp"
+    },
+    "global-radiohead": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/40/4013.jpg?version=20220608002120",
+      "pageUrl": "https://music.bugs.co.kr/artist/4013",
+      "title": "Radiohead(라디오헤드)",
+      "provider": "bugs",
+      "localPath": "portraits/global-radiohead.8730d3596f7b.webp"
+    },
+    "global-linkin-park": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/149/14969.jpg?version=20241105002117",
+      "pageUrl": "https://music.bugs.co.kr/artist/14969",
+      "title": "Linkin Park(린킨 파크)",
+      "provider": "bugs",
+      "localPath": "portraits/global-linkin-park.4efe95cb358f.webp"
+    },
+    "global-queen": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/336/33684.jpg?version=20190725031028",
+      "pageUrl": "https://music.bugs.co.kr/artist/33684",
+      "title": "Queen(퀸)",
+      "provider": "bugs",
+      "localPath": "portraits/global-queen.0aa41cc4d94d.webp"
+    },
+    "global-the-1975": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801522/80152297.jpg?version=20200527002111",
+      "pageUrl": "https://music.bugs.co.kr/artist/80152297",
+      "title": "The 1975",
+      "provider": "bugs",
+      "localPath": "portraits/global-the-1975.aac39bc4b2db.webp"
+    },
+    "global-arctic-monkeys": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800164/80016418.jpg?version=20241214002124",
+      "pageUrl": "https://music.bugs.co.kr/artist/80016418",
+      "title": "Arctic Monkeys(악틱 몽키스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-arctic-monkeys.54aeb7412fbf.webp"
+    },
+    "global-muse": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/416/41676.jpg?version=20260117002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/41676",
+      "title": "Muse(뮤즈)",
+      "provider": "bugs",
+      "localPath": "portraits/global-muse.a84b0a39ebf6.webp"
+    },
+    "global-metallica": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/466/46677.jpg?version=20230309002110",
+      "pageUrl": "https://music.bugs.co.kr/artist/46677",
+      "title": "Metallica(메탈리카)",
+      "provider": "bugs",
+      "localPath": "portraits/global-metallica.421223a0e522.webp"
+    },
+    "global-foo-fighters": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/347/34755.jpg?version=20201107002117",
+      "pageUrl": "https://music.bugs.co.kr/artist/34755",
+      "title": "Foo Fighters(푸 파이터스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-foo-fighters.f83f6ac69de7.webp"
+    },
+    "global-the-rolling-stones": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/4/471.jpg?version=20200313002128",
+      "pageUrl": "https://music.bugs.co.kr/artist/471",
+      "title": "The Rolling Stones(롤링 스톤즈)",
+      "provider": "bugs",
+      "localPath": "portraits/global-the-rolling-stones.e2ac7c4446aa.webp"
+    },
+    "global-abba": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/4/473.jpg?version=20190717113026",
+      "pageUrl": "https://music.bugs.co.kr/artist/473",
+      "title": "ABBA(아바)",
+      "provider": "bugs",
+      "localPath": "portraits/global-abba.5e818aae1c01.webp"
+    },
+    "global-michael-jackson": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/80099/8009999.jpg?version=20260425022610",
+      "pageUrl": "https://music.bugs.co.kr/artist/8009999",
+      "title": "Michael Jackson(마이클 잭슨)",
+      "provider": "bugs",
+      "localPath": "portraits/global-michael-jackson.792a91f09393.webp"
+    },
+    "global-taylor-swift": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800390/80039092.jpg?version=20260929002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80039092",
+      "title": "Taylor Swift(테일러 스위프트)",
+      "provider": "bugs",
+      "localPath": "portraits/global-taylor-swift.400ff7d89f20.webp"
+    },
+    "global-green-day": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/5/550.jpg?version=20251125002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/550",
+      "title": "Green Day(그린 데이)",
+      "provider": "bugs",
+      "localPath": "portraits/global-green-day.890423e24362.webp"
+    },
+    "global-fleetwood-mac": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/335/33598.jpg?version=20190722100018",
+      "pageUrl": "https://music.bugs.co.kr/artist/33598",
+      "title": "Fleetwood Mac(플리트우드 맥)",
+      "provider": "bugs",
+      "localPath": "portraits/global-fleetwood-mac.2a75eda460b0.webp"
+    },
+    "global-whitney-houston": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/324/32479.jpg?version=20240519121419",
+      "pageUrl": "https://music.bugs.co.kr/artist/32479",
+      "title": "Whitney Houston(휘트니 휴스턴)",
+      "provider": "bugs",
+      "localPath": "portraits/global-whitney-houston.1ee4c52daf9b.webp"
+    },
+    "global-red-hot-chili-peppers": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/67/6738.jpg?version=20240519121414",
+      "pageUrl": "https://music.bugs.co.kr/artist/6738",
+      "title": "Red Hot Chili Peppers(레드 핫 칠리 페퍼스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-red-hot-chili-peppers.2df4b8b75493.webp"
+    },
+    "global-ed-sheeran": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801037/80103713.jpg?version=20260123075140",
+      "pageUrl": "https://music.bugs.co.kr/artist/80103713",
+      "title": "Ed Sheeran(에드 시런)",
+      "provider": "bugs",
+      "localPath": "portraits/global-ed-sheeran.8338873ee364.webp"
+    },
+    "global-paramore": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800402/80040246.jpg?version=20230117002105",
+      "pageUrl": "https://music.bugs.co.kr/artist/80040246",
+      "title": "Paramore(파라모어)",
+      "provider": "bugs",
+      "localPath": "portraits/global-paramore.efce143648c9.webp"
+    },
+    "global-billy-joel": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/324/32401.jpg?version=20240519121419",
+      "pageUrl": "https://music.bugs.co.kr/artist/32401",
+      "title": "Billy Joel(빌리 조엘)",
+      "provider": "bugs",
+      "localPath": "portraits/global-billy-joel.c91660f88fe3.webp"
+    },
+    "global-david-bowie": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/327/32774.jpg?version=20190725031030",
+      "pageUrl": "https://music.bugs.co.kr/artist/32774",
+      "title": "David Bowie(데이빗 보위)",
+      "provider": "bugs",
+      "localPath": "portraits/global-david-bowie.996b00210444.webp"
+    },
+    "global-prince": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/63/6312.jpg?version=20240519121413",
+      "pageUrl": "https://music.bugs.co.kr/artist/6312",
+      "title": "Prince(프린스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-prince.1d34400c383b.webp"
+    },
+    "global-the-beatles": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/323/32397.jpg?version=20200313002128",
+      "pageUrl": "https://music.bugs.co.kr/artist/32397",
+      "title": "The Beatles(비틀스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-the-beatles.a763a27e10d5.webp"
+    },
+    "global-daft-punk": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/356/35606.jpg?version=20210225002135",
+      "pageUrl": "https://music.bugs.co.kr/artist/35606",
+      "title": "Daft Punk(다프트 펑크)",
+      "provider": "bugs",
+      "localPath": "portraits/global-daft-punk.c1901b04fb91.webp"
+    },
+    "global-calvin-harris": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800249/80024973.jpg?version=20240519121611",
+      "pageUrl": "https://music.bugs.co.kr/artist/80024973",
+      "title": "Calvin Harris(캘빈 해리스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-calvin-harris.9c35ab9df663.webp"
+    },
+    "global-avicii": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800962/80096278.jpg?version=20190619115259",
+      "pageUrl": "https://music.bugs.co.kr/artist/80096278",
+      "title": "Avicii(아비치)",
+      "provider": "bugs",
+      "localPath": "portraits/global-avicii.a7efd72d1984.webp"
+    },
+    "global-david-guetta": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800098/80009895.jpg?version=20260515002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80009895",
+      "title": "David Guetta(데이빗 게타)",
+      "provider": "bugs",
+      "localPath": "portraits/global-david-guetta.bd9f609aad7a.webp"
+    },
+    "global-alan-walker": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802554/80255459.jpg?version=20230928002114",
+      "pageUrl": "https://music.bugs.co.kr/artist/80255459",
+      "title": "Alan Walker(알렌 워커)",
+      "provider": "bugs",
+      "localPath": "portraits/global-alan-walker.16e1cd6141cd.webp"
+    },
+    "global-madonna": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/45/4591.jpg?version=20260428074104",
+      "pageUrl": "https://music.bugs.co.kr/artist/4591",
+      "title": "Madonna(마돈나)",
+      "provider": "bugs",
+      "localPath": "portraits/global-madonna.861c9e51dd46.webp"
+    },
+    "global-justin-bieber": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800577/80057730.jpg?version=20250716020508",
+      "pageUrl": "https://music.bugs.co.kr/artist/80057730",
+      "title": "Justin Bieber(저스틴 비버)",
+      "provider": "bugs",
+      "localPath": "portraits/global-justin-bieber.ca6415efb431.webp"
+    },
+    "global-celine-dion": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/10/1080.jpg?version=20190723121455",
+      "pageUrl": "https://music.bugs.co.kr/artist/1080",
+      "title": "Celine Dion(셀린 디온)",
+      "provider": "bugs",
+      "localPath": "portraits/global-celine-dion.706b98e74e6c.webp"
+    },
+    "global-the-chainsmokers": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801430/80143014.jpg?version=20251025005116",
+      "pageUrl": "https://music.bugs.co.kr/artist/80143014",
+      "title": "The Chainsmokers(체인스모커스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-the-chainsmokers.0c76c6d332a1.webp"
+    },
+    "global-drake": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800582/80058247.jpg?version=20260519020246",
+      "pageUrl": "https://music.bugs.co.kr/artist/80058247",
+      "title": "Drake(드레이크)",
+      "provider": "bugs",
+      "localPath": "portraits/global-drake.91e694b2d214.webp"
+    },
+    "global-eminem": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/12/1205.jpg?version=20240705002130",
+      "pageUrl": "https://music.bugs.co.kr/artist/1205",
+      "title": "Eminem(에미넴)",
+      "provider": "bugs",
+      "localPath": "portraits/global-eminem.e1d095ea9dcf.webp"
+    },
+    "global-jay-z": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/190/19073.jpg?version=20190723011107",
+      "pageUrl": "https://music.bugs.co.kr/artist/19073",
+      "title": "JAY-Z(제이지)",
+      "provider": "bugs",
+      "localPath": "portraits/global-jay-z.739d56beec6a.webp"
+    },
+    "global-travis-scott": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801543/80154375.jpg?version=20201020002129",
+      "pageUrl": "https://music.bugs.co.kr/artist/80154375",
+      "title": "Travis Scott(트래비스 스캇)",
+      "provider": "bugs",
+      "localPath": "portraits/global-travis-scott.9ff9611e5a24.webp"
+    },
+    "global-kanye-west": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/441/44181.jpg?version=20210724002112",
+      "pageUrl": "https://music.bugs.co.kr/artist/44181",
+      "title": "Kanye West(카니예 웨스트)",
+      "provider": "bugs",
+      "localPath": "portraits/global-kanye-west.76c1fb58fe5d.webp"
+    },
+    "global-zedd": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801220/80122075.jpg?version=20190701112640",
+      "pageUrl": "https://music.bugs.co.kr/artist/80122075",
+      "title": "Zedd(제드)",
+      "provider": "bugs",
+      "localPath": "portraits/global-zedd.0c4f026df4c6.webp"
+    },
+    "global-childish-gambino": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801106/80110691.jpg?version=20240519121616",
+      "pageUrl": "https://music.bugs.co.kr/artist/80110691",
+      "title": "Childish Gambino(차일디시 감비노)",
+      "provider": "bugs",
+      "localPath": "portraits/global-childish-gambino.37bb43fef7c2.webp"
+    },
+    "global-nas": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/116/11668.jpg?version=20230722002130",
+      "pageUrl": "https://music.bugs.co.kr/artist/11668",
+      "title": "Nas(나스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-nas.bf7437eccb7b.webp"
+    },
+    "global-tyler-the-creator": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801066/80106621.jpg?version=20210625144800",
+      "pageUrl": "https://music.bugs.co.kr/artist/80106621",
+      "title": "Tyler, The Creator(타일러, 더 크리에이터)",
+      "provider": "bugs",
+      "localPath": "portraits/global-tyler-the-creator.fb753182161b.webp"
+    },
+    "global-kendrick-lamar": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801053/80105349.jpg?version=20241129002113",
+      "pageUrl": "https://music.bugs.co.kr/artist/80105349",
+      "title": "Kendrick Lamar(켄드릭 라마)",
+      "provider": "bugs",
+      "localPath": "portraits/global-kendrick-lamar.ec072dcb1f4a.webp"
+    },
+    "global-2pac": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/30/3053.jpg?version=20200117002106",
+      "pageUrl": "https://music.bugs.co.kr/artist/3053",
+      "title": "2Pac(투팍)",
+      "provider": "bugs",
+      "localPath": "portraits/global-2pac.362880b8034a.webp"
+    },
+    "global-snoop-dogg": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/145/14536.jpg?version=20190724100206",
+      "pageUrl": "https://music.bugs.co.kr/artist/14536",
+      "title": "Snoop Dogg(스눕 독)",
+      "provider": "bugs",
+      "localPath": "portraits/global-snoop-dogg.ddfab038063b.webp"
+    },
+    "global-a-ap-rocky": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801182/80118222.jpg?version=20260127033407",
+      "pageUrl": "https://music.bugs.co.kr/artist/80118222",
+      "title": "A$AP Rocky(에이셉 라키)",
+      "provider": "bugs",
+      "localPath": "portraits/global-a-ap-rocky.297a1326eab2.webp"
+    },
+    "global-future": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800972/80097200.jpg?version=20220429143005",
+      "pageUrl": "https://music.bugs.co.kr/artist/80097200",
+      "title": "Future(퓨처)",
+      "provider": "bugs",
+      "localPath": "portraits/global-future.0ee852400d6b.webp"
+    },
+    "global-juice-wrld": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/803081/80308166.jpg?version=20211211063115",
+      "pageUrl": "https://music.bugs.co.kr/artist/80308166",
+      "title": "Juice WRLD",
+      "provider": "bugs",
+      "localPath": "portraits/global-juice-wrld.aa4f22378431.webp"
+    },
+    "global-nicki-minaj": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800651/80065183.jpg?version=20220827002105",
+      "pageUrl": "https://music.bugs.co.kr/artist/80065183",
+      "title": "Nicki Minaj(니키 미나즈)",
+      "provider": "bugs",
+      "localPath": "portraits/global-nicki-minaj.4bf177e405ac.webp"
+    },
+    "global-j-cole": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800903/80090304.jpg?version=20190719112018",
+      "pageUrl": "https://music.bugs.co.kr/artist/80090304",
+      "title": "J. Cole(제이콜)",
+      "provider": "bugs",
+      "localPath": "portraits/global-j-cole.1f5b508dd4cf.webp"
+    },
+    "global-lil-wayne": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800037/80003741.jpg?version=20250730002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80003741",
+      "title": "Lil Wayne(릴 웨인)",
+      "provider": "bugs",
+      "localPath": "portraits/global-lil-wayne.9ffecfc8fdc0.webp"
+    },
+    "global-cardi-b": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802644/80264457.jpg?version=20260123002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/80264457",
+      "title": "Cardi B(카디 비)",
+      "provider": "bugs",
+      "localPath": "portraits/global-cardi-b.b19a6d81f756.webp"
+    },
+    "global-sza": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802108/80210863.jpg?version=20240519121624",
+      "pageUrl": "https://music.bugs.co.kr/artist/80210863",
+      "title": "SZA",
+      "provider": "bugs",
+      "localPath": "portraits/global-sza.7f9ade7ff19a.webp"
+    },
+    "global-frank-ocean": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801026/80102602.jpg?version=20190601002439",
+      "pageUrl": "https://music.bugs.co.kr/artist/80102602",
+      "title": "Frank Ocean(프랭크 오션)",
+      "provider": "bugs",
+      "localPath": "portraits/global-frank-ocean.b325ee2e6ea6.webp"
+    },
+    "global-the-notorious-b-i-g": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/345/34561.jpg?version=20190723120037",
+      "pageUrl": "https://music.bugs.co.kr/artist/34561",
+      "title": "The Notorious B.I.G.(노토리어스 B.I.G.)",
+      "provider": "bugs",
+      "localPath": "portraits/global-the-notorious-b-i-g.2501be74d816.webp"
+    },
+    "global-alicia-keys": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/61/6178.jpg?version=20240519121413",
+      "pageUrl": "https://music.bugs.co.kr/artist/6178",
+      "title": "Alicia Keys(앨리샤 키스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-alicia-keys.f84229d316de.webp"
+    },
+    "global-usher": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/44/4440.jpg?version=20190722101135",
+      "pageUrl": "https://music.bugs.co.kr/artist/4440",
+      "title": "Usher(어셔)",
+      "provider": "bugs",
+      "localPath": "portraits/global-usher.871d28658d46.webp"
+    },
+    "global-lady-gaga": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800464/80046429.jpg?version=20250701002126",
+      "pageUrl": "https://music.bugs.co.kr/artist/80046429",
+      "title": "Lady Gaga(레이디 가가)",
+      "provider": "bugs",
+      "localPath": "portraits/global-lady-gaga.9ae8440a3c3d.webp"
+    },
+    "global-john-legend": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800038/80003839.jpg?version=20260912155108",
+      "pageUrl": "https://music.bugs.co.kr/artist/80003839",
+      "title": "John Legend(존 레전드)",
+      "provider": "bugs",
+      "localPath": "portraits/global-john-legend.dde47f788f9c.webp"
+    },
+    "global-daniel-caesar": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/200266/20026686.jpg?version=20250729002112",
+      "pageUrl": "https://music.bugs.co.kr/artist/20026686",
+      "title": "Daniel Caesar(다니엘 시저)",
+      "provider": "bugs",
+      "localPath": "portraits/global-daniel-caesar.2da66dcf9f18.webp"
+    },
+    "global-elton-john": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/10/1051.jpg?version=20200513002111",
+      "pageUrl": "https://music.bugs.co.kr/artist/1051",
+      "title": "Elton John(엘튼 존)",
+      "provider": "bugs",
+      "localPath": "portraits/global-elton-john.cf612c932041.webp"
+    },
+    "global-anderson-paak": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802015/80201595.jpg?version=20250516112634",
+      "pageUrl": "https://music.bugs.co.kr/artist/80201595",
+      "title": "Anderson.Paak(앤더슨 팩)",
+      "provider": "bugs",
+      "localPath": "portraits/global-anderson-paak.1e11fce9f597.webp"
+    },
+    "global-laufey": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/803709/80370997.jpg?version=20250827163014",
+      "pageUrl": "https://music.bugs.co.kr/artist/80370997",
+      "title": "Laufey",
+      "provider": "bugs",
+      "localPath": "portraits/global-laufey.132d4c52c509.webp"
+    },
+    "global-nirvana": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/345/34551.jpg?version=20190705011008",
+      "pageUrl": "https://music.bugs.co.kr/artist/34551",
+      "title": "Nirvana(너바나)",
+      "provider": "bugs",
+      "localPath": "portraits/global-nirvana.11c0678aafdc.webp"
+    },
+    "global-joji": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/200450/20045090.jpg?version=20260210002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/20045090",
+      "title": "Joji",
+      "provider": "bugs",
+      "localPath": "portraits/global-joji.6132a499e2b1.webp"
+    },
+    "global-amy-winehouse": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800044/80004428.jpg?version=20240519121608",
+      "pageUrl": "https://music.bugs.co.kr/artist/80004428",
+      "title": "Amy Winehouse(에이미 와인하우스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-amy-winehouse.798e7ad8d795.webp"
+    },
+    "global-norah-jones": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/345/34558.jpg?version=20250701002126",
+      "pageUrl": "https://music.bugs.co.kr/artist/34558",
+      "title": "Norah Jones(노라 존스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-norah-jones.ae84c63aa333.webp"
+    },
+    "global-hozier": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801866/80186622.jpg?version=20190601002439",
+      "pageUrl": "https://music.bugs.co.kr/artist/80186622",
+      "title": "Hozier(호지어)",
+      "provider": "bugs",
+      "localPath": "portraits/global-hozier.911a868b6dd4.webp"
+    },
+    "global-bon-iver": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800547/80054710.jpg?version=20250215002131",
+      "pageUrl": "https://music.bugs.co.kr/artist/80054710",
+      "title": "Bon Iver(본 이베어)",
+      "provider": "bugs",
+      "localPath": "portraits/global-bon-iver.8ce7b200b477.webp"
+    },
+    "global-cigarettes-after-sex": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802885/80288532.jpg?version=20240301063049",
+      "pageUrl": "https://music.bugs.co.kr/artist/80288532",
+      "title": "Cigarettes After Sex(시가렛 애프터 섹스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-cigarettes-after-sex.27c51a1d15a0.webp"
+    },
+    "global-clairo": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802900/80290046.jpg?version=20210615002107",
+      "pageUrl": "https://music.bugs.co.kr/artist/80290046",
+      "title": "Clairo",
+      "provider": "bugs",
+      "localPath": "portraits/global-clairo.0a422a779e29.webp"
+    },
+    "global-stevie-wonder": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/11/1123.jpg?version=20190723170051",
+      "pageUrl": "https://music.bugs.co.kr/artist/1123",
+      "title": "Stevie Wonder(스티비 원더)",
+      "provider": "bugs",
+      "localPath": "portraits/global-stevie-wonder.a9744118acb3.webp"
+    },
+    "global-mitski": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/200211/20021178.jpg?version=20260117002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/20021178",
+      "title": "Mitski",
+      "provider": "bugs",
+      "localPath": "portraits/global-mitski.82fd18d180cb.webp"
+    },
+    "global-bad-bunny": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/105006/10500637.jpg?version=20260227002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/10500637",
+      "title": "Bad Bunny(배드 버니)",
+      "provider": "bugs",
+      "localPath": "portraits/global-bad-bunny.1991577508be.webp"
+    },
+    "global-niki": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/200449/20044938.jpg?version=20240621104914",
+      "pageUrl": "https://music.bugs.co.kr/artist/20044938",
+      "title": "NIKI(니키)",
+      "provider": "bugs",
+      "localPath": "portraits/global-niki.d755283a382c.webp"
+    },
+    "global-yoasobi": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/119020/11902012.jpg?version=20250927002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/11902012",
+      "title": "YOASOBI",
+      "provider": "bugs",
+      "localPath": "portraits/global-yoasobi.f7a2449c5518.webp"
+    },
+    "global-keshi": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/803326/80332686.jpg?version=20240716002113",
+      "pageUrl": "https://music.bugs.co.kr/artist/80332686",
+      "title": "keshi",
+      "provider": "bugs",
+      "localPath": "portraits/global-keshi.e9784c5d0cb3.webp"
+    },
+    "global-shakira": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/116/11686.jpg?version=20260729114015",
+      "pageUrl": "https://music.bugs.co.kr/artist/11686",
+      "title": "Shakira(샤키라)",
+      "provider": "bugs",
+      "localPath": "portraits/global-shakira.452a869a1fa6.webp"
+    },
+    "global-kenshi-yonezu": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801888/80188826.jpg?version=20260604002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80188826",
+      "title": "Kenshi Yonezu(켄시 요네즈/米津 玄師)",
+      "provider": "bugs",
+      "localPath": "portraits/global-kenshi-yonezu.a3c279dd962f.webp"
+    },
+    "global-rosalia": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/84746/8474670.jpg?version=20260221002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/8474670",
+      "title": "ROSALÍA",
+      "provider": "bugs",
+      "localPath": "portraits/global-rosalia.09f6200dee7c.webp"
+    },
+    "global-fujii-kaze": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/118799/11879993.jpg?version=20260403002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/11879993",
+      "title": "Fujii Kaze",
+      "provider": "bugs",
+      "localPath": "portraits/global-fujii-kaze.7a27e62c2157.webp"
+    },
+    "global-official-hige-dandism": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802224/80222456.jpg?version=20250720002117",
+      "pageUrl": "https://music.bugs.co.kr/artist/80222456",
+      "title": "OFFICIAL HIGE DANDISM",
+      "provider": "bugs",
+      "localPath": "portraits/global-official-hige-dandism.4cfd80d919e8.webp"
+    },
+    "global-chris-brown": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800142/80014200.jpg?version=20240519121610",
+      "pageUrl": "https://music.bugs.co.kr/artist/80014200",
+      "title": "Chris Brown(크리스 브라운)",
+      "provider": "bugs",
+      "localPath": "portraits/global-chris-brown.f402a59a60ec.webp"
+    },
+    "global-one-ok-rock": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801040/80104032.jpg?version=20241105002117",
+      "pageUrl": "https://music.bugs.co.kr/artist/80104032",
+      "title": "ONE OK ROCK",
+      "provider": "bugs",
+      "localPath": "portraits/global-one-ok-rock.70b6f3653575.webp"
+    },
+    "global-radwimps": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800177/80017785.jpg?version=20261002112508",
+      "pageUrl": "https://music.bugs.co.kr/artist/80017785",
+      "title": "RADWIMPS(래드윔프스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-radwimps.9e127aef9b2f.webp"
+    },
+    "global-tame-impala": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801302/80130299.jpg?version=20260321002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80130299",
+      "title": "Tame Impala(테임 임팔라)",
+      "provider": "bugs",
+      "localPath": "portraits/global-tame-impala.a7b8c6b39a73.webp"
+    },
+    "global-nujabes": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800117/80011798.jpg?version=20190708120029",
+      "pageUrl": "https://music.bugs.co.kr/artist/80011798",
+      "title": "Nujabes(누자베스)",
+      "provider": "bugs",
+      "localPath": "portraits/global-nujabes.9b9e40cf4819.webp"
+    },
+    "global-hikaru-utada": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/126/12632.jpg?version=20251125002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/12632",
+      "title": "Hikaru Utada(우타다 히카루/宇多田ヒカル)",
+      "provider": "bugs",
+      "localPath": "portraits/global-hikaru-utada.c23fac2aa21e.webp"
+    },
+    "global-vaundy": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/200963/20096334.jpg?version=20260221002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/20096334",
+      "title": "Vaundy",
+      "provider": "bugs",
+      "localPath": "portraits/global-vaundy.1d3f194d9700.webp"
+    },
+    "global-king-gnu": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802885/80288599.jpg?version=20260109110859",
+      "pageUrl": "https://music.bugs.co.kr/artist/80288599",
+      "title": "King Gnu(킹 누)",
+      "provider": "bugs",
+      "localPath": "portraits/global-king-gnu.0ab6e22ccfe2.webp"
+    },
+    "global-aimer": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802424/80242468.jpg?version=20190711172829",
+      "pageUrl": "https://music.bugs.co.kr/artist/80242468",
+      "title": "Aimer(에메/エメ)",
+      "provider": "bugs",
+      "localPath": "portraits/global-aimer.8e10f2e1ad27.webp"
+    },
+    "global-h-e-r": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802689/80268911.jpg?version=20260313002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80268911",
+      "title": "H.E.R.",
+      "provider": "bugs",
+      "localPath": "portraits/global-h-e-r.5632f59b0666.webp"
+    },
+    "global-mrs-green-apple": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/802398/80239886.jpg?version=20260519002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/80239886",
+      "title": "Mrs. GREEN APPLE",
+      "provider": "bugs",
+      "localPath": "portraits/global-mrs-green-apple.aff6f095a37b.webp"
+    },
+    "global-marshmello": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/800094/80009442.jpg?version=20190626120106",
+      "pageUrl": "https://music.bugs.co.kr/artist/80009442",
+      "title": "Marshmello(마시멜로)",
+      "provider": "bugs",
+      "localPath": "portraits/global-marshmello.d66f0b7009b4.webp"
+    },
+    "global-lisa": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/801249/80124919.jpg?version=20260117002100",
+      "pageUrl": "https://music.bugs.co.kr/artist/80124919",
+      "title": "LiSA(리사/リサ)",
+      "provider": "bugs",
+      "localPath": "portraits/global-lisa.b5d45b5feb7c.webp"
+    },
+    "global-ado": {
+      "url": "https://image.bugsm.co.kr/artist/images/500/201165/20116513.jpg?version=20260115002101",
+      "pageUrl": "https://music.bugs.co.kr/artist/20116513",
+      "title": "Ado",
+      "provider": "bugs",
+      "localPath": "portraits/global-ado.e3e434f5654a.webp"
     }
   }
 }

@@ -64,6 +64,7 @@ export type SongCatalog = CatalogContents & (
 export interface MusicAlbum { id: string; title: string; year?: string; artwork?: string; songIds: string[] }
 export interface Board {
   version: 1;
+  collection?: 'korean' | 'global';
   title: string;
   customArtists: Artist[];
   tiers: Record<Tier, string[]>;

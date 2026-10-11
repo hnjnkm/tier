@@ -1,6 +1,7 @@
 import { ALL_CATALOG_ARTISTS, CATALOG } from './data/artists';
 import portraitCatalog from './data/portraits.json';
 import { normalize } from './domain';
+import type { CollectionId } from './collections';
 import type { Artist, Genre, Portrait, Song, SongCatalog } from './types';
 import { validateSongCatalog } from './song-catalog';
 
@@ -130,12 +131,12 @@ export function createMediaService(request: JsonFetcher, presetPortraits: Record
     });
   }
 
-  async function searchArtists(query: string): Promise<Artist[]> {
-    return cached(`artists:${normalize(query)}`, async () => {
+  async function searchArtists(query: string, collection: CollectionId = 'korean'): Promise<Artist[]> {
+    return cached(`artists:${collection}:${normalize(query)}`, async () => {
       const escaped = query.replace(/[+\-!(){}\[\]^"~*?:\\/]/g, '\\$&');
-      const expression = `country:KR AND (artist:"${escaped}" OR alias:"${escaped}"${/\s/.test(query) ? '' : ` OR artist:${escaped}* OR alias:${escaped}*`})`;
+      const expression = `${collection === 'korean' ? 'country:KR' : 'NOT country:KR'} AND (artist:"${escaped}" OR alias:"${escaped}"${/\s/.test(query) ? '' : ` OR artist:${escaped}* OR alias:${escaped}*`})`;
       const data = await musicBrainz(apiUrl('https://musicbrainz.org/ws/2/artist/', { query: expression, fmt: 'json', limit: 30 }));
-      const names = new Set(ALL_CATALOG_ARTISTS.flatMap(artist => [artist.name, artist.englishName, ...artist.aliases, ...(artist.searchAliases ?? [])].map(normalize)));
+      const names = new Set(ALL_CATALOG_ARTISTS.filter(artist => artist.id.startsWith('global-') === (collection === 'global')).flatMap(artist => [artist.name, artist.englishName, ...artist.aliases, ...(artist.searchAliases ?? [])].map(normalize)));
       return (data.artists ?? []).map(artistFromMusicBrainz).filter((artist: Artist | null): artist is Artist => !!artist && ![artist.name, artist.englishName].some(name => names.has(normalize(name)))).map((artist: Artist) => { artists.set(artist.id, artist); return artist; });
     });
   }

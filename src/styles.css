@@ -67,6 +67,17 @@ button, a { touch-action: manipulation; }
 .site-header { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid #e8e8e8; }
 .header-inner { position: relative; max-width: 1920px; margin: auto; padding: 0 40px; height: 64px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
 .header-navigation { display: flex; align-items: center; gap: 22px; }
+.header-collection { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.menu-button { width: 44px; height: 44px; color: var(--ink); }
+.header-navigation { flex: 1; }
+.collection-menu { position: fixed; inset: 0 auto 0 0; margin: 0; width: min(320px, 100vw); height: 100dvh; max-width: none; max-height: none; border: 0; border-right: 1px solid var(--line); padding: 24px; background: var(--paper); color: var(--ink); }
+.collection-menu::backdrop { background: rgba(0, 0, 0, .24); }
+.collection-menu-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+.collection-menu-heading h2 { font-size: var(--text-heading); }
+.collection-menu .icon-button { width: 44px; height: 44px; }
+.collection-menu nav { display: flex; flex-direction: column; }
+.collection-menu nav a { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 60px; border-bottom: 1px solid var(--line); }
+.collection-menu nav a:hover { color: var(--muted); }
 .header-navigation a:hover { text-decoration: underline; text-underline-offset: 5px; }
 .header-right { display: flex; justify-content: flex-end; gap: 26px; align-items: center; }
 .save-status { display: flex; align-items: center; gap: 7px; color: #717171; white-space: nowrap; }
@@ -338,6 +349,8 @@ button, a { touch-action: manipulation; }
 @media (max-width: 470px) {
   .header-inner { padding: 0 18px; gap: 8px; }
   .header-navigation { gap: 11px; }
+  .header-navigation { display: none; }
+  .header-collection { gap: 6px; }
   .download-menu summary { gap: 5px; }
   .page-shell { padding: 14px 20px 0; }
   .board-heading-title h1 { max-width: 215px; }

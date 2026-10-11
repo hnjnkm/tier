@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { CATALOG } from '../src/data/artists';
+import { GLOBAL_ARTISTS } from '../src/data/global-artists';
 import { validateSongCatalog } from '../src/song-catalog';
 import type { Portrait } from '../src/types';
 import families from '../src/data/music-families.json';
@@ -8,14 +9,15 @@ import identities from '../src/data/identities.json';
 import melonArtists from '../src/data/melon-artists.json';
 
 const portraits: Record<string, Portrait> = JSON.parse(await readFile('src/data/portraits.json', 'utf8')).portraits;
+const artists = [...CATALOG, ...GLOBAL_ARTISTS];
 const missingPhotos: string[] = [], invalidPhotos: string[] = [], missingMusic: string[] = [], invalidMusic: string[] = [];
 let trackCount = 0, youtubeCatalogs = 0, domesticSupplements = 0;
-for (const artist of CATALOG) {
+for (const artist of artists) {
   const photo = portraits[artist.id];
   if (!photo?.localPath) missingPhotos.push(artist.id);
   else {
     try {
-      if (!/^portraits\/kr-[a-z0-9-]+\.[a-f0-9]{12}\.webp$/.test(photo.localPath)) throw new Error('Invalid path');
+      if (!/^portraits\/(kr|global)-[a-z0-9-]+\.[a-f0-9]{12}\.webp$/.test(photo.localPath)) throw new Error('Invalid path');
       if (photo.provider === 'bugs') {
         const bugsId = (identities.artists as Record<string, { bugsId: string }>)[artist.id]?.bugsId;
         if (!bugsId || photo.pageUrl !== `https://music.bugs.co.kr/artist/${bugsId}`
@@ -25,7 +27,7 @@ for (const artist of CATALOG) {
         if (!melonId || photo.pageUrl !== `https://www.melon.com/artist/detail.htm?artistId=${melonId}`
           || new URL(photo.url).hostname !== 'cdnimg.melon.co.kr'
           || !new RegExp(`^/cm\\d?/artistcrop/images/(?:\\d+/){3}${melonId}(?:_|\\.)`).test(new URL(photo.url).pathname)) throw new Error('Unverified Melon profile');
-      } else throw new Error('Artist photo must be a verified domestic profile');
+      } else throw new Error('Artist photo must be a verified music provider profile');
       const data = sharp(await readFile(`public/${photo.localPath}`));
       const info = await data.metadata();
       if (info.width !== 256 || info.height !== 256 || (await data.stats()).entropy < 1) throw new Error('Invalid photo');
@@ -50,10 +52,10 @@ for (const artist of CATALOG) {
     if (music.source === 'youtube-music') youtubeCatalogs++; else domesticSupplements++;
   } catch { invalidMusic.push(artist.id); }
 }
-const report = { artistCount: CATALOG.length, bundledPhotos: CATALOG.length - missingPhotos.length - invalidPhotos.length,
-  musicCatalogs: CATALOG.length - missingMusic.length - invalidMusic.length, youtubeCatalogs, domesticSupplements, trackCount, missingPhotos, invalidPhotos, missingMusic, invalidMusic };
+const report = { artistCount: artists.length, bundledPhotos: artists.length - missingPhotos.length - invalidPhotos.length,
+  musicCatalogs: artists.length - missingMusic.length - invalidMusic.length, youtubeCatalogs, domesticSupplements, trackCount, missingPhotos, invalidPhotos, missingMusic, invalidMusic };
 await writeFile('/tmp/tier-media-readiness.json', JSON.stringify(report, null, 2) + '\n');
-console.log(`Verified ${report.bundledPhotos}/${CATALOG.length} square portraits and ${report.musicCatalogs}/${CATALOG.length} catalogs (${youtubeCatalogs} YouTube Music, ${domesticSupplements} domestic supplements; ${trackCount} tracks)`);
+console.log(`Verified ${report.bundledPhotos}/${artists.length} square portraits and ${report.musicCatalogs}/${artists.length} catalogs (${youtubeCatalogs} YouTube Music, ${domesticSupplements} domestic supplements; ${trackCount} tracks)`);
 if (missingPhotos.length || invalidPhotos.length || missingMusic.length || invalidMusic.length || youtubeCatalogs <= domesticSupplements) {
   console.error(`Media is not ready for deployment. Missing photos: ${missingPhotos.length}, invalid photos: ${invalidPhotos.length}, missing catalogs: ${missingMusic.length}, invalid catalogs: ${invalidMusic.length}. Details: /tmp/tier-media-readiness.json`);
   process.exitCode = 1;

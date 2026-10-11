@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { DndContext, DragOverlay, KeyboardSensor, MouseSensor, TouchSensor, useDroppable, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, arrayMove, rectSortingStrategy, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
-import { ArrowDownToLine, ArrowUpFromLine, Check, ChevronDown, LoaderCircle, Music2, Pencil, Plus, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
-import { CATALOG, GENDER_LABELS } from './data/artists';
-import { allArtists, createBoard, findTier, localizeFavorites, matchesFilters, moveArtist, normalize, parseBoard, STORAGE_KEY, toggleSong } from './domain';
+import { ArrowDownToLine, ArrowUpFromLine, Check, ChevronDown, LoaderCircle, Menu, Music2, Pencil, Plus, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
+import { GENDER_LABELS } from './data/artists';
+import { allArtists, createBoard, findTier, localizeFavorites, matchesFilters, moveArtist, normalize, parseBoard, toggleSong } from './domain';
+import { COLLECTIONS, collectionFromUrl, collectionUrl, type CollectionId } from './collections';
 import { getJson } from './api';
 import { GENRE_LABELS, TIERS, type Genre, type Artist, type Board, type Gender, type Portrait, type Song, type Tier } from './types';
 import portraitCatalog from './data/portraits.json';
@@ -13,16 +14,18 @@ import { ArtistDialog } from './components/ArtistDialog';
 import { ArtistPicker } from './components/ArtistPicker';
 import { FavoritesBriefing } from './components/FavoritesBriefing';
 import { boardCollisionDetection } from './drag';
+import { CollectionMenu } from './components/CollectionMenu';
 
 const PAGE_SIZE = 50;
 
-function loadBoard() {
+function loadBoard(collection: CollectionId) {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return { board: createBoard(), warning: '' };
-    const board = parseBoard(JSON.parse(saved));
-    return { board: board ?? createBoard(), warning: board ? '' : '저장된 보드를 읽지 못했어요. 저장 파일이 있다면 불러와 주세요.' };
-  } catch { return { board: createBoard(), warning: '브라우저 저장소를 읽지 못했어요. 저장 파일로 보관해 주세요.' }; }
+    const saved = localStorage.getItem(COLLECTIONS[collection].storageKey);
+    if (!saved) return { board: createBoard(collection), warning: '' };
+    const parsed = parseBoard(JSON.parse(saved));
+    const board = parsed && (parsed.collection ?? 'korean') === collection ? parsed : null;
+    return { board: board ?? createBoard(collection), warning: board ? '' : '저장된 보드를 읽지 못했어요. 저장 파일이 있다면 불러와 주세요.' };
+  } catch { return { board: createBoard(collection), warning: '브라우저 저장소를 읽지 못했어요. 저장 파일로 보관해 주세요.' }; }
 }
 
 function TierRow({ tier, children, count, onAdd }: { tier: Tier; children: React.ReactNode; count: number; onAdd: () => void }) {
@@ -43,7 +46,27 @@ function addCustom(board: Board, artist: Artist): Board {
 }
 
 export default function App() {
-  const [initial] = useState(loadBoard);
+  const [collection, setCollection] = useState(collectionFromUrl);
+  useEffect(() => { document.title = COLLECTIONS[collection].title; }, [collection]);
+  useEffect(() => {
+    const restore = () => setCollection(collectionFromUrl());
+    window.addEventListener('popstate', restore);
+    return () => window.removeEventListener('popstate', restore);
+  }, []);
+  function selectCollection(next: CollectionId) {
+    if (next === collection) return;
+    history.pushState(null, '', collectionUrl(next));
+    setCollection(next);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    requestAnimationFrame(() => document.getElementById('collection-menu-button')?.focus({ preventScroll: true }));
+  }
+  return <TierBoard key={collection} collection={collection} onSelectCollection={selectCollection} />;
+}
+
+function TierBoard({ collection, onSelectCollection }: { collection: CollectionId; onSelectCollection: (collection: CollectionId) => void }) {
+  const definition = COLLECTIONS[collection];
+  const [initial] = useState(() => loadBoard(collection));
+  const [menuOpen, setMenuOpen] = useState(false);
   const [board, setBoard] = useState<Board>(initial.board);
   const [query, setQuery] = useState('');
   const [gender, setGender] = useState<Gender | 'all'>('all');
@@ -97,9 +120,9 @@ export default function App() {
   useEffect(() => {
     const serialized = JSON.stringify(board);
     if (lastSaved.current === serialized) return;
-    try { localStorage.setItem(STORAGE_KEY, serialized); lastSaved.current = serialized; setSaveError(false); }
+    try { localStorage.setItem(definition.storageKey, serialized); lastSaved.current = serialized; setSaveError(false); }
     catch { setSaveError(true); }
-  }, [board]);
+  }, [board, definition.storageKey]);
 
   useEffect(() => { if (!notice) return; const timer = setTimeout(() => setNotice(''), 5000); return () => clearTimeout(timer); }, [notice]);
   useEffect(() => { setPageSize(PAGE_SIZE); }, [query, gender, kind, genre]);
@@ -124,17 +147,17 @@ export default function App() {
     const clean = currentSearchQuery.trim();
     const controller = new AbortController();
     setRemote([]); setSearchError(''); setSearching(false);
-    if (clean.length < 2 || CATALOG.some(artist => [artist.name, artist.englishName, ...artist.aliases, ...(artist.searchAliases ?? [])].some(name => normalize(name) === normalize(clean)))) return;
+    if (clean.length < 2 || definition.artists.some(artist => [artist.name, artist.englishName, ...artist.aliases, ...(artist.searchAliases ?? [])].some(name => normalize(name) === normalize(clean)))) return;
     setSearching(true);
     const timer = setTimeout(async () => {
       try {
-        const data = await getJson<{ artists: Artist[] }>(`/api/artists/search?q=${encodeURIComponent(clean)}`, controller.signal);
+        const data = await getJson<{ artists: Artist[] }>(`/api/artists/search?q=${encodeURIComponent(clean)}${collection === 'global' ? '&collection=global' : ''}`, controller.signal);
         setRemote(data.artists);
       } catch (error) { if (!controller.signal.aborted) setSearchError(error instanceof Error ? error.message : '외부 검색을 연결하지 못했어요.'); }
       finally { if (!controller.signal.aborted) setSearching(false); }
     }, 600);
     return () => { controller.abort(); clearTimeout(timer); };
-  }, [currentSearchQuery, searchRetry]);
+  }, [currentSearchQuery, searchRetry, collection, definition.artists]);
 
   useEffect(() => {
     const missing = currentPortraitIds.split(',').filter(id => id && !portraits[id] && !requestedPortraits.current.has(id));
@@ -200,7 +223,7 @@ export default function App() {
 
   function exportBoard() {
     const url = URL.createObjectURL(new Blob([JSON.stringify(board, null, 2)], { type: 'application/json' }));
-    const link = document.createElement('a'); link.href = url; link.download = 'my-tier.json'; link.click();
+    const link = document.createElement('a'); link.href = url; link.download = collection === 'global' ? 'my-tier-global.json' : 'my-tier.json'; link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
     if (downloadMenu.current) downloadMenu.current.open = false;
     setNotice('가수 티어와 대표곡을 저장 파일로 내보냈어요.');
@@ -212,6 +235,7 @@ export default function App() {
       if (file.size > 2_000_000) throw new Error('저장 파일은 2MB 이하로 골라 주세요.');
       const parsed = parseBoard(JSON.parse(await file.text()));
       if (!parsed) throw new Error('올바른 티어 저장 파일이 아니에요.');
+      if ((parsed.collection ?? 'korean') !== collection) throw new Error(`${COLLECTIONS[parsed.collection ?? 'korean'].label} 티어표를 메뉴에서 선택한 뒤 불러와 주세요.`);
       if ((assignedIds.length || favoriteCount) && !window.confirm('현재 보드를 저장 파일의 내용으로 바꿀까요?')) return;
       requestedSongs.current.clear(); setBoard(parsed); setDraftTitle(parsed.title); setSelected(null); setAddingFavorite(false); setNotice('저장한 음악 취향을 불러왔어요.');
     } catch (error) { setNotice(error instanceof Error ? error.message : '파일을 읽지 못했어요.'); }
@@ -220,20 +244,23 @@ export default function App() {
 
   function resetBoard() {
     if (window.confirm('티어 배치와 대표곡을 모두 비울까요? 이 작업 전에 저장 파일로 보관할 수 있어요.')) {
-      requestedSongs.current.clear(); setBoard(createBoard()); setDraftTitle('나의 아티스트 티어'); setAddingFavorite(false); setNotice('보드를 비웠어요. 새로운 취향으로 채워보세요.');
+      requestedSongs.current.clear(); setBoard(createBoard(collection)); setDraftTitle(definition.title); setAddingFavorite(false); setNotice('보드를 비웠어요. 새로운 취향으로 채워보세요.');
     }
   }
 
   function retryPortraits() { currentPortraitIds.split(',').forEach(id => requestedPortraits.current.delete(id)); setPortraitError(false); setPortraitRetry(value => value + 1); }
-  function finishTitle() { const title = draftTitle.trim() || '나의 아티스트 티어'; setBoard(current => ({ ...current, title })); setDraftTitle(title); setEditingTitle(false); }
+  function finishTitle() { const title = draftTitle.trim() || definition.title; setBoard(current => ({ ...current, title })); setDraftTitle(title); setEditingTitle(false); }
+  function closeMenu() { setMenuOpen(false); requestAnimationFrame(() => document.getElementById('collection-menu-button')?.focus({ preventScroll: true })); }
 
   const renderCard = (artist: Artist, compact = false) => <ArtistCard key={artist.id} artist={artist} portrait={portraits[artist.id]} songCount={board.favorites[artist.id]?.length ?? 0} onOpen={openArtist} compact={compact} />;
 
   return <>
     <header className="site-header"><div className="header-inner">
+      <div className="header-collection"><button id="collection-menu-button" className="icon-button menu-button" aria-label="티어표 메뉴 열기" aria-haspopup="dialog" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu size={20} /></button><span>{definition.label}</span></div>
       <nav className="header-navigation" aria-label="빠른 이동"><a href="#my-tier">티어</a><a href="#artist-archive">아티스트</a></nav>
       <div className="header-right"><span className={`save-status ${saveError ? 'save-failed' : ''}`}><span className="status-dot" />{saveError ? '저장 파일로 보관해 주세요' : '자동 저장'}</span><details className="download-menu" ref={downloadMenu}><summary className="secondary-button">내 티어 저장 <ArrowDownToLine size={15} /></summary><div className="download-options"><button onClick={exportBoard}><ArrowDownToLine size={16} /> 저장 파일 내보내기</button><button onClick={() => importInput.current?.click()}><ArrowUpFromLine size={16} /> 저장 파일 불러오기</button></div></details><input ref={importInput} type="file" accept="application/json,.json" hidden onChange={event => importBoard(event.target.files?.[0])} /></div>
     </div></header>
+    {menuOpen && <CollectionMenu collection={collection} onSelect={onSelectCollection} onClose={closeMenu} />}
     <main className="page-shell">
       <FavoritesBriefing artists={board.tiers.S.map(id => artistMap.get(id)).filter((artist): artist is Artist => !!artist)} favorites={board.favorites} portraits={portraits} onOpen={openArtist} onAdd={addFavorite} />
       <DndContext sensors={sensors} collisionDetection={boardCollisionDetection} onDragStart={event => setActiveId(String(event.active.id))} onDragEnd={finishDrag} onDragCancel={() => setActiveId(null)} accessibility={{ announcements: { onDragStart: ({ active }) => `${artistMap.get(String(active.id))?.name ?? '가수'} 이동을 시작합니다.`, onDragOver: ({ over }) => over ? `${String(over.id).startsWith('tier:') ? `${String(over.id).slice(5)} 티어` : '가수 위치'} 위입니다.` : '이동 중입니다.', onDragEnd: () => '가수 배치를 완료했습니다.', onDragCancel: () => '이동을 취소했습니다.' }, screenReaderInstructions: { draggable: '스페이스 키로 가수를 집어 들고 방향키로 이동하세요. 다시 스페이스 키로 배치하거나 Escape 키로 취소할 수 있습니다. 가수 버튼에서 Enter 키를 누르면 티어 선택 창이 열립니다.' } }}>

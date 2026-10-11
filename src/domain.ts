@@ -1,13 +1,15 @@
-import { ALL_CATALOG_ARTISTS, CATALOG, LEGACY_ARTISTS } from './data/artists';
+import { LEGACY_ARTISTS } from './data/artists';
+import { COLLECTIONS, type CollectionId } from './collections';
 import { GENRE_LABELS, TIERS, type Artist, type Board, type Gender, type Genre, type Song, type Tier } from './types';
 
-export const STORAGE_KEY = 'my-tier.board.v1';
+export const STORAGE_KEY = COLLECTIONS.korean.storageKey;
 export const normalize = (value: string) => value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 export const matchesArtist = (artist: Artist, query: string) => [artist.name, artist.englishName, ...artist.aliases, ...(artist.searchAliases ?? [])].some(name => normalize(name).includes(normalize(query)));
-export const createBoard = (): Board => ({ version: 1, title: '나의 아티스트 티어', customArtists: [], tiers: { S: [], A: [], B: [], C: [], D: [], E: [], F: [] }, favorites: {} });
+export const createBoard = (collection: CollectionId = 'korean'): Board => ({ version: 1, ...(collection === 'global' ? { collection } : {}), title: COLLECTIONS[collection].title, customArtists: [], tiers: { S: [], A: [], B: [], C: [], D: [], E: [], F: [] }, favorites: {} });
 export const allArtists = (board: Board) => {
   const used = new Set([...TIERS.flatMap(tier => board.tiers[tier]), ...Object.keys(board.favorites).filter(id => board.favorites[id].length)]);
-  return [...CATALOG, ...LEGACY_ARTISTS.filter(artist => used.has(artist.id)), ...board.customArtists];
+  const collection = board.collection ?? 'korean';
+  return [...COLLECTIONS[collection].artists, ...(collection === 'korean' ? LEGACY_ARTISTS.filter(artist => used.has(artist.id)) : []), ...board.customArtists];
 };
 export function matchesFilters(artist: Artist, filters: { query: string; gender: Gender | 'all'; kind: Artist['kind'] | 'all'; genre: Genre | 'all' }) {
   return matchesArtist(artist, filters.query) && (filters.gender === 'all' || artist.gender === filters.gender)
@@ -79,8 +81,10 @@ function validSong(value: unknown): value is Song {
 // Imported/local data is untrusted; reject partial or malformed boards rather than silently losing songs.
 export function parseBoard(value: unknown): Board | null {
   if (!object(value) || value.version !== 1 || !text(value.title, 80) || !Array.isArray(value.customArtists) || value.customArtists.length > 300 || !value.customArtists.every(validArtist)) return null;
+  if (value.collection !== undefined && value.collection !== 'korean' && value.collection !== 'global') return null;
+  const collection = value.collection ?? 'korean';
   if (new Set(value.customArtists.map(artist => artist.id)).size !== value.customArtists.length || !object(value.tiers) || !object(value.favorites)) return null;
-  const ids = new Set([...ALL_CATALOG_ARTISTS, ...value.customArtists].map(artist => artist.id));
+  const ids = new Set([...COLLECTIONS[collection].artists, ...(collection === 'korean' ? LEGACY_ARTISTS : []), ...value.customArtists].map(artist => artist.id));
   const seen = new Set<string>();
   for (const tier of TIERS) {
     const row = value.tiers[tier];
@@ -90,5 +94,5 @@ export function parseBoard(value: unknown): Board | null {
     if (!ids.has(id) || !Array.isArray(songs) || songs.length > 3 || !songs.every(validSong) || new Set(songs.map(song => song.id)).size !== songs.length) return null;
   }
   const validatedTiers = value.tiers;
-  return { version: 1, title: value.title, customArtists: value.customArtists, tiers: Object.fromEntries(TIERS.map(tier => [tier, validatedTiers[tier]])) as Board['tiers'], favorites: value.favorites as Board['favorites'] };
+  return { version: 1, ...(collection === 'global' ? { collection } : {}), title: value.title, customArtists: value.customArtists, tiers: Object.fromEntries(TIERS.map(tier => [tier, validatedTiers[tier]])) as Board['tiers'], favorites: value.favorites as Board['favorites'] };
 }

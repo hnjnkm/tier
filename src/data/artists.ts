@@ -1,5 +1,6 @@
 import type { Artist, Gender } from '../types';
 import { EXTRA_ARTISTS } from './extra-artists';
+import { GLOBAL_ARTISTS } from './global-artists';
 import { BASE_GENRES, GENRE_OVERRIDES, GROUP_SEARCH_NAMES, MEMBER_GROUPS, VERIFIED_ITUNES_IDS } from './catalog-config';
 import providerNames from './provider-names.json';
 
@@ -201,7 +202,7 @@ const providerAliases: Record<string, string[]> = {
   '이수': ['이수 (엠씨더맥스)', 'Lee Soo'], '김예림': ['김예림 (투개월)'], '강균성': ['강균성 (노을)'],
   '소금': ['소금 (sogumm)'], '허성현': ['허성현 (Huh)'], '하현우': ['하현우 (국카스텐)'],
 };
-export const ALL_CATALOG_ARTISTS = [...CATALOG, ...LEGACY_ARTISTS];
+export const ALL_CATALOG_ARTISTS = [...CATALOG, ...LEGACY_ARTISTS, ...GLOBAL_ARTISTS];
 for (const artist of ALL_CATALOG_ARTISTS) artist.aliases.push(...(providerAliases[artist.name] ?? []));
 ALL_CATALOG_ARTISTS.find(artist => artist.id === 'kr-huh-yunjin')?.aliases.push('허윤진 of LE SSERAFIM');
 // Verified Bugs profile names; keep translations as aliases, not display labels.

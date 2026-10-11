@@ -25,7 +25,7 @@ export const fetchJson: JsonFetcher = async url => {
 
 export function createMediaService(request: JsonFetcher = fetchJson, portraits?: Record<string, Portrait>, loadCatalog?: SongCatalogFetcher) {
   return createSharedMediaService(request, portraits, loadCatalog ?? (async id => {
-    if (!/^kr-[a-z0-9-]+$/.test(id)) throw new DataError('이 아티스트의 YouTube Music 목록을 준비 중이에요.', 'CATALOG_UNAVAILABLE', 503);
+    if (!/^(kr|global)-[a-z0-9-]+$/.test(id)) throw new DataError('이 아티스트의 YouTube Music 목록을 준비 중이에요.', 'CATALOG_UNAVAILABLE', 503);
     try { return JSON.parse(await readFile(resolve('public/music', `${id}.json`), 'utf8')); }
     catch { throw new DataError('이 아티스트의 YouTube Music 목록을 갱신 중이에요.', 'CATALOG_UNAVAILABLE', 503); }
   }));

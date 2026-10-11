@@ -52,6 +52,44 @@ class Provider:
 
 
 class CatalogTests(unittest.TestCase):
+    def test_reviewed_translations_match_two_recordings_without_counting_aliases_as_songs(self):
+        class BilingualClient(Provider):
+            complete = True
+
+            def search(self, query, filter, limit):
+                return [{'artist': 'Vaundy', 'browseId': CHANNEL}, {'artist': 'Vaundy', 'browseId': FOREIGN}]
+
+            def get_artist(self, channel):
+                titles = ['怪獣の花唄', '踊り子'] if channel == CHANNEL and self.complete else ['怪獣の花唄']
+                return {'name': 'Vaundy', 'channelId': channel, 'songs': {'results': [{'title': title} for title in titles]}, 'albums': {}, 'singles': {}}
+
+        artist = {'id': 'global-vaundy', 'name': 'Vaundy', 'englishName': 'Vaundy', 'aliases': [], 'identity': {'referenceSongs': [
+            {'title': 'Kaiju no Hanauta', 'titleAliases': ['怪獣の花唄']}, {'title': 'odoriko', 'titleAliases': ['踊り子']}]}}
+        client = BilingualClient()
+        with tempfile.TemporaryDirectory() as directory:
+            builder = CatalogBuilder(client, Path(directory), pause=0)
+            self.assertEqual(builder.resolve(artist)[0], CHANNEL)
+            client.complete = False
+            with self.assertRaises(module.ArtistResolutionError):
+                builder.resolve(artist)
+
+    def test_recording_search_uses_reviewed_titles_without_provider_annotations(self):
+        class AnnotatedProvider(Provider):
+            def search(self, query, filter, limit):
+                if filter == 'artists':
+                    return [{'artist': 'Hikaru Utada', 'browseId': CHANNEL}]
+                if query == 'Hikaru Utada First Love':
+                    return [{'title': 'First Love', 'album': {'name': 'First Love'}, 'artists': [{'id': CHANNEL}]}]
+                return []
+
+            def get_artist(self, channel):
+                return {'channelId': channel, 'songs': {'results': [{'title': 'JANE DOE'}]}, 'albums': {}, 'singles': {}}
+
+        artist = {'name': 'Hikaru Utada', 'englishName': 'Hikaru Utada', 'aliases': [], 'identity': {'referenceSongs': [
+            {'title': 'JANE DOE'}, {'title': 'First Love (드라마 주제곡)', 'titleAliases': ['First Love'], 'album': 'First Love'}]}}
+        with tempfile.TemporaryDirectory() as directory:
+            self.assertEqual(CatalogBuilder(AnnotatedProvider(), Path(directory), pause=0).resolve(artist)[0], CHANNEL)
+
     def test_provider_merged_namesakes_are_removed_using_independent_recording_credits(self):
         self.assertTrue(module.different_performer('kr-punch', '비밀친구 헬로카봇 ver.5 (Inst.)', '헬로카봇 시즌5 OST'))
         self.assertFalse(module.different_performer('kr-punch', 'Stay With Me', '도깨비 OST'))
@@ -207,12 +245,14 @@ class CatalogTests(unittest.TestCase):
     def test_same_title_covers_are_disambiguated_by_the_independent_album_credits(self):
         class Covers(Provider):
             def get_artist(self, channel):
-                return {'channelId': channel, 'songs': {'results': [{'title': '노래 0', 'album': {'name': '검증 앨범' if channel == CHANNEL else '커버 앨범'}},
-                        {'title': '노래 1', 'album': {'name': '검증 앨범' if channel == CHANNEL else '커버 앨범'}}]}, 'albums': {}, 'singles': {}}
+                return {'channelId': channel, 'songs': {'results': [{'title': '노래 0', 'album': {'name': '검증 앨범 (Deluxe Version)' if channel == CHANNEL else '커버 앨범'}},
+                        {'title': '노래 1', 'album': {'name': '검증 앨범 (2014 Remaster)' if channel == CHANNEL else '커버 앨범'}}]}, 'albums': {}, 'singles': {}}
         artist = {'id': 'kr-gil', 'name': '길', 'englishName': 'Gil', 'aliases': [], 'identity': {'referenceSongs': [{'title': '노래 0', 'album': '검증 앨범'}, {'title': '노래 1', 'album': '검증 앨범'}]}}
         with tempfile.TemporaryDirectory() as cache:
             channel, _ = CatalogBuilder(Covers(), Path(cache), pause=0).resolve(artist)
         self.assertEqual(channel, CHANNEL)
+        self.assertNotEqual(module.album_identity('검증 앨범 (Live)'), module.album_identity('검증 앨범'))
+        self.assertNotEqual(module.album_identity('검증 앨범: A Guitar Tribute To'), module.album_identity('검증 앨범'))
 
 
 if __name__ == '__main__':

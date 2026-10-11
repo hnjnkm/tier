@@ -30,7 +30,9 @@ export function createBrowserApi(fetcher: typeof fetch = fetch, portraits?: Reco
     if (url.pathname === '/api/artists/search') {
       const query = (url.searchParams.get('q') || '').trim();
       if (query.length < 2 || query.length > 100) throw new DataError('검색어는 2~100자로 입력해 주세요.', 'INVALID_REQUEST', 400);
-      return { artists: await media.searchArtists(query), source: 'musicbrainz' };
+      const collection = url.searchParams.get('collection');
+      if (collection !== null && collection !== 'korean' && collection !== 'global') throw new DataError('티어표를 확인해 주세요.', 'INVALID_REQUEST', 400);
+      return { artists: await media.searchArtists(query, collection === 'global' ? 'global' : 'korean'), source: 'musicbrainz' };
     }
     const songs = url.pathname.match(/^\/api\/artists\/([^/]+)\/songs$/);
     if (songs) {
