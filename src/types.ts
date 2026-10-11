@@ -19,6 +19,9 @@ export interface Artist {
   musicBrainzId?: string;
   itunesId?: number;
   genres?: Genre[];
+  countries?: string[];
+  debutYear?: number;
+  careerStartYear?: number;
   legacy?: boolean;
   source: 'catalog' | 'musicbrainz';
 }

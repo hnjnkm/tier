@@ -1,6 +1,7 @@
 import { ALL_CATALOG_ARTISTS, CATALOG } from './data/artists';
 import portraitCatalog from './data/portraits.json';
 import { normalize } from './domain';
+import { validFacetYear } from './artist-facets';
 import type { CollectionId } from './collections';
 import type { Artist, Genre, Portrait, Song, SongCatalog } from './types';
 import { validateSongCatalog } from './song-catalog';
@@ -50,9 +51,13 @@ export function artistFromMusicBrainz(item: any): Artist | null {
     [/classical|crossover|클래식/, 'crossover'], [/gugak|korean traditional|국악/, 'gugak'],
   ];
   const genres = genreTags.filter(([pattern]) => tags.some(tag => pattern.test(tag))).map(([, genre]) => genre);
+  const country = typeof item.country === 'string' && /^[A-Z]{2}$/.test(item.country) ? item.country : undefined;
+  // MusicBrainz's Person lifespan begins at birth; only groups have a formation date.
+  const begin = !person && /^\d{4}(?:-|$)/.test(item['life-span']?.begin ?? '') ? Number(item['life-span'].begin.slice(0, 4)) : undefined;
   return {
     id: `mb:${item.id}`, musicBrainzId: item.id, name: item.name, englishName,
     aliases, genres, kind: person ? 'solo' : 'group',
+    ...(country ? { countries: [country] } : {}), ...(validFacetYear(begin) ? { careerStartYear: begin } : {}),
     gender: person && gender === 'male' ? 'male' : person && gender === 'female' ? 'female' : 'unknown', source: 'musicbrainz',
   };
 }

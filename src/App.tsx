@@ -15,6 +15,8 @@ import { ArtistPicker } from './components/ArtistPicker';
 import { FavoritesBriefing } from './components/FavoritesBriefing';
 import { boardCollisionDetection } from './drag';
 import { CollectionMenu } from './components/CollectionMenu';
+import { DiscoveryTags } from './components/DiscoveryTags';
+import type { Era } from './artist-facets';
 
 const PAGE_SIZE = 50;
 
@@ -72,6 +74,8 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
   const [gender, setGender] = useState<Gender | 'all'>('all');
   const [genre, setGenre] = useState<Genre | 'all'>('all');
   const [kind, setKind] = useState<'all' | 'solo' | 'group'>('all');
+  const [countries, setCountries] = useState<string[]>([]);
+  const [eras, setEras] = useState<Era[]>([]);
   const [pageSize, setPageSize] = useState(PAGE_SIZE);
   const [remote, setRemote] = useState<Artist[]>([]);
   const [searching, setSearching] = useState(false);
@@ -86,6 +90,8 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
   const [pickerGender, setPickerGender] = useState<Gender | 'all'>('all');
   const [pickerGenre, setPickerGenre] = useState<Genre | 'all'>('all');
   const [pickerKind, setPickerKind] = useState<Artist['kind'] | 'all'>('all');
+  const [pickerCountries, setPickerCountries] = useState<string[]>([]);
+  const [pickerEras, setPickerEras] = useState<Era[]>([]);
   const [pickerPageSize, setPickerPageSize] = useState(PAGE_SIZE);
   const [addingFavorite, setAddingFavorite] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -107,15 +113,16 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
   const artistMap = useMemo(() => new Map(combined.map(artist => [artist.id, artist])), [combined]);
   const assignedIds = TIERS.flatMap(tier => board.tiers[tier]);
   const assigned = new Set(assignedIds);
-  const filtered = combined.filter(artist => !assigned.has(artist.id) && matchesFilters(artist, { query, gender, kind, genre }));
+  const filtered = combined.filter(artist => !assigned.has(artist.id) && matchesFilters(artist, { query, gender, kind, genre, countries, eras }));
   const visible = filtered.slice(0, pageSize);
-  const pickerArtists = pickerTier ? combined.filter(artist => matchesFilters(artist, { query: pickerQuery, gender: pickerGender, kind: pickerKind, genre: pickerGenre })) : [];
+  const pickerArtists = pickerTier ? combined.filter(artist => matchesFilters(artist, { query: pickerQuery, gender: pickerGender, kind: pickerKind, genre: pickerGenre, countries: pickerCountries, eras: pickerEras })) : [];
   const pickerVisible = pickerArtists.slice(0, pickerPageSize);
   const placements = new Map(TIERS.flatMap(tier => board.tiers[tier].map(id => [id, tier] as const)));
   const currentSearchQuery = pickerTier ? pickerQuery : query;
   const currentPortraitIds = [...new Set([...visible.map(artist => artist.id), ...pickerVisible.map(artist => artist.id), ...assignedIds, ...(selected ? [selected.id] : [])])].join(',');
   const favoriteCount = Object.values(board.favorites).reduce((sum, songs) => sum + songs.length, 0);
   const activeArtist = activeId ? artistMap.get(activeId) : undefined;
+  const hasFilters = !!query || gender !== 'all' || kind !== 'all' || genre !== 'all' || countries.length > 0 || eras.length > 0;
 
   useEffect(() => {
     const serialized = JSON.stringify(board);
@@ -125,8 +132,8 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
   }, [board, definition.storageKey]);
 
   useEffect(() => { if (!notice) return; const timer = setTimeout(() => setNotice(''), 5000); return () => clearTimeout(timer); }, [notice]);
-  useEffect(() => { setPageSize(PAGE_SIZE); }, [query, gender, kind, genre]);
-  useEffect(() => { setPickerPageSize(PAGE_SIZE); }, [pickerQuery, pickerGender, pickerKind, pickerGenre]);
+  useEffect(() => { setPageSize(PAGE_SIZE); }, [query, gender, kind, genre, countries, eras]);
+  useEffect(() => { setPickerPageSize(PAGE_SIZE); }, [pickerQuery, pickerGender, pickerKind, pickerGenre, pickerCountries, pickerEras]);
 
   useEffect(() => {
     const songs = Object.values(board.favorites).flat().filter(song => song.locale !== 'ko-KR' && /^itunes:[1-9]\d*$/.test(song.id) && !requestedSongs.current.has(song.id));
@@ -175,7 +182,7 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
     setAddingFavorite(false); setSelected(artist);
   }
   function addFavorite() {
-    setAddingFavorite(true); setQuery(''); setGender('all'); setGenre('all'); setKind('all');
+    setAddingFavorite(true); resetFilters();
     document.getElementById('artist-archive')?.scrollIntoView({ block: 'start' });
     artistSearch.current?.focus({ preventScroll: true });
   }
@@ -185,7 +192,9 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
   }
   function resetPickerFilters() {
     setPickerQuery(''); setPickerGender('all'); setPickerGenre('all'); setPickerKind('all');
+    setPickerCountries([]); setPickerEras([]);
   }
+  function resetFilters() { setQuery(''); setGender('all'); setGenre('all'); setKind('all'); setCountries([]); setEras([]); }
   function addPickedArtist(artist: Artist) {
     if (!pickerTier) return;
     setBoard(current => findTier(current, artist.id) === pickerTier ? current : moveArtist(addCustom(current, artist), artist.id, pickerTier));
@@ -274,8 +283,9 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
           {addingFavorite && <div className="favorite-picking"><p role="status">최애로 추가할 아티스트를 선택해 주세요.</p><button className="text-button" onClick={() => setAddingFavorite(false)}>취소</button></div>}
           <div className="pool-controls"><label className="search-field artist-search"><Search size={19} /><input ref={artistSearch} aria-label="가수 이름 검색" value={query} onChange={event => setQuery(event.target.value)} placeholder="아티스트 이름 검색" maxLength={100} />{query ? <button aria-label="가수 검색어 지우기" onClick={() => setQuery('')}><X size={16} /></button> : null}</label><label className="kind-filter genre-filter"><Music2 size={15} /><select title="주요 활동 장르 기준 · 여러 장르에 포함될 수 있습니다" aria-label="음악 장르 필터" value={genre} onChange={event => setGenre(event.target.value as typeof genre)}><option value="all">전체 장르</option>{Object.entries(GENRE_LABELS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label><label className="kind-filter"><SlidersHorizontal size={15} /><select aria-label="솔로 및 그룹 필터" value={kind} onChange={event => setKind(event.target.value as typeof kind)}><option value="all">솔로 + 그룹</option><option value="solo">솔로만</option><option value="group">그룹만</option></select></label></div>
           <div className="filter-bar"><div className="gender-filters" aria-label="성별 필터" title="그룹은 멤버 구성 기준">{(['all', 'male', 'female', 'mixed'] as const).map(value => <button key={value} aria-pressed={gender === value} onClick={() => setGender(value)} className={gender === value ? 'active' : ''}>{value === 'all' ? '전체' : GENDER_LABELS[value]}</button>)}</div><span className="filter-count">{filtered.length}명</span></div>
+          {collection === 'global' && <DiscoveryTags artists={combined} countries={countries} eras={eras} onCountries={setCountries} onEras={setEras} />}
           <SortableContext id="pool" items={visible.map(artist => artist.id)} strategy={rectSortingStrategy}><div className="artist-grid">{visible.map(artist => renderCard(artist))}</div></SortableContext>
-          {!filtered.length && <div className="empty-search"><Search size={30} /><h3>{searching ? '목록 밖의 가수도 찾고 있어요' : query || gender !== 'all' || kind !== 'all' || genre !== 'all' ? '조건에 맞는 가수가 없어요' : '모든 가수가 티어에 배치됐어요'}</h3><p>{query || gender !== 'all' || kind !== 'all' || genre !== 'all' ? '다른 이름으로 검색하거나 필터를 바꿔보세요.' : '가수를 보관함으로 다시 끌어 놓을 수도 있어요.'}</p>{(query || gender !== 'all' || kind !== 'all' || genre !== 'all') && <button className="text-button" onClick={() => { setQuery(''); setGender('all'); setKind('all'); setGenre('all'); }}>검색 및 필터 초기화</button>}</div>}
+          {!filtered.length && <div className="empty-search"><Search size={30} /><h3>{searching ? '목록 밖의 가수도 찾고 있어요' : hasFilters ? '조건에 맞는 가수가 없어요' : '모든 가수가 티어에 배치됐어요'}</h3><p>{hasFilters ? '다른 이름으로 검색하거나 필터를 바꿔보세요.' : '가수를 보관함으로 다시 끌어 놓을 수도 있어요.'}</p>{hasFilters && <button className="text-button" onClick={resetFilters}>검색 및 필터 초기화</button>}</div>}
           {filtered.length > pageSize && <button className="load-more" onClick={() => setPageSize(size => size + PAGE_SIZE)}>더 보기 <span>{Math.min(pageSize, filtered.length)} / {filtered.length}</span><ChevronDown size={16} /></button>}
           {searching && <div className="remote-status"><LoaderCircle className="spin" size={14} /> 기본 목록 밖의 국내 가수를 검색하고 있어요.</div>}
           {searchError && <div className="remote-status remote-error"><span>추가 가수 검색을 연결하지 못했어요. 기본 목록은 계속 사용할 수 있어요.</span><button className="text-button" onClick={() => setSearchRetry(value => value + 1)}>다시 시도</button></div>}
@@ -290,6 +300,7 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
     {pickerTier && <ArtistPicker tier={pickerTier} artists={pickerVisible} portraits={portraits} placements={placements} count={board.tiers[pickerTier].length}
       query={pickerQuery} onQuery={setPickerQuery} total={pickerArtists.length} onMore={() => setPickerPageSize(size => size + PAGE_SIZE)}
       genre={pickerGenre} onGenre={setPickerGenre} gender={pickerGender} onGender={setPickerGender} kind={pickerKind} onKind={setPickerKind} onReset={resetPickerFilters}
+      tagFilters={collection === 'global' ? { artists: combined, countries: pickerCountries, eras: pickerEras, onCountries: setPickerCountries, onEras: setPickerEras } : undefined}
       searching={searching} searchError={searchError} onRetry={() => setSearchRetry(value => value + 1)} onAdd={addPickedArtist} onClose={closeTierPicker} />}
     {notice && <div className="toast" role="status"><Check size={16} /><span>{notice}</span><button onClick={() => setNotice('')} aria-label="알림 닫기"><X size={14} /></button></div>}
   </>;

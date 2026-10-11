@@ -4,13 +4,15 @@ import { Check, ChevronDown, LoaderCircle, Music2, Plus, Search, SlidersHorizont
 import { GENRE_LABELS, type Artist, type Gender, type Genre, type Portrait, type Tier } from '../types';
 import { GENDER_LABELS } from '../data/artists';
 import { Avatar } from './Avatar';
+import { DiscoveryTags, type DiscoveryTagFilters } from './DiscoveryTags';
 
-export function ArtistPicker({ tier, artists, portraits, placements, count, query, onQuery, genre, onGenre, gender, onGender, kind, onKind, onReset, total, onMore, searching, searchError, onRetry, onAdd, onClose }: {
+export function ArtistPicker({ tier, artists, portraits, placements, count, query, onQuery, genre, onGenre, gender, onGender, kind, onKind, onReset, tagFilters, total, onMore, searching, searchError, onRetry, onAdd, onClose }: {
   tier: Tier; artists: Artist[]; portraits: Record<string, Portrait>; placements: Map<string, Tier>; count: number;
   query: string; onQuery: (query: string) => void; total: number; onMore: () => void;
   genre: Genre | 'all'; onGenre: (genre: Genre | 'all') => void;
   gender: Gender | 'all'; onGender: (gender: Gender | 'all') => void;
   kind: Artist['kind'] | 'all'; onKind: (kind: Artist['kind'] | 'all') => void; onReset: () => void;
+  tagFilters?: DiscoveryTagFilters;
   searching: boolean; searchError: string; onRetry: () => void; onAdd: (artist: Artist) => void; onClose: () => void;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -32,6 +34,7 @@ export function ArtistPicker({ tier, artists, portraits, placements, count, quer
         <label className="kind-filter"><SlidersHorizontal size={15} /><select aria-label="솔로 및 그룹 필터" value={kind} onChange={event => onKind(event.target.value as typeof kind)}><option value="all">솔로 + 그룹</option><option value="solo">솔로만</option><option value="group">그룹만</option></select></label>
       </div>
       <div className="filter-bar"><div className="gender-filters" aria-label="성별 필터" title="그룹은 멤버 구성 기준">{(['all', 'male', 'female', 'mixed'] as const).map(value => <button key={value} aria-pressed={gender === value} onClick={() => onGender(value)} className={gender === value ? 'active' : ''}>{value === 'all' ? '전체' : GENDER_LABELS[value]}</button>)}</div><span className="filter-count">{total}명</span></div>
+      {tagFilters && <DiscoveryTags {...tagFilters} />}
       <div className="picker-results"><div className="picker-artists">
         {artists.map(artist => {
           const current = placements.get(artist.id), added = current === tier;

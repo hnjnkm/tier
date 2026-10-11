@@ -1,5 +1,6 @@
 import { LEGACY_ARTISTS } from './data/artists';
 import { COLLECTIONS, type CollectionId } from './collections';
+import { matchesFacets, validFacetYear, type Era } from './artist-facets';
 import { GENRE_LABELS, TIERS, type Artist, type Board, type Gender, type Genre, type Song, type Tier } from './types';
 
 export const STORAGE_KEY = COLLECTIONS.korean.storageKey;
@@ -11,9 +12,10 @@ export const allArtists = (board: Board) => {
   const collection = board.collection ?? 'korean';
   return [...COLLECTIONS[collection].artists, ...(collection === 'korean' ? LEGACY_ARTISTS.filter(artist => used.has(artist.id)) : []), ...board.customArtists];
 };
-export function matchesFilters(artist: Artist, filters: { query: string; gender: Gender | 'all'; kind: Artist['kind'] | 'all'; genre: Genre | 'all' }) {
+export function matchesFilters(artist: Artist, filters: { query: string; gender: Gender | 'all'; kind: Artist['kind'] | 'all'; genre: Genre | 'all'; countries?: string[]; eras?: Era[] }) {
   return matchesArtist(artist, filters.query) && (filters.gender === 'all' || artist.gender === filters.gender)
-    && (filters.kind === 'all' || artist.kind === filters.kind) && (filters.genre === 'all' || artist.genres?.includes(filters.genre));
+    && (filters.kind === 'all' || artist.kind === filters.kind) && (filters.genre === 'all' || artist.genres?.includes(filters.genre))
+    && matchesFacets(artist, filters.countries, filters.eras);
 }
 export const findTier = (board: Board, id: string): Tier | undefined => TIERS.find(tier => board.tiers[tier].includes(id));
 
@@ -64,6 +66,8 @@ function validArtist(value: unknown): value is Artist {
     && Array.isArray(value.aliases) && value.aliases.length <= 30 && value.aliases.every(alias => text(alias))
     && (value.searchAliases === undefined || (Array.isArray(value.searchAliases) && value.searchAliases.length <= 100 && value.searchAliases.every(alias => text(alias))))
     && (value.genres === undefined || (Array.isArray(value.genres) && value.genres.length <= Object.keys(GENRE_LABELS).length && value.genres.every(genre => typeof genre === 'string' && Object.hasOwn(GENRE_LABELS, genre))))
+    && (value.countries === undefined || (Array.isArray(value.countries) && value.countries.length <= 10 && value.countries.every(code => typeof code === 'string' && /^[A-Z]{2}$/.test(code))))
+    && (value.debutYear === undefined || validFacetYear(value.debutYear)) && (value.careerStartYear === undefined || validFacetYear(value.careerStartYear))
     && ['male', 'female', 'mixed', 'unknown'].includes(String(value.gender)) && ['solo', 'group'].includes(String(value.kind))
     && value.source === 'musicbrainz' && (value.wikiTitle === undefined || text(value.wikiTitle))
     && (value.musicBrainzId === undefined || value.musicBrainzId === value.id.slice(3));
