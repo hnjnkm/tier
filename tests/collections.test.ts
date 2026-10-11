@@ -2,6 +2,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { COLLECTIONS } from '../src/collections';
 import { GLOBAL_ARTISTS } from '../src/data/global-artists';
+import { CATALOG } from '../src/data/artists';
+import identities from '../src/data/identities.json';
+import channels from '../src/data/youtube-channels.json';
 import { allArtists, createBoard, matchesFilters, moveArtist, parseBoard, toggleSong } from '../src/domain';
 import { createBrowserApi } from '../src/browser-media';
 import type { Song } from '../src/types';
@@ -30,7 +33,7 @@ test('international boards retain their collection on export and reject cross-ch
 
 test('each discovery catalog contains only its own artists with original names and Korean aliases', () => {
   const global = allArtists(createBoard('global'));
-  assert.ok(global.length >= 100);
+  assert.ok(global.length >= CATALOG.length, 'international discovery should be as broad as the Korean collection');
   assert.equal(new Set(global.map(artist => artist.id)).size, global.length);
   assert.ok(global.every(artist => artist.id.startsWith('global-') && artist.genres?.length));
   assert.ok(allArtists(createBoard()).every(artist => !artist.id.startsWith('global-')));
@@ -40,6 +43,21 @@ test('each discovery catalog contains only its own artists with original names a
   assert.ok(!matchesFilters(taylor, { query: '', gender: 'male', kind: 'group', genre: 'rock' }));
   assert.equal(global.find(artist => artist.id === 'global-coldplay')?.kind, 'group');
   assert.equal(global.find(artist => artist.id === 'global-yoasobi')?.gender, 'mixed');
+});
+
+test('expanded international discovery does not duplicate the same performer across provider identities', () => {
+  const bugs = identities.artists as Record<string, { bugsId: string }>;
+  const youtube = channels as Record<string, string>;
+  const bugsIds = GLOBAL_ARTISTS.map(artist => bugs[artist.id]?.bugsId);
+  const youtubeIds = GLOBAL_ARTISTS.map(artist => youtube[artist.id]);
+  assert.ok(bugsIds.every(id => typeof id === 'string' && /^\d+$/.test(id)));
+  assert.ok(youtubeIds.every(id => typeof id === 'string' && /^UC[\w-]{22}$/.test(id)));
+  assert.equal(new Set(bugsIds).size, GLOBAL_ARTISTS.length);
+  assert.equal(new Set(youtubeIds).size, GLOBAL_ARTISTS.length);
+  assert.equal(GLOBAL_ARTISTS.find(artist => artist.id === 'global-ac-dc')?.name, 'AC/DC');
+  assert.equal(GLOBAL_ARTISTS.find(artist => artist.id === 'global-led-zeppelin')?.kind, 'group');
+  assert.equal(GLOBAL_ARTISTS.find(artist => artist.id === 'global-gregory-porter')?.genres?.includes('jazz'), true);
+  assert.ok(parseBoard(moveArtist(createBoard('global'), 'global-a-ap-rocky', 'F')));
 });
 
 test('static foreign search scopes provider requests and caches separately from Korean search', async () => {
