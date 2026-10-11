@@ -1,8 +1,8 @@
 import { test, expect, type Page } from '@playwright/test';
 
 async function switchChart(page: Page, label: '국내 아티스트' | '해외 아티스트') {
-  await page.getByRole('button', { name: '티어표 메뉴 열기' }).click();
-  const menu = page.getByRole('dialog', { name: '티어표', exact: true });
+  await page.getByRole('button', { name: '사이트 메뉴 열기' }).click();
+  const menu = page.getByRole('dialog', { name: '사이트 메뉴', exact: true });
   await expect(menu).toBeVisible();
   await menu.getByRole('link', { name: label }).click();
   await expect(menu).not.toBeVisible();
@@ -72,9 +72,9 @@ test('menu closes with Escape and returns focus; importing a different chart pre
   await providers(page);
   await page.setViewportSize({ width: 320, height: 750 });
   await page.goto('./?chart=global');
-  const button = page.getByRole('button', { name: '티어표 메뉴 열기' });
+  const button = page.getByRole('button', { name: '사이트 메뉴 열기' });
   await button.click();
-  const menu = page.getByRole('dialog', { name: '티어표', exact: true });
+  const menu = page.getByRole('dialog', { name: '사이트 메뉴', exact: true });
   await expect(menu.getByRole('link', { name: '해외 아티스트' })).toHaveAttribute('aria-current', 'page');
   await page.keyboard.press('Escape');
   await expect(button).toBeFocused();

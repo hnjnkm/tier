@@ -12,7 +12,7 @@ output.parent.mkdir(parents=True, exist_ok=True)
 files = ['package.json', 'package-lock.json', 'README.md', 'START-HERE.txt',
          'START-Windows.bat', 'START-macOS.command', 'START-Linux.sh',
          'index.html', 'tsconfig.json', 'vite.config.ts', 'playwright.config.ts', 'playwright.pages.config.ts', '.gitignore']
-for folder in ['dist', 'server', 'src', 'public', 'launch', 'scripts', 'tests', '.github']:
+for folder in ['dist', 'server', 'src', 'public', 'launch', 'scripts', 'tests', 'docs', '.github']:
     files.extend(str(p.relative_to(root)) for p in (root / folder).rglob('*')
                  if p.is_file() and '__pycache__' not in p.parts)
 with zipfile.ZipFile(output, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:

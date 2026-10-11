@@ -89,8 +89,8 @@ test('tag filtering preserves saved boards and songs, reports empty combinations
   await page.getByRole('button', { name: '검색 및 필터 초기화', exact: true }).click();
   await expect(tags.locator('.selected-facet')).toHaveCount(0);
   expect(await page.evaluate(() => [localStorage.getItem('my-tier.board.global.v1'), localStorage.getItem('my-tier.board.v1')])).toEqual(saved);
-  await page.getByRole('button', { name: '티어표 메뉴 열기' }).click();
-  await page.getByRole('dialog', { name: '티어표', exact: true }).getByRole('link', { name: '국내 아티스트' }).click();
+  await page.getByRole('button', { name: '사이트 메뉴 열기' }).click();
+  await page.getByRole('dialog', { name: '사이트 메뉴', exact: true }).getByRole('link', { name: '국내 아티스트' }).click();
   await expect(page.getByRole('button', { name: '상세 필터', exact: true })).toHaveCount(0);
   await expect(page.getByTestId('tier-S').locator('[data-artist-id="kr-iu"]')).toBeVisible();
   await page.getByRole('button', { name: 'A 티어에 아티스트 추가', exact: true }).click();

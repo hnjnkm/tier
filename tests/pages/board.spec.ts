@@ -118,7 +118,7 @@ test('Pages subpath loads assets and direct providers, then persists three songs
   page.on('request', request => { if (new URL(request.url()).pathname.startsWith('/api/')) localApiRequests.push(request.url()); });
   await page.goto('./');
   await expect(page.locator('.brand')).toHaveCount(0);
-  await expect(page.getByRole('navigation', { name: '빠른 이동' }).getByRole('link', { name: '티어', exact: true })).toHaveAttribute('href', '#my-tier');
+  await expect(page.locator('.header-navigation').getByRole('link', { name: '국내', exact: true })).toHaveAttribute('href', '/tier/');
   expect(await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('16px "Pretendard Variable"'); })).toBe(true);
   const photo = page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"] img');
   await expect(photo).toHaveAttribute('src', /^\/tier\/portraits\/kr-iu\.[a-f0-9]+\.webp$/);

@@ -4,7 +4,8 @@ import { SortableContext, arrayMove, rectSortingStrategy, sortableKeyboardCoordi
 import { ArrowDownToLine, ArrowUpFromLine, Check, ChevronDown, LoaderCircle, Menu, Music2, Pencil, Plus, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
 import { GENDER_LABELS } from './data/artists';
 import { allArtists, createBoard, findTier, localizeFavorites, matchesFilters, moveArtist, normalize, parseBoard, toggleSong } from './domain';
-import { COLLECTIONS, collectionFromUrl, collectionUrl, type CollectionId } from './collections';
+import { COLLECTION_IDS, COLLECTIONS, collectionFromUrl, collectionUrl, type CollectionId } from './collections';
+import { SITE, SITE_LINKS, sitePageUrl } from './site';
 import { getJson } from './api';
 import { GENRE_LABELS, TIERS, type Genre, type Artist, type Board, type Gender, type Portrait, type Song, type Tier } from './types';
 import portraitCatalog from './data/portraits.json';
@@ -49,7 +50,11 @@ function addCustom(board: Board, artist: Artist): Board {
 
 export default function App() {
   const [collection, setCollection] = useState(collectionFromUrl);
-  useEffect(() => { document.title = COLLECTIONS[collection].title; }, [collection]);
+  useEffect(() => {
+    document.title = COLLECTIONS[collection].title;
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (canonical) canonical.href = `${SITE.url}${collection === 'global' ? '?chart=global' : ''}`;
+  }, [collection]);
   useEffect(() => {
     const restore = () => setCollection(collectionFromUrl());
     window.addEventListener('popstate', restore);
@@ -60,7 +65,7 @@ export default function App() {
     history.pushState(null, '', collectionUrl(next));
     setCollection(next);
     window.scrollTo({ top: 0, behavior: 'instant' });
-    requestAnimationFrame(() => document.getElementById('collection-menu-button')?.focus({ preventScroll: true }));
+    requestAnimationFrame(() => document.getElementById(`chart-nav-${next}`)?.focus({ preventScroll: true }));
   }
   return <TierBoard key={collection} collection={collection} onSelectCollection={selectCollection} />;
 }
@@ -265,8 +270,11 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
 
   return <>
     <header className="site-header"><div className="header-inner">
-      <div className="header-collection"><button id="collection-menu-button" className="icon-button menu-button" aria-label="티어표 메뉴 열기" aria-haspopup="dialog" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu size={20} /></button><span>{definition.label}</span></div>
-      <nav className="header-navigation" aria-label="빠른 이동"><a href="#my-tier">티어</a><a href="#artist-archive">아티스트</a></nav>
+      <div className="header-collection"><button id="collection-menu-button" className="icon-button menu-button" aria-label="사이트 메뉴 열기" aria-haspopup="dialog" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu size={20} /></button></div>
+      <nav className="header-navigation" aria-label="티어표 선택">{COLLECTION_IDS.map(id => <a key={id} id={`chart-nav-${id}`} href={collectionUrl(id)} aria-current={id === collection ? 'page' : undefined} onClick={event => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        event.preventDefault(); onSelectCollection(id);
+      }}>{id === 'korean' ? '국내' : '해외'}</a>)}</nav>
       <div className="header-right"><span className={`save-status ${saveError ? 'save-failed' : ''}`}><span className="status-dot" />{saveError ? '저장 파일로 보관해 주세요' : '자동 저장'}</span><details className="download-menu" ref={downloadMenu}><summary className="secondary-button">내 티어 저장 <ArrowDownToLine size={15} /></summary><div className="download-options"><button onClick={exportBoard}><ArrowDownToLine size={16} /> 저장 파일 내보내기</button><button onClick={() => importInput.current?.click()}><ArrowUpFromLine size={16} /> 저장 파일 불러오기</button></div></details><input ref={importInput} type="file" accept="application/json,.json" hidden onChange={event => importBoard(event.target.files?.[0])} /></div>
     </div></header>
     {menuOpen && <CollectionMenu collection={collection} onSelect={onSelectCollection} onClose={closeMenu} />}
@@ -294,7 +302,7 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
         </Pool>
         <DragOverlay dropAnimation={null}>{activeArtist && <div className="artist-card compact overlay-card"><Avatar artist={activeArtist} portrait={portraits[activeArtist.id]} /><span className="artist-name">{activeArtist.name}</span></div>}</DragOverlay>
       </DndContext>
-      <footer className="site-footer">사진 · 벅스 / 멜론 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · YouTube Music / 국내 음원</footer>
+      <footer className="site-footer"><nav aria-label="사이트 정보">{SITE_LINKS.map(item => <a key={item.id} href={sitePageUrl(item.id)}>{item.label}</a>)}</nav><p>사진 · 벅스 / 멜론 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · YouTube Music / 국내 음원</p></footer>
     </main>
     {selected && <ArtistDialog key={selected.id} artist={selected} portrait={portraits[selected.id]} tier={findTier(board, selected.id)} favorites={board.favorites[selected.id] ?? []} onMove={target => setBoard(current => moveArtist(current, selected.id, target))} onToggle={(song: Song) => setBoard(current => toggleSong(current, selected.id, song))} onClose={closeArtist} />}
     {pickerTier && <ArtistPicker tier={pickerTier} artists={pickerVisible} portraits={portraits} placements={placements} count={board.tiers[pickerTier].length}

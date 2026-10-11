@@ -5,12 +5,13 @@ import { resolve, extname } from 'node:path';
 
 const root = resolve('dist-pages');
 const prefix = '/tier/';
-const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.json': 'application/json', '.woff2': 'font/woff2', '.ttf': 'font/ttf' };
+const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.json': 'application/json', '.xml': 'application/xml; charset=utf-8', '.txt': 'text/plain; charset=utf-8', '.woff2': 'font/woff2', '.ttf': 'font/ttf' };
 createServer(async (request, response) => {
   try {
     const path = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
     if (!path.startsWith(prefix)) throw new Error('Not found');
-    const file = resolve(root, path.slice(prefix.length) || 'index.html');
+    const relative = path.slice(prefix.length);
+    const file = resolve(root, relative.endsWith('/') ? `${relative}index.html` : relative || 'index.html');
     if (!file.startsWith(root + '/')) throw new Error('Not found');
     response.setHeader('Content-Type', types[extname(file)] || 'application/octet-stream');
     response.end(await readFile(file));

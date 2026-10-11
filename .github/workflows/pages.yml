@@ -57,5 +57,12 @@ jobs:
             const response = await fetch(new URL(asset, process.env.SITE_URL), { signal: AbortSignal.timeout(15000) });
             if (!response.ok) throw new Error(`Published asset failed: ${asset} (${response.status})`);
           }
+          const pages = { about: '사이트 소개', guide: '이용 안내', privacy: '개인정보처리방침', terms: '이용약관', contact: '문의' };
+          for (const [path, title] of Object.entries(pages)) {
+            const response = await fetch(new URL(`${path}/`, process.env.SITE_URL), { signal: AbortSignal.timeout(15000) });
+            if (!response.ok || !(await response.text()).includes(`<h1>${title}</h1>`)) throw new Error(`Published information page failed: ${path}`);
+          }
+          const sitemap = await fetch(new URL('sitemap.xml', process.env.SITE_URL), { signal: AbortSignal.timeout(15000) });
+          if (!sitemap.ok || !(await sitemap.text()).includes('/privacy/</loc>')) throw new Error('Published sitemap failed');
           console.log(`Verified public app and ${assets.length} assets at ${process.env.SITE_URL}`);
           JS
