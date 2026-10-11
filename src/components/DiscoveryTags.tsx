@@ -24,7 +24,7 @@ export function DiscoveryTags({ artists, countries, eras, onCountries, onEras }:
   return <div className="discovery-tags">
     <div className="discovery-summary">
       <button type="button" className="facet-toggle" aria-expanded={open} aria-controls={id} onClick={() => setOpen(value => !value)}>
-        더 좁히기 <ChevronDown size={14} className={open ? 'is-open' : ''} />
+        상세 필터 <ChevronDown size={14} className={open ? 'is-open' : ''} />
       </button>
       <div className="selected-facets" aria-label="선택한 태그">
         {countries.map(code => <button type="button" className="selected-facet" key={code} onClick={() => onCountries(toggle(countries, code))} aria-label={`${countryLabel(code)} 국가 필터 해제`}>{countryLabel(code)}<X size={12} /></button>)}

@@ -9,7 +9,7 @@ test('international tags stay collapsed, combine countries and decades, clear in
   await page.goto('./?chart=global');
   const pool = page.getByTestId('artist-pool');
   const tags = pool.locator('.discovery-tags');
-  const toggle = tags.getByRole('button', { name: '더 좁히기', exact: true });
+  const toggle = tags.getByRole('button', { name: '상세 필터', exact: true });
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   await expect(tags.locator('.facet-panel')).toBeHidden();
   await expect(pool.getByRole('combobox')).toHaveCount(2);
@@ -46,7 +46,7 @@ for (const width of [390, 320]) {
     await page.goto('./?chart=global');
     await page.getByRole('button', { name: 'F 티어에 아티스트 추가', exact: true }).click();
     const picker = page.getByRole('dialog', { name: 'F 티어에 추가' });
-    await picker.getByRole('button', { name: '더 좁히기', exact: true }).click();
+    await picker.getByRole('button', { name: '상세 필터', exact: true }).click();
     await picker.getByRole('button', { name: '다른 국가', exact: true }).click();
     await expect(picker.getByRole('button', { name: '자메이카', exact: true })).toBeVisible();
     await picker.getByRole('button', { name: '주요 국가만', exact: true }).click();
@@ -60,7 +60,7 @@ for (const width of [390, 320]) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     await picker.getByRole('button', { name: 'AC/DC F 티어에 추가', exact: true }).click();
     await expect(picker.getByRole('button', { name: 'AC/DC F 티어에 이미 있음', exact: true })).toBeDisabled();
-    await picker.getByRole('button', { name: '더 좁히기', exact: true }).click();
+    await picker.getByRole('button', { name: '상세 필터', exact: true }).click();
     await expect(picker.getByRole('button', { name: '1970년대 데뷔 연대 필터 해제', exact: true })).toBeVisible();
     await picker.getByRole('button', { name: '선택 완료', exact: true }).click();
     await page.reload();
@@ -79,7 +79,7 @@ test('tag filtering preserves saved boards and songs, reports empty combinations
   await page.goto('./?chart=global');
   const saved = await page.evaluate(() => [localStorage.getItem('my-tier.board.global.v1'), localStorage.getItem('my-tier.board.v1')]);
   const tags = page.getByTestId('artist-pool').locator('.discovery-tags');
-  const toggle = tags.getByRole('button', { name: '더 좁히기', exact: true });
+  const toggle = tags.getByRole('button', { name: '상세 필터', exact: true });
   await toggle.focus(); await page.keyboard.press('Enter');
   await expect(toggle).toHaveAttribute('aria-expanded', 'true');
   await tags.getByRole('button', { name: '일본', exact: true }).click();
@@ -91,10 +91,10 @@ test('tag filtering preserves saved boards and songs, reports empty combinations
   expect(await page.evaluate(() => [localStorage.getItem('my-tier.board.global.v1'), localStorage.getItem('my-tier.board.v1')])).toEqual(saved);
   await page.getByRole('button', { name: '티어표 메뉴 열기' }).click();
   await page.getByRole('dialog', { name: '티어표', exact: true }).getByRole('link', { name: '국내 아티스트' }).click();
-  await expect(page.getByRole('button', { name: '더 좁히기', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: '상세 필터', exact: true })).toHaveCount(0);
   await expect(page.getByTestId('tier-S').locator('[data-artist-id="kr-iu"]')).toBeVisible();
   await page.getByRole('button', { name: 'A 티어에 아티스트 추가', exact: true }).click();
-  await expect(page.getByRole('dialog').getByRole('button', { name: '더 좁히기', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('dialog').getByRole('button', { name: '상세 필터', exact: true })).toHaveCount(0);
   await page.keyboard.press('Escape');
   await expect(page.getByRole('button', { name: 'A 티어에 아티스트 추가', exact: true })).toBeFocused();
 });
