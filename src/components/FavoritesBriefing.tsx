@@ -1,15 +1,19 @@
-import { Plus } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Plus, Share2 } from 'lucide-react';
 import { Avatar } from './Avatar';
+import { StoryExportDialog } from './StoryExportDialog';
 import type { Artist, Portrait, Song } from '../types';
 
-export function FavoritesBriefing({ artists, favorites, portraits, onOpen, onAdd }: {
-  artists: Artist[]; favorites: Record<string, Song[]>; portraits: Record<string, Portrait>; onOpen: (artist: Artist) => void; onAdd: () => void;
+export function FavoritesBriefing({ artists, favorites, portraits, collection, onOpen, onAdd }: {
+  artists: Artist[]; favorites: Record<string, Song[]>; portraits: Record<string, Portrait>; collection: 'korean' | 'global'; onOpen: (artist: Artist) => void; onAdd: () => void;
 }) {
+  const [exporting, setExporting] = useState(false);
+  const exportButton = useRef<HTMLButtonElement>(null);
   const songCount = artists.reduce((count, artist) => count + (favorites[artist.id]?.length ?? 0), 0);
   return <section className="favorites-briefing" aria-labelledby="favorites-title" data-testid="favorites-briefing">
     <div className="favorites-heading">
       <h2 id="favorites-title"><span>S</span>나의 최애</h2>
-      {!!artists.length && <span>{artists.length}명 · {songCount}곡</span>}
+      {!!artists.length && <div className="favorites-tools"><span>{artists.length}명 · {songCount}곡</span><button ref={exportButton} className="text-button story-open" aria-haspopup="dialog" onClick={() => setExporting(true)}><Share2 size={15} /><span>스토리로 공유</span></button></div>}
     </div>
     {!artists.length ? <div className="favorites-empty-state"><p>S티어에 최애 아티스트를 추가해 주세요.</p><button className="text-button" onClick={onAdd}><Plus size={14} />아티스트 추가</button></div> : <div className="favorites-list">
       {artists.map(artist => <button key={artist.id} className="favorite-entry" onClick={() => onOpen(artist)} aria-label={`${artist.name} S티어 대표곡 편집`}>
@@ -20,5 +24,6 @@ export function FavoritesBriefing({ artists, favorites, portraits, onOpen, onAdd
         </span>
       </button>)}
     </div>}
+    {exporting && <StoryExportDialog artists={artists} favorites={favorites} portraits={portraits} collection={collection} onClose={() => { setExporting(false); requestAnimationFrame(() => exportButton.current?.focus({ preventScroll: true })); }} />}
   </section>;
 }
