@@ -149,6 +149,7 @@ test('Pages tier picker filters catalog and additional artists and fits mobile a
   await page.goto('./');
   await page.getByRole('button', { name: 'F 티어에 아티스트 추가', exact: true }).click();
   const picker = page.getByRole('dialog', { name: 'F 티어에 추가', exact: true });
+  await picker.evaluate(element => Promise.all(element.getAnimations().map(animation => animation.finished)));
   for (const width of [320, 390, 1280]) {
     await page.setViewportSize({ width, height: 844 });
     await expect(picker.getByLabel('음악 장르 필터')).toBeVisible();
