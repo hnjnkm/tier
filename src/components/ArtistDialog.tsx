@@ -7,6 +7,14 @@ import { TIERS, type Artist, type MusicAlbum, type Portrait, type Song, type Tie
 import { selectedSong, songAlbums, visibleSongs, type SongSort } from '../song-catalog';
 import { Avatar } from './Avatar';
 
+function SongArtwork({ artwork, size, lazy = false }: { artwork?: string; size: number; lazy?: boolean }) {
+  const [failedUrl, setFailedUrl] = useState('');
+  const source = artwork ? imageUrl(artwork) : undefined;
+  return source && source !== failedUrl
+    ? <img src={source} loading={lazy ? 'lazy' : undefined} alt="" draggable={false} onError={() => setFailedUrl(source)} />
+    : <Disc3 size={size} aria-hidden="true" />;
+}
+
 export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onToggle, onClose }: {
   artist: Artist; portrait?: Portrait; tier?: Tier; favorites: Song[];
   onMove: (tier: Tier | 'pool') => void; onToggle: (song: Song) => void; onClose: () => void;
@@ -86,7 +94,7 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
           const song = favorites[index];
           return <div className={`song-slot ${song ? 'filled' : ''}`} key={index}>
             <span className="slot-number">0{index + 1}</span>
-            {song ? <><div className="slot-art">{song.artwork ? <img src={imageUrl(song.artwork)} alt="" /> : <Disc3 size={27} />}</div><strong title={song.title}>{song.title}</strong><span className="slot-album" title={song.album}>{song.album || song.artistName}</span><button className="remove-song" onClick={() => onToggle(song)} aria-label={`${song.title} 대표곡에서 제거`}><X size={13} /></button></> : <><div className="empty-slot-icon"><Plus size={22} /></div><span>곡 선택</span></>}
+            {song ? <><div className="slot-art"><SongArtwork artwork={song.artwork} size={27} /></div><strong title={song.title}>{song.title}</strong><span className="slot-album" title={song.album}>{song.album || song.artistName}</span><button className="remove-song" onClick={() => onToggle(song)} aria-label={`${song.title} 대표곡에서 제거`}><X size={13} /></button></> : <><div className="empty-slot-icon"><Plus size={22} /></div><span>곡 선택</span></>}
           </div>;
         })}</div>
       </section>
@@ -107,7 +115,7 @@ export function ArtistDialog({ artist, portrait, tier, favorites, onMove, onTogg
           {loading ? <div className="result-message"><LoaderCircle className="spin" size={25} /><p>이 가수의 곡을 찾고 있어요</p></div> : error ? <div className="result-message"><Disc3 size={30} /><p>{error}</p><button className="text-button" onClick={() => setRetry(value => value + 1)}>다시 시도</button></div> : !results.length ? <div className="result-message"><Search size={28} /><p>{query || albumId ? '선택한 조건에 맞는 곡이 없어요.' : '등록된 음원을 찾지 못했어요.'}</p>{(query || albumId) && <button className="text-button" onClick={() => { setQuery(''); setAlbumId(''); }}>전체 곡 보기</button>}</div> : results.map(song => {
             const selected = !!selectedSong(song, favorites);
             return <div className={`song-result ${selected ? 'is-selected' : ''}`} key={song.id}>
-              <div className="result-art">{song.artwork ? <img src={imageUrl(song.artwork)} loading="lazy" alt="" /> : <Disc3 size={22} />}</div>
+              <div className="result-art"><SongArtwork artwork={song.artwork} size={22} lazy /></div>
               <div className="song-info"><strong title={song.title}>{song.title}</strong><span title={song.album}>{song.artistName} · {song.album}{song.year ? ` · ${song.year}` : ''}</span></div>
               {song.previewUrl && <button className="icon-button preview-button" onClick={() => play(song)} aria-label={`${song.title} ${playing === song.id ? '미리듣기 중지' : '미리듣기'}`}>{playing === song.id ? <Pause size={15} /> : <Play size={15} />}</button>}
               {!song.previewUrl && song.url && <a className="icon-button preview-button" href={song.url} target="_blank" rel="noreferrer" aria-label={`${song.title} ${source === 'bugs' ? '벅스' : source === 'melon' ? '멜론' : 'YouTube Music'}에서 듣기`}><Play size={15} /></a>}
