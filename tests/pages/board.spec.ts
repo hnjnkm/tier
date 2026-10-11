@@ -56,7 +56,7 @@ test('a corrected Korean namesake uses the reviewed Melon identity and restores 
   await page.getByLabel('가수 이름 검색').fill('김종환');
   await page.locator('[data-artist-id="kr-kimjonghwan"] .artist-main').click();
   await expect(page.getByText('멜론 · 한국', { exact: true })).toBeVisible();
-  await expect(page.getByRole('link', { name: '사진 출처 · YouTube Music' })).toHaveAttribute('href', /^https:\/\/music\.youtube\.com\/channel\/UC[\w-]{22}$/);
+  await expect(page.getByRole('link', { name: '사진 출처 · 멜론' })).toHaveAttribute('href', 'https://www.melon.com/artist/detail.htm?artistId=1107');
   await expect(page.getByRole('link', { name: '사랑을 위하여 멜론에서 듣기' })).toHaveAttribute('href', song.url);
   await page.getByRole('button', { name: '김종환 S 티어로 이동' }).click();
   await page.getByRole('button', { name: '사랑을 위하여 대표곡으로 선택', exact: true }).click();
@@ -117,12 +117,13 @@ test('Pages subpath loads assets and direct providers, then persists three songs
   const localApiRequests: string[] = [];
   page.on('request', request => { if (new URL(request.url()).pathname.startsWith('/api/')) localApiRequests.push(request.url()); });
   await page.goto('./');
-  await expect(page.getByRole('link', { name: 'my tier. 홈' })).toHaveAttribute('href', '/tier/');
-  expect(await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('16px "Pretendard Variable"') && document.fonts.check('16px "Instrument Serif"'); })).toBe(true);
+  await expect(page.locator('.brand')).toHaveCount(0);
+  await expect(page.getByRole('navigation', { name: '빠른 이동' }).getByRole('link', { name: '티어', exact: true })).toHaveAttribute('href', '#my-tier');
+  expect(await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('16px "Pretendard Variable"'); })).toBe(true);
   const photo = page.getByTestId('artist-pool').locator('[data-artist-id="kr-iu"] img');
   await expect(photo).toHaveAttribute('src', /^\/tier\/portraits\/kr-iu\.[a-f0-9]+\.webp$/);
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
-  await expect(page.getByRole('link', { name: '사진 출처 · YouTube Music' })).toHaveAttribute('href', /^https:\/\/music\.youtube\.com\/channel\/UC[\w-]{22}$/);
+  await expect(page.getByRole('link', { name: '사진 출처 · 벅스' })).toHaveAttribute('href', 'https://music.bugs.co.kr/artist/80049126');
   await expect(page.getByRole('button', { name: 'Unrelated 대표곡으로 선택', exact: true })).toHaveCount(0);
   await page.getByLabel('곡 제목 검색').fill('밤편지');
   await expect(page.getByRole('button', { name: '밤편지 대표곡으로 선택', exact: true })).toBeVisible();
@@ -138,6 +139,37 @@ test('Pages subpath loads assets and direct providers, then persists three songs
   await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).click();
   await expect(page.getByLabel('선택한 대표곡').locator('.song-slot.filled')).toHaveCount(3);
   expect(localApiRequests).toEqual([]);
+});
+
+test('desktop and mobile use three consistent text sizes and a verified Lee Seok Hoon profile', async ({ page }) => {
+  await providers(page);
+  await page.goto('./');
+  for (const width of [1280, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    await expect(page.locator('.brand')).toHaveCount(0);
+    await page.getByLabel('가수 이름 검색').fill('이석훈');
+    await page.getByRole('button', { name: '이석훈 곡 선택 및 티어 변경', exact: true }).click();
+    await expect(page.getByRole('link', { name: '사진 출처 · 벅스' })).toHaveAttribute('href', 'https://music.bugs.co.kr/artist/80043328');
+    const photo = page.getByRole('dialog').locator('.dialog-avatar img');
+    await expect(photo).toHaveAttribute('src', /^\/tier\/portraits\/kr-leeseokhoon\.[a-f0-9]+\.webp$/);
+    await expect.poll(() => photo.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth === 256 && image.naturalHeight === 256)).toBe(true);
+    const typography = await page.evaluate(() => {
+      const walker = document.createTreeWalker(document.querySelector('#root')!, NodeFilter.SHOW_TEXT);
+      const sizes = new Set<string>(), weights = new Set<string>(), families = new Set<string>();
+      while (walker.nextNode()) {
+        const node = walker.currentNode, element = node.parentElement;
+        if (!node.textContent?.trim() || !element || !element.getClientRects().length || element.closest('option, svg')) continue;
+        const style = getComputedStyle(element);
+        sizes.add(style.fontSize); weights.add(style.fontWeight); families.add(style.fontFamily);
+      }
+      return { sizes: [...sizes].sort(), weights: [...weights], families: [...families], fits: document.documentElement.scrollWidth <= window.innerWidth };
+    });
+    expect(typography.sizes).toEqual(['11px', '13px', '16px']);
+    expect(typography.weights).toEqual(['400']);
+    expect(typography.families).toHaveLength(1); expect(typography.families[0]).toContain('Pretendard Variable');
+    expect(typography.fits).toBe(true);
+    await page.getByRole('button', { name: '선택 완료' }).click();
+  }
 });
 
 test('long favorite titles fit one line on desktop and mobile, and album choices display years newest first', async ({ page }) => {

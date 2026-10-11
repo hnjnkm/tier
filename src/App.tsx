@@ -183,7 +183,7 @@ export default function App() {
     try {
       if (file.size > 2_000_000) throw new Error('저장 파일은 2MB 이하로 골라 주세요.');
       const parsed = parseBoard(JSON.parse(await file.text()));
-      if (!parsed) throw new Error('올바른 my tier. 저장 파일이 아니에요.');
+      if (!parsed) throw new Error('올바른 티어 저장 파일이 아니에요.');
       if ((assignedIds.length || favoriteCount) && !window.confirm('현재 보드를 저장 파일의 내용으로 바꿀까요?')) return;
       requestedSongs.current.clear(); setBoard(parsed); setDraftTitle(parsed.title); setSelected(null); setAddingFavorite(false); setNotice('저장한 음악 취향을 불러왔어요.');
     } catch (error) { setNotice(error instanceof Error ? error.message : '파일을 읽지 못했어요.'); }
@@ -204,7 +204,6 @@ export default function App() {
   return <>
     <header className="site-header"><div className="header-inner">
       <nav className="header-navigation" aria-label="빠른 이동"><a href="#my-tier">티어</a><a href="#artist-archive">아티스트</a></nav>
-      <a className="brand" href={import.meta.env.BASE_URL} aria-label="my tier. 홈">my tier.</a>
       <div className="header-right"><span className={`save-status ${saveError ? 'save-failed' : ''}`}><span className="status-dot" />{saveError ? '저장 파일로 보관해 주세요' : '자동 저장'}</span><details className="download-menu" ref={downloadMenu}><summary className="secondary-button">내 티어 저장 <ArrowDownToLine size={15} /></summary><div className="download-options"><button onClick={exportBoard}><ArrowDownToLine size={16} /> 저장 파일 내보내기</button><button onClick={() => importInput.current?.click()}><ArrowUpFromLine size={16} /> 저장 파일 불러오기</button></div></details><input ref={importInput} type="file" accept="application/json,.json" hidden onChange={event => importBoard(event.target.files?.[0])} /></div>
     </div></header>
     <main className="page-shell">

@@ -3,13 +3,14 @@ import { createHash } from 'node:crypto';
 import { EnvHttpProxyAgent, fetch } from 'undici';
 import sharp from 'sharp';
 import type { Portrait } from '../src/types';
+import { squarePortrait } from './portrait-image';
 
 const target = 'src/data/portraits.json';
 const catalog = JSON.parse(await readFile(target, 'utf8')) as { updatedAt?: string; provider?: string; portraits: Record<string, Portrait & { localPath?: string }> };
-const youtube = process.argv.includes('--youtube');
-const candidates = youtube ? JSON.parse(await readFile('/tmp/tier-youtube-portraits.json', 'utf8')) as Record<string, Portrait> : catalog.portraits;
-const entries = Object.entries(candidates).filter(([id, portrait]) => !youtube || portrait.provider === 'youtube-music'
-  && /^UC[\w-]{22}$/.test(portrait.channelId ?? '') && portrait.pageUrl === `https://music.youtube.com/channel/${portrait.channelId}`)
+const profiles = process.argv.includes('--profiles');
+const rebuild = process.argv.includes('--rebuild');
+const candidates = profiles ? JSON.parse(await readFile('/tmp/tier-profile-portrait-candidates.json', 'utf8')) as Record<string, Portrait> : catalog.portraits;
+const entries = Object.entries(candidates).filter(([, portrait]) => portrait.provider === 'bugs' || portrait.provider === 'melon')
   .filter(([id, portrait]) => id !== 'kr-gil' || !portrait.url.includes('/3213.jpg'));
 await mkdir('public/portraits', { recursive: true });
 const dispatcher = new EnvHttpProxyAgent();
@@ -22,7 +23,7 @@ async function worker() {
     try {
       const previous = catalog.portraits[id];
       const cachedPath = portrait.localPath ?? (previous?.url === portrait.url && previous.provider === portrait.provider ? previous.localPath : undefined);
-      if (cachedPath) {
+      if (cachedPath && !rebuild) {
         const existing = await readFile(`public/${cachedPath}`).catch(() => null);
         const info = existing ? await sharp(existing).metadata() : undefined;
         if (info?.width === 256 && info.height === 256 && existing && (await sharp(existing).stats()).entropy >= 1) { catalog.portraits[id] = { ...portrait, localPath: cachedPath }; done++; continue; }
@@ -40,9 +41,7 @@ async function worker() {
           if (!original.width || !original.height || original.width < 100 || original.height < 100) throw new Error('Photo resolution is too small');
           const stats = await sharp(bytes).stats();
           if (stats.entropy < 1) throw new Error('Blank provider image');
-          const photo = sharp(bytes).rotate();
-          if (portrait.crop) photo.extract(portrait.crop);
-          const image = await photo.resize(256, 256, { fit: 'cover', position: sharp.strategy.attention }).webp({ quality: 82 }).toBuffer();
+          const image = await squarePortrait(bytes, portrait.crop);
           if ((await sharp(image).stats()).entropy < 1) throw new Error('Blank cropped provider image');
           const hash = createHash('sha256').update(image).digest('hex');
           const localPath = `portraits/${id}.${hash.slice(0, 12)}.webp`;
@@ -63,10 +62,8 @@ async function worker() {
 }
 try {
   await Promise.all(Array.from({ length: 8 }, worker));
-  if (youtube) {
-    catalog.updatedAt = new Date().toISOString();
-    catalog.provider = 'Verified YouTube Music artist profiles with preserved domestic supplements';
-  }
+  catalog.updatedAt = new Date().toISOString();
+  catalog.provider = 'Verified Bugs and Melon artist profile photos';
   await writeFile(target, JSON.stringify(catalog, null, 2) + '\n');
   const retained = new Set(Object.values(catalog.portraits).map(portrait => portrait.localPath));
   for (const file of await readdir('public/portraits')) {

@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { chooseBugsPortrait, parseBugsArtists } from '../scripts/bugs-portraits';
 import { CATALOG } from '../src/data/artists';
 import { createMediaService } from '../src/media';
+import sharp from 'sharp';
+import { squarePortrait } from '../scripts/portrait-image';
 
 const row = (id: number, name: string, type = '솔로 (남성)', genre = '발라드') => `<figure class="artistInfo"><a href="https://music.bugs.co.kr/artist/${id}"><img src="https://image.bugsm.co.kr/artist/images/130/68/${id}.jpg?version=20261009" /></a><figcaption><a class="artistTitle" title="${name}">${name}</a><span class="artistType">${type}</span><span class="artistGenre"><a>${genre}</a></span></figcaption></figure>`;
 
@@ -35,4 +37,24 @@ test('Gil and other name collisions stay pinned to their Korean profiles even wh
   assert.equal(chooseBugsPortrait(gil, candidates)?.pageUrl, 'https://music.bugs.co.kr/artist/8008535');
   assert.equal(chooseBugsPortrait(gil, parseBugsArtists(row(3213, 'Gil(길)'))), null);
   assert.equal(gil.name, '길');
+});
+
+test('square thumbnails preserve subjects at all four edges of a non-square profile', async () => {
+  for (const [width, height] of [[400, 200], [200, 400]]) {
+    const source = Buffer.alloc(width * height * 3);
+    const colors = [[255, 0, 0], [0, 255, 0], [0, 0, 255], [255, 255, 0]];
+    for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+      const color = colors[(y >= height / 2 ? 2 : 0) + (x >= width / 2 ? 1 : 0)];
+      source.set(color, (y * width + x) * 3);
+    }
+    const png = await sharp(source, { raw: { width, height, channels: 3 } }).png().toBuffer();
+    const image = await squarePortrait(png);
+    const { data, info } = await sharp(image).raw().toBuffer({ resolveWithObject: true });
+    assert.equal(info.width, 256); assert.equal(info.height, 256);
+    const corners = width > height ? [[6, 70], [249, 70], [6, 185], [249, 185]] : [[70, 6], [185, 6], [70, 249], [185, 249]];
+    corners.forEach(([x, y], index) => {
+      const pixel = data.subarray((y * 256 + x) * 3, (y * 256 + x) * 3 + 3);
+      colors[index].forEach((channel, offset) => assert.ok(Math.abs(pixel[offset] - channel) < 25, `Profile edge ${index} should remain visible`));
+    });
+  }
 });

@@ -50,7 +50,7 @@ jobs:
           node --input-type=module <<'JS'
           import { readFile } from 'node:fs/promises';
           const html = await readFile(`${process.env.RUNNER_TEMP}/my-tier-site.html`, 'utf8');
-          if (!html.includes('<title>my tier.')) throw new Error('Published page is not the tier app');
+          if (!html.includes('<title>나의 아티스트 티어</title>')) throw new Error('Published page is not the tier app');
           const assets = [...html.matchAll(/(?:src|href)="([^"]+\/assets\/[^"]+)"/g)].map(match => match[1]);
           if (!assets.length) throw new Error('Published page has no app assets');
           for (const asset of assets) {
