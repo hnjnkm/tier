@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { DndContext, DragOverlay, KeyboardSensor, MouseSensor, TouchSensor, useDroppable, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, arrayMove, rectSortingStrategy, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
-import { ArrowDownToLine, ArrowUpFromLine, Check, ChevronDown, LoaderCircle, Music2, Pencil, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowDownToLine, ArrowUpFromLine, Check, ChevronDown, LoaderCircle, Music2, Pencil, Plus, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
 import { CATALOG, GENDER_LABELS } from './data/artists';
 import { allArtists, createBoard, findTier, localizeFavorites, matchesFilters, moveArtist, normalize, parseBoard, STORAGE_KEY, toggleSong } from './domain';
 import { getJson } from './api';
@@ -10,6 +10,7 @@ import portraitCatalog from './data/portraits.json';
 import { Avatar } from './components/Avatar';
 import { ArtistCard } from './components/ArtistCard';
 import { ArtistDialog } from './components/ArtistDialog';
+import { ArtistPicker } from './components/ArtistPicker';
 import { FavoritesBriefing } from './components/FavoritesBriefing';
 import { boardCollisionDetection } from './drag';
 
@@ -24,11 +25,11 @@ function loadBoard() {
   } catch { return { board: createBoard(), warning: '브라우저 저장소를 읽지 못했어요. 저장 파일로 보관해 주세요.' }; }
 }
 
-function TierRow({ tier, children, count }: { tier: Tier; children: React.ReactNode; count: number }) {
+function TierRow({ tier, children, count, onAdd }: { tier: Tier; children: React.ReactNode; count: number; onAdd: () => void }) {
   const { setNodeRef, isOver } = useDroppable({ id: `tier:${tier}` });
   return <div ref={setNodeRef} className={`tier-row ${isOver ? 'drop-active' : ''}`} data-testid={`tier-${tier}`} aria-label={`${tier} 티어`}>
     <div className={`tier-label tier-${tier}`}><strong>{tier}</strong>{count > 0 && <span>{count}</span>}</div>
-    <div className="tier-content">{count ? children : <div className="tier-empty">{isOver && <span>여기에 놓기</span>}</div>}</div>
+    <div className="tier-content">{children}<button className="tier-add" onClick={onAdd} aria-label={`${tier} 티어에 아티스트 추가`} aria-haspopup="dialog" title={`${tier} 티어에 아티스트 추가`}><Plus size={20} /></button>{!count && isOver && <span className="tier-drop-hint">여기에 놓기</span>}</div>
   </div>;
 }
 
@@ -57,6 +58,9 @@ export default function App() {
   const [portraitError, setPortraitError] = useState(false);
   const [portraitRetry, setPortraitRetry] = useState(0);
   const [selected, setSelected] = useState<Artist | null>(null);
+  const [pickerTier, setPickerTier] = useState<Tier | null>(null);
+  const [pickerQuery, setPickerQuery] = useState('');
+  const [pickerPageSize, setPickerPageSize] = useState(PAGE_SIZE);
   const [addingFavorite, setAddingFavorite] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [notice, setNotice] = useState(initial.warning);
@@ -65,6 +69,7 @@ export default function App() {
   const [draftTitle, setDraftTitle] = useState(board.title);
   const importInput = useRef<HTMLInputElement>(null);
   const artistOpener = useRef<HTMLElement | null>(null);
+  const pickerOpener = useRef<HTMLElement | null>(null);
   const downloadMenu = useRef<HTMLDetailsElement>(null);
   const requestedPortraits = useRef(new Set<string>());
   const requestedSongs = useRef(new Set<string>());
@@ -78,7 +83,11 @@ export default function App() {
   const assigned = new Set(assignedIds);
   const filtered = combined.filter(artist => !assigned.has(artist.id) && matchesFilters(artist, { query, gender, kind, genre }));
   const visible = filtered.slice(0, pageSize);
-  const currentPortraitIds = [...new Set([...visible.map(artist => artist.id), ...assignedIds, ...(selected ? [selected.id] : [])])].join(',');
+  const pickerArtists = pickerTier ? combined.filter(artist => matchesFilters(artist, { query: pickerQuery, gender: 'all', kind: 'all', genre: 'all' })) : [];
+  const pickerVisible = pickerArtists.slice(0, pickerPageSize);
+  const placements = new Map(TIERS.flatMap(tier => board.tiers[tier].map(id => [id, tier] as const)));
+  const currentSearchQuery = pickerTier ? pickerQuery : query;
+  const currentPortraitIds = [...new Set([...visible.map(artist => artist.id), ...pickerVisible.map(artist => artist.id), ...assignedIds, ...(selected ? [selected.id] : [])])].join(',');
   const favoriteCount = Object.values(board.favorites).reduce((sum, songs) => sum + songs.length, 0);
   const activeArtist = activeId ? artistMap.get(activeId) : undefined;
 
@@ -91,6 +100,7 @@ export default function App() {
 
   useEffect(() => { if (!notice) return; const timer = setTimeout(() => setNotice(''), 5000); return () => clearTimeout(timer); }, [notice]);
   useEffect(() => { setPageSize(PAGE_SIZE); }, [query, gender, kind, genre]);
+  useEffect(() => { setPickerPageSize(PAGE_SIZE); }, [pickerQuery]);
 
   useEffect(() => {
     const songs = Object.values(board.favorites).flat().filter(song => song.locale !== 'ko-KR' && /^itunes:[1-9]\d*$/.test(song.id) && !requestedSongs.current.has(song.id));
@@ -108,7 +118,7 @@ export default function App() {
   }, [board.favorites]);
 
   useEffect(() => {
-    const clean = query.trim();
+    const clean = currentSearchQuery.trim();
     const controller = new AbortController();
     setRemote([]); setSearchError(''); setSearching(false);
     if (clean.length < 2 || CATALOG.some(artist => [artist.name, artist.englishName, ...artist.aliases, ...(artist.searchAliases ?? [])].some(name => normalize(name) === normalize(clean)))) return;
@@ -121,7 +131,7 @@ export default function App() {
       finally { if (!controller.signal.aborted) setSearching(false); }
     }, 600);
     return () => { controller.abort(); clearTimeout(timer); };
-  }, [query, searchRetry]);
+  }, [currentSearchQuery, searchRetry]);
 
   useEffect(() => {
     const missing = currentPortraitIds.split(',').filter(id => id && !portraits[id] && !requestedPortraits.current.has(id));
@@ -142,6 +152,18 @@ export default function App() {
     setAddingFavorite(true); setQuery(''); setGender('all'); setGenre('all'); setKind('all');
     document.getElementById('artist-archive')?.scrollIntoView({ block: 'start' });
     artistSearch.current?.focus({ preventScroll: true });
+  }
+  function openTierPicker(tier: Tier) {
+    pickerOpener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setAddingFavorite(false); setPickerQuery(''); setPickerPageSize(PAGE_SIZE); setPickerTier(tier);
+  }
+  function addPickedArtist(artist: Artist) {
+    if (!pickerTier) return;
+    setBoard(current => findTier(current, artist.id) === pickerTier ? current : moveArtist(addCustom(current, artist), artist.id, pickerTier));
+  }
+  function closeTierPicker() {
+    setPickerTier(null);
+    requestAnimationFrame(() => { if (pickerOpener.current?.isConnected) pickerOpener.current.focus({ preventScroll: true }); });
   }
   function closeArtist() {
     const id = selected?.id;
@@ -211,8 +233,8 @@ export default function App() {
       <DndContext sensors={sensors} collisionDetection={boardCollisionDetection} onDragStart={event => setActiveId(String(event.active.id))} onDragEnd={finishDrag} onDragCancel={() => setActiveId(null)} accessibility={{ announcements: { onDragStart: ({ active }) => `${artistMap.get(String(active.id))?.name ?? '가수'} 이동을 시작합니다.`, onDragOver: ({ over }) => over ? `${String(over.id).startsWith('tier:') ? `${String(over.id).slice(5)} 티어` : '가수 위치'} 위입니다.` : '이동 중입니다.', onDragEnd: () => '가수 배치를 완료했습니다.', onDragCancel: () => '이동을 취소했습니다.' }, screenReaderInstructions: { draggable: '스페이스 키로 가수를 집어 들고 방향키로 이동하세요. 다시 스페이스 키로 배치하거나 Escape 키로 취소할 수 있습니다. 가수 버튼에서 Enter 키를 누르면 티어 선택 창이 열립니다.' } }}>
         <section id="my-tier" className="board-section" aria-labelledby="board-title">
           <div className="board-heading"><div className="board-heading-title">{editingTitle ? <input className="title-input" aria-label="티어 보드 이름" autoFocus maxLength={80} value={draftTitle} onChange={event => setDraftTitle(event.target.value)} onBlur={finishTitle} onKeyDown={event => { if (event.key === 'Enter') event.currentTarget.blur(); if (event.key === 'Escape') { setDraftTitle(board.title); setEditingTitle(false); } }} /> : <h1 id="board-title">{board.title}</h1>}<button className="icon-button edit-title" onClick={() => { setDraftTitle(board.title); setEditingTitle(true); }} aria-label="보드 이름 바꾸기"><Pencil size={14} /></button></div><div className="board-tools">{(assignedIds.length > 0 || favoriteCount > 0) && <span className="board-count">{assignedIds.length}명 <span>·</span> {favoriteCount}곡</span>}<button className="text-button reset-button" onClick={resetBoard} disabled={!assignedIds.length && !favoriteCount && !board.customArtists.length}><RotateCcw size={14} /> 초기화</button></div></div>
-          <div className="tier-board">{TIERS.map(tier => <TierRow key={tier} tier={tier} count={board.tiers[tier].length}><SortableContext id={`tier:${tier}`} items={board.tiers[tier]} strategy={rectSortingStrategy}>{board.tiers[tier].map(id => artistMap.get(id)).filter((artist): artist is Artist => !!artist).map(artist => renderCard(artist, true))}</SortableContext></TierRow>)}</div>
-          <p className="board-footnote">드래그하여 배치 · 표 밖에 놓으면 목록으로 · 사진을 눌러 곡 선택</p>
+          <div className="tier-board">{TIERS.map(tier => <TierRow key={tier} tier={tier} count={board.tiers[tier].length} onAdd={() => openTierPicker(tier)}><SortableContext id={`tier:${tier}`} items={board.tiers[tier]} strategy={rectSortingStrategy}>{board.tiers[tier].map(id => artistMap.get(id)).filter((artist): artist is Artist => !!artist).map(artist => renderCard(artist, true))}</SortableContext></TierRow>)}</div>
+          <p className="board-footnote">+ 버튼이나 드래그로 배치 · 표 밖에 놓으면 목록으로 · 사진을 눌러 곡 선택</p>
         </section>
         <Pool>
           <div className="pool-heading"><h2 id="pool-title">아티스트</h2></div>
@@ -232,6 +254,9 @@ export default function App() {
       <footer className="site-footer">사진 · 벅스 / 멜론 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · YouTube Music / 국내 음원</footer>
     </main>
     {selected && <ArtistDialog key={selected.id} artist={selected} portrait={portraits[selected.id]} tier={findTier(board, selected.id)} favorites={board.favorites[selected.id] ?? []} onMove={target => setBoard(current => moveArtist(current, selected.id, target))} onToggle={(song: Song) => setBoard(current => toggleSong(current, selected.id, song))} onClose={closeArtist} />}
+    {pickerTier && <ArtistPicker tier={pickerTier} artists={pickerVisible} portraits={portraits} placements={placements} count={board.tiers[pickerTier].length}
+      query={pickerQuery} onQuery={setPickerQuery} total={pickerArtists.length} onMore={() => setPickerPageSize(size => size + PAGE_SIZE)}
+      searching={searching} searchError={searchError} onRetry={() => setSearchRetry(value => value + 1)} onAdd={addPickedArtist} onClose={closeTierPicker} />}
     {notice && <div className="toast" role="status"><Check size={16} /><span>{notice}</span><button onClick={() => setNotice('')} aria-label="알림 닫기"><X size={14} /></button></div>}
   </>;
 }

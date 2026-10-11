@@ -50,7 +50,7 @@ button, a { touch-action: manipulation; }
 /* Three sizes, one family and one weight across desktop and mobile. */
 .favorites-heading h2, .board-heading-title h1, .pool-heading h2,
 .dialog-artist h2, .tier-label strong, .tier-pick, .section-label h3,
-.empty-search h3, .title-input { font-size: var(--text-heading); }
+.empty-search h3, .title-input, .picker-heading h2 { font-size: var(--text-heading); }
 .save-status, .favorites-heading > span, .favorite-songs, .favorite-empty,
 .board-count, .tier-label > span, .board-footnote, .filter-count,
 .artist-name, .avatar > span, .song-badge, .load-more > span,
@@ -58,7 +58,8 @@ button, a { touch-action: manipulation; }
 .section-label > span, .slot-number, .song-slot > strong,
 .song-slot > span:last-child, .slot-album, .provider-label,
 .song-filters > span, .catalog-status, .song-info > span,
-.equip-button, .result-message > span, .dialog-footer > span {
+.equip-button, .result-message > span, .dialog-footer > span,
+.picker-heading > span, .picker-artist-copy > span + span {
   font-size: var(--text-small);
 }
 
@@ -120,10 +121,11 @@ button, a { touch-action: manipulation; }
 .tier-S { background: #242424; color: #fff; }
 .tier-A, .tier-B, .tier-C, .tier-D, .tier-E, .tier-F { background: #f0f0ee; color: var(--ink); }
 .tier-content { flex: 1; min-width: 0; display: flex; align-items: flex-start; align-content: center; gap: 12px; flex-wrap: wrap; padding: 8px 14px; }
-.tier-empty { display: flex; align-items: center; gap: 12px; min-height: 66px; width: 100%; color: #848484; }
-.tier-empty > svg { color: #aaa; }
+.tier-add { display: flex; align-items: center; justify-content: center; width: var(--artist-size); height: var(--artist-size); min-width: 44px; min-height: 44px; flex-shrink: 0; border: 1px dashed #c8c8c8; color: #737373; }
+.tier-add:hover, .tier-add:focus-visible { color: var(--ink); border-color: var(--ink); background: #f0f0ee; }
+.tier-drop-hint { align-self: center; color: #737373; }
 .drop-active { background: #e8e8e5; outline: 1px solid #444; outline-offset: -1px; }
-.drop-active .tier-empty { color: #222; }
+.drop-active .tier-drop-hint { color: #222; }
 .board-footnote { padding: 13px 0 0; color: #737373; line-height: 1.6; }
 
 /* Search and compact artist thumbnails. */
@@ -243,6 +245,24 @@ button, a { touch-action: manipulation; }
 .dialog-notice { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 15px; line-height: 1.7; color: #8a392c; }
 .dialog-footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; position: sticky; bottom: 0; z-index: 3; margin-top: 25px; padding: 20px 0; border-top: 1px solid var(--line); background: var(--paper); }
 .dialog-footer > span { display: flex; align-items: center; gap: 6px; color: #777; line-height: 1.6; }
+.artist-picker-dialog .dialog-inner { display: flex; flex-direction: column; height: 100%; padding-top: 60px; }
+.artist-picker-dialog .dialog-close { width: 44px; height: 44px; top: 8px; right: 16px; }
+.picker-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-shrink: 0; }
+.picker-heading > span { color: var(--muted); }
+.picker-search { flex-shrink: 0; }
+.picker-results { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; margin-top: 12px; }
+.picker-artist { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 76px; padding: 12px 0; text-align: left; border-bottom: 1px solid var(--line); }
+.picker-artist:hover:not(:disabled) { background: #f0f0ee; }
+.picker-artist .avatar { width: var(--artist-size); height: var(--artist-size); flex-shrink: 0; }
+.picker-artist .avatar > img { filter: none; }
+.picker-artist-copy { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
+.picker-artist-copy > span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.picker-artist-copy > span + span { color: var(--muted); }
+.picker-artist > svg { flex-shrink: 0; margin: 0 12px; }
+.picker-artist.is-added { opacity: 1; color: var(--muted); }
+.picker-artist.is-added .avatar { opacity: .5; }
+.picker-results .load-more { margin-top: 24px; }
+.artist-picker-dialog .dialog-footer { position: static; margin-top: 0; flex-shrink: 0; }
 .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 30; display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: #242424; color: #fff; max-width: calc(100% - 32px); line-height: 1.6; }
 .toast > svg, .toast > button { flex-shrink: 0; }
 .toast > button { display: flex; color: #bbb; }
@@ -279,7 +299,6 @@ button, a { touch-action: manipulation; }
   .tier-row { min-height: 76px; }
   .tier-label { width: 62px; }
   .tier-content { padding: 7px 10px; gap: 8px; }
-  .tier-empty { min-height: 60px; gap: 9px; }
   .compact .song-badge { top: 29px; }
   .board-footnote { padding: 10px 0 0; }
   .title-input { width: 225px; }
@@ -320,7 +339,6 @@ button, a { touch-action: manipulation; }
   .edit-title { width: 24px; }
   .reset-button svg { width: 12px; }
   .tier-label { width: 49px; }
-  .tier-empty svg { width: 12px; }
   .artist-grid { column-gap: 8px; row-gap: 18px; }
   .gender-filters button { min-width: 39px; padding: 5px 9px; }
   .dialog-inner { padding: 45px 20px 0; }

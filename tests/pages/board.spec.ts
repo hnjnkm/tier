@@ -141,6 +141,29 @@ test('Pages subpath loads assets and direct providers, then persists three songs
   expect(localApiRequests).toEqual([]);
 });
 
+test('Pages tier picker adds catalog and additional artists directly to the requested tier', async ({ page }) => {
+  await providers(page);
+  const localApiRequests: string[] = [];
+  page.on('request', request => { if (new URL(request.url()).pathname.startsWith('/api/')) localApiRequests.push(request.url()); });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('./');
+  await page.getByRole('button', { name: 'F 티어에 아티스트 추가', exact: true }).click();
+  const picker = page.getByRole('dialog', { name: 'F 티어에 추가', exact: true });
+  await picker.getByLabel('추가할 아티스트 검색', { exact: true }).fill('아이유');
+  await picker.getByRole('button', { name: '아이유 F 티어에 추가', exact: true }).click();
+  await expect(picker.getByRole('button', { name: '아이유 F 티어에 이미 있음', exact: true })).toBeDisabled();
+  await picker.getByLabel('추가할 아티스트 검색', { exact: true }).fill('새가수');
+  await picker.getByRole('button', { name: '새가수 F 티어에 추가', exact: true }).click();
+  await expect(picker.locator('.picker-heading')).toContainText('2명');
+  await picker.getByRole('button', { name: '선택 완료' }).click();
+  await page.reload();
+  await expect(page.getByTestId('tier-F').locator('[data-artist-id]')).toHaveCount(2);
+  await expect(page.getByTestId('tier-F')).toContainText('아이유');
+  await expect(page.getByTestId('tier-F')).toContainText('새가수');
+  await expect(page.getByTestId('tier-S').locator('[data-artist-id]')).toHaveCount(0);
+  expect(localApiRequests).toEqual([]);
+});
+
 test('desktop and mobile use three consistent text sizes and a verified Lee Seok Hoon profile', async ({ page }) => {
   await providers(page);
   await page.goto('./');

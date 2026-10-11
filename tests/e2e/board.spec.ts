@@ -394,6 +394,70 @@ test('touchscreen long-press moves a thumbnail into a tier', async ({ browser })
   await context.close();
 });
 
+test('mobile tier add buttons support consecutive choices and moving an artist without losing songs or discovery filters', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const page = await context.newPage();
+  await fixtureApi(page); await page.goto('/');
+  await page.getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).tap();
+  await page.getByRole('button', { name: '아이유 S 티어로 이동' }).tap();
+  await page.getByRole('button', { name: '밤편지 대표곡으로 선택', exact: true }).tap();
+  await page.getByRole('button', { name: '선택 완료' }).tap();
+  await page.getByLabel('가수 이름 검색').fill('SG워너비');
+  await page.getByLabel('음악 장르 필터').selectOption('hiphop');
+  await page.getByRole('button', { name: '남자', exact: true }).tap();
+  for (const tier of ['A', 'B', 'C', 'D', 'E', 'F', 'S']) {
+    const add = page.getByRole('button', { name: `${tier} 티어에 아티스트 추가`, exact: true });
+    const bounds = await add.boundingBox();
+    expect(bounds!.width).toBeGreaterThanOrEqual(44); expect(bounds!.height).toBeGreaterThanOrEqual(44);
+    await add.tap();
+    const picker = page.getByRole('dialog', { name: `${tier} 티어에 추가`, exact: true });
+    await expect(picker).toBeVisible();
+    await picker.getByLabel('추가할 아티스트 검색', { exact: true }).fill('아이유');
+    await picker.getByRole('button', { name: `아이유 ${tier} 티어에 추가`, exact: true }).tap();
+    await expect(picker.getByRole('button', { name: `아이유 ${tier} 티어에 이미 있음`, exact: true })).toBeDisabled();
+    await expect(page.getByTestId(`tier-${tier}`).locator('[data-artist-id="kr-iu"]')).toHaveCount(1);
+    await expect(page.locator('.tier-board [data-artist-id="kr-iu"]')).toHaveCount(1);
+    if (tier === 'A') {
+      await picker.getByLabel('추가할 아티스트 검색', { exact: true }).fill('김범수');
+      await picker.getByRole('button', { name: '김범수 A 티어에 추가', exact: true }).tap();
+      await expect(picker.locator('.picker-heading')).toContainText('2명');
+    }
+    await picker.getByRole('button', { name: '선택 완료' }).tap();
+    await expect(add).toBeFocused();
+    await expect(page.getByLabel('가수 이름 검색')).toHaveValue('SG워너비');
+    await expect(page.getByLabel('음악 장르 필터')).toHaveValue('hiphop');
+    await expect(page.getByRole('button', { name: '남자', exact: true })).toHaveAttribute('aria-pressed', 'true');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+  }
+  await page.reload();
+  await expect(page.getByTestId('tier-A').locator('[data-artist-id="kr-kim-bumsoo"]')).toHaveCount(1);
+  await expect(page.getByTestId('favorites-briefing')).toContainText('밤편지');
+  await page.getByTestId('tier-S').getByRole('button', { name: '아이유 곡 선택 및 티어 변경' }).tap();
+  await expect(page.getByRole('button', { name: '밤편지 대표곡에서 제거' })).toBeVisible();
+  await context.close();
+});
+
+test('tier artist picker expands by fifty and dismissal leaves placements unchanged', async ({ page }) => {
+  const add = page.getByRole('button', { name: 'B 티어에 아티스트 추가', exact: true });
+  await add.click();
+  const picker = page.getByRole('dialog', { name: 'B 티어에 추가', exact: true });
+  await expect(picker.locator('.picker-artist')).toHaveCount(50);
+  await picker.getByRole('button', { name: /^더 보기/ }).click();
+  await expect(picker.locator('.picker-artist')).toHaveCount(100);
+  await picker.getByLabel('추가할 아티스트 검색', { exact: true }).fill('SG WANNABE');
+  await expect(picker.locator('.picker-artist')).toHaveCount(1);
+  await expect(picker.getByRole('button', { name: 'SG워너비 B 티어에 추가', exact: true })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(picker).toHaveCount(0); await expect(add).toBeFocused();
+  await expect(page.locator('.tier-board [data-artist-id]')).toHaveCount(0);
+  await add.click();
+  await expect(picker.locator('.picker-artist')).toHaveCount(50);
+  await page.mouse.click(10, 200);
+  await expect(picker).toHaveCount(0); await expect(add).toBeFocused();
+  await page.reload();
+  await expect(page.locator('.tier-board [data-artist-id]')).toHaveCount(0);
+});
+
 test('song catalog searches beyond 200 tracks, sorts, filters albums, and keeps selections through reload', async ({ page }) => {
   const channel = `UC${'a'.repeat(22)}`;
   const songs = Array.from({ length: 325 }, (_, index) => ({ id: `youtube:video${String(index).padStart(6, '0')}`, title: index === 324 ? '마지막 숨은 곡' : `수록곡 ${index}`,
