@@ -141,7 +141,7 @@ test('Pages subpath loads assets and direct providers, then persists three songs
   expect(localApiRequests).toEqual([]);
 });
 
-test('Pages tier picker adds catalog and additional artists directly to the requested tier', async ({ page }) => {
+test('Pages tier picker filters catalog and additional artists and fits mobile and desktop screens', async ({ page }) => {
   await providers(page);
   const localApiRequests: string[] = [];
   page.on('request', request => { if (new URL(request.url()).pathname.startsWith('/api/')) localApiRequests.push(request.url()); });
@@ -149,9 +149,27 @@ test('Pages tier picker adds catalog and additional artists directly to the requ
   await page.goto('./');
   await page.getByRole('button', { name: 'F 티어에 아티스트 추가', exact: true }).click();
   const picker = page.getByRole('dialog', { name: 'F 티어에 추가', exact: true });
+  for (const width of [320, 390, 1280]) {
+    await page.setViewportSize({ width, height: 844 });
+    await expect(picker.getByLabel('음악 장르 필터')).toBeVisible();
+    await expect(picker.getByLabel('솔로 및 그룹 필터')).toBeVisible();
+    for (const gender of ['전체', '남자', '여자', '혼성']) {
+      const bounds = await picker.getByRole('button', { name: gender, exact: true }).boundingBox();
+      expect(bounds!.width).toBeGreaterThanOrEqual(44); expect(bounds!.height).toBeGreaterThanOrEqual(44);
+      expect(bounds!.x).toBeGreaterThanOrEqual(0); expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
+    }
+    const footer = await picker.getByRole('button', { name: '선택 완료' }).boundingBox();
+    expect(footer!.y + footer!.height).toBeLessThanOrEqual(844);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await picker.getByLabel('음악 장르 필터').selectOption('ballad');
+  await picker.getByLabel('솔로 및 그룹 필터').selectOption('solo');
+  await picker.getByRole('button', { name: '여자', exact: true }).click();
   await picker.getByLabel('추가할 아티스트 검색', { exact: true }).fill('아이유');
   await picker.getByRole('button', { name: '아이유 F 티어에 추가', exact: true }).click();
   await expect(picker.getByRole('button', { name: '아이유 F 티어에 이미 있음', exact: true })).toBeDisabled();
+  await picker.getByLabel('음악 장르 필터').selectOption('all');
   await picker.getByLabel('추가할 아티스트 검색', { exact: true }).fill('새가수');
   await picker.getByRole('button', { name: '새가수 F 티어에 추가', exact: true }).click();
   await expect(picker.locator('.picker-heading')).toContainText('2명');

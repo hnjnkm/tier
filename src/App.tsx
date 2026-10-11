@@ -60,6 +60,9 @@ export default function App() {
   const [selected, setSelected] = useState<Artist | null>(null);
   const [pickerTier, setPickerTier] = useState<Tier | null>(null);
   const [pickerQuery, setPickerQuery] = useState('');
+  const [pickerGender, setPickerGender] = useState<Gender | 'all'>('all');
+  const [pickerGenre, setPickerGenre] = useState<Genre | 'all'>('all');
+  const [pickerKind, setPickerKind] = useState<Artist['kind'] | 'all'>('all');
   const [pickerPageSize, setPickerPageSize] = useState(PAGE_SIZE);
   const [addingFavorite, setAddingFavorite] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -83,7 +86,7 @@ export default function App() {
   const assigned = new Set(assignedIds);
   const filtered = combined.filter(artist => !assigned.has(artist.id) && matchesFilters(artist, { query, gender, kind, genre }));
   const visible = filtered.slice(0, pageSize);
-  const pickerArtists = pickerTier ? combined.filter(artist => matchesFilters(artist, { query: pickerQuery, gender: 'all', kind: 'all', genre: 'all' })) : [];
+  const pickerArtists = pickerTier ? combined.filter(artist => matchesFilters(artist, { query: pickerQuery, gender: pickerGender, kind: pickerKind, genre: pickerGenre })) : [];
   const pickerVisible = pickerArtists.slice(0, pickerPageSize);
   const placements = new Map(TIERS.flatMap(tier => board.tiers[tier].map(id => [id, tier] as const)));
   const currentSearchQuery = pickerTier ? pickerQuery : query;
@@ -100,7 +103,7 @@ export default function App() {
 
   useEffect(() => { if (!notice) return; const timer = setTimeout(() => setNotice(''), 5000); return () => clearTimeout(timer); }, [notice]);
   useEffect(() => { setPageSize(PAGE_SIZE); }, [query, gender, kind, genre]);
-  useEffect(() => { setPickerPageSize(PAGE_SIZE); }, [pickerQuery]);
+  useEffect(() => { setPickerPageSize(PAGE_SIZE); }, [pickerQuery, pickerGender, pickerKind, pickerGenre]);
 
   useEffect(() => {
     const songs = Object.values(board.favorites).flat().filter(song => song.locale !== 'ko-KR' && /^itunes:[1-9]\d*$/.test(song.id) && !requestedSongs.current.has(song.id));
@@ -155,7 +158,10 @@ export default function App() {
   }
   function openTierPicker(tier: Tier) {
     pickerOpener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    setAddingFavorite(false); setPickerQuery(''); setPickerPageSize(PAGE_SIZE); setPickerTier(tier);
+    setAddingFavorite(false); resetPickerFilters(); setPickerPageSize(PAGE_SIZE); setPickerTier(tier);
+  }
+  function resetPickerFilters() {
+    setPickerQuery(''); setPickerGender('all'); setPickerGenre('all'); setPickerKind('all');
   }
   function addPickedArtist(artist: Artist) {
     if (!pickerTier) return;
@@ -256,6 +262,7 @@ export default function App() {
     {selected && <ArtistDialog key={selected.id} artist={selected} portrait={portraits[selected.id]} tier={findTier(board, selected.id)} favorites={board.favorites[selected.id] ?? []} onMove={target => setBoard(current => moveArtist(current, selected.id, target))} onToggle={(song: Song) => setBoard(current => toggleSong(current, selected.id, song))} onClose={closeArtist} />}
     {pickerTier && <ArtistPicker tier={pickerTier} artists={pickerVisible} portraits={portraits} placements={placements} count={board.tiers[pickerTier].length}
       query={pickerQuery} onQuery={setPickerQuery} total={pickerArtists.length} onMore={() => setPickerPageSize(size => size + PAGE_SIZE)}
+      genre={pickerGenre} onGenre={setPickerGenre} gender={pickerGender} onGender={setPickerGender} kind={pickerKind} onKind={setPickerKind} onReset={resetPickerFilters}
       searching={searching} searchError={searchError} onRetry={() => setSearchRetry(value => value + 1)} onAdd={addPickedArtist} onClose={closeTierPicker} />}
     {notice && <div className="toast" role="status"><Check size={16} /><span>{notice}</span><button onClick={() => setNotice('')} aria-label="알림 닫기"><X size={14} /></button></div>}
   </>;

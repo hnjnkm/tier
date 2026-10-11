@@ -250,6 +250,12 @@ button, a { touch-action: manipulation; }
 .picker-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-shrink: 0; }
 .picker-heading > span { color: var(--muted); }
 .picker-search { flex-shrink: 0; }
+.picker-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 12px; flex-shrink: 0; }
+.picker-filters .kind-filter > svg { flex-shrink: 0; }
+.picker-filters select { min-height: 44px; }
+.artist-picker-dialog .filter-bar { margin: 12px 0 0; align-items: center; flex-shrink: 0; }
+.artist-picker-dialog .gender-filters button { min-width: 44px; min-height: 44px; }
+.artist-picker-dialog .filter-count { max-width: none; padding-top: 0; flex-shrink: 0; white-space: nowrap; }
 .picker-results { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; margin-top: 12px; }
 .picker-artist { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 76px; padding: 12px 0; text-align: left; border-bottom: 1px solid var(--line); }
 .picker-artist:hover:not(:disabled) { background: #f0f0ee; }
