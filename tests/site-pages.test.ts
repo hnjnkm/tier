@@ -47,3 +47,14 @@ test('operator and contact configuration are escaped and a real email replaces t
     assert.ok(!html.includes('<img src=x'));
   } finally { SITE.operator = operator; SITE.contactEmail = email; }
 });
+
+test('enabled Google sync policies describe authentication, private cloud records and deletion while disabled pages keep the local-only facts', () => {
+  const enabled = renderSitePage('privacy', '/tier/', true), disabled = renderSitePage('privacy', '/tier/', false);
+  for (const value of ['Firebase Authentication', '고유 식별자', '클라우드 티어', '운영자는 Firebase 관리 권한', '계정 및 데이터 삭제 요청', 'https://firebase.google.com/support/privacy']) assert.ok(enabled.includes(value));
+  assert.ok(!enabled.includes('사이트에는 회원가입, 로그인, 결제'));
+  assert.ok(!enabled.includes('사이트 운영자가 저장된 티어를 보유하지 않으므로'));
+  assert.ok(disabled.includes('사이트에는 회원가입, 로그인, 결제'));
+  assert.ok(!disabled.includes('Firebase Authentication'));
+  assert.ok(renderSitePage('guide', '/tier/', true).includes('Google 로그인과 동기화'));
+  assert.ok(!renderSitePage('guide', '/tier/', false).includes('Google 로그인과 동기화'));
+});

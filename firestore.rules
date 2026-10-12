@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+    function validBoard() {
+      let data = request.resource.data;
+      return data.keys().hasAll(['schemaVersion', 'payload', 'revision', 'writeId', 'updatedAt'])
+        && data.keys().hasOnly(['schemaVersion', 'payload', 'revision', 'writeId', 'updatedAt'])
+        && data.schemaVersion is int && data.schemaVersion == 1
+        && data.payload is string && data.payload.size() > 0 && data.payload.toUtf8().size() <= 700000
+        && data.revision is int && data.revision >= 1 && data.revision <= 9007199254740991
+        && data.writeId is string && data.writeId.matches('^[A-Za-z0-9_-]{1,100}$')
+        && data.updatedAt is timestamp && data.updatedAt == request.time;
+    }
+    match /users/{uid}/boards/{collection} {
+      allow read: if owner(uid) && collection in ['korean', 'global'];
+      allow create: if owner(uid) && collection in ['korean', 'global'] && validBoard() && request.resource.data.revision == 1;
+      allow update: if owner(uid) && collection in ['korean', 'global'] && validBoard() && request.resource.data.revision == resource.data.revision + 1;
+      // Keep revisions monotonic; resets save an empty board, rather than delete/recreate.
+      // Operator-assisted data deletion uses the Firebase console, outside these client rules.
+      allow delete: if false;
+    }
+  }
+}

@@ -11,7 +11,7 @@ if not (root / 'dist' / 'index.html').is_file():
 output.parent.mkdir(parents=True, exist_ok=True)
 files = ['package.json', 'package-lock.json', 'README.md', 'START-HERE.txt',
          'START-Windows.bat', 'START-macOS.command', 'START-Linux.sh',
-         'index.html', 'tsconfig.json', 'vite.config.ts', 'playwright.config.ts', 'playwright.pages.config.ts', '.gitignore']
+         'index.html', 'tsconfig.json', 'vite.config.ts', 'playwright.config.ts', 'playwright.pages.config.ts', '.gitignore', 'firebase.json', 'firestore.rules']
 for folder in ['dist', 'server', 'src', 'public', 'launch', 'scripts', 'tests', 'docs', '.github']:
     files.extend(str(p.relative_to(root)) for p in (root / folder).rglob('*')
                  if p.is_file() and '__pycache__' not in p.parts)

@@ -1,12 +1,19 @@
 import type { Plugin } from 'vite';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { parseFirebaseConfig } from '../src/firebase';
 import { SITE, SITE_LINKS } from '../src/site';
 import { renderRobots, renderSitePage, renderSitemap } from './site-pages';
 
 export function sitePages(): Plugin {
   let base = '/';
+  let cloudEnabled = false;
   return {
     name: 'public-site-pages',
-    configResolved(config) { base = config.base; },
+    configResolved(config) {
+      base = config.base;
+      cloudEnabled = !!parseFirebaseConfig(JSON.parse(readFileSync(resolve(config.root, 'public/firebase-config.json'), 'utf8')), config.command === 'serve' ? 'localhost' : new URL(SITE.url).hostname);
+    },
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const path = new URL(req.url ?? '/', 'http://localhost').pathname;
@@ -14,7 +21,7 @@ export function sitePages(): Plugin {
         if (!page && path !== '/sitemap.xml' && path !== '/robots.txt') return next();
         if (page && path === `/${page.id}`) { res.statusCode = 302; res.setHeader('Location', `/${page.id}/`); res.end(); return; }
         res.setHeader('Content-Type', page ? 'text/html; charset=utf-8' : path.endsWith('.xml') ? 'application/xml; charset=utf-8' : 'text/plain; charset=utf-8');
-        res.end(page ? renderSitePage(page.id, base) : path === '/sitemap.xml' ? renderSitemap() : renderRobots());
+        res.end(page ? renderSitePage(page.id, base, cloudEnabled) : path === '/sitemap.xml' ? renderSitemap() : renderRobots());
       });
     },
     transformIndexHtml() {
@@ -29,7 +36,7 @@ export function sitePages(): Plugin {
       ];
     },
     generateBundle() {
-      for (const page of SITE_LINKS) this.emitFile({ type: 'asset', fileName: `${page.id}/index.html`, source: renderSitePage(page.id, base) });
+      for (const page of SITE_LINKS) this.emitFile({ type: 'asset', fileName: `${page.id}/index.html`, source: renderSitePage(page.id, base, cloudEnabled) });
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: renderSitemap() });
       this.emitFile({ type: 'asset', fileName: 'robots.txt', source: renderRobots() });
     },

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { DndContext, DragOverlay, KeyboardSensor, MouseSensor, TouchSensor, useDroppable, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, arrayMove, rectSortingStrategy, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
-import { ArrowDownToLine, ArrowUpFromLine, Check, ChevronDown, LoaderCircle, Menu, Music2, Pencil, Plus, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowDownToLine, ArrowUpFromLine, Check, ChevronDown, LoaderCircle, Menu, Music2, Pencil, Plus, RotateCcw, Search, SlidersHorizontal, UserRound, X } from 'lucide-react';
 import { GENDER_LABELS } from './data/artists';
 import { allArtists, createBoard, findTier, localizeFavorites, matchesFilters, moveArtist, normalize, parseBoard, toggleSong } from './domain';
 import { COLLECTION_IDS, COLLECTIONS, collectionFromUrl, collectionUrl, type CollectionId } from './collections';
@@ -18,18 +18,11 @@ import { boardCollisionDetection } from './drag';
 import { CollectionMenu } from './components/CollectionMenu';
 import { DiscoveryTags } from './components/DiscoveryTags';
 import type { Era } from './artist-facets';
+import { TierSyncProvider, useTierSync } from './components/TierSyncProvider';
+import { AccountDialog } from './components/AccountDialog';
+import { SyncConflictDialog } from './components/SyncConflictDialog';
 
 const PAGE_SIZE = 50;
-
-function loadBoard(collection: CollectionId) {
-  try {
-    const saved = localStorage.getItem(COLLECTIONS[collection].storageKey);
-    if (!saved) return { board: createBoard(collection), warning: '' };
-    const parsed = parseBoard(JSON.parse(saved));
-    const board = parsed && (parsed.collection ?? 'korean') === collection ? parsed : null;
-    return { board: board ?? createBoard(collection), warning: board ? '' : '저장된 보드를 읽지 못했어요. 저장 파일이 있다면 불러와 주세요.' };
-  } catch { return { board: createBoard(collection), warning: '브라우저 저장소를 읽지 못했어요. 저장 파일로 보관해 주세요.' }; }
-}
 
 function TierRow({ tier, children, count, onAdd }: { tier: Tier; children: React.ReactNode; count: number; onAdd: () => void }) {
   const { setNodeRef, isOver } = useDroppable({ id: `tier:${tier}` });
@@ -49,6 +42,10 @@ function addCustom(board: Board, artist: Artist): Board {
 }
 
 export default function App() {
+  return <TierSyncProvider><AppContent /></TierSyncProvider>;
+}
+function AppContent() {
+  const { state } = useTierSync();
   const [collection, setCollection] = useState(collectionFromUrl);
   useEffect(() => {
     document.title = COLLECTIONS[collection].title;
@@ -67,14 +64,20 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'instant' });
     requestAnimationFrame(() => document.getElementById(`chart-nav-${next}`)?.focus({ preventScroll: true }));
   }
-  return <TierBoard key={collection} collection={collection} onSelectCollection={selectCollection} />;
+  return <TierBoard key={`${collection}:${state.session}`} collection={collection} onSelectCollection={selectCollection} />;
 }
 
 function TierBoard({ collection, onSelectCollection }: { collection: CollectionId; onSelectCollection: (collection: CollectionId) => void }) {
   const definition = COLLECTIONS[collection];
-  const [initial] = useState(() => loadBoard(collection));
+  const { state: syncState, store: syncStore } = useTierSync();
+  const board = syncState.boards[collection], sync = syncState.collections[collection];
+  const setBoard = (update: Board | ((current: Board) => Board)) => {
+    if (syncStore.getSnapshot().session === syncState.session) syncStore.updateBoard(collection, update);
+  };
+  const accountAvailable = syncState.mode === 'guest' || syncState.mode === 'signed-in';
+  const [accountOpen, setAccountOpen] = useState(false);
+  const [conflictOpen, setConflictOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [board, setBoard] = useState<Board>(initial.board);
   const [query, setQuery] = useState('');
   const [gender, setGender] = useState<Gender | 'all'>('all');
   const [genre, setGenre] = useState<Genre | 'all'>('all');
@@ -100,8 +103,8 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
   const [pickerPageSize, setPickerPageSize] = useState(PAGE_SIZE);
   const [addingFavorite, setAddingFavorite] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [notice, setNotice] = useState(initial.warning);
-  const [saveError, setSaveError] = useState(false);
+  const [notice, setNotice] = useState(sync.localError || sync.error);
+  const saveError = !!sync.localError;
   const [editingTitle, setEditingTitle] = useState(false);
   const [draftTitle, setDraftTitle] = useState(board.title);
   const importInput = useRef<HTMLInputElement>(null);
@@ -111,7 +114,6 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
   const requestedPortraits = useRef(new Set<string>());
   const requestedSongs = useRef(new Set<string>());
   const artistSearch = useRef<HTMLInputElement>(null);
-  const lastSaved = useRef(JSON.stringify(initial.board));
   const sensors = useSensors(useSensor(MouseSensor, { activationConstraint: { distance: 7 } }), useSensor(TouchSensor, { activationConstraint: { delay: 220, tolerance: 5 } }), useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }));
   const artists = useMemo(() => allArtists(board), [board]);
   const combined = useMemo(() => [...artists, ...remote.filter(artist => !artists.some(item => item.id === artist.id))], [artists, remote]);
@@ -128,13 +130,6 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
   const favoriteCount = Object.values(board.favorites).reduce((sum, songs) => sum + songs.length, 0);
   const activeArtist = activeId ? artistMap.get(activeId) : undefined;
   const hasFilters = !!query || gender !== 'all' || kind !== 'all' || genre !== 'all' || countries.length > 0 || eras.length > 0;
-
-  useEffect(() => {
-    const serialized = JSON.stringify(board);
-    if (lastSaved.current === serialized) return;
-    try { localStorage.setItem(definition.storageKey, serialized); lastSaved.current = serialized; setSaveError(false); }
-    catch { setSaveError(true); }
-  }, [board, definition.storageKey]);
 
   useEffect(() => { if (!notice) return; const timer = setTimeout(() => setNotice(''), 5000); return () => clearTimeout(timer); }, [notice]);
   useEffect(() => { setPageSize(PAGE_SIZE); }, [query, gender, kind, genre, countries, eras]);
@@ -248,6 +243,7 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
     try {
       if (file.size > 2_000_000) throw new Error('저장 파일은 2MB 이하로 골라 주세요.');
       const parsed = parseBoard(JSON.parse(await file.text()));
+      if (syncStore.getSnapshot().session !== syncState.session) return;
       if (!parsed) throw new Error('올바른 티어 저장 파일이 아니에요.');
       if ((parsed.collection ?? 'korean') !== collection) throw new Error(`${COLLECTIONS[parsed.collection ?? 'korean'].label} 티어표를 메뉴에서 선택한 뒤 불러와 주세요.`);
       if ((assignedIds.length || favoriteCount) && !window.confirm('현재 보드를 저장 파일의 내용으로 바꿀까요?')) return;
@@ -267,6 +263,8 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
   function closeMenu() { setMenuOpen(false); requestAnimationFrame(() => document.getElementById('collection-menu-button')?.focus({ preventScroll: true })); }
 
   const renderCard = (artist: Artist, compact = false) => <ArtistCard key={artist.id} artist={artist} portrait={portraits[artist.id]} songCount={board.favorites[artist.id]?.length ?? 0} onOpen={openArtist} compact={compact} />;
+  const syncLabel = !syncState.user ? '자동 저장' : ({ local: '이 기기에 저장', loading: '티어 불러오는 중', saved: '동기화됨', syncing: '동기화 중', offline: '오프라인 · 이 기기에 보관', conflict: '티어 선택 필요', error: '동기화 확인 필요' } as const)[sync.status];
+  const accountSummary = !syncState.user ? 'Google 계정으로 국내·해외 티어를 함께 보관합니다.' : COLLECTION_IDS.map(id => `${id === 'korean' ? '국내' : '해외'} · ${({ local: '이 기기에 저장', loading: '불러오는 중', saved: '동기화됨', syncing: '동기화 중', offline: '오프라인 보관', conflict: '사용할 티어 선택 필요', error: '다시 연결 필요' } as const)[syncState.collections[id].status]}`).join(' / ');
 
   return <>
     <header className="site-header"><div className="header-inner">
@@ -275,10 +273,11 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
         event.preventDefault(); onSelectCollection(id);
       }}>{id === 'korean' ? '국내' : '해외'}</a>)}</nav>
-      <div className="header-right"><span className={`save-status ${saveError ? 'save-failed' : ''}`}><span className="status-dot" />{saveError ? '저장 파일로 보관해 주세요' : '자동 저장'}</span><details className="download-menu" ref={downloadMenu}><summary className="secondary-button">내 티어 저장 <ArrowDownToLine size={15} /></summary><div className="download-options"><button onClick={exportBoard}><ArrowDownToLine size={16} /> 저장 파일 내보내기</button><button onClick={() => importInput.current?.click()}><ArrowUpFromLine size={16} /> 저장 파일 불러오기</button></div></details><input ref={importInput} type="file" accept="application/json,.json" hidden onChange={event => importBoard(event.target.files?.[0])} /></div>
+      <div className="header-right"><span className={`save-status ${saveError ? 'save-failed' : ''}`}><span className="status-dot" />{saveError ? '저장 파일로 보관해 주세요' : syncLabel}</span>{accountAvailable && <button className="icon-button header-account" aria-label={syncState.user ? '계정과 동기화' : 'Google 로그인'} aria-haspopup="dialog" onClick={() => setAccountOpen(true)}><UserRound size={18} /></button>}<details className="download-menu" ref={downloadMenu}><summary className="secondary-button">내 티어 저장 <ArrowDownToLine size={15} /></summary><div className="download-options"><button onClick={exportBoard}><ArrowDownToLine size={16} /> 저장 파일 내보내기</button><button onClick={() => importInput.current?.click()}><ArrowUpFromLine size={16} /> 저장 파일 불러오기</button></div></details><input ref={importInput} type="file" accept="application/json,.json" hidden onChange={event => importBoard(event.target.files?.[0])} /></div>
     </div></header>
-    {menuOpen && <CollectionMenu collection={collection} onSelect={onSelectCollection} onClose={closeMenu} />}
+    {menuOpen && <CollectionMenu collection={collection} onSelect={onSelectCollection} onClose={closeMenu} account={accountAvailable ? { label: syncState.user ? '계정과 동기화' : 'Google 로그인', onOpen: () => { setMenuOpen(false); setAccountOpen(true); } } : undefined} />}
     <main className="page-shell">
+      {!!syncState.user && (sync.status !== 'saved' || saveError) && <div className="sync-banner" role="status"><p>{sync.error || sync.localError || syncLabel}{sync.status === 'offline' ? ' · 다시 연결하면 동기화합니다.' : ''}</p>{sync.conflict ? <button className="text-button" onClick={() => setConflictOpen(true)}>티어 비교</button> : sync.status === 'error' ? <button className="text-button" onClick={() => syncStore.retry(collection)}>다시 시도</button> : null}</div>}
       <FavoritesBriefing artists={board.tiers.S.map(id => artistMap.get(id)).filter((artist): artist is Artist => !!artist)} favorites={board.favorites} portraits={portraits} collection={collection} onOpen={openArtist} onAdd={addFavorite} />
       <DndContext sensors={sensors} collisionDetection={boardCollisionDetection} onDragStart={event => setActiveId(String(event.active.id))} onDragEnd={finishDrag} onDragCancel={() => setActiveId(null)} accessibility={{ announcements: { onDragStart: ({ active }) => `${artistMap.get(String(active.id))?.name ?? '가수'} 이동을 시작합니다.`, onDragOver: ({ over }) => over ? `${String(over.id).startsWith('tier:') ? `${String(over.id).slice(5)} 티어` : '가수 위치'} 위입니다.` : '이동 중입니다.', onDragEnd: () => '가수 배치를 완료했습니다.', onDragCancel: () => '이동을 취소했습니다.' }, screenReaderInstructions: { draggable: '스페이스 키로 가수를 집어 들고 방향키로 이동하세요. 다시 스페이스 키로 배치하거나 Escape 키로 취소할 수 있습니다. 가수 버튼에서 Enter 키를 누르면 티어 선택 창이 열립니다.' } }}>
         <section id="my-tier" className="board-section" aria-labelledby="board-title">
@@ -304,6 +303,8 @@ function TierBoard({ collection, onSelectCollection }: { collection: CollectionI
       </DndContext>
       <footer className="site-footer"><nav aria-label="사이트 정보">{SITE_LINKS.map(item => <a key={item.id} href={sitePageUrl(item.id)}>{item.label}</a>)}</nav><p>사진 · 벅스 / 멜론 / Wikimedia &nbsp; 가수 · MusicBrainz &nbsp; 곡 · YouTube Music / 국내 음원</p></footer>
     </main>
+    {accountOpen && <AccountDialog user={syncState.user} busy={syncState.authBusy} error={syncState.authError || COLLECTION_IDS.map(id => syncState.collections[id].error).filter(Boolean).join(' ')} syncSummary={accountSummary} onSignIn={() => void syncStore.signIn()} onSignOut={() => void syncStore.signOut()} onRetry={() => { if (syncState.user) syncStore.retry(); else void syncStore.signIn(); }} onClose={() => setAccountOpen(false)} />}
+    {conflictOpen && sync.conflict && <SyncConflictDialog collection={collection} {...sync.conflict} onResolve={choice => { setConflictOpen(false); syncStore.resolve(collection, choice); }} onClose={() => setConflictOpen(false)} />}
     {selected && <ArtistDialog key={selected.id} artist={selected} portrait={portraits[selected.id]} tier={findTier(board, selected.id)} favorites={board.favorites[selected.id] ?? []} onMove={target => setBoard(current => moveArtist(current, selected.id, target))} onToggle={(song: Song) => setBoard(current => toggleSong(current, selected.id, song))} onClose={closeArtist} />}
     {pickerTier && <ArtistPicker tier={pickerTier} artists={pickerVisible} portraits={portraits} placements={placements} count={board.tiers[pickerTier].length}
       query={pickerQuery} onQuery={setPickerQuery} total={pickerArtists.length} onMore={() => setPickerPageSize(size => size + PAGE_SIZE)}

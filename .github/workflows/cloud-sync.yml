@@ -1,0 +1,30 @@
+name: Verify private tier synchronization
+
+on:
+  push:
+    branches: [main]
+    paths: ['src/firebase.ts', 'src/tier-sync.ts', 'src/sync-types.ts', 'src/domain.ts', 'src/collections.ts', 'src/types.ts', 'src/App.tsx', 'src/components/TierSyncProvider.tsx', 'tests/**', 'scripts/test-cloud.mjs', 'scripts/site-pages*', 'public/firebase-config.json', 'firestore.rules', 'firebase.json', 'package*.json', '.github/workflows/cloud-sync.yml']
+  pull_request:
+    paths: ['src/firebase.ts', 'src/tier-sync.ts', 'src/sync-types.ts', 'src/domain.ts', 'src/collections.ts', 'src/types.ts', 'src/App.tsx', 'src/components/TierSyncProvider.tsx', 'tests/**', 'scripts/test-cloud.mjs', 'scripts/site-pages*', 'public/firebase-config.json', 'firestore.rules', 'firebase.json', 'package*.json', '.github/workflows/cloud-sync.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+      - run: npm test
+      - run: npm run test:cloud
+      - run: npm run build:pages

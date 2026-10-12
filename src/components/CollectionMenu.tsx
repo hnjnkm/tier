@@ -4,8 +4,8 @@ import { Check, X } from 'lucide-react';
 import { COLLECTION_IDS, COLLECTIONS, collectionUrl, type CollectionId } from '../collections';
 import { SITE_LINKS, sitePageUrl } from '../site';
 
-export function CollectionMenu({ collection, onSelect, onClose }: {
-  collection: CollectionId; onSelect: (collection: CollectionId) => void; onClose: () => void;
+export function CollectionMenu({ collection, onSelect, onClose, account }: {
+  collection: CollectionId; onSelect: (collection: CollectionId) => void; onClose: () => void; account?: { label: string; onOpen: () => void };
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => { dialog.current?.showModal(); }, []);
@@ -23,5 +23,6 @@ export function CollectionMenu({ collection, onSelect, onClose }: {
         event.preventDefault(); onClose(); onSelect(id);
       }}><span>{COLLECTIONS[id].label}</span>{id === collection && <Check size={16} aria-hidden="true" />}</a>)}</nav>
     <nav className="menu-site-links" aria-label="사이트 정보">{SITE_LINKS.map(item => <a key={item.id} href={sitePageUrl(item.id)}>{item.label}</a>)}</nav>
+    {account && <button className="menu-account" onClick={account.onOpen}>{account.label}</button>}
   </dialog>, document.body);
 }
