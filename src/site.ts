@@ -4,7 +4,7 @@ export const SITE = {
   operator: 'hnjnkm',
   contactEmail: null as string | null,
   issuesUrl: 'https://github.com/hnjnkm/tier/issues/new',
-  policyDate: '2026-10-12',
+  policyDate: '2026-10-13',
 };
 export const SITE_LINKS = [
   { id: 'about', label: '사이트 소개' },
