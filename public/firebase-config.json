@@ -1,1 +1,7 @@
-{"enabled":false}
+{
+  "enabled": false,
+  "apiKey": "AIzaSyDM9ryWDk1oEURV-QLcd0hdkLfE6UOdArY",
+  "authDomain": "tier-df76a.firebaseapp.com",
+  "projectId": "tier-df76a",
+  "appId": "1:171889444267:web:03d00e3a2b572f4c16beee"
+}

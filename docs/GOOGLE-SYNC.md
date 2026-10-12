@@ -2,14 +2,14 @@
 
 이 기능은 Google 계정으로 로그인한 사용자의 국내·해외 티어표를 Firebase Authentication과 Cloud Firestore에 저장합니다. 기존 비로그인 티어표와 JSON 파일 백업은 계속 사용할 수 있습니다. 프로젝트와 로그인 설정이 없는 배포본에서는 Google 서버에 연결하지 않습니다.
 
-저장소에는 실제 Firebase 프로젝트의 공개 웹 설정이 아직 없습니다. `public/firebase-config.json`의 기본값은 `{"enabled":false}`입니다. 작동하는 로그인을 연결하려면 아래 설정을 사이트 운영자의 Firebase 프로젝트에서 완료해야 합니다. 임의의 프로젝트 ID나 다른 서비스의 관리자 인증 정보를 넣으면 안 됩니다.
+`tier-df76a` 프로젝트의 공개 웹 앱 설정을 `public/firebase-config.json`에 등록했습니다. 현재 `enabled`는 `false`이며, 운영자가 Authentication·승인 도메인·Firestore·보안 규칙 설정을 완료하면 `true`로 바꿔 배포합니다. 작동하는 로그인을 연결하려면 아래 콘솔 설정을 사이트 운영자의 Firebase 프로젝트에서 완료해야 합니다.
 
 ## Firebase 콘솔 설정
 
 1. [Firebase 콘솔](https://console.firebase.google.com/)에서 운영자가 소유한 프로젝트를 선택하거나 새 프로젝트를 만듭니다. 이 사이트를 위해 Google Analytics를 연결할 필요는 없습니다.
 2. **프로젝트 설정 → 일반 → 내 앱 → 웹 앱**에서 앱을 등록합니다. Firebase Hosting 등록은 필요하지 않습니다. 표시된 `firebaseConfig`에서 `apiKey`, `authDomain`, `projectId`, `appId`를 복사합니다.
 3. **Authentication → 로그인 방법 → Google**을 활성화하고 콘솔에서 요청하는 프로젝트 이름과 지원 이메일을 입력합니다. **설정 → 승인된 도메인**에 `hnjnkm.github.io`를 추가합니다. 도메인에는 `/tier/` 경로와 `https://`를 넣지 않습니다. 개발용 로그인이 필요할 때만 `localhost`도 추가합니다.
-4. **Firestore Database → 데이터베이스 만들기**에서 기본 데이터베이스를 **프로덕션 모드**로 만듭니다. 한국 사용자가 주 대상이면 서울 리전 `asia-northeast3`를 선택할 수 있습니다. 생성 후 데이터베이스 위치를 변경하기 어려우므로 생성 전에 확인합니다. 테스트 모드의 공개 규칙은 사용하지 않습니다.
+4. **Firestore Database → 데이터베이스 만들기**에서 **Standard** 에디션, 데이터베이스 ID **`(default)`**, **프로덕션 모드**를 선택합니다. 한국 사용자가 주 대상이면 서울 리전 `asia-northeast3`를 선택할 수 있습니다. 생성 후 데이터베이스 위치를 변경하기 어려우므로 생성 전에 확인합니다. 테스트 모드의 공개 규칙은 사용하지 않습니다.
 5. **Firestore Database → 규칙**에 저장소의 [firestore.rules](../firestore.rules) 전체 내용을 붙여 넣고 **게시**합니다. 로그인 사용자 자신의 `users/{uid}/boards/korean`과 `users/{uid}/boards/global`만 읽고 저장할 수 있습니다. 다른 사용자의 문서와 다른 경로는 열리지 않습니다.
 6. `public/firebase-config.json`을 실제 웹 앱 설정으로 바꿉니다. JSON 형식은 다음과 같으며, 아래의 설명 문자열을 그대로 배포하면 안 됩니다.
 
